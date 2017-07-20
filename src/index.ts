@@ -12,7 +12,20 @@ require('yargs')
   .commandDir('cmds', {
     visit: (commandObject) => {
       const originalHandler = commandObject.handler
-      commandObject.handler = (argv => originalHandler(context, argv))
+      commandObject.handler = argv => {
+        let result = new Promise((resolve, reject) => {
+          try {
+            resolve(originalHandler(context, argv))
+          } catch(e) {
+            reject(e)
+          }
+        })
+
+        result.catch(e => {
+          //TODO: add debug flag for calltrace
+          console.log(e.message);
+        })
+      }
       return commandObject
     }
   })
@@ -23,3 +36,4 @@ require('yargs')
 
 // Mutation calls "graphql mutation addUser --id 1 --name Test"
 // Find breaking changes
+// Execute static .graphql files
