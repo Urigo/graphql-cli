@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 
+import * as inquirer from 'inquirer'
 import { getGraphQLProjectConfig } from 'graphql-config'
 
 const context = {
+  prompt: inquirer.createPromptModule(),
   getConfig() {
     return getGraphQLProjectConfig()
   }
@@ -24,6 +26,7 @@ require('yargs')
         result.catch(e => {
           //TODO: add debug flag for calltrace
           console.log(e.message);
+          //FIXME: set non-zero exit code
         })
       }
       return commandObject
