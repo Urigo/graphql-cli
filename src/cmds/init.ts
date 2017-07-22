@@ -79,14 +79,8 @@ export async function handler(context, argv) {
     if (url === '') {
       return false;
     }
+
     let endpoint: any = { url }
-
-    const headers = {}
-    while (await addHeader());
-
-    if (Object.keys(headers).length !== 0) {
-      endpoint.headers = headers
-    }
 
     const subscriptionUrl = await prompt({
       type: 'input',
@@ -95,16 +89,7 @@ export async function handler(context, argv) {
 
     const connectionParams = {}
     if (subscriptionUrl !== '') {
-      while (await addConnectionParam());
-
-      if (Object.keys(connectionParams).length === 0) {
-        endpoint.subscription = subscriptionUrl
-      } else {
-        endpoint.subscription = {
-          url: subscriptionUrl,
-          connectionParams
-        }
-      }
+      endpoint.subscription = subscriptionUrl
     }
 
     if (Object.keys(endpoint).length === 1) {
@@ -143,48 +128,6 @@ export async function handler(context, argv) {
 
     extensionEndpoint[name] = endpoint;
     return true;
-
-    async function addHeader() {
-      const name = await prompt({
-        type: 'input',
-        message: 'Name of header (Enter to skip):',
-      })
-      if (name === '') {
-        return false;
-      }
-
-      console.log(
-        'Note: Don\'t specify passwords, tokens, etc. inside your config.' +
-        'Use Environment variables for that, e.g. "Bearer ${env:YOUR_APP_TOKEN}".'
-      )
-
-      headers[name] = await prompt({
-        type: 'input',
-        message: `Value of ${name} header:`,
-      })
-      return true
-    }
-
-    async function addConnectionParam() {
-      const name = await prompt({
-        type: 'input',
-        message: 'Name of connection parameter for subscription (Enter to skip):',
-      })
-      if (name === '') {
-        return false;
-      }
-
-      console.log(
-        'Note: Don\'t specify passwords, tokens, etc. inside your config.' +
-        'Use Environment variables for that, e.g. "${env:YOUR_APP_SUBSCRIPTION_TOKEN}".'
-      )
-
-      connectionParams[name] = await prompt({
-        type: 'input',
-        message: `Value of ${name} connection parameter:`,
-      })
-      return true
-    }
   }
 
   async function prompt(question) {
