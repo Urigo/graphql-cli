@@ -6,7 +6,11 @@
     "target": "es5",
     "outDir": "dist",
     "moduleResolution": "node",
-    "lib": ["es2015", "es2016.array.include", "dom"]
+    "lib": [
+      "es2017",
+      "esnext.asynciterable",
+      "dom"
+    ]
   },
   "exclude": [
     "node_modules",
