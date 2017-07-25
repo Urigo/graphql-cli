@@ -30,14 +30,14 @@ export async function handler(context, argv) {
   }
   //TODO: add include/exclude
 
-  let extensionEndpoint = {}
+  let extensionEndpoints = {}
   while (await addEndpoint()) {
     console.log('Endpoint was added!')
   }
 
-  if (Object.keys(extensionEndpoint).length !== 0) {
+  if (Object.keys(extensionEndpoints).length !== 0) {
     config.extensions = {
-      endpoint: extensionEndpoint
+      endpoints: extensionEndpoints
     }
   }
 
@@ -57,7 +57,7 @@ export async function handler(context, argv) {
     JSON.stringify(config, null, 2) :
     yaml.safeDump(config)
 
-  console.log(`About to write to ${configFilename}:\n'${configData}\n`);
+  console.log(`About to write to ${configFilename}:\n${configData}\n`);
 
   const confirmSave = await prompt({
     type: 'confirm',
@@ -80,6 +80,23 @@ export async function handler(context, argv) {
       return false;
     }
 
+    const name = await prompt({
+      type: 'input',
+      message: 'Name of this endpoint, for e.g. default, dev, prod:',
+      default() {
+        return extensionEndpoints['default'] ? undefined : 'default'
+      },
+      validate(name) {
+        if (name === '') {
+          return `You can't use empty string as a name.`
+        }
+        if (extensionEndpoints[name] !== undefined) {
+          return `You already used '${name}' name for different endpoint.`
+        }
+        return true
+      }
+    })
+
     let endpoint: any = { url }
 
     const subscriptionUrl = await prompt({
@@ -87,7 +104,6 @@ export async function handler(context, argv) {
       message: 'Subscription URL (Enter to skip):',
     })
 
-    const connectionParams = {}
     if (subscriptionUrl !== '') {
       endpoint.subscription = subscriptionUrl
     }
@@ -96,38 +112,17 @@ export async function handler(context, argv) {
       endpoint = endpoint.url
     }
 
-    if (Object.keys(extensionEndpoint).length === 0) {
-      const addOthers = await prompt({
+    let addOthers = false;
+    if (Object.keys(extensionEndpoints).length === 0) {
+      addOthers = await prompt({
         type: 'confirm',
-        message: 'Do you want to add others endpoints?',
+        message: 'Do you want to add other endpoints?',
         default: false,
       })
-      if (!addOthers) {
-        extensionEndpoint = endpoint
-        return false;
-      }
-      console.log('In order to distinguish beetween multiple endpoint you need to provide name for each of them.')
     }
 
-    const name = await prompt({
-      type: 'input',
-      message: 'Name of this endpoint, for e.g. default, dev, prod:',
-      default() {
-        return extensionEndpoint['default'] ? undefined : 'default'
-      },
-      validate(name) {
-        if (name === '') {
-          return `You can't use empty string as a name.`
-        }
-        if (extensionEndpoint[name] !== undefined) {
-          return `You already used '${name}' name for different endpoint.`
-        }
-        return true
-      }
-    })
-
-    extensionEndpoint[name] = endpoint;
-    return true;
+    extensionEndpoints[name] = endpoint;
+    return addOthers;
   }
 
   async function prompt(question) {
