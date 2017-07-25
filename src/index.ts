@@ -41,9 +41,6 @@ function installCommands() {
   return yargs
 }
 
-function installPlugin(moduleName) {
-}
-
 function wrapCommand(commandObject) {
   const originalHandler = commandObject.handler
   commandObject.handler = argv => {

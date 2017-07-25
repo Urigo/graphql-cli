@@ -32,7 +32,6 @@ export async function handler(context, argv) {
 
   let extensionEndpoints = {}
   while (await addEndpoint()) {
-    console.log('Endpoint was added!')
   }
 
   if (Object.keys(extensionEndpoints).length !== 0) {
@@ -75,6 +74,15 @@ export async function handler(context, argv) {
     const url = await prompt({
       type: 'input',
       message: 'Endpoint URL (Enter to skip):',
+      validate(url) {
+        if (url === '') {
+          return true
+        }
+        if (!url.startsWith('http://') && !url.startsWith('https://')) {
+          return 'URL should start with either "http://" or "https://"'
+        }
+        return true
+      }
     })
     if (url === '') {
       return false;
@@ -112,17 +120,13 @@ export async function handler(context, argv) {
       endpoint = endpoint.url
     }
 
-    let addOthers = false;
-    if (Object.keys(extensionEndpoints).length === 0) {
-      addOthers = await prompt({
-        type: 'confirm',
-        message: 'Do you want to add other endpoints?',
-        default: false,
-      })
-    }
-
     extensionEndpoints[name] = endpoint;
-    return addOthers;
+
+    return prompt({
+      type: 'confirm',
+      message: 'Do you want to add other endpoints?',
+      default: false,
+    })
   }
 
   async function prompt(question) {
