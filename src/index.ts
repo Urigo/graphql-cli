@@ -35,8 +35,8 @@ require('yargs')
   .demandCommand()
   .help()
   .completion('completion')
+  .recommendCommands()
   .argv
 
 // Mutation calls "graphql mutation addUser --id 1 --name Test"
-// Find breaking changes
 // Execute static .graphql files

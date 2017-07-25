@@ -42,7 +42,7 @@ export async function handler(context, argv) {
   const dangerousChanges = findDangerousChanges(fromSchema, toSchema)
   if (dangerousChanges.length !== 0) {
     for (const change of dangerousChanges) {
-      console.log('⚠️  ' + change.description)
+      console.log('⚠ ' + change.description)
     }
   }
 
