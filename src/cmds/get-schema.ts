@@ -11,12 +11,12 @@ import { existsSync } from 'fs'
 import { relative } from 'path'
 import { printSchema } from 'graphql'
 import { writeSchema } from 'graphql-config'
-import * as ora from 'ora'
 
 export async function handler(context, argv) {
   if (argv.watch) {
+    const spinner = context.spinner
     // FIXME: stop spinner on errors
-    const spinner = ora().start()
+    spinner.start()
     const spinnerLog = msg => spinner.text = msg
 
     while (true) {
