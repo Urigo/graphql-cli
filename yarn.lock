@@ -1769,9 +1769,9 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
-graphql-config@^1.0.0-rc.5:
-  version "1.0.0-rc.6"
-  resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-1.0.0-rc.6.tgz#63ea41013cf94f5a3b0aa698f4335f7378bd7282"
+graphql-config@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-1.0.0-rc.8.tgz#f33d8714ee4b28200840bb3e12b7aa84f32d0063"
   dependencies:
     graphql "0.7.1 - 1.0.0"
     graphql-request "^1.2.0"
@@ -1780,8 +1780,8 @@ graphql-config@^1.0.0-rc.5:
     rimraf "^2.6.1"
 
 graphql-request@^1.2.0:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/graphql-request/-/graphql-request-1.3.2.tgz#bcbf5961279b7a5732135ad78cd07a3c0e982d66"
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/graphql-request/-/graphql-request-1.3.3.tgz#8138f6b53914d8c659381fba5bd38dcca3f6b1f1"
   dependencies:
     isomorphic-fetch "^2.2.1"
 
