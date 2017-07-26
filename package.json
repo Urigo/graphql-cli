@@ -1,7 +1,8 @@
 {
   "name": "graphql-cli",
   "bin": {
-    "graphql": "dist/bin.js"
+    "graphql": "dist/bin.js",
+    "gql": "dist/bin.js"
   },
   "version": "0.0.1",
   "description": "GraphQL CLI",
