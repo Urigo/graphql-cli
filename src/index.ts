@@ -13,7 +13,7 @@ import * as ora from 'ora'
 import * as inquirer from 'inquirer'
 import * as npmPaths from 'npm-paths'
 import * as chalk from 'chalk'
-import { getGraphQLProjectConfig } from 'graphql-config'
+import { getGraphQLProjectConfig, ConfigNotFoundError } from 'graphql-config'
 
 import { CommandModule } from './types'
 
@@ -66,6 +66,10 @@ function wrapCommand(commandObject:CommandModule) {
       }
       //TODO: add debug flag for calltrace
       console.log(chalk.red(e.message));
+
+      if (e instanceof ConfigNotFoundError) {
+        console.log(chalk.yellow('\nRun `graphql init` to create new .graphqlconfig'))
+      }
       //FIXME: set non-zero exit code
     })
   }
