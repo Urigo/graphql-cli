@@ -1,5 +1,5 @@
 export const command = 'diff <from> [to]'
-export const desc = 'Show a diff beetween GraphQL schemas of two endpoints'
+export const desc = 'Show a diff between GraphQL schemas of two endpoints'
 
 import { relative } from 'path'
 import * as chalk from 'chalk';
