@@ -43,7 +43,7 @@ export async function handler(context:Context, argv: {from :string, to: string})
   const fromSDL = printSchema(fromSchema)
   const toSDL = printSchema(toSchema)
   if (fromSDL === toSDL) {
-    console.log(chalk.red('✔ No changes'))
+    console.log(chalk.green('✔ No changes'))
     return
   }
 
