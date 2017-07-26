@@ -1,7 +1,8 @@
 module.exports = [
   require('./init'),
+  require('./add-endpoint'),
+  require('./get-schema'),
   require('./ping'),
   require('./diff'),
-  require('./get-schema'),
-  require('./add-endpoint')
+  require('./playground')
 ]
