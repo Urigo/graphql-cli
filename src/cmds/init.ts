@@ -4,13 +4,17 @@ export const desc = 'Creating GraphQL config from scratch'
 import { resolve, dirname } from 'path'
 import { existsSync, writeFileSync } from 'fs'
 import * as yaml from 'js-yaml'
+import * as chalk from 'chalk'
+
 import {
   GRAPHQL_CONFIG_NAME,
   GRAPHQL_CONFIG_YAML_NAME,
   GraphQLConfigData
 } from 'graphql-config'
 
-export async function handler(context, argv) {
+import { Context } from '../'
+
+export async function handler(context:Context) {
   const config: GraphQLConfigData = {
     schemaPath: await prompt({
       type: 'input',
@@ -56,7 +60,10 @@ export async function handler(context, argv) {
     JSON.stringify(config, null, 2) :
     yaml.safeDump(config)
 
-  console.log(`About to write to ${configFilename}:\n${configData}\n`);
+  console.log(
+    `About to write to ${chalk.blue(configFilename)}:\n\n` +
+    chalk.yellow(configData) + '\n'
+  );
 
   const confirmSave = await prompt({
     type: 'confirm',
@@ -136,4 +143,3 @@ export async function handler(context, argv) {
     return answers.value
   }
 }
-
