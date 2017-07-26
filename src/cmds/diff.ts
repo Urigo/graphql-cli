@@ -1,5 +1,10 @@
 export const command = 'diff <from> [to]'
 export const desc = 'Show a diff between GraphQL schemas of two endpoints'
+export const builder = yargs => {
+  yargs
+    .example('$0 diff dev prod', 'show schema diff between "dev" and "prod" endpoints')
+    .example('$0 diff dev', 'show schema diff between "dev" and local saved schema')
+}
 
 import { relative } from 'path'
 import * as chalk from 'chalk';

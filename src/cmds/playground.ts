@@ -1,7 +1,8 @@
+import * as chalk from 'chalk'
+
 export const command = 'playground [endpointName]'
 export const desc = `${chalk.red('[not implemented]')} Open ready-to-use GraphQL Playground in your browser`
 
-import * as chalk from 'chalk'
 import { Context, noEndpointErrorMessage } from '../'
 
 export async function handler(context: Context, argv: {endpointName: string}) {
