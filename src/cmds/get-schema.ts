@@ -62,7 +62,11 @@ export async function handler(context: Context, argv: {endpointName: string, wat
     }
 
     const schemaPath = relative(process.cwd(), config.schemaPath as string)
-    await writeSchema(config.schemaPath as string, newSchema)
+    await writeSchema(config.schemaPath as string, newSchema, {
+      source: endpoint.url,
+      timestamp: (new Date()).toString(),
+    })
+
     const existed = existsSync(schemaPath)
     log(chalk.green(`Schema file was ${existed ? 'updated' : 'created'}: ${chalk.blue(schemaPath)}`))
     return true
