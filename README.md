@@ -1,6 +1,6 @@
 # graphql-cli
 
-🔪 Swiss Army Knife for your GraphQL Project
+🔪🥒 Swiss Army Knife for your GraphQL Project
 
 ## Features
 
