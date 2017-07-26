@@ -52,15 +52,17 @@ export async function handler(context:Context, argv: {from :string, to: string})
 
   const dangerousChanges = findDangerousChanges(fromSchema, toSchema)
   if (dangerousChanges.length !== 0) {
+    console.log(chalk.yellow('Dangerous changes:'))
     for (const change of dangerousChanges) {
-      console.log(chalk.yellow('⚠ '+ change.description))
+      console.log(chalk.yellow('  ⚠ '+ change.description))
     }
   }
 
   const breakingChanges = findBreakingChanges(fromSchema, toSchema)
   if (breakingChanges.length !== 0) {
+    console.log(chalk.red('BREAKING CHANGES:'))
     for (const change of breakingChanges) {
-      console.log(chalk.red('✖ ' + change.description))
+      console.log(chalk.red('  ✖ ' + change.description))
     }
   }
 }
