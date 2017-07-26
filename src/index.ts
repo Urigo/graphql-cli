@@ -1,6 +1,3 @@
-#!/usr/bin/env node
-
-
 export type Context = typeof context
 export * from './types';
 export * from './utils';
