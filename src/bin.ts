@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { installCommands } from './index';
 
 installCommands()
