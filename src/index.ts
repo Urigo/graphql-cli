@@ -1,5 +1,10 @@
 #!/usr/bin/env node
 
+
+export type Context = typeof context
+export * from './types';
+export * from './utils';
+
 import { join as joinPaths } from 'path'
 import { existsSync, readdirSync } from 'fs'
 
@@ -7,7 +12,10 @@ import * as  _ from 'lodash'
 import * as ora from 'ora'
 import * as inquirer from 'inquirer'
 import * as npmPaths from 'npm-paths'
+import * as chalk from 'chalk'
 import { getGraphQLProjectConfig } from 'graphql-config'
+
+import { CommandModule } from './types'
 
 function listPluggings(dir:string): string[] {
   return readdirSync(dir)
@@ -15,7 +23,7 @@ function listPluggings(dir:string): string[] {
     .map(moduleName => joinPaths(dir, moduleName))
 }
 
-function installCommands() {
+export function installCommands() {
   const plugins = _(npmPaths())
     .filter(existsSync)
     .map(listPluggings)
@@ -26,7 +34,7 @@ function installCommands() {
   let yargs = require('yargs')
   for (const moduleName of ['./cmds', ...plugins]) {
     try {
-      const cmdModule = require(moduleName)
+      const cmdModule:CommandModule = require(moduleName)
       if (Array.isArray(cmdModule)) {
         for (const cmd of cmdModule) {
           yargs = yargs.command(wrapCommand(cmd))
@@ -41,7 +49,7 @@ function installCommands() {
   return yargs
 }
 
-function wrapCommand(commandObject) {
+function wrapCommand(commandObject:CommandModule) {
   const originalHandler = commandObject.handler
   commandObject.handler = argv => {
     let result = new Promise((resolve, reject) => {
@@ -57,7 +65,7 @@ function wrapCommand(commandObject) {
         context.spinner.stopAndPersist()
       }
       //TODO: add debug flag for calltrace
-      console.log(e.message);
+      console.log(chalk.red(e.message));
       //FIXME: set non-zero exit code
     })
   }
@@ -71,13 +79,6 @@ const context = {
     return getGraphQLProjectConfig()
   }
 }
-
-installCommands()
-  .demandCommand()
-  .help()
-  .completion('completion')
-  .recommendCommands()
-  .argv
 
 // Mutation calls "graphql mutation addUser --id 1 --name Test"
 // Execute static .graphql files

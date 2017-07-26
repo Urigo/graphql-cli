@@ -11,8 +11,11 @@ import { existsSync } from 'fs'
 import { relative } from 'path'
 import { printSchema } from 'graphql'
 import { writeSchema } from 'graphql-config'
+import * as chalk from 'chalk'
 
-export async function handler(context, argv) {
+import { Context, noEndpointErrorMessage } from '../'
+
+export async function handler(context: Context, argv: {endpointName: string, watch: boolean}) {
   if (argv.watch) {
     const spinner = context.spinner
     // FIXME: stop spinner on errors
@@ -37,27 +40,30 @@ export async function handler(context, argv) {
     return await update(console.log)
   }
 
-  async function update(log) {
+  async function update(log: (message: string) => void) {
     const config = context.getConfig()
-    const endpoint = config.endpointExtension.getEndpoint(argv.endpointName)
+    if (!config.endpointsExtension) {
+      throw new Error(noEndpointErrorMessage)
+    }
+    const endpoint = config.endpointsExtension.getEndpoint(argv.endpointName)
 
-    log(`Downloading introspection from ${endpoint.url}`)
-    const newSchema = await endpoint.resolveSchema(argv.endpointName)
+    log(`Downloading introspection from ${chalk.blue(endpoint.url)}`)
+    const newSchema = await endpoint.resolveSchema()
 
     try {
       const oldSchemaSDL = config.getSchemaSDL()
       const newSchemaSDL = printSchema(newSchema)
       if (newSchemaSDL === oldSchemaSDL) {
-         log('No changes')
+         log(chalk.green('No changes'))
          return false
       }
     } catch (_) {
     }
 
-    const schemaPath = relative(process.cwd(), config.schemaPath)
+    const schemaPath = relative(process.cwd(), config.schemaPath as string)
     await writeSchema(config.schemaPath, newSchema)
     const existed = existsSync(schemaPath)
-    log(`Schema file was ${existed ? 'updated' : 'created'} ${schemaPath}`)
+    log(chalk.green(`Schema file was ${existed ? 'updated' : 'created'}: ${chalk.blue(schemaPath)}`))
     return true
   }
 }
