@@ -35,8 +35,7 @@ export async function handler(context:Context) {
   }) as GraphQLConfigData
 
   let extensionEndpoints = {}
-  while (await addEndpoint(prompt, extensionEndpoints)) {
-  }
+  while (await addEndpoint(prompt, extensionEndpoints)) {}
 
   if (Object.keys(extensionEndpoints).length !== 0) {
     config.extensions = {

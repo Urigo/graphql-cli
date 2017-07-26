@@ -42,7 +42,7 @@ export async function handler(context: Context, argv: {endpointName: string, wat
   }
 
   async function update(log: (message: string) => void) {
-    const config = context.getConfig()
+    const config = context.getProjectConfig()
     if (!config.endpointsExtension) {
       throw new Error(noEndpointErrorMessage)
     }
@@ -62,7 +62,7 @@ export async function handler(context: Context, argv: {endpointName: string, wat
     }
 
     const schemaPath = relative(process.cwd(), config.schemaPath as string)
-    await writeSchema(config.schemaPath, newSchema)
+    await writeSchema(config.schemaPath as string, newSchema)
     const existed = existsSync(schemaPath)
     log(chalk.green(`Schema file was ${existed ? 'updated' : 'created'}: ${chalk.blue(schemaPath)}`))
     return true

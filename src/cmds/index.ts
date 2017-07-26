@@ -3,4 +3,5 @@ module.exports = [
   require('./ping'),
   require('./diff'),
   require('./get-schema'),
+  require('./add-endpoint')
 ]
