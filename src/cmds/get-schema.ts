@@ -4,6 +4,7 @@ export const builder = {
   watch: {
     alias: 'w',
     boolean: true,
+    description: 'watch server for schema changes and update local schema'
   }
 }
 

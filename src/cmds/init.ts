@@ -1,5 +1,5 @@
 export const command = 'init'
-export const desc = 'Creating GraphQL config from scratch'
+export const desc = 'Interactively set up GraphQL config'
 
 import { resolve, dirname } from 'path'
 import { existsSync, writeFileSync } from 'fs'

@@ -68,7 +68,7 @@ function wrapCommand(commandObject:CommandModule) {
       console.log(chalk.red(e.message));
 
       if (e instanceof ConfigNotFoundError) {
-        console.log(chalk.yellow('\nRun `graphql init` to create new .graphqlconfig'))
+        console.log(chalk.yellow(`\nRun ${chalk.green('graphql init')} to create new .graphqlconfig`))
       }
       //FIXME: set non-zero exit code
     })
