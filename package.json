@@ -56,9 +56,11 @@
     "typescript": "^2.1.0-dev.20160805"
   },
   "dependencies": {
+    "@types/chalk": "^0.4.31",
+    "chalk": "^2.0.1",
     "disparity": "^2.0.0",
     "graphql": "^0.10.5",
-    "graphql-config": "^1.0.0-rc.8",
+    "graphql-config": "^1.0.0-rc.10",
     "inquirer": "^3.2.0",
     "js-yaml": "^3.9.0",
     "lodash": "^4.17.4",
