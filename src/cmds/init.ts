@@ -9,33 +9,33 @@ import * as chalk from 'chalk'
 import {
   GRAPHQL_CONFIG_NAME,
   GRAPHQL_CONFIG_YAML_NAME,
-  GraphQLConfigData
+  GraphQLConfigData,
 } from 'graphql-config'
 
 import { Context } from '../'
 
 export async function handler(context:Context) {
-  const config: GraphQLConfigData = {
-    schemaPath: await prompt({
-      type: 'input',
-      message: `Path to a schema:`,
-      default: 'schema.graphql',
-      validate(schemaPath) {
-        const parentDir = dirname(schemaPath);
-        if (!existsSync(parentDir)) {
-          return `Parent dir doesn't exists: ${parentDir}`
-        }
-        if (!schemaPath.endsWith('.json') && !schemaPath.endsWith('.graphql')) {
-          return `Please specify extension '*.json' for insrospection or '*.graphql' for SDL`
-        }
-        return true
+  const { prompt } = context
+
+  const config: GraphQLConfigData = await prompt({
+    type: 'input',
+    name: 'schemaPath',
+    message: `Path to a schema:`,
+    default: 'schema.graphql',
+    validate(schemaPath) {
+      const parentDir = dirname(schemaPath);
+      if (!existsSync(parentDir)) {
+        return `Parent dir doesn't exists: ${parentDir}`
       }
-    }),
-  }
-  //TODO: add include/exclude
+      if (!schemaPath.endsWith('.json') && !schemaPath.endsWith('.graphql')) {
+        return `Please specify extension '*.json' for insrospection or '*.graphql' for SDL`
+      }
+      return true
+    }
+  }) as GraphQLConfigData
 
   let extensionEndpoints = {}
-  while (await addEndpoint()) {
+  while (await addEndpoint(prompt, extensionEndpoints)) {
   }
 
   if (Object.keys(extensionEndpoints).length !== 0) {
@@ -46,8 +46,9 @@ export async function handler(context:Context) {
 
   //TODO: add validation of entire config
 
-  const configFormat = await prompt({
+  const { configFormat } = await prompt({
     type: 'list',
+    name: 'configFormat',
     message: 'What format do you want to save your config in?',
     choices: ['JSON', 'YAML'],
     default: 'JSON',
@@ -65,8 +66,9 @@ export async function handler(context:Context) {
     chalk.yellow(configData) + '\n'
   );
 
-  const confirmSave = await prompt({
+  const { confirmSave } = await prompt({
     type: 'confirm',
+    name: 'confirmSave',
     message: `Is this ok?`,
     default: true,
   })
@@ -76,70 +78,67 @@ export async function handler(context:Context) {
   } else {
     console.log('Aborted.')
   }
+}
 
-  async function addEndpoint() {
-    const url = await prompt({
-      type: 'input',
-      message: 'Endpoint URL (Enter to skip):',
-      validate(url) {
-        if (url === '') {
-          return true
-        }
-        if (!url.startsWith('http://') && !url.startsWith('https://')) {
-          return 'URL should start with either "http://" or "https://"'
-        }
+export async function addEndpoint(prompt: Context["prompt"], extensionEndpoints) {
+  const { url } = await prompt({
+    name: 'url',
+    type: 'input',
+    message: 'Endpoint URL (Enter to skip):',
+    validate(url) {
+      if (url === '') {
         return true
       }
-    })
-    if (url === '') {
-      return false;
-    }
-
-    const name = await prompt({
-      type: 'input',
-      message: 'Name of this endpoint, for e.g. default, dev, prod:',
-      default() {
-        return extensionEndpoints['default'] ? undefined : 'default'
-      },
-      validate(name) {
-        if (name === '') {
-          return `You can't use empty string as a name.`
-        }
-        if (extensionEndpoints[name] !== undefined) {
-          return `You already used '${name}' name for different endpoint.`
-        }
-        return true
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        return 'URL should start with either "http://" or "https://"'
       }
-    })
-
-    let endpoint: any = { url }
-
-    const subscriptionUrl = await prompt({
-      type: 'input',
-      message: 'Subscription URL (Enter to skip):',
-    })
-
-    if (subscriptionUrl !== '') {
-      endpoint.subscription = subscriptionUrl
+      return true
     }
-
-    if (Object.keys(endpoint).length === 1) {
-      endpoint = endpoint.url
-    }
-
-    extensionEndpoints[name] = endpoint;
-
-    return prompt({
-      type: 'confirm',
-      message: 'Do you want to add other endpoints?',
-      default: false,
-    })
+  })
+  if (url === '') {
+    return false;
   }
 
-  async function prompt(question) {
-    const answers = await context.prompt([
-      { ...question, name: 'value' }
-    ])
-    return answers.value
+  const { name } = await prompt({
+    type: 'input',
+    name: 'name',
+    message: 'Name of this endpoint, for e.g. default, dev, prod:',
+    default() {
+      return extensionEndpoints['default'] ? undefined : 'default'
+    },
+    validate(name) {
+      if (name === '') {
+        return `You can't use empty string as a name.`
+      }
+      if (extensionEndpoints[name] !== undefined) {
+        return `You already used '${name}' name for different endpoint.`
+      }
+      return true
+    }
+  })
+
+  let endpoint: any = { url }
+
+  const { subscriptionUrl } = await prompt({
+    type: 'input',
+    name: 'subscriptionUrl',
+    message: 'Subscription URL (Enter to skip):',
+  })
+
+  if (subscriptionUrl !== '') {
+    endpoint.subscription = subscriptionUrl
   }
+
+  if (Object.keys(endpoint).length === 1) {
+    endpoint = endpoint.url
+  }
+
+  extensionEndpoints[name] = endpoint;
+
+  return (await prompt({
+    type: 'confirm',
+    name: 'continue',
+    message: 'Do you want to add other endpoints?',
+    default: false,
+  })).continue
 }
