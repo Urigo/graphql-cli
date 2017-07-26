@@ -15,7 +15,7 @@ import { Context, noEndpointErrorMessage } from '../'
 const { findDangerousChanges } = require('graphql/utilities/findBreakingChanges')
 
 export async function handler(context:Context, argv: {from :string, to: string}) {
-  const config = context.getConfig()
+  const config = context.getProjectConfig()
   if (!config.endpointsExtension) {
     throw new Error(noEndpointErrorMessage)
   }

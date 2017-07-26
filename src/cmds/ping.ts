@@ -5,7 +5,7 @@ import * as chalk from 'chalk'
 import { Context, noEndpointErrorMessage } from '../'
 
 export async function handler(context: Context, argv: {endpointName: string}) {
-  const config = context.getConfig()
+  const config = context.getProjectConfig()
   if (!config.endpointsExtension) {
     throw new Error(noEndpointErrorMessage)
   }

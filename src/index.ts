@@ -13,7 +13,11 @@ import * as ora from 'ora'
 import * as inquirer from 'inquirer'
 import * as npmPaths from 'npm-paths'
 import * as chalk from 'chalk'
-import { getGraphQLProjectConfig, ConfigNotFoundError } from 'graphql-config'
+import {
+  getGraphQLProjectConfig,
+  getGraphQLConfig,
+  ConfigNotFoundError,
+} from 'graphql-config'
 
 import { CommandModule } from './types'
 
@@ -79,8 +83,11 @@ function wrapCommand(commandObject:CommandModule) {
 const context = {
   prompt: inquirer.createPromptModule(),
   spinner: ora(),
-  getConfig() {
+  getProjectConfig() {
     return getGraphQLProjectConfig()
+  },
+  getConfig() {
+    return getGraphQLConfig()
   }
 }
 
