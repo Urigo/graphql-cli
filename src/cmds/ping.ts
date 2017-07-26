@@ -1,5 +1,6 @@
 export const command = 'ping [endpointName]'
 export const desc = 'Ping GraphQL endpoint'
+
 import * as chalk from 'chalk'
 import { Context, noEndpointErrorMessage } from '../'
 
