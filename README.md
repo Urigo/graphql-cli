@@ -2,6 +2,8 @@
 
 🔪🥒 Swiss Army Knife for your GraphQL Project
 
+![demo](docs/demo.gif)
+
 ## Features
 
 - configurable through [GraphQL Config](https://github.com/graphcool/graphql-config)
