@@ -7,22 +7,22 @@ export const builder = yargs => {
 }
 
 import { relative } from 'path'
-import * as chalk from 'chalk';
+import * as chalk from 'chalk'
 import {
   printSchema,
   findBreakingChanges,
 } from 'graphql'
 import * as disparity from 'disparity'
 
-import { Context, noEndpointErrorMessage } from '../'
+import { Context, noEndpointError } from '../'
 
 // FIXME: remove when https://github.com/graphql/graphql-js/pull/965 is merged
 const { findDangerousChanges } = require('graphql/utilities/findBreakingChanges')
 
-export async function handler(context:Context, argv: {from :string, to: string}) {
+export async function handler (context: Context, argv: {from: string, to: string}) {
   const config = context.getProjectConfig()
   if (!config.endpointsExtension) {
-    throw new Error(noEndpointErrorMessage)
+    throw noEndpointError
   }
 
   const from = config.endpointsExtension.getEndpoint(argv.from)
@@ -32,7 +32,7 @@ export async function handler(context:Context, argv: {from :string, to: string})
   let toDesc
 
   if (argv.to) {
-    const to = config.endpointsExtension.getEndpoint(argv.to);
+    const to = config.endpointsExtension.getEndpoint(argv.to)
     toDesc = `${argv.to} (${to.url})`
     toSchema = await to.resolveSchema()
   } else {
@@ -47,14 +47,14 @@ export async function handler(context:Context, argv: {from :string, to: string})
     return
   }
 
-  var diff = disparity.unified(fromSDL, toSDL, { paths: [fromDesc, toDesc] });
+  let diff = disparity.unified(fromSDL, toSDL, { paths: [fromDesc, toDesc] })
   console.log(diff)
 
   const dangerousChanges = findDangerousChanges(fromSchema, toSchema)
   if (dangerousChanges.length !== 0) {
     console.log(chalk.yellow('Dangerous changes:'))
     for (const change of dangerousChanges) {
-      console.log(chalk.yellow('  ⚠ '+ change.description))
+      console.log(chalk.yellow('  ⚠ ' + change.description))
     }
   }
 

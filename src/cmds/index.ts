@@ -5,5 +5,5 @@ module.exports = [
   require('./schema-status'),
   require('./ping'),
   require('./diff'),
-  require('./playground')
+  require('./playground'),
 ]

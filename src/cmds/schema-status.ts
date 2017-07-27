@@ -6,15 +6,16 @@ import * as chalk from 'chalk'
 import { relative } from 'path'
 import { existsSync, fstatSync } from 'fs'
 import { getSchemaExtensions } from 'graphql-config'
+import { Context } from '../'
 
-export async function handler(context, argv) {
-  const schemaPath = context.getProjectConfig().schemaPath
+export async function handler (context: Context, argv) {
+  const schemaPath = context.getProjectConfig().schemaPath as string
   const relativeSchemaPath = relative(process.cwd(), schemaPath)
 
   if (!existsSync(schemaPath)) {
     console.log(
       chalk.yellow('Schema file doesn\'t exist at ') +
-      chalk.blue(relativeSchemaPath)
+      chalk.blue(relativeSchemaPath),
     )
     return
   }

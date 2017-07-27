@@ -14,7 +14,8 @@
   "scripts": {
     "prepublish": "npm run build",
     "build": "tsc",
-    "test": "tslint {src,test}/**/*.ts && tsc && ava tests/**/test.js --serial",
+    "test": "npm run lint && tsc && ava tests/**/test.js --serial",
+    "lint": "tslint {src,test}/**/*.ts",
     "start": "ts-node src/bin.ts"
   },
   "ava": {
