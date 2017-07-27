@@ -1,7 +1,7 @@
 import * as chalk from 'chalk'
 
 export const command = 'playground [endpointName]'
-export const desc = `${chalk.red('[not implemented]')} Open ready-to-use GraphQL Playground in your browser`
+export const desc = 'Open ready-to-use GraphQL Playground in your browser'
 export const builder = {
   port: {
     alias: 'p',
