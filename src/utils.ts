@@ -1,5 +1,6 @@
 import * as chalk from 'chalk';
 
-export const noEndpointErrorMessage =
+export const noEndpointError = new Error(
 `You don't have any enpoint in your .graphqlconfig.
-Run ${chalk.yellow('graphql add-endpoint')} to add endpoint to your config`;
+Run ${chalk.yellow('graphql add-endpoint')} to add endpoint to your config`
+)

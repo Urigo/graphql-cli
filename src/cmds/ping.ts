@@ -2,12 +2,12 @@ export const command = 'ping [endpointName]'
 export const desc = 'Ping GraphQL endpoint'
 
 import * as chalk from 'chalk'
-import { Context, noEndpointErrorMessage } from '../'
+import { Context, noEndpointError } from '../'
 
-export async function handler(context: Context, argv: {endpointName: string}) {
+export async function handler (context: Context, argv: {endpointName: string}) {
   const config = context.getProjectConfig()
   if (!config.endpointsExtension) {
-    throw new Error(noEndpointErrorMessage)
+    throw noEndpointError
   }
   const endpoint = config.endpointsExtension.getEndpoint(argv.endpointName)
   const testQuery = '{ __typename }'

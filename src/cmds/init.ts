@@ -14,7 +14,7 @@ import {
 
 import { Context } from '../'
 
-export async function handler(context:Context) {
+export async function handler (context: Context) {
   const { prompt } = context
 
   const config: GraphQLConfigData = await prompt({
@@ -22,8 +22,8 @@ export async function handler(context:Context) {
     name: 'schemaPath',
     message: `Path to a schema:`,
     default: 'schema.graphql',
-    validate(schemaPath) {
-      const parentDir = dirname(schemaPath);
+    validate (schemaPath) {
+      const parentDir = dirname(schemaPath)
       if (!existsSync(parentDir)) {
         return `Parent dir doesn't exists: ${parentDir}`
       }
@@ -31,19 +31,21 @@ export async function handler(context:Context) {
         return `Please specify extension '*.json' for insrospection or '*.graphql' for SDL`
       }
       return true
-    }
+    },
   }) as GraphQLConfigData
 
   let extensionEndpoints = {}
-  while (await addEndpoint(prompt, extensionEndpoints)) {}
+  while (await addEndpoint(prompt, extensionEndpoints)) {
+    /* noop */
+  }
 
   if (Object.keys(extensionEndpoints).length !== 0) {
     config.extensions = {
-      endpoints: extensionEndpoints
+      endpoints: extensionEndpoints,
     }
   }
 
-  //TODO: add validation of entire config
+  // TODO: add validation of entire config
 
   const { configFormat } = await prompt({
     type: 'list',
@@ -54,7 +56,7 @@ export async function handler(context:Context) {
   })
 
   const configFilename = resolve(
-    configFormat === 'JSON' ?  GRAPHQL_CONFIG_NAME : GRAPHQL_CONFIG_YAML_NAME
+    configFormat === 'JSON' ? GRAPHQL_CONFIG_NAME : GRAPHQL_CONFIG_YAML_NAME,
   )
   const configData = configFormat === 'JSON' ?
     JSON.stringify(config, null, 2) :
@@ -62,8 +64,8 @@ export async function handler(context:Context) {
 
   console.log(
     `About to write to ${chalk.blue(configFilename)}:\n\n` +
-    chalk.yellow(configData) + '\n'
-  );
+    chalk.yellow(configData) + '\n',
+  )
 
   const { confirmSave } = await prompt({
     type: 'confirm',
@@ -79,12 +81,12 @@ export async function handler(context:Context) {
   }
 }
 
-export async function addEndpoint(prompt: Context["prompt"], extensionEndpoints) {
+export async function addEndpoint (prompt: Context['prompt'], extensionEndpoints) {
   const { url } = await prompt({
     name: 'url',
     type: 'input',
     message: 'Endpoint URL (Enter to skip):',
-    validate(url) {
+    validate (url) {
       if (url === '') {
         return true
       }
@@ -92,20 +94,20 @@ export async function addEndpoint(prompt: Context["prompt"], extensionEndpoints)
         return 'URL should start with either "http://" or "https://"'
       }
       return true
-    }
+    },
   })
   if (url === '') {
-    return false;
+    return false
   }
 
   const { name } = await prompt({
     type: 'input',
     name: 'name',
     message: 'Name of this endpoint, for e.g. default, dev, prod:',
-    default() {
+    default () {
       return extensionEndpoints['default'] ? undefined : 'default'
     },
-    validate(name) {
+    validate (name) {
       if (name === '') {
         return `You can't use empty string as a name.`
       }
@@ -113,7 +115,7 @@ export async function addEndpoint(prompt: Context["prompt"], extensionEndpoints)
         return `You already used '${name}' name for different endpoint.`
       }
       return true
-    }
+    },
   })
 
   let endpoint: any = { url }
@@ -132,7 +134,7 @@ export async function addEndpoint(prompt: Context["prompt"], extensionEndpoints)
     endpoint = endpoint.url
   }
 
-  extensionEndpoints[name] = endpoint;
+  extensionEndpoints[name] = endpoint
 
   return (await prompt({
     type: 'confirm',

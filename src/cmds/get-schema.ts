@@ -4,8 +4,8 @@ export const builder = {
   watch: {
     alias: 'w',
     boolean: true,
-    description: 'watch server for schema changes and update local schema'
-  }
+    description: 'watch server for schema changes and update local schema',
+  },
 }
 
 import { existsSync } from 'fs'
@@ -14,9 +14,9 @@ import { printSchema } from 'graphql'
 import { writeSchema } from 'graphql-config'
 import * as chalk from 'chalk'
 
-import { Context, noEndpointErrorMessage } from '../'
+import { Context, noEndpointError } from '../'
 
-export async function handler(context: Context, argv: {endpointName: string, watch: boolean}) {
+export async function handler (context: Context, argv: {endpointName: string, watch: boolean}) {
   if (argv.watch) {
     const spinner = context.spinner
     // FIXME: stop spinner on errors
@@ -41,10 +41,10 @@ export async function handler(context: Context, argv: {endpointName: string, wat
     return await update(console.log)
   }
 
-  async function update(log: (message: string) => void) {
+  async function update (log: (message: string) => void) {
     const config = context.getProjectConfig()
     if (!config.endpointsExtension) {
-      throw new Error(noEndpointErrorMessage)
+      throw noEndpointError
     }
     const endpoint = config.endpointsExtension.getEndpoint(argv.endpointName)
 
@@ -55,10 +55,11 @@ export async function handler(context: Context, argv: {endpointName: string, wat
       const oldSchemaSDL = config.getSchemaSDL()
       const newSchemaSDL = printSchema(newSchema)
       if (newSchemaSDL === oldSchemaSDL) {
-         log(chalk.green('No changes'))
-         return false
+        log(chalk.green('No changes'))
+        return false
       }
-    } catch (_) {
+    } catch (e) {
+      /* noop */
     }
 
     const schemaPath = relative(process.cwd(), config.schemaPath as string)
@@ -73,8 +74,8 @@ export async function handler(context: Context, argv: {endpointName: string, wat
   }
 }
 
-function wait(interval: number): Promise<void> {
+function wait (interval: number): Promise<void> {
   return new Promise(resolve => {
-    setTimeout(() => resolve(), interval);
+    setTimeout(() => resolve(), interval)
   })
 }
