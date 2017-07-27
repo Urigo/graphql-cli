@@ -4,7 +4,8 @@ import { installCommands } from './index';
 import * as chalk from 'chalk';
 
 installCommands()
-  .demandCommand()
+  .demandCommand(1, 1, 'Missing command name')
+  .strict()
   .help()
   .completion('completion')
   .usage(`Usage: ${chalk.green('graphql')} [command]`)
@@ -14,4 +15,9 @@ installCommands()
   .example('graphql diff dev prod', 'show schema diff between "dev" and "prod" endpoints')
   .example('graphql diff dev', 'show schema diff between "dev" and local saved schema')
   .epilogue('for more information, check out https://github.com/graphcool/graphcool-cli')
+  .fail(function (msg, err, yargs) {
+    if (err) throw err // preserve stack
+    yargs.showHelp()
+    console.error(chalk.red(msg))
+  })
   .argv
