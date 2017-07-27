@@ -11,6 +11,15 @@
 - bunch of commands to automate your everyday tasks: `diff`, `ping`, `get-schema`, `playground`, and more coming
 - plugin supports: create your own commands ([plugin example](./plugin-example))
 
+## Installation
+Use `npm`
+
+    npm install -g grpahql-cli
+
+or `yarn`
+
+    yarn global add graphql-cli
+
 ## Usage
 ```
 Usage: graphql [command]
