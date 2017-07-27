@@ -53,6 +53,5 @@ or on OSX
 
 ## Plugins
 
+- [`graphql-cli-voyager`](https://github.com/graphcool/graphql-cli) - open [graphql-voyager](https://github.com/APIs-guru/graphql-faker) in your browser
 - `graphql-cli-faker` (__coming soon__) - run fake server based on your server schema via [graphql-faker](https://github.com/APIs-guru/graphql-faker)
-- `graphql-cli-voyager` (__coming soon__) - open [graphql-voyager](https://github.com/APIs-guru/graphql-faker)
-in your browser or make a screenshot
