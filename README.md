@@ -40,6 +40,15 @@ Examples:
 for more information, check out https://github.com/graphcool/graphcool-cli
 ```
 
+### Autocompletion
+To install autocompletion in your terminal run
+
+    graphql completion >> ~/.bashrc
+
+or on OSX
+
+    graphql completion >> ~/.bash_profile
+
 ## Plugins
 
 - `graphql-cli-faker` (__coming soon__) - run fake server based on your server schema via [graphql-faker](https://github.com/APIs-guru/graphql-faker)
