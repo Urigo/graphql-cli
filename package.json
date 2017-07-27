@@ -4,7 +4,7 @@
     "graphql": "dist/bin.js",
     "gql": "dist/bin.js"
   },
-  "version": "0.0.1",
+  "version": "1.0.0-beta.0",
   "description": "GraphQL CLI",
   "files": [
     "LICENSE",
@@ -44,7 +44,7 @@
     "@types/graphql": "^0.10.0",
     "@types/inquirer": "^0.0.35",
     "@types/lodash": "^4.14.71",
-    "@types/node": "^8.0.14",
+    "@types/node": "^8.0.17",
     "@types/ora": "^1.3.0",
     "@types/yargs": "^8.0.1",
     "ava": "^0.21.0",
@@ -54,7 +54,7 @@
     "ts-node": "^3.3.0",
     "tslint": "^5.5.0",
     "tslint-config-standard": "^6.0.1",
-    "typescript": "^2.1.0-dev.20160805"
+    "typescript": "^2.2.0"
   },
   "dependencies": {
     "@types/chalk": "^0.4.31",
