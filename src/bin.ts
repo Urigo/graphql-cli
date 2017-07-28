@@ -3,6 +3,8 @@
 import { installCommands } from './index';
 import * as chalk from 'chalk';
 
+let showedHelp = false
+
 installCommands()
   .demandCommand(1, 1, 'Missing command name')
   .strict()
@@ -17,7 +19,10 @@ installCommands()
   .epilogue('for more information, check out https://github.com/graphcool/graphcool-cli')
   .fail(function (msg, err, yargs) {
     if (err) throw err // preserve stack
-    yargs.showHelp()
+    if (!showedHelp) {
+      yargs.showHelp()
+      showedHelp = true
+    }
     console.error(chalk.red(msg))
   })
   .argv
