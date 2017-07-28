@@ -2308,6 +2308,14 @@ graphcool-styles@^0.1.31:
     react-dom "^15.3.2"
     webpack-dev-server "^1.16.2"
 
+graphcool-tmp-ui@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/graphcool-tmp-ui/-/graphcool-tmp-ui-0.0.8.tgz#0ce4282ddee7c23400da541ff09d76e1453220e5"
+  dependencies:
+    classnames "^2.2.5"
+    graphcool-styles "^0.1.31"
+    react-modal "^1.6.5"
+
 graphiql@^0.11.2:
   version "0.11.2"
   resolved "https://registry.yarnpkg.com/graphiql/-/graphiql-0.11.2.tgz#7f7864552c340ab4fe6f578ce3f7197905d429db"
@@ -2316,9 +2324,9 @@ graphiql@^0.11.2:
     codemirror-graphql "^0.6.8"
     marked "0.3.6"
 
-graphql-config@^1.0.0-rc.11:
-  version "1.0.0-rc.11"
-  resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-1.0.0-rc.11.tgz#6d5c2bf0128e61a315a646ce83fba08c0ebf28df"
+graphql-config@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-1.0.0.tgz#d32914b2f58721a1637974623df846073264c9ab"
   dependencies:
     graphql "0.7.1 - 1.0.0"
     graphql-request "^1.2.0"
@@ -2361,15 +2369,16 @@ graphql-language-service-utils@0.0.17:
     graphql "^0.10.1"
     graphql-language-service-types "0.0.21"
 
-graphql-playground@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/graphql-playground/-/graphql-playground-0.0.5.tgz#b25605e00b053599723284ba93a67f6a9d5f4f5b"
+graphql-playground@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/graphql-playground/-/graphql-playground-0.0.6.tgz#e51ddba9175702d12ffc5e2e21e917a42bc7925c"
   dependencies:
     calculate-size "^1.1.1"
     classnames "^2.2.5"
     codemirror "^5.27.4"
     cuid "^1.3.8"
     graphcool-styles "^0.1.31"
+    graphcool-tmp-ui "^0.0.8"
     graphiql "^0.11.2"
     graphql "^0.10.5"
     isomorphic-fetch "^2.2.1"
