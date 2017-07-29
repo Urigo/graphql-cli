@@ -4,7 +4,7 @@
     "graphql": "dist/bin.js",
     "gql": "dist/bin.js"
   },
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "description": "GraphQL CLI",
   "files": [
     "LICENSE",

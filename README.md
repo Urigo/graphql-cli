@@ -32,8 +32,7 @@ Commands:
   ping [endpointName]        Ping GraphQL endpoint
   diff <from> [to]           Show a diff between GraphQL schemas of two
                              endpoints
-  playground [endpointName]  [not implemented] Open ready-to-use GraphQL
-                             Playground in your browser
+  playground [endpointName]  Open ready-to-use GraphQL Playground in your browser
   completion                 generate bash completion script
 
 Options:
