@@ -14,7 +14,7 @@
 ## Installation
 Use `npm`
 
-    npm install -g grpahql-cli
+    npm install -g graphql-cli
 
 or `yarn`
 
@@ -63,3 +63,11 @@ or on OSX
 
 - [`graphql-cli-voyager`](https://github.com/graphcool/graphql-cli) - open [graphql-voyager](https://github.com/APIs-guru/graphql-faker) in your browser
 - `graphql-cli-faker` (__coming soon__) - run fake server based on your server schema via [graphql-faker](https://github.com/APIs-guru/graphql-faker)
+
+
+
+## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
+
+Join our [Slack community](http://slack.graph.cool/) if you run into issues or have questions. We love talking to you!
+
+![](http://i.imgur.com/5RHR6Ku.png)
