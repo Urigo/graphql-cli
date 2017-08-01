@@ -2,69 +2,87 @@
 
 🔪🥒 Swiss Army Knife for your GraphQL Project
 
+## Features
+
+- Helpful commands to improve your workflows like `get-schema`, `diff` & `playground`
+- Compatible with editors and IDEs based on [`graphql-config`](https://github.com/graphcool/graphql-config)
+- Powerful plugin system to extend `graphql-cli` with custom commands
+
+You can see it in action here:
 
 ![demo](http://imgur.com/0kuqZFY.gif)
 
-## Features
+## Install
 
-- configurable through [GraphQL Config](https://github.com/graphcool/graphql-config)
-- interactively setup your `.graphqlconfig`
-- bunch of commands to automate your everyday tasks: `diff`, `ping`, `get-schema`, `playground`, and more coming
-- plugin supports: create your own commands ([plugin example](./plugin-example))
+You can simply install the CLI using `npm` or `yarn` by running the following command. This will add the `graphql` (and shorter `gql`) binary to your path.
 
-## Installation
-Use `npm`
+```sh
+npm install -g graphql-cli
+```
 
-    npm install -g graphql-cli
-
-or `yarn`
-
-    yarn global add graphql-cli
 
 ## Usage
 ```
 Usage: graphql [command]
 
 Commands:
-  init                       Interactively set up GraphQL config
-  add-endpoint               add new endpoint to .graphqlconfig
-  get-schema [endpointName]  Download GraphQL schema
-  schema-status              Show source and timestamp of the local schema file
-  ping [endpointName]        Ping GraphQL endpoint
-  diff <from> [to]           Show a diff between GraphQL schemas of two
-                             endpoints
-  playground [endpointName]  Open ready-to-use GraphQL Playground in your browser
-  completion                 generate bash completion script
+  init                   Initial config setup
+  add-endpoint           Add new endpoint to .graphqlconfig
+  get-schema [endpoint]  Download schema from endpoint
+  schema-status          Show source and timestamp of the local schema file
+  ping [endpointName]    Ping GraphQL endpoint
+  diff <from> [to]       Show a diff between two schemas
+  playground [endpoint]  Open interactive GraphQL Playground
 
 Options:
   --help  Show help                                                    [boolean]
 
 Examples:
-  graphql init            interactively init .graphqlconfig file
-  graphql get-schema dev  download schema from "dev" endpoint and save to
-                             local file
-  graphql ping dev        send simple GraphQL query to "dev" endpoint
-  graphql diff dev prod   show schema diff between "dev" and "prod" endpoints
-  graphql diff dev        show schema diff between "dev" and local saved
-                             schema
+  graphql init            Interactively setup .graphqlconfig file
+  graphql get-schema dev  Update local schema to match "dev" endpoint
+  graphql diff dev prod   Show schema diff between "dev" and "prod" endpoints
 
-for more information, check out https://github.com/graphcool/graphcool-cli
+For more information go to https://github.com/graphcool/graphcool-cli
 ```
 
-### Autocompletion
+### Initial setup and schema download
+
+### Listen to schema changes
+
+### Autocompletion setup
 To install autocompletion in your terminal run
 
-    graphql completion >> ~/.bashrc
+```
+graphql completion >> ~/.bashrc
+```
 
 or on OSX
 
-    graphql completion >> ~/.bash_profile
+```sh
+graphql completion >> ~/.bash_profile
+```
 
 ## Plugins
 
-- [`graphql-cli-voyager`](https://github.com/graphcool/graphql-cli-voyager) - open [graphql-voyager](https://github.com/APIs-guru/graphql-voyager) in your browser
-- `graphql-cli-faker` (__coming soon__) - run fake server based on your server schema via [graphql-faker](https://github.com/APIs-guru/graphql-faker)
+- [`graphql-cli-voyager`](https://github.com/graphcool/graphql-cli-voyager) - Open [graphql-voyager](https://github.com/APIs-guru/graphql-voyager) in your browser
+- `graphql-cli-faker` (*coming soon*) - Run a fake server based on your schema using [graphql-faker](https://github.com/APIs-guru/graphql-faker)
 
+Do you want to create your own plugin? [Here is a simple example.](plugin-example)
+
+
+## Contributors
+
+A big thank you to all contributors and supporters of this repository 💚
+
+<a href="https://github.com/IvanGoncharov/" target="_blank">
+  <img src="https://github.com/IvanGoncharov.png?size=64" width="64" height="64" alt="IvanGoncharov">
+</a>
+<a href="https://github.com/RomanGotsiy/" target="_blank">
+  <img src="https://github.com/RomanGotsiy.png?size=64" width="64" height="64" alt="RomanGotsiy">
+</a>
+<a href="https://github.com/schickling/" target="_blank">
+  <img src="https://github.com/schickling.png?size=64" width="64" height="64" alt="schickling">
+</a>
 
 
 ## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
