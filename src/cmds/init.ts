@@ -1,5 +1,5 @@
 export const command = 'init'
-export const desc = 'Interactively set up GraphQL config'
+export const desc = 'Initial config setup'
 
 import { resolve, dirname } from 'path'
 import { existsSync, writeFileSync } from 'fs'
@@ -20,7 +20,7 @@ export async function handler (context: Context) {
   const config: GraphQLConfigData = await prompt({
     type: 'input',
     name: 'schemaPath',
-    message: `Path to a schema:`,
+    message: `Local schema file path:`,
     default: 'schema.graphql',
     validate (schemaPath) {
       const parentDir = dirname(schemaPath)
@@ -63,7 +63,7 @@ export async function handler (context: Context) {
     yaml.safeDump(config)
 
   console.log(
-    `About to write to ${chalk.blue(configFilename)}:\n\n` +
+    `\nAbout to write to ${chalk.blue(configFilename)}:\n\n` +
     chalk.yellow(configData) + '\n',
   )
 

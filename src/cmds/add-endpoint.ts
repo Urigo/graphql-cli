@@ -1,5 +1,5 @@
 export const command = 'add-endpoint'
-export const desc = 'add new endpoint to .graphqlconfig'
+export const desc = 'Add new endpoint to .graphqlconfig'
 
 import * as chalk from 'chalk'
 import { addEndpoint } from './init'

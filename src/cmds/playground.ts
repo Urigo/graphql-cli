@@ -1,7 +1,7 @@
 import * as chalk from 'chalk'
 
-export const command = 'playground [endpointName]'
-export const desc = 'Open ready-to-use GraphQL Playground in your browser'
+export const command = 'playground [endpoint]'
+export const desc = 'Open interactive GraphQL Playground'
 export const builder = {
   port: {
     alias: 'p',

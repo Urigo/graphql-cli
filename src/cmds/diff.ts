@@ -1,5 +1,5 @@
 export const command = 'diff <from> [to]'
-export const desc = 'Show a diff between GraphQL schemas of two endpoints'
+export const desc = 'Show a diff between two schemas'
 export const builder = yargs => {
   yargs
     .example('graphql diff dev prod', 'show schema diff between "dev" and "prod" endpoints')

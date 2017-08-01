@@ -1,5 +1,5 @@
-export const command = 'get-schema [endpointName]'
-export const desc = 'Download GraphQL schema'
+export const command = 'get-schema [endpoint]'
+export const desc = 'Download schema from endpoint'
 export const builder = {
   watch: {
     alias: 'w',
