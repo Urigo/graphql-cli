@@ -3,7 +3,7 @@
 🔪🥒 Swiss Army Knife for your GraphQL Project
 
 
-![demo](http://imgur.com/vr3s0Sc.gif)
+![demo](http://imgur.com/0kuqZFY.gif)
 
 ## Features
 
