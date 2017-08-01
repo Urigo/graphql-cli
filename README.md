@@ -2,7 +2,7 @@
 
 🔪🥒 Swiss Army Knife for your GraphQL Project
 
-![demo](docs/demo.gif){:width="700px"}
+![demo](docs/demo.gif){:height="700px" width="400px"}
 
 ## Features
 
