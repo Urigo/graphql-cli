@@ -66,6 +66,7 @@ graphql completion >> ~/.bash_profile
 
 - [`graphql-cli-voyager`](https://github.com/graphcool/graphql-cli-voyager) - Open [graphql-voyager](https://github.com/APIs-guru/graphql-voyager) in your browser
 - `graphql-cli-faker` (*coming soon*) - Run a fake server based on your schema using [graphql-faker](https://github.com/APIs-guru/graphql-faker)
+- [`graphql-cli-codegen`](https://github.com/rricard/graphql-cli-codegen) - Generates type annotation from your GraphQL queries using [`apollo-codegen`](https://github.com/apollographql/apollo-codegen).
 
 Do you want to create your own plugin? [Here is a simple example.](plugin-example)
 
