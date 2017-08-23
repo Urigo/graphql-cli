@@ -16,13 +16,13 @@ import  * as requestProxy from 'express-request-proxy'
 import { fetch } from 'node-fetch'
 import * as opn from 'opn'
 
-export async function handler (context: Context, argv: {endpointName: string, port: string}) {
+export async function handler (context: Context, argv: {endpoint: string, port: string}) {
   const config = context.getProjectConfig()
   if (!config.endpointsExtension) {
     throw noEndpointError
   }
 
-  const endpoint = config.endpointsExtension.getEndpoint(argv.endpointName);
+  const endpoint = config.endpointsExtension.getEndpoint(argv.endpoint);
   const app = express();
 
   app.use('/graphql', requestProxy({
