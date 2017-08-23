@@ -16,7 +16,7 @@ import * as chalk from 'chalk'
 
 import { Context, noEndpointError } from '../'
 
-export async function handler (context: Context, argv: {endpointName: string, watch: boolean}) {
+export async function handler (context: Context, argv: {endpoint: string, watch: boolean}) {
   if (argv.watch) {
     const spinner = context.spinner
     // FIXME: stop spinner on errors
@@ -46,7 +46,7 @@ export async function handler (context: Context, argv: {endpointName: string, wa
     if (!config.endpointsExtension) {
       throw noEndpointError
     }
-    const endpoint = config.endpointsExtension.getEndpoint(argv.endpointName)
+    const endpoint = config.endpointsExtension.getEndpoint(argv.endpoint)
 
     log(`Downloading introspection from ${chalk.blue(endpoint.url)}`)
     const newSchema = await endpoint.resolveSchema()
