@@ -24,14 +24,21 @@ export async function handler (context: Context, argv: {endpoint: string, watch:
     const spinnerLog = msg => spinner.text = msg
 
     while (true) {
-      const isUpdated = await update(spinnerLog)
-      if (isUpdated) {
+      try {
+        const isUpdated = await update(spinnerLog)
+        if (isUpdated) {
+          spinner.stop()
+          console.log(spinner.text)
+          spinner.start()
+          spinner.text = 'Updated!'
+        } else {
+          spinner.text = 'No changes.'
+        }
+      } catch (err) {
         spinner.stop()
-        console.log(spinner.text)
+        console.error(chalk.red(err.message))
         spinner.start()
-        spinner.text = 'Updated!'
-      } else {
-        spinner.text = 'No changes.'
+        spinner.text = 'Error.'
       }
 
       spinner.text += ' Next update in 10s.'
