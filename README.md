@@ -1,4 +1,4 @@
-# graphql-cli
+# graphql-cli [![npm version](https://badge.fury.io/js/graphql-cli.svg)](https://badge.fury.io/js/graphql-cli)
 
 🔪🥒 Swiss Army Knife for your GraphQL Project
 
