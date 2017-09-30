@@ -42,7 +42,7 @@ Examples:
   graphql get-schema dev  Update local schema to match "dev" endpoint
   graphql diff dev prod   Show schema diff between "dev" and "prod" endpoints
 
-For more information go to https://github.com/graphcool/graphcool-cli
+For more information go to https://github.com/graphcool/graphql-cli
 ```
 
 ### Initial setup and schema download
