@@ -14,7 +14,7 @@ installCommands()
   .example('graphql init', 'Interactively setup .graphqlconfig file')
   .example('graphql get-schema dev', 'Update local schema to match "dev" endpoint')
   .example('graphql diff dev prod', 'Show schema diff between "dev" and "prod" endpoints')
-  .epilogue('For more information go to https://github.com/graphcool/graphcool-cli')
+  .epilogue('For more information go to https://github.com/graphcool/graphql-cli')
   .fail((msg, err, yargs) => {
     if (err) throw err // preserve stack
     if (!showedHelp) {
