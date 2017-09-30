@@ -58,15 +58,21 @@ export async function handler (context: Context, argv: {endpoint: string, watch:
     log(`Downloading introspection from ${chalk.blue(endpoint.url)}`)
     const newSchema = await endpoint.resolveSchema()
 
+    let oldSchemaSDL: string | undefined
     try {
-      const oldSchemaSDL = config.getSchemaSDL()
+      oldSchemaSDL = config.getSchemaSDL()
+    } catch (e) {
+      // ignore error if no previous schema file existed
+      if (e.code !== 'ENOENT') {
+        throw e
+      }
+    }
+    if (oldSchemaSDL) {
       const newSchemaSDL = printSchema(newSchema)
       if (newSchemaSDL === oldSchemaSDL) {
         log(chalk.green('No changes'))
         return false
       }
-    } catch (e) {
-      /* noop */
     }
 
     const schemaPath = relative(process.cwd(), config.schemaPath as string)
