@@ -1,6 +1,4 @@
-# graphql-cli [![npm version](https://badge.fury.io/js/graphql-cli.svg)](https://badge.fury.io/js/graphql-cli) [![CircleCI](https://circleci.com/gh/graphcool/graphql-cli.svg?style=shield)](https://circleci.com/gh/graphcool/graphql-cli)
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/graphcool/graphql-cli.svg)](https://greenkeeper.io/)
+# graphql-cli [![npm version](https://badge.fury.io/js/graphql-cli.svg)](https://badge.fury.io/js/graphql-cli) [![CircleCI](https://circleci.com/gh/graphcool/graphql-cli.svg?style=shield)](https://circleci.com/gh/graphcool/graphql-cli) [![Greenkeeper badge](https://badges.greenkeeper.io/graphcool/graphql-cli.svg)](https://greenkeeper.io/)
 
 🔪🥒 Swiss Army Knife for your GraphQL Project
 
