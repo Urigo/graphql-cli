@@ -1,4 +1,4 @@
-# graphql-cli [![npm version](https://badge.fury.io/js/graphql-cli.svg)](https://badge.fury.io/js/graphql-cli) [![Build Status](https://travis-ci.org/graphcool/graphql-cli.svg?branch=master)](https://travis-ci.org/graphcool/graphql-cli)
+# graphql-cli [![npm version](https://badge.fury.io/js/graphql-cli.svg)](https://badge.fury.io/js/graphql-cli) [![CircleCI](https://circleci.com/gh/graphcool/graphql-cli.svg?style=shield)](https://circleci.com/gh/graphcool/graphql-cli)
 
 🔪🥒 Swiss Army Knife for your GraphQL Project
 
