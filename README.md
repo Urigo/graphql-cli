@@ -12,6 +12,8 @@ You can see it in action here:
 
 ![demo](http://imgur.com/0kuqZFY.gif)
 
+> Note: The `graphql-cli` has a different use case than the [Graphcool CLI](https://docs-next.graph.cool/reference/graphcool-cli/overview-zboghez5go). Read more about the differences [here](https://docs-next.graph.cool/faq/other-reob2ohph7/#whats-the-difference-between-the-graphcool-cli-and-the-graphql-cli).
+
 ## Install
 
 You can simply install the CLI using `npm` or `yarn` by running the following command. This will add the `graphql` (and shorter `gql`) binary to your path.
