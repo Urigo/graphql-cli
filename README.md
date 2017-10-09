@@ -35,6 +35,7 @@ Commands:
   ping [endpointName]    Ping GraphQL endpoint
   diff <from> [to]       Show a diff between two schemas
   playground [endpoint]  Open interactive GraphQL Playground
+  lint                   Check schema for linting errors
 
 Options:
   --help  Show help                                                    [boolean]

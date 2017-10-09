@@ -1,5 +1,5 @@
 export const command = 'lint'
-export const desc = 'lint graphql schema'
+export const desc = 'Check schema for linting errors'
 
 import * as chalk from 'chalk'
 import { Context, noEndpointError } from '../'
