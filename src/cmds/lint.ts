@@ -2,7 +2,7 @@ export const command = 'lint'
 export const desc = 'Check schema for linting errors'
 
 import * as chalk from 'chalk'
-import { Context, noEndpointError } from '../'
+import { Context } from '../'
 import { runner } from 'graphql-schema-linter'
 
 export async function handler (context: Context) {
