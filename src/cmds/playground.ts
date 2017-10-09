@@ -6,13 +6,13 @@ export const builder = {
   port: {
     alias: 'p',
     description: 'port to start local server with voyager on',
-  }
+  },
 }
 
 import { Context, noEndpointError } from '../'
-import * as express from 'express';
+import * as express from 'express'
 import { express as middleware } from 'graphql-playground/middleware'
-import  * as requestProxy from 'express-request-proxy'
+import * as requestProxy from 'express-request-proxy'
 import { fetch } from 'node-fetch'
 import * as opn from 'opn'
 
@@ -22,17 +22,17 @@ export async function handler (context: Context, argv: {endpoint: string, port: 
     throw noEndpointError
   }
 
-  const endpoint = config.endpointsExtension.getEndpoint(argv.endpoint);
-  const app = express();
+  const endpoint = config.endpointsExtension.getEndpoint(argv.endpoint)
+  const app = express()
 
   app.use('/graphql', requestProxy({
     url: endpoint.url,
-    headers: endpoint.headers
-  }));
+    headers: endpoint.headers,
+  }))
 
-  app.use('/playground', middleware({ endpointUrl: '/graphql' }));
+  app.use('/playground', middleware({ endpointUrl: '/graphql' }))
 
-  const port = argv.port || 3000;
+  const port = argv.port || 3000
 
   const listener = app.listen(port, () => {
     let host = listener.address().address
@@ -42,5 +42,5 @@ export async function handler (context: Context, argv: {endpoint: string, port: 
     const link = `http://${host}:${port}/playground`
     console.log('Serving playground at %s', chalk.blue(link))
     opn(link)
-  });
+  })
 }
