@@ -6,4 +6,5 @@ module.exports = [
   require('./ping'),
   require('./diff'),
   require('./playground'),
+  require('./lint'),
 ]
