@@ -60,7 +60,7 @@
     "typescript": "^2.2.0"
   },
   "dependencies": {
-    "@types/chalk": "^0.4.31",
+    "@types/chalk": "^2.2.0",
     "chalk": "^2.0.1",
     "disparity": "^2.0.0",
     "express": "^4.15.3",
