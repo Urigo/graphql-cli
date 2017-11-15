@@ -12,7 +12,7 @@ import { existsSync } from 'fs'
 import { relative } from 'path'
 import { printSchema } from 'graphql'
 import { writeSchema } from 'graphql-config'
-import * as chalk from 'chalk'
+import chalk from 'chalk';
 
 import { Context, noEndpointError } from '../'
 

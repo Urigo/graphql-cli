@@ -1,4 +1,4 @@
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 
 export const noEndpointError = new Error(
 `You don't have any enpoint in your .graphqlconfig.

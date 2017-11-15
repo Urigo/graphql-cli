@@ -9,7 +9,7 @@ import * as  _ from 'lodash'
 import * as ora from 'ora'
 import * as inquirer from 'inquirer'
 import * as npmPaths from 'npm-paths'
-import * as chalk from 'chalk'
+import chalk from 'chalk'
 import {
   getGraphQLProjectConfig,
   getGraphQLConfig,

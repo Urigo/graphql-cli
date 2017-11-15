@@ -1,7 +1,7 @@
 export const command = 'lint'
 export const desc = 'Check schema for linting errors'
 
-import * as chalk from 'chalk'
+import chalk from 'chalk'
 import { Context } from '../'
 import { runner } from 'graphql-schema-linter'
 

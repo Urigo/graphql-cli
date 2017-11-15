@@ -1,4 +1,4 @@
-import * as chalk from 'chalk'
+import chalk from 'chalk'
 
 export const command = 'playground [endpoint]'
 export const desc = 'Open interactive GraphQL Playground'
@@ -11,7 +11,7 @@ export const builder = {
 
 import { Context, noEndpointError } from '../'
 import * as express from 'express'
-import { express as middleware } from 'graphql-playground/middleware'
+import expressPlayground from 'graphql-playground-middleware-express'
 import * as requestProxy from 'express-request-proxy'
 import { fetch } from 'node-fetch'
 import * as opn from 'opn'
@@ -30,7 +30,7 @@ export async function handler (context: Context, argv: {endpoint: string, port: 
     headers: endpoint.headers,
   }))
 
-  app.use('/playground', middleware({ endpointUrl: '/graphql' }))
+  app.use('/playground', expressPlayground({ endpointUrl: '/graphql' }))
 
   const port = argv.port || 3000
 

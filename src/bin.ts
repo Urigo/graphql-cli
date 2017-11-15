@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { installCommands } from './index';
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 
 let showedHelp = false
 

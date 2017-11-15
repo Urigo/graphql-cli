@@ -4,7 +4,7 @@ export const desc = 'Initial config setup'
 import { resolve, dirname } from 'path'
 import { existsSync, writeFileSync } from 'fs'
 import * as yaml from 'js-yaml'
-import * as chalk from 'chalk'
+import chalk from 'chalk'
 
 import {
   GRAPHQL_CONFIG_NAME,

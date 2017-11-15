@@ -1,7 +1,7 @@
 export const command = 'ping [endpointName]'
 export const desc = 'Ping GraphQL endpoint'
 
-import * as chalk from 'chalk'
+import chalk from 'chalk'
 import { Context, noEndpointError } from '../'
 
 export async function handler (context: Context, argv: {endpointName: string}) {

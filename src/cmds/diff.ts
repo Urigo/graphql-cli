@@ -7,7 +7,7 @@ export const builder = yargs => {
 }
 
 import { relative } from 'path'
-import * as chalk from 'chalk'
+import chalk from 'chalk';
 import {
   printSchema,
   findBreakingChanges,
