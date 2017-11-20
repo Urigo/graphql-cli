@@ -19,9 +19,14 @@ export const builder = {
     describe: 'Operation name',
     type: 'string',
   },
+  all: {
+    alias: 'a',
+    describe: 'Run all operations in order',
+    type: 'boolean',
+  },
 }
 
-export async function handler (context: Context, argv: { file: string, operation: string, endpoint: string }) {
+export async function handler (context: Context, argv: { file: string, operation: string, endpoint: string, all: boolean }) {
   const config = context.getProjectConfig()
   if (!config.endpointsExtension) {
     throw noEndpointError
@@ -31,20 +36,30 @@ export async function handler (context: Context, argv: { file: string, operation
   const query = fs.readFileSync(argv.file, { encoding: 'utf8' })
 
   const document = parse(query)
+  const operationNames = document.definitions.map((d: OperationDefinitionNode) => d.name!.value)
 
-  let operationName = argv.operation
-
-  if (document.definitions.length > 1 && !operationName) {
-    const operationNames = document.definitions.map((d: OperationDefinitionNode) => d.name!)
-    operationName = (await context.prompt({
-      type: 'list',
-      name: 'operationName',
+  if (argv.all) {
+    for (const operationName of operationNames) {
+      await runQuery(query, operationName, endpoint.url)
+    }
+  } else if (argv.operation) {
+    await runQuery(query, argv.operation, endpoint.url)
+  } else {
+    const { selectedOperationNames } = await context.prompt({
+      type: 'checkbox',
+      name: 'selectedOperationNames',
       message: 'Select operation to run',
       choices: operationNames,
-    })).operationName
-  }
+    })
 
-  const response = await fetch(endpoint.url, {
+    for (const operationName of selectedOperationNames) {
+      await runQuery(query, operationName, endpoint.url)
+    }
+  }
+}
+
+async function runQuery(query: string, operationName: string, endpoint: string): Promise<void> {
+  const response = await fetch(endpoint, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
