@@ -41,7 +41,6 @@
   },
   "homepage": "https://github.com/graphcool/graphql-cli#readme",
   "devDependencies": {
-    "@types/chalk": "^2.2.0",
     "@types/express": "^4.0.39",
     "@types/graphql": "^0.11.6",
     "@types/inquirer": "^0.0.35",
