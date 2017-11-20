@@ -1,11 +1,16 @@
 import chalk from 'chalk'
 
-export const command = 'playground [endpoint]'
-export const desc = 'Open interactive GraphQL Playground'
+export const command = 'playground'
+export const describe = 'Open interactive GraphQL Playground'
 export const builder = {
   port: {
     alias: 'p',
     description: 'port to start local server with voyager on',
+  },
+  endpoint: {
+    alias: 'e',
+    describe: 'Endpoint name',
+    type: 'string',
   },
 }
 
@@ -13,7 +18,7 @@ import { Context, noEndpointError } from '../'
 import * as express from 'express'
 import expressPlayground from 'graphql-playground-middleware-express'
 import * as requestProxy from 'express-request-proxy'
-import { fetch } from 'node-fetch'
+import fetch from 'node-fetch'
 import * as opn from 'opn'
 
 export async function handler (context: Context, argv: {endpoint: string, port: string}) {

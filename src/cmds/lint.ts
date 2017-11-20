@@ -1,5 +1,5 @@
 export const command = 'lint'
-export const desc = 'Check schema for linting errors'
+export const describe = 'Check schema for linting errors'
 
 import chalk from 'chalk'
 import { Context } from '../'

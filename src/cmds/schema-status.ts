@@ -8,7 +8,7 @@ import { existsSync, fstatSync } from 'fs'
 import { getSchemaExtensions } from 'graphql-config'
 import { Context } from '../'
 
-export async function handler (context: Context, argv) {
+export async function handler (context: Context) {
   const schemaPath = context.getProjectConfig().schemaPath as string
   const relativeSchemaPath = relative(process.cwd(), schemaPath)
 

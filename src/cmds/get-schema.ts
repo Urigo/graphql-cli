@@ -1,10 +1,15 @@
-export const command = 'get-schema [endpoint]'
-export const desc = 'Download schema from endpoint'
+export const command = 'get-schema'
+export const describe = 'Download schema from endpoint'
 export const builder = {
   watch: {
     alias: 'w',
     boolean: true,
     description: 'watch server for schema changes and update local schema',
+  },
+  endpoint: {
+    alias: 'e',
+    describe: 'Endpoint name',
+    type: 'string',
   },
 }
 
@@ -12,7 +17,7 @@ import { existsSync } from 'fs'
 import { relative } from 'path'
 import { printSchema } from 'graphql'
 import { writeSchema } from 'graphql-config'
-import chalk from 'chalk';
+import chalk from 'chalk'
 
 import { Context, noEndpointError } from '../'
 

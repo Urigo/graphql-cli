@@ -1,5 +1,5 @@
 export const command = 'init'
-export const desc = 'Initial config setup'
+export const describe = 'Initial config setup'
 
 import { resolve, dirname } from 'path'
 import { existsSync, writeFileSync } from 'fs'

@@ -4,6 +4,7 @@ module.exports = [
   require('./get-schema'),
   require('./schema-status'),
   require('./ping'),
+  require('./query'),
   require('./diff'),
   require('./playground'),
   require('./lint'),

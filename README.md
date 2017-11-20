@@ -28,22 +28,25 @@ npm install -g graphql-cli
 Usage: graphql [command]
 
 Commands:
-  init                   Initial config setup
-  add-endpoint           Add new endpoint to .graphqlconfig
-  get-schema [endpoint]  Download schema from endpoint
-  schema-status          Show source and timestamp of the local schema file
-  ping [endpointName]    Ping GraphQL endpoint
-  diff <from> [to]       Show a diff between two schemas
-  playground [endpoint]  Open interactive GraphQL Playground
-  lint                   Check schema for linting errors
+  init           Initial config setup
+  add-endpoint   Add new endpoint to .graphqlconfig
+  get-schema     Download schema from endpoint
+  schema-status  Show source and timestamp of the local schema file
+  ping           Ping GraphQL endpoint
+  query <file>   Run query/mutation
+  diff           Show a diff between two schemas
+  playground     Open interactive GraphQL Playground
+  lint           Check schema for linting errors
 
 Options:
-  --help  Show help                                                    [boolean]
+  -p, --project  Project name                                           [string]
+  -h, --help     Show help                                             [boolean]
+  -v, --version  Show version number                                   [boolean]
 
 Examples:
-  graphql init            Interactively setup .graphqlconfig file
-  graphql get-schema dev  Update local schema to match "dev" endpoint
-  graphql diff dev prod   Show schema diff between "dev" and "prod" endpoints
+  graphql init                 Interactively setup .graphqlconfig file
+  graphql get-schema -e dev    Update local schema to match "dev" endpoint
+  graphql diff -e dev -t prod  Show schema diff between "dev" and "prod" endpoints
 
 For more information go to https://github.com/graphcool/graphql-cli
 ```

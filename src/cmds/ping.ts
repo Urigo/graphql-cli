@@ -1,15 +1,22 @@
-export const command = 'ping [endpointName]'
-export const desc = 'Ping GraphQL endpoint'
+export const command = 'ping'
+export const describe = 'Ping GraphQL endpoint'
+export const builder = {
+  endpoint: {
+    alias: 'e',
+    describe: 'Endpoint name',
+    type: 'string',
+  },
+}
 
 import chalk from 'chalk'
 import { Context, noEndpointError } from '../'
 
-export async function handler (context: Context, argv: {endpointName: string}) {
+export async function handler (context: Context, argv: {endpoint: string}) {
   const config = context.getProjectConfig()
   if (!config.endpointsExtension) {
     throw noEndpointError
   }
-  const endpoint = config.endpointsExtension.getEndpoint(argv.endpointName)
+  const endpoint = config.endpointsExtension.getEndpoint(argv.endpoint)
   const testQuery = '{ __typename }'
   console.log(`Sending ${chalk.yellow(testQuery)} query to ${endpoint.url}`)
 
