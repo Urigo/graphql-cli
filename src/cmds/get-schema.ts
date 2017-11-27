@@ -50,7 +50,7 @@ export async function handler (context: Context, argv: {endpoint: string, watch:
       await wait(10000)
     }
   } else {
-    return await update(console.log)
+    return update(console.log)
   }
 
   async function update (log: (message: string) => void) {

@@ -101,9 +101,9 @@
   version "8.0.31"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.31.tgz#d9af61093cf4bfc9f066ca34de0175012cfb0ce9"
 
-"@types/node@^8.0.52":
-  version "8.0.52"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.52.tgz#8e7f47747868e7687f2cd4922966e2d6af78d22d"
+"@types/node@^8.0.53":
+  version "8.0.53"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.53.tgz#396b35af826fa66aad472c8cb7b8d5e277f4e6d8"
 
 "@types/ora@^1.3.0":
   version "1.3.1"
@@ -2093,9 +2093,9 @@ graphql-config@^1.0.8:
     minimatch "^3.0.4"
     rimraf "^2.6.2"
 
-graphql-playground-middleware-express@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/graphql-playground-middleware-express/-/graphql-playground-middleware-express-1.1.4.tgz#487aaa7333feb8411edd3d6ca361dc08de471e3b"
+graphql-playground-middleware-express@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/graphql-playground-middleware-express/-/graphql-playground-middleware-express-1.2.0.tgz#5eda0649e68ded9bde0d3911b85533eb1bf8c487"
 
 graphql-request@^1.2.0:
   version "1.3.6"
@@ -2109,9 +2109,9 @@ graphql-request@^1.4.0:
   dependencies:
     cross-fetch "0.0.8"
 
-graphql-schema-linter@^0.0.18:
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/graphql-schema-linter/-/graphql-schema-linter-0.0.18.tgz#71268b434a0329ded3281e9f4b2bb8940b77e206"
+graphql-schema-linter@^0.0.21:
+  version "0.0.21"
+  resolved "https://registry.yarnpkg.com/graphql-schema-linter/-/graphql-schema-linter-0.0.21.tgz#3faac55111407d8a54fc8276551b34bea077e787"
   dependencies:
     chalk "^2.0.1"
     columnify "^1.5.4"
