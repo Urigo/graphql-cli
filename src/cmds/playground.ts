@@ -26,11 +26,6 @@ export async function handler(
   context: Context,
   argv: { endpoint: string; port: string },
 ) {
-  const config = context.getProjectConfig()
-  if (!config.endpointsExtension) {
-    throw noEndpointError
-  }
-
   const localPlaygroundPath = `/Applications/GraphQL\ Playground.app/Contents/MacOS/GraphQL\ Playground`
 
   if (fs.existsSync(localPlaygroundPath)) {
@@ -39,18 +34,35 @@ export async function handler(
     )}`
     opn(url)
   } else {
-    const endpoint = config.endpointsExtension.getEndpoint(argv.endpoint)
     const app = express()
 
-    app.use(
-      '/graphql',
-      requestProxy({
-        url: endpoint.url,
-        headers: endpoint.headers,
-      }),
-    )
+    const config = context.getConfig()
+    const projects = config.getProjects()
 
-    app.use('/playground', expressPlayground({ endpoint: '/graphql' } as any))
+    if (projects === undefined) {
+      const projectConfig = context.getProjectConfig()
+      if (!projectConfig.endpointsExtension) {
+        throw noEndpointError
+      }
+      const endpoint = projectConfig.endpointsExtension.getEndpoint(
+        argv.endpoint,
+      )
+
+      app.use(
+        '/graphql',
+        requestProxy({
+          url: endpoint.url,
+          headers: endpoint.headers,
+        }),
+      )
+
+      app.use('/playground', expressPlayground({ endpoint: '/graphql' } as any))
+    } else {
+      app.use(
+        '/playground',
+        expressPlayground({ folderName: process.cwd() } as any),
+      )
+    }
 
     const port = argv.port || 3000
 

@@ -39,7 +39,7 @@ export function installCommands() {
       for (const cmd of cmdModules) {
         yargs = yargs.command(wrapCommand(cmd))
       }
-    } catch(e) {
+    } catch (e) {
       console.log(`Can't load ${moduleName} plugin:` + e.stack)
     }
   }
@@ -49,7 +49,6 @@ export function installCommands() {
 function wrapCommand(commandObject: CommandObject): CommandModule {
   const originalHandler = commandObject.handler
   commandObject.handler = argv => {
-
     const context = {
       prompt: inquirer.createPromptModule(),
       spinner: ora(),
@@ -62,13 +61,13 @@ function wrapCommand(commandObject: CommandObject): CommandModule {
       },
       getConfig() {
         return getGraphQLConfig()
-      }
+      },
     }
 
     let result = new Promise((resolve, reject) => {
       try {
         resolve(originalHandler(context, argv))
-      } catch(e) {
+      } catch (e) {
         reject(e)
       }
     })
@@ -81,14 +80,17 @@ function wrapCommand(commandObject: CommandObject): CommandModule {
       console.log(chalk.red(e.message))
 
       if (e instanceof ConfigNotFoundError) {
-        console.log(chalk.yellow(`\nRun ${chalk.green('graphql init')} to create new .graphqlconfig`))
+        console.log(
+          chalk.yellow(
+            `\nRun ${chalk.green('graphql init')} to create new .graphqlconfig`,
+          ),
+        )
       }
       // FIXME: set non-zero exit code
     })
   }
   return commandObject as CommandModule
 }
-
 
 // Mutation calls "graphql mutation addUser --id 1 --name Test"
 // Execute static .graphql files
