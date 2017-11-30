@@ -1,4 +1,5 @@
 import chalk from 'chalk'
+import * as fs from 'fs'
 
 export const command = 'playground'
 export const describe = 'Open interactive GraphQL Playground'
@@ -21,31 +22,46 @@ import * as requestProxy from 'express-request-proxy'
 import fetch from 'node-fetch'
 import * as opn from 'opn'
 
-export async function handler (context: Context, argv: {endpoint: string, port: string}) {
+export async function handler(
+  context: Context,
+  argv: { endpoint: string; port: string },
+) {
   const config = context.getProjectConfig()
   if (!config.endpointsExtension) {
     throw noEndpointError
   }
 
-  const endpoint = config.endpointsExtension.getEndpoint(argv.endpoint)
-  const app = express()
+  const localPlaygroundPath = `/Applications/GraphQL\ Playground.app/Contents/MacOS/GraphQL\ Playground`
 
-  app.use('/graphql', requestProxy({
-    url: endpoint.url,
-    headers: endpoint.headers,
-  }))
+  if (fs.existsSync(localPlaygroundPath)) {
+    const url = `graphql-playground://?cwd=${process.cwd()}&env=${JSON.stringify(
+      process.env,
+    )}`
+    opn(url)
+  } else {
+    const endpoint = config.endpointsExtension.getEndpoint(argv.endpoint)
+    const app = express()
 
-  app.use('/playground', expressPlayground({ endpointUrl: '/graphql' }))
+    app.use(
+      '/graphql',
+      requestProxy({
+        url: endpoint.url,
+        headers: endpoint.headers,
+      }),
+    )
 
-  const port = argv.port || 3000
+    app.use('/playground', expressPlayground({ endpoint: '/graphql' } as any))
 
-  const listener = app.listen(port, () => {
-    let host = listener.address().address
-    if (host === '::') {
-      host = 'localhost'
-    }
-    const link = `http://${host}:${port}/playground`
-    console.log('Serving playground at %s', chalk.blue(link))
-    opn(link)
-  })
+    const port = argv.port || 3000
+
+    const listener = app.listen(port, () => {
+      let host = listener.address().address
+      if (host === '::') {
+        host = 'localhost'
+      }
+      const link = `http://${host}:${port}/playground`
+      console.log('Serving playground at %s', chalk.blue(link))
+      opn(link)
+    })
+  }
 }
