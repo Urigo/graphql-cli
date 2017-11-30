@@ -2093,9 +2093,17 @@ graphql-config@^1.0.8:
     minimatch "^3.0.4"
     rimraf "^2.6.2"
 
-graphql-playground-middleware-express@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/graphql-playground-middleware-express/-/graphql-playground-middleware-express-1.2.0.tgz#5eda0649e68ded9bde0d3911b85533eb1bf8c487"
+graphql-playground-middleware-express@^1.3.0-beta.2:
+  version "1.3.0-beta.2"
+  resolved "https://registry.yarnpkg.com/graphql-playground-middleware-express/-/graphql-playground-middleware-express-1.3.0-beta.2.tgz#9710e0db3ba42a49c6b046661193e66e7f0db45f"
+  dependencies:
+    graphql-playground-middleware "^1.2.1-beta.6"
+
+graphql-playground-middleware@^1.2.1-beta.6:
+  version "1.2.1-beta.6"
+  resolved "https://registry.yarnpkg.com/graphql-playground-middleware/-/graphql-playground-middleware-1.2.1-beta.6.tgz#b302bda88d28fae716d127a483659c8e70a18776"
+  dependencies:
+    find-up "^2.1.0"
 
 graphql-request@^1.2.0:
   version "1.3.6"
