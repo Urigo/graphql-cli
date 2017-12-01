@@ -32,7 +32,7 @@ export async function handler(
     const url = `graphql-playground://?cwd=${process.cwd()}&env=${JSON.stringify(
       process.env,
     )}`
-    opn(url)
+    opn(url, { wait: false })
   } else {
     const app = express()
 
