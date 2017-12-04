@@ -2082,9 +2082,9 @@ graphql-config@^1.0.0:
     minimatch "^3.0.4"
     rimraf "^2.6.1"
 
-graphql-config@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-1.0.8.tgz#6dd1cd76ff6fbb01662704f8bddc403f6b0c24d9"
+graphql-config@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-1.0.9.tgz#8fa416a7c2bdb8f62f441324775dd3ff8a266652"
   dependencies:
     graphql "^0.11.7"
     graphql-request "^1.4.0"
