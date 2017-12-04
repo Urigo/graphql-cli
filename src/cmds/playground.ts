@@ -37,9 +37,7 @@ export async function handler(
   if (fs.existsSync(localPlaygroundPath) && !argv.web) {
     const config = context.getConfig().config
     const usedEnvVars = getUsedEnvs(config)
-    const url = `graphql-playground://?cwd=${process.cwd()}&env=${JSON.stringify(
-      usedEnvVars,
-    )}`
+    const url = `graphql-playground://?cwd=${process.cwd()}&env=${JSON.stringify(usedEnvVars)}`
     opn(url, { wait: false })
   } else {
     const app = express()
