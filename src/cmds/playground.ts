@@ -13,6 +13,11 @@ export const builder = {
     describe: 'Endpoint name',
     type: 'string',
   },
+  web: {
+    alias: 'w',
+    describe: 'Open web version (even if desktop app available)',
+    type: 'boolean',
+  },
 }
 
 import { Context, noEndpointError } from '../'
@@ -25,11 +30,11 @@ import { getUsedEnvs } from 'graphql-config'
 
 export async function handler(
   context: Context,
-  argv: { endpoint: string; port: string },
+  argv: { endpoint: string; port: string, web: boolean },
 ) {
   const localPlaygroundPath = `/Applications/GraphQL\ Playground.app/Contents/MacOS/GraphQL\ Playground`
 
-  if (fs.existsSync(localPlaygroundPath)) {
+  if (fs.existsSync(localPlaygroundPath) && !argv.web) {
     const config = context.getConfig().config
     const usedEnvVars = getUsedEnvs(config)
     const url = `graphql-playground://?cwd=${process.cwd()}&env=${JSON.stringify(
