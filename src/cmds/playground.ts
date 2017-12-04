@@ -21,6 +21,7 @@ import expressPlayground from 'graphql-playground-middleware-express'
 import * as requestProxy from 'express-request-proxy'
 import fetch from 'node-fetch'
 import * as opn from 'opn'
+import { getUsedEnvs } from 'graphql-config'
 
 export async function handler(
   context: Context,
@@ -29,8 +30,10 @@ export async function handler(
   const localPlaygroundPath = `/Applications/GraphQL\ Playground.app/Contents/MacOS/GraphQL\ Playground`
 
   if (fs.existsSync(localPlaygroundPath)) {
+    const config = context.getConfig().config
+    const usedEnvVars = getUsedEnvs(config)
     const url = `graphql-playground://?cwd=${process.cwd()}&env=${JSON.stringify(
-      process.env,
+      usedEnvVars,
     )}`
     opn(url, { wait: false })
   } else {
