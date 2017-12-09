@@ -1,10 +1,11 @@
 {
   "name": "graphql-cli",
+  "main": "dist/index.js",
   "bin": {
     "graphql": "dist/bin.js",
     "gql": "dist/bin.js"
   },
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "GraphQL CLI",
   "files": [
     "LICENSE",
