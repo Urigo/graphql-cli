@@ -5,7 +5,8 @@
     "graphql": "dist/bin.js",
     "gql": "dist/bin.js"
   },
-  "version": "2.0.6",
+  "typings": "./dist/index.d.ts",
+  "version": "2.0.7",
   "description": "GraphQL CLI",
   "files": [
     "LICENSE",
@@ -14,7 +15,7 @@
   ],
   "scripts": {
     "prepublish": "npm run build",
-    "build": "tsc",
+    "build": "tsc -d",
     "test": "npm run build && npm run lint",
     "lint": "tslint {src,test}/**/*.ts",
     "start": "ts-node src/bin.ts"
