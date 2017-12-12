@@ -1,5 +1,14 @@
 import chalk from 'chalk'
+import * as crypto from 'crypto'
+import * as express from 'express'
+import * as requestProxy from 'express-request-proxy'
 import * as fs from 'fs'
+import expressPlayground from 'graphql-playground-middleware-express'
+import * as opn from 'opn'
+import * as os from 'os'
+import * as path from 'path'
+
+import { Context, noEndpointError } from '../'
 
 export const command = 'playground'
 export const describe = 'Open interactive GraphQL Playground'
@@ -20,24 +29,26 @@ export const builder = {
   },
 }
 
-import { Context, noEndpointError } from '../'
-import * as express from 'express'
-import expressPlayground from 'graphql-playground-middleware-express'
-import * as requestProxy from 'express-request-proxy'
-import fetch from 'node-fetch'
-import * as opn from 'opn'
-import { getUsedEnvs } from 'graphql-config'
+function randomString(len = 32) {
+  return crypto
+    .randomBytes(Math.ceil(len * 3 / 4))
+    .toString('base64')
+    .slice(0, len)
+    .replace(/\+/g, '0')
+    .replace(/\//g, '0')
+}
 
 export async function handler(
   context: Context,
-  argv: { endpoint: string; port: string, web: boolean },
+  argv: { endpoint: string; port: string; web: boolean },
 ) {
   const localPlaygroundPath = `/Applications/GraphQL\ Playground.app/Contents/MacOS/GraphQL\ Playground`
 
   if (fs.existsSync(localPlaygroundPath) && !argv.web) {
     const config = context.getConfig().config
-    const usedEnvVars = getUsedEnvs(config)
-    const url = `graphql-playground://?cwd=${process.cwd()}&env=${JSON.stringify(usedEnvVars)}`
+    const envPath = path.join(os.tmpdir(), `${randomString()}.json`)
+    fs.writeFileSync(envPath, JSON.stringify(process.env))
+    const url = `graphql-playground://?cwd=${process.cwd()}&envPath=${envPath}`
     opn(url, { wait: false })
   } else {
     const app = express()
