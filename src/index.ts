@@ -17,6 +17,9 @@ import {
   ConfigNotFoundError,
 } from 'graphql-config'
 
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 function listPluggings(dir: string): string[] {
   return readdirSync(dir)
     .filter(moduleName => moduleName.startsWith('graphql-cli-'))
