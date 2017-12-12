@@ -18,7 +18,6 @@ import {
 } from 'graphql-config'
 
 import * as dotenv from 'dotenv'
-dotenv.config()
 
 function listPluggings(dir: string): string[] {
   return readdirSync(dir)
@@ -52,6 +51,8 @@ export function installCommands() {
 function wrapCommand(commandObject: CommandObject): CommandModule {
   const originalHandler = commandObject.handler
   commandObject.handler = argv => {
+    const envPath = argv['dotenv'] || '.env'
+    dotenv.config({ path: envPath })
     const context = {
       prompt: inquirer.createPromptModule(),
       spinner: ora(),
