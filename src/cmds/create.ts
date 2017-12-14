@@ -1,6 +1,7 @@
 import { Context } from '../'
 import * as fs from 'fs'
 import * as path from 'path'
+import chalk from 'chalk'
 import * as tmp from 'tmp'
 import * as request from 'request'
 import * as Zip from 'adm-zip'
@@ -52,15 +53,15 @@ export async function handler(
   let { template } = argv
   if (!template) {
     const defaultTemplates = {
-      'Basic (DB, Auth)':
-        'https://github.com/graphcool/graphql-boilerplate/tree/alpha',
-      'Serverless':
-        'https://github.com/graphcool/graphcool-serverless-template',
+      'Minimal (Node.js, DB)':
+        'https://github.com/graphcool/graphql-template-node',
+      'Basic (TypeScript, DB, Auth)':
+        'https://github.com/graphcool/graphql-boilerplate',
     }
     const { templateName } = await context.prompt({
       type: 'list',
       name: 'templateName',
-      message: `Choose GraphQL boilerplate:`,
+      message: `Choose GraphQL server template:`,
       choices: Object.keys(defaultTemplates),
     })
 
@@ -71,7 +72,7 @@ export async function handler(
   const downloadUrl = getZipURL(template!)
   const tmpFile = tmp.fileSync()
 
-  console.log(`Downloading template from ${downloadUrl}...`)
+  console.log(`[graphql create] Downloading template from ${downloadUrl}...`)
 
   await new Promise(resolve => {
     request(downloadUrl)
@@ -97,17 +98,17 @@ export async function handler(
   process.chdir(projectPath)
 
   // run npm/yarn install
+  console.log(`[graphql create] Installing node dependencies...`)
   if (await commandExists('yarn')) {
-    console.log(`Installing node dependencies: $ yarn install`)
     await shell('yarn install')
   } else {
-    console.log(`Installing node dependencies: $ npm install`)
     await shell('npm install')
   }
 
   // run & delete setup script
   const installPath = path.join(projectPath, 'install.js')
   if (fs.existsSync(installPath)) {
+    console.log(`[graphql create] Running template install script...`)
     const installFunction = require(installPath)
     await installFunction({ project: argv.directory })
     fs.unlinkSync(installPath)
