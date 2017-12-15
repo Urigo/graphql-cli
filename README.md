@@ -1,6 +1,6 @@
 # graphql-cli [![npm version](https://badge.fury.io/js/graphql-cli.svg)](https://badge.fury.io/js/graphql-cli) [![CircleCI](https://circleci.com/gh/graphql-cli/graphql-cli.svg?style=shield)](https://circleci.com/gh/graphql-cli/graphql-cli) [![Greenkeeper badge](https://badges.greenkeeper.io/graphql-cli/graphql-cli.svg)](https://greenkeeper.io/)
 
-🔪🥒 Swiss Army Knife for your GraphQL Project
+📟 Command line tool for common GraphQL development workflows
 
 ## Features
 
