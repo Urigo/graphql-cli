@@ -1,4 +1,4 @@
-# graphql-cli [![npm version](https://badge.fury.io/js/graphql-cli.svg)](https://badge.fury.io/js/graphql-cli) [![CircleCI](https://circleci.com/gh/graphcool/graphql-cli.svg?style=shield)](https://circleci.com/gh/graphcool/graphql-cli) [![Greenkeeper badge](https://badges.greenkeeper.io/graphcool/graphql-cli.svg)](https://greenkeeper.io/)
+# graphql-cli [![npm version](https://badge.fury.io/js/graphql-cli.svg)](https://badge.fury.io/js/graphql-cli) [![CircleCI](https://circleci.com/gh/graphql-cli/graphql-cli.svg?style=shield)](https://circleci.com/gh/graphql-cli/graphql-cli) [![Greenkeeper badge](https://badges.greenkeeper.io/graphql-cli/graphql-cli.svg)](https://greenkeeper.io/)
 
 🔪🥒 Swiss Army Knife for your GraphQL Project
 
@@ -48,7 +48,7 @@ Examples:
   graphql get-schema -e dev    Update local schema to match "dev" endpoint
   graphql diff -e dev -t prod  Show schema diff between "dev" and "prod" endpoints
 
-For more information go to https://github.com/graphcool/graphql-cli
+For more information go to https://github.com/graphql-cli/graphql-cli
 ```
 
 ### Initial setup and schema download
@@ -70,7 +70,7 @@ graphql completion >> ~/.bash_profile
 
 ## Plugins
 
-- [`graphql-cli-voyager`](https://github.com/graphcool/graphql-cli-voyager) - Open [graphql-voyager](https://github.com/APIs-guru/graphql-voyager) in your browser
+- [`graphql-cli-voyager`](https://github.com/graphql-cli/graphql-cli-voyager) - Open [graphql-voyager](https://github.com/APIs-guru/graphql-voyager) in your browser
 - `graphql-cli-faker` (*coming soon*) - Run a fake server based on your schema using [graphql-faker](https://github.com/APIs-guru/graphql-faker)
 - [`graphql-cli-codegen`](https://github.com/rricard/graphql-cli-codegen) - Generates type annotation from your GraphQL queries using [`apollo-codegen`](https://github.com/apollographql/apollo-codegen).
 - [`graphql-cli-load`](https://github.com/neo4j-graphql/graphql-cli-load) - Easy batched loading of JSON/CSV files using your mutations, by matching input fields to mutation parameters from the schema.
