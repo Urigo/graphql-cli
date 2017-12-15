@@ -99,7 +99,7 @@ export async function handler(
 
   // run npm/yarn install
   console.log(`[graphql create] Installing node dependencies...`)
-  if (await commandExists('yarn')) {
+  if (commandExists.sync('yarn')) {
     await shell('yarn install')
   } else {
     await shell('npm install')
