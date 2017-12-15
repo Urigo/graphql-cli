@@ -39,4 +39,5 @@ installCommands()
     if (msg !== 'Missing command name') {
       console.error(chalk.red(msg))
     }
+    // tslint:disable-next-line
   }).argv
