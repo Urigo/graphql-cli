@@ -5,6 +5,7 @@ import chalk from 'chalk'
 import * as tmp from 'tmp'
 import * as request from 'request'
 import * as Zip from 'adm-zip'
+import { padEnd } from 'lodash'
 import { spawn } from 'child_process'
 import { defaultBoilerplates } from './boilerplates'
 import { getZipInfo } from './utils'
@@ -57,7 +58,7 @@ export async function handler(
       .map(bp => bp.name.length)
       .reduce((max, x) => Math.max(max, x), 0)
     const choices = defaultBoilerplates.map(
-      bp => `${bp.name.padEnd(maxNameLength + 2)} ${bp.description}`,
+      bp => `${padEnd(bp.name, maxNameLength + 2)} ${bp.description}`,
     )
     const { choice } = await context.prompt({
       type: 'list',
