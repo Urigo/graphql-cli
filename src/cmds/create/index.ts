@@ -56,7 +56,7 @@ export async function handler(
       .map(bp => bp.name.length)
       .reduce((max, x) => Math.max(max, x), 0)
     const choices = defaultBoilerplates.map(
-      bp => `${bp.name.padEnd(maxNameLength + 2)} ${bp.description}`,
+      bp => `${padEnd(bp.name, maxNameLength + 2)} ${bp.description}`,
     )
     const { choice } = await context.prompt({
       type: 'list',
