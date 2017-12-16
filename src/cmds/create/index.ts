@@ -1,14 +1,13 @@
-import { Context } from '../..'
+import commandExists = require('command-exists')
+import { spawn } from 'cross-spawn'
 import * as fs from 'fs'
 import * as path from 'path'
-import chalk from 'chalk'
-import * as tmp from 'tmp'
 import * as request from 'request'
-import { spawn } from 'cross-spawn'
+import { Parse } from 'unzip'
+
+import { Context } from '../..'
 import { defaultBoilerplates } from './boilerplates'
 import { getZipInfo } from './utils'
-import commandExists = require('command-exists')
-import { Parse } from 'unzip'
 
 export const command = 'create <directory>'
 export const describe = 'Bootstrap a new GraphQL project'
@@ -134,7 +133,7 @@ function shell(command: string): Promise<void> {
     const cmd = spawn(commandParts[0], commandParts.slice(1), {
       cwd: process.cwd(),
       detached: false,
-      stdio: 'ignore',
+      stdio: ['ignore', 'ignore', 'inherit'],
     })
 
     cmd.on('error', reject)
