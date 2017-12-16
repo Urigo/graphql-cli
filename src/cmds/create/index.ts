@@ -1,15 +1,13 @@
-import { Context } from '../..'
+import commandExists = require('command-exists')
+import { spawn } from 'cross-spawn'
 import * as fs from 'fs'
 import * as path from 'path'
-import chalk from 'chalk'
-import * as tmp from 'tmp'
 import * as request from 'request'
-import * as Zip from 'adm-zip'
-import { padEnd } from 'lodash'
-import { spawn } from 'child_process'
+import { Parse } from 'unzip'
+
+import { Context } from '../..'
 import { defaultBoilerplates } from './boilerplates'
 import { getZipInfo } from './utils'
-import commandExists = require('command-exists')
 
 export const command = 'create <directory>'
 export const describe = 'Bootstrap a new GraphQL project'
@@ -24,7 +22,7 @@ export const builder = {
 
 export async function handler(
   context: Context,
-  argv: { boilerplate?: string; directory: string },
+  argv: { boilerplate?: string, verbose: boolean, directory: string },
 ) {
   if (argv.directory.match(/[A-Z]/)) {
     console.log(
@@ -73,41 +71,58 @@ export async function handler(
   // download repo contents
   const zipInfo = getZipInfo(boilerplate!)
   const downloadUrl = zipInfo.url
-  const tmpFile = tmp.fileSync()
 
-  console.log(`[graphql create] Downloading boilerplate from ${downloadUrl}...`)
+  context.spinner.start(`[graphql create] Downloading boilerplate from ${downloadUrl}...`)
 
   await new Promise(resolve => {
     request(downloadUrl)
-      .pipe(fs.createWriteStream(tmpFile.name))
+      .pipe(Parse())
+      .on('entry', entry => {
+        if (entry.type === 'Directory' && entry.path.startsWith(zipInfo.path)) {
+          const relativePath = path.relative(zipInfo.path, entry.path)
+          const targetPath = path.resolve(projectPath, relativePath)
+          if (!fs.existsSync(targetPath)) {
+            fs.mkdirSync(path.resolve(projectPath, relativePath))
+          }
+        }
+        if (entry.type === 'File' && entry.path.startsWith(zipInfo.path)) {
+          const relativePath = path.relative(zipInfo.path, entry.path)
+          const targetPath = path.resolve(projectPath, relativePath)
+          entry.pipe(fs.createWriteStream(targetPath))
+        } else {
+          entry.autodrain()
+        }
+      })
       .on('close', resolve)
   })
 
-  const zip = new Zip(tmpFile.name)
-  zip.extractEntryTo(zipInfo.path, projectPath, false)
-
-  tmpFile.removeCallback()
+  context.spinner.succeed()
 
   // change dir to projectPath for install steps
   process.chdir(projectPath)
 
   // run npm/yarn install
+  let { verbose } = argv
   const packageJsonPath = path.join(projectPath, 'package.json')
   if (fs.existsSync(packageJsonPath)) {
-    console.log(`[graphql create] Installing node dependencies...`)
+    context.spinner.start(`[graphql create] Installing node dependencies...`)
     if (commandExists.sync('yarn')) {
       await shell('yarn install')
     } else {
       await shell('npm install')
     }
+    context.spinner.succeed()
   }
 
   // run & delete setup script
   const installPath = path.join(projectPath, 'install.js')
   if (fs.existsSync(installPath)) {
-    console.log(`[graphql create] Running boilerplate install script...`)
+    context.spinner.start(`[graphql create] Running boilerplate install script... `)
     const installFunction = require(installPath)
+
     await installFunction({ project: argv.directory })
+    context.spinner.succeed()
+
     fs.unlinkSync(installPath)
   }
 }
@@ -117,8 +132,8 @@ function shell(command: string): Promise<void> {
     const commandParts = command.split(' ')
     const cmd = spawn(commandParts[0], commandParts.slice(1), {
       cwd: process.cwd(),
-      detached: true,
-      stdio: 'inherit',
+      detached: false,
+      stdio: ['ignore', 'ignore', 'inherit'],
     })
 
     cmd.on('error', reject)
