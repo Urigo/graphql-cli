@@ -3,8 +3,8 @@ import { spawn } from 'cross-spawn'
 import * as fs from 'fs'
 import * as path from 'path'
 import * as request from 'request'
-import { Parse } from 'unzip'
-
+import * as unzip from 'unzip'
+import { padEnd } from 'lodash'
 import { Context } from '../..'
 import { defaultBoilerplates } from './boilerplates'
 import { getZipInfo } from './utils'
@@ -72,11 +72,12 @@ export async function handler(
   const zipInfo = getZipInfo(boilerplate!)
   const downloadUrl = zipInfo.url
 
-  context.spinner.start(`[graphql create] Downloading boilerplate from ${downloadUrl}...`)
+  console.log(`[graphql create] Downloading boilerplate from ${downloadUrl}...`)
 
   await new Promise(resolve => {
     request(downloadUrl)
-      .pipe(Parse())
+      .pipe(unzip.Parse())
+      // extracts zip content from `zipInfo.path` to `projectPath`
       .on('entry', entry => {
         if (entry.type === 'Directory' && entry.path.startsWith(zipInfo.path)) {
           const relativePath = path.relative(zipInfo.path, entry.path)
@@ -96,8 +97,6 @@ export async function handler(
       .on('close', resolve)
   })
 
-  context.spinner.succeed()
-
   // change dir to projectPath for install steps
   process.chdir(projectPath)
 
@@ -105,23 +104,21 @@ export async function handler(
   let { verbose } = argv
   const packageJsonPath = path.join(projectPath, 'package.json')
   if (fs.existsSync(packageJsonPath)) {
-    context.spinner.start(`[graphql create] Installing node dependencies...`)
+    console.log(`[graphql create] Installing node dependencies...`)
     if (commandExists.sync('yarn')) {
       await shell('yarn install')
     } else {
       await shell('npm install')
     }
-    context.spinner.succeed()
   }
 
   // run & delete setup script
   const installPath = path.join(projectPath, 'install.js')
   if (fs.existsSync(installPath)) {
-    context.spinner.start(`[graphql create] Running boilerplate install script... `)
+    console.log(`[graphql create] Running boilerplate install script... `)
     const installFunction = require(installPath)
 
     await installFunction({ project: argv.directory })
-    context.spinner.succeed()
 
     fs.unlinkSync(installPath)
   }
@@ -133,7 +130,7 @@ function shell(command: string): Promise<void> {
     const cmd = spawn(commandParts[0], commandParts.slice(1), {
       cwd: process.cwd(),
       detached: false,
-      stdio: ['ignore', 'ignore', 'inherit'],
+      stdio: 'inherit',
     })
 
     cmd.on('error', reject)
