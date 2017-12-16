@@ -78,7 +78,7 @@ function wrapCommand(commandObject: CommandObject): CommandModule {
 
     result.catch(e => {
       if (context.spinner['enabled']) {
-        context.spinner.stopAndPersist()
+        context.spinner.fail()
       }
       // TODO: add debug flag for calltrace
       console.log(chalk.red(e.message))
