@@ -23,24 +23,24 @@ export const defaultBoilerplates: Boilerplate[] = [
     name: 'node-minimal',
     description: 'Minimal GraphQL server ("Hello world")',
     repo:
-      'https://github.com/graphql-cli/graphql-boilerplate/tree/master/node-minimal',
+      'https://github.com/graphql-boilerplates/node-graphql-server/tree/master/minimal',
   },
   {
     name: 'node-basic',
     description: 'Basic GraphQL server (incl. database)',
     repo:
-      'https://github.com/graphql-cli/graphql-boilerplate/tree/master/node-basic',
+      'https://github.com/graphql-boilerplates/node-graphql-server/tree/master/basic',
   },
   {
     name: 'typescript-minimal',
     description: 'Minimal GraphQL server ("Hello world")',
     repo:
-      'https://github.com/graphql-cli/graphql-boilerplate/tree/master/typescript-minimal',
+      'https://github.com/graphql-boilerplates/typescript-graphql-server/tree/master/minimal',
   },
   {
     name: 'typescript-basic',
     description: 'Basic GraphQL server (incl. database)',
     repo:
-      'https://github.com/graphql-cli/graphql-boilerplate/tree/master/typescript-basic',
+      'https://github.com/graphql-boilerplates/typescript-graphql-server/tree/master/basic',
   },
 ]
