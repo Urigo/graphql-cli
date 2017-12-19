@@ -78,7 +78,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/graphql@^0.11.6", "@types/graphql@^0.11.7":
+"@types/graphql@0.11.7", "@types/graphql@^0.11.6", "@types/graphql@^0.11.7":
   version "0.11.7"
   resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.11.7.tgz#da39a2f7c74e793e32e2bb7b3b68da1691532dd5"
 
@@ -1918,11 +1918,31 @@ graphql-config@^1.1.0:
     minimatch "^3.0.4"
     rimraf "^2.6.2"
 
+graphql-config@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-1.1.1.tgz#40f22d4845ee629d3344b31c4c9db8f695ddcad5"
+  dependencies:
+    graphql "^0.12.3"
+    graphql-import "^0.1.7"
+    graphql-request "^1.4.0"
+    js-yaml "^3.10.0"
+    minimatch "^3.0.4"
+    rimraf "^2.6.2"
+
 graphql-import@^0.1.5:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.1.5.tgz#f1f6ae6e015adcea15c3e8bbe72247d3795113ea"
   dependencies:
     "@types/graphql" "^0.11.6"
+    "@types/lodash" "^4.14.85"
+    graphql "^0.11.7"
+    lodash "^4.17.4"
+
+graphql-import@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.1.7.tgz#78c25f9f402582e9d17a1ffda13a1d4a915a54be"
+  dependencies:
+    "@types/graphql" "0.11.7"
     "@types/lodash" "^4.14.85"
     graphql "^0.11.7"
     lodash "^4.17.4"
