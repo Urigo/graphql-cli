@@ -43,4 +43,10 @@ export const defaultBoilerplates: Boilerplate[] = [
     repo:
       'https://github.com/graphql-boilerplates/typescript-graphql-server/tree/master/advanced',
   },
+  {
+    name: 'react-fullstack-basic',
+    description: 'React app + GraphQL server (incl. database )',
+    repo:
+      'https://github.com/graphql-boilerplates/react-fullstack-graphql/tree/master/apollo-client/basic',
+  },
 ]
