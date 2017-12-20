@@ -15,7 +15,7 @@ export const describe = 'Bootstrap a new GraphQL project'
 export const builder = {
   boilerplate: {
     alias: 'b',
-    describe: 'Link to boilerplate GitHub repostiory',
+    describe: 'URL to boilerplate GitHub repostiory',
     type: 'string',
   },
 }
