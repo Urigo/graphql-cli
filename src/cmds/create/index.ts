@@ -22,7 +22,7 @@ export const builder = {
 
 export async function handler(
   context: Context,
-  argv: { boilerplate?: string, verbose: boolean, directory: string },
+  argv: { boilerplate?: string; verbose: boolean; directory: string },
 ) {
   if (argv.directory.match(/[A-Z]/)) {
     console.log(
@@ -97,20 +97,30 @@ export async function handler(
       .on('close', resolve)
   })
 
-  // change dir to projectPath for install steps
-  process.chdir(projectPath)
-
   // run npm/yarn install
   let { verbose } = argv
-  const packageJsonPath = path.join(projectPath, 'package.json')
-  if (fs.existsSync(packageJsonPath)) {
-    console.log(`[graphql create] Installing node dependencies...`)
+  const subDirs = fs
+    .readdirSync(projectPath)
+    .map(f => path.join(projectPath, f))
+    .filter(f => fs.statSync(f).isDirectory())
+  const installPaths = [projectPath, ...subDirs]
+    .map(dir => path.join(dir, 'package.json'))
+    .filter(p => fs.existsSync(p))
+
+  for (const packageJsonPath of installPaths) {
+    process.chdir(path.dirname(packageJsonPath))
+    console.log(
+      `[graphql create] Installing node dependencies for ${packageJsonPath}...`,
+    )
     if (commandExists.sync('yarn')) {
       await shell('yarn install')
     } else {
       await shell('npm install')
     }
   }
+
+  // change dir to projectPath for install steps
+  process.chdir(projectPath)
 
   // run & delete setup script
   const installPath = path.join(projectPath, 'install.js')
