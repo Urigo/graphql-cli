@@ -1,5 +1,5 @@
 export const command = 'schema-status'
-export const desc = 'Show source and timestamp of the local schema file'
+export const desc = 'Show source & timestamp of local schema'
 
 import * as _ from 'lodash'
 import chalk from 'chalk'

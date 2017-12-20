@@ -1,7 +1,6 @@
 export const command = 'query <file>'
 export const describe = 'Run query/mutation'
 
-import chalk from 'chalk'
 import * as fs from 'fs'
 import { Argv } from 'yargs'
 import fetch from 'node-fetch'

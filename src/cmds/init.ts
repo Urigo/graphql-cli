@@ -1,5 +1,5 @@
 export const command = 'init'
-export const describe = 'Initial config setup'
+export const describe = 'Setup .graphqlconfig file'
 
 import { resolve, dirname } from 'path'
 import { existsSync, writeFileSync } from 'fs'
