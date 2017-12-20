@@ -74,6 +74,7 @@ graphql completion >> ~/.bash_profile
 - `graphql-cli-faker` (*coming soon*) - Run a fake server based on your schema using [graphql-faker](https://github.com/APIs-guru/graphql-faker)
 - [`graphql-cli-codegen`](https://github.com/rricard/graphql-cli-codegen) - Generates type annotation from your GraphQL queries using [`apollo-codegen`](https://github.com/apollographql/apollo-codegen).
 - [`graphql-cli-load`](https://github.com/neo4j-graphql/graphql-cli-load) - Easy batched loading of JSON/CSV files using your mutations, by matching input fields to mutation parameters from the schema.
+- [`graphql-cli-bundle`](https://github.com/supergraphql/graphql-cli-bundle) - Bundle schemas with imports into a single schema file using [`graphql-import`](https://github.com/graphcool/graphql-import)
 
 Do you want to create your own plugin? [Here is a simple example.](plugin-example)
 
@@ -91,7 +92,9 @@ A big thank you to all contributors and supporters of this repository 💚
 <a href="https://github.com/schickling/" target="_blank">
   <img src="https://github.com/schickling.png?size=64" width="64" height="64" alt="schickling">
 </a>
-
+<a href="https://github.com/kbrandwijk/" target="_blank">
+  <img src="https://github.com/kbrandwijk.png?size=64" width="64" height="64" alt="kbrandwijk">
+</a>
 
 ## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
 
