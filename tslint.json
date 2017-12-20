@@ -4,7 +4,9 @@
     "trailing-comma": [
       true,
       {
-        "multiline": "always",
+        "multiline": {
+          "typeLiterals": "never"
+        },
         "singleline": "never"
       }
     ],

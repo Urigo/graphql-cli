@@ -2,6 +2,7 @@ import commandExists = require('command-exists')
 import { spawn } from 'cross-spawn'
 import * as fs from 'fs'
 import * as path from 'path'
+import chalk from 'chalk'
 import * as request from 'request'
 import * as unzip from 'unzip'
 import { padEnd } from 'lodash'
@@ -9,7 +10,7 @@ import { Context } from '../..'
 import { defaultBoilerplates } from './boilerplates'
 import { getZipInfo } from './utils'
 
-export const command = 'create <directory>'
+export const command = 'create [directory]'
 export const describe = 'Bootstrap a new GraphQL project'
 
 export const builder = {
@@ -18,22 +19,49 @@ export const builder = {
     describe: 'URL to boilerplate GitHub repostiory',
     type: 'string',
   },
+  'no-install': {
+    describe: `Don't install project dependencies`,
+    type: 'boolean',
+    default: false,
+  },
 }
 
 export async function handler(
   context: Context,
-  argv: { boilerplate?: string; verbose: boolean; directory: string },
+  argv: {
+    boilerplate?: string
+    directory?: string
+    noInstall: boolean
+  },
 ) {
-  if (argv.directory.match(/[A-Z]/)) {
+  let { boilerplate, directory, noInstall } = argv
+
+  if (directory && directory.match(/[A-Z]/)) {
     console.log(
-      `Project/directory name cannot contain uppercase letters: ${
-        argv.directory
-      }`,
+      `Project/directory name cannot contain uppercase letters: ${directory}`,
     )
+    directory = undefined
+  }
+
+  if (!directory) {
+    const { newDir } = await context.prompt({
+      type: 'input',
+      name: 'newDir',
+      default: '.',
+      message: 'Directory for new GraphQL project',
+      validate: dir => {
+        if (dir.match(/[A-Z]/)) {
+          return `Project/directory name cannot contain uppercase letters: ${directory}`
+        }
+        return true
+      },
+    })
+
+    directory = newDir
   }
 
   // make sure that project directory is empty
-  const projectPath = path.resolve(argv.directory)
+  const projectPath = path.resolve(directory)
 
   if (fs.existsSync(projectPath)) {
     const allowedFiles = ['.git', '.gitignore']
@@ -42,15 +70,12 @@ export async function handler(
       .filter(f => !allowedFiles.includes(f))
 
     if (conflictingFiles.length > 0) {
-      console.log(`Directory ${argv.directory} must be empty.`)
+      console.log(`Directory ${chalk.cyan(projectPath)} must be empty.`)
       return
     }
   } else {
     fs.mkdirSync(projectPath)
   }
-
-  // determine boilerplate
-  let { boilerplate } = argv
 
   // allow short handle boilerplate (e.g. `node-basic`)
   if (boilerplate && !boilerplate.startsWith('http')) {
@@ -110,24 +135,25 @@ export async function handler(
   })
 
   // run npm/yarn install
-  let { verbose } = argv
-  const subDirs = fs
-    .readdirSync(projectPath)
-    .map(f => path.join(projectPath, f))
-    .filter(f => fs.statSync(f).isDirectory())
-  const installPaths = [projectPath, ...subDirs]
-    .map(dir => path.join(dir, 'package.json'))
-    .filter(p => fs.existsSync(p))
+  if (!noInstall) {
+    const subDirs = fs
+      .readdirSync(projectPath)
+      .map(f => path.join(projectPath, f))
+      .filter(f => fs.statSync(f).isDirectory())
+    const installPaths = [projectPath, ...subDirs]
+      .map(dir => path.join(dir, 'package.json'))
+      .filter(p => fs.existsSync(p))
 
-  for (const packageJsonPath of installPaths) {
-    process.chdir(path.dirname(packageJsonPath))
-    console.log(
-      `[graphql create] Installing node dependencies for ${packageJsonPath}...`,
-    )
-    if (commandExists.sync('yarn')) {
-      await shell('yarn install')
-    } else {
-      await shell('npm install')
+    for (const packageJsonPath of installPaths) {
+      process.chdir(path.dirname(packageJsonPath))
+      console.log(
+        `[graphql create] Installing node dependencies for ${packageJsonPath}...`,
+      )
+      if (commandExists.sync('yarn')) {
+        await shell('yarn install')
+      } else {
+        await shell('npm install')
+      }
     }
   }
 
@@ -140,7 +166,7 @@ export async function handler(
     console.log(`[graphql create] Running boilerplate install script... `)
     const installFunction = require(installPath)
 
-    await installFunction({ project: argv.directory })
+    await installFunction({ project: directory })
 
     fs.unlinkSync(installPath)
   }
