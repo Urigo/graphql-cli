@@ -51,6 +51,18 @@ export async function handler(
 
   // determine boilerplate
   let { boilerplate } = argv
+
+  // allow short handle boilerplate (e.g. `node-basic`)
+  if (boilerplate && !boilerplate.startsWith('http')) {
+    const matchedBoilerplate = defaultBoilerplates.find(
+      b => b.name === boilerplate,
+    )
+    if (matchedBoilerplate) {
+      boilerplate = matchedBoilerplate.repo
+    }
+  }
+
+  // interactive selection
   if (!boilerplate) {
     const maxNameLength = defaultBoilerplates
       .map(bp => bp.name.length)
