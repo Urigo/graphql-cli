@@ -6,7 +6,7 @@
     "gql": "dist/bin.js"
   },
   "typings": "./dist/index.d.ts",
-  "version": "2.1.0-beta15",
+  "version": "2.1.0",
   "description": "GraphQL CLI",
   "files": [
     "LICENSE",
