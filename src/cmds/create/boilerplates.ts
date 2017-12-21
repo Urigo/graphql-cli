@@ -51,9 +51,15 @@ export const defaultBoilerplates: Boilerplate[] = [
   },
 // currently broken  
 //   {
-//     name: 'react-native-fullstack-basic',
+//     name: 'react-native-basic',
 //     description: 'React Native app + GraphQL server (incl. database )',
 //     repo:
 //       'https://github.com/graphql-boilerplates/react-native-graphql/tree/master/apollo-client/basic',
+//   },
+//   {
+//     name: 'vue-fullstack-basic',
+//     description: 'Vue app + GraphQL server (incl. database )',
+//     repo:
+//       'https://github.com/graphql-boilerplates/vue-fullstack-graphql/tree/master/apollo-client/basic',
 //   },
 ]
