@@ -237,12 +237,6 @@
   dependencies:
     "@types/node" "*"
 
-"@types/unzip@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@types/unzip/-/unzip-0.1.0.tgz#5bcfd2b4e19fc75f0ae2adfc7d6af97b3845a073"
-  dependencies:
-    "@types/node" "*"
-
 "@types/yargs@^10.0.0":
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-10.0.0.tgz#b93aa88155fe5106cddf3f934517411ca2a45939"
