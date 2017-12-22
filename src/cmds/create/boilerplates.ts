@@ -1,7 +1,7 @@
 export interface Boilerplate {
-  name: string
-  description: string
-  repo: string
+  name: string;
+  description: string;
+  repo: string;
 }
 
 // TODO implement the following
@@ -49,17 +49,17 @@ export const defaultBoilerplates: Boilerplate[] = [
     repo:
       'https://github.com/graphql-boilerplates/react-fullstack-graphql/tree/master/apollo-client/basic',
   },
-// currently broken  
-//   {
-//     name: 'react-native-basic',
-//     description: 'React Native app + GraphQL server (incl. database )',
-//     repo:
-//       'https://github.com/graphql-boilerplates/react-native-graphql/tree/master/apollo-client/basic',
-//   },
-//   {
-//     name: 'vue-fullstack-basic',
-//     description: 'Vue app + GraphQL server (incl. database )',
-//     repo:
-//       'https://github.com/graphql-boilerplates/vue-fullstack-graphql/tree/master/apollo-client/basic',
-//   },
-]
+  // currently broken
+  //   {
+  //     name: 'react-native-basic',
+  //     description: 'React Native app + GraphQL server (incl. database )',
+  //     repo:
+  //       'https://github.com/graphql-boilerplates/react-native-graphql/tree/master/apollo-client/basic',
+  //   },
+  //   {
+  //     name: 'vue-fullstack-basic',
+  //     description: 'Vue app + GraphQL server (incl. database )',
+  //     repo:
+  //       'https://github.com/graphql-boilerplates/vue-fullstack-graphql/tree/master/apollo-client/basic',
+  //   },
+];
