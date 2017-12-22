@@ -1,6 +1,7 @@
 import * as Zip from 'adm-zip'
 import chalk from 'chalk'
 import commandExists = require('command-exists')
+import * as gh from 'parse-github-url'
 import { spawn } from 'cross-spawn'
 import * as fs from 'fs'
 import { padEnd } from 'lodash'
@@ -28,6 +29,16 @@ export const builder = {
   },
 }
 
+function getGitHubUrl(
+  boilerplate: string
+): string | undefined {
+  const details = gh(boilerplate)
+
+  if (details.host && details.owner && details.repo) {
+    return `https://${details.host}/${details.repo}`
+  }
+}
+
 export async function handler(
   context: Context,
   argv: {
@@ -40,7 +51,7 @@ export async function handler(
 
   if (directory && directory.match(/[A-Z]/)) {
     console.log(
-      `Project/directory name cannot contain uppercase letters: ${directory}`,
+      `Project/directory name cannot contain uppercase letters: ${directory}`
     )
     directory = undefined
   }
@@ -86,6 +97,9 @@ export async function handler(
     )
     if (matchedBoilerplate) {
       boilerplate = matchedBoilerplate.repo
+    } else {
+      // allow shorthand GitHub URLs (e.g. `graphcool/graphcool-server-example`)
+      boilerplate = getGitHubUrl(boilerplate)
     }
   }
 
