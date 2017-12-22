@@ -1,4 +1,5 @@
 import commandExists = require('command-exists')
+import * as gh from 'parse-github-url';
 import { spawn } from 'cross-spawn'
 import * as fs from 'fs'
 import * as path from 'path'
@@ -24,6 +25,16 @@ export const builder = {
     type: 'boolean',
     default: false,
   },
+}
+
+function getGitHubUrl(
+  boilerplate: string
+): string|undefined {
+  const details = gh(boilerplate)
+
+  if (details.host && details.owner && details.repo) {
+    return `https://${details.host}/${details.repo}`
+  }
 }
 
 export async function handler(
@@ -84,6 +95,9 @@ export async function handler(
     )
     if (matchedBoilerplate) {
       boilerplate = matchedBoilerplate.repo
+    } else {
+      // allow shorthand GitHub URLs (e.g. `graphcool/graphcool-server-example`)
+      boilerplate = getGitHubUrl(boilerplate)
     }
   }
 
