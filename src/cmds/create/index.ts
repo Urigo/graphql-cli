@@ -1,12 +1,14 @@
+import * as Zip from 'adm-zip'
+import chalk from 'chalk'
 import commandExists = require('command-exists')
 import * as gh from 'parse-github-url'
 import { spawn } from 'cross-spawn'
 import * as fs from 'fs'
-import * as path from 'path'
-import chalk from 'chalk'
-import * as request from 'request'
-import * as unzip from 'unzip'
 import { padEnd } from 'lodash'
+import * as path from 'path'
+import * as request from 'request'
+import * as tmp from 'tmp'
+
 import { Context } from '../..'
 import { defaultBoilerplates } from './boilerplates'
 import { getZipInfo } from './utils'
@@ -122,31 +124,19 @@ export async function handler(
   // download repo contents
   const zipInfo = getZipInfo(boilerplate!)
   const downloadUrl = zipInfo.url
+  const tmpFile = tmp.fileSync()
 
   console.log(`[graphql create] Downloading boilerplate from ${downloadUrl}...`)
 
   await new Promise(resolve => {
     request(downloadUrl)
-      .pipe(unzip.Parse())
-      // extracts zip content from `zipInfo.path` to `projectPath`
-      .on('entry', entry => {
-        if (entry.type === 'Directory' && entry.path.startsWith(zipInfo.path)) {
-          const relativePath = path.relative(zipInfo.path, entry.path)
-          const targetPath = path.resolve(projectPath, relativePath)
-          if (!fs.existsSync(targetPath)) {
-            fs.mkdirSync(path.resolve(projectPath, relativePath))
-          }
-        }
-        if (entry.type === 'File' && entry.path.startsWith(zipInfo.path)) {
-          const relativePath = path.relative(zipInfo.path, entry.path)
-          const targetPath = path.resolve(projectPath, relativePath)
-          entry.pipe(fs.createWriteStream(targetPath))
-        } else {
-          entry.autodrain()
-        }
-      })
+      .pipe(fs.createWriteStream(tmpFile.name))
       .on('close', resolve)
   })
+
+  const zip = new Zip(tmpFile.name)
+  zip.extractEntryTo(zipInfo.path, projectPath, false)
+  tmpFile.removeCallback()
 
   // run npm/yarn install
   if (!noInstall) {
