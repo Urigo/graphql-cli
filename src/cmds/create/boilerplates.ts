@@ -49,7 +49,7 @@ export const defaultBoilerplates: Boilerplate[] = [
     repo:
       'https://github.com/graphql-boilerplates/react-fullstack-graphql/tree/master/apollo-client/basic',
   },
-// currently broken  
+// currently broken
 //   {
 //     name: 'react-native-basic',
 //     description: 'React Native app + GraphQL server (incl. database )',
