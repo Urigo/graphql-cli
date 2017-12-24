@@ -27,6 +27,10 @@ import chalk from 'chalk'
 import { Context, noEndpointError } from '../'
 
 export async function handler (context: Context, argv: {endpoint: string, watch: boolean, insecure: boolean}) {
+  if (argv.insecure) {
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+  }
+
   if (argv.watch) {
     const spinner = context.spinner
     // FIXME: stop spinner on errors
@@ -66,9 +70,7 @@ export async function handler (context: Context, argv: {endpoint: string, watch:
     const endpoint = config.endpointsExtension.getEndpoint(argv.endpoint)
 
     log(`Downloading introspection from ${chalk.blue(endpoint.url)}`)
-    if (argv.insecure) {
-      process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
-    }
+
     const newSchema = await endpoint.resolveSchema()
 
     let oldSchemaSDL: string | undefined
