@@ -19,7 +19,7 @@ export const describe = 'Bootstrap a new GraphQL project'
 export const builder = {
   boilerplate: {
     alias: 'b',
-    describe: 'URL to boilerplate GitHub repostiory',
+    describe: 'Full URL or repo shorthand (e.g. `owner/repo`) to boilerplate GitHub repository',
     type: 'string',
   },
   'no-install': {
@@ -35,7 +35,8 @@ function getGitHubUrl(
   const details = gh(boilerplate)
 
   if (details.host && details.owner && details.repo) {
-    return `https://${details.host}/${details.repo}`
+    const branch = details.branch ? `/tree/${details.branch}` : ''
+    return `https://${details.host}/${details.repo}${branch}`
   }
 }
 
@@ -170,7 +171,7 @@ export async function handler(
     console.log(`[graphql create] Running boilerplate install script... `)
     const installFunction = require(installPath)
 
-    await installFunction({ project: directory })
+    await installFunction({ context, project: directory })
 
     fs.unlinkSync(installPath)
   }
