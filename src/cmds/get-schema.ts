@@ -1,32 +1,56 @@
-export const command = 'get-schema'
-export const describe = 'Download schema from endpoint'
-export const builder = {
-  watch: {
-    alias: 'w',
-    boolean: true,
-    description: 'watch server for schema changes and update local schema',
-  },
-  endpoint: {
-    alias: 'e',
-    describe: 'Endpoint name',
-    type: 'string',
-  },
-}
-
-import { existsSync } from 'fs'
+import * as fs from 'fs'
 import { relative } from 'path'
-import { printSchema } from 'graphql'
+import { printSchema, GraphQLSchema } from 'graphql'
 import { writeSchema } from 'graphql-config'
 import chalk from 'chalk'
 
-import { Context, noEndpointError } from '../'
+import { Context, noEndpointError, CommandObject } from '..'
+import { Argv, CommandModule, Arguments } from 'yargs'
 
-export async function handler (context: Context, argv: {endpoint: string, watch: boolean}) {
-  if (argv.watch) {
+const command: CommandObject = {
+  command: 'get-schema',
+  describe: 'Download schema from endpoint',
+
+  builder: args =>
+    args
+      .options({
+        watch: {
+          alias: 'w',
+          boolean: true,
+          description: 'watch server for schema changes and update local schema'
+        },
+        endpoint: {
+          alias: 'e',
+          describe: 'Endpoint name',
+          type: 'string'
+        },
+        json: {
+          alias: 'j',
+          describe: 'Output as JSON',
+          type: 'boolean'
+        },
+        output: {
+          alias: 'o',
+          describe: 'Output file name',
+          type: 'string'
+        },
+        console: {
+          alias: 'c',
+          describe: 'Output to console'
+        }
+      })
+      .implies('console', ['--no-output', '--no-watch'])
+      .implies('--no-json', '--no-output'),
+
+  handler: async (context, argv: Arguments) => {
+    if (!argv.watch) {
+      return update(console.log)
+    }
+
     const spinner = context.spinner
     // FIXME: stop spinner on errors
     spinner.start()
-    const spinnerLog = msg => spinner.text = msg
+    const spinnerLog = msg => (spinner.text = msg)
 
     while (true) {
       try {
@@ -49,51 +73,70 @@ export async function handler (context: Context, argv: {endpoint: string, watch:
       spinner.text += ' Next update in 10s.'
       await wait(10000)
     }
-  } else {
-    return update(console.log)
-  }
 
-  async function update (log: (message: string) => void) {
-    const config = context.getProjectConfig()
-    if (!config.endpointsExtension) {
-      throw noEndpointError
-    }
-    const endpoint = config.endpointsExtension.getEndpoint(argv.endpoint)
-
-    log(`Downloading introspection from ${chalk.blue(endpoint.url)}`)
-    const newSchema = await endpoint.resolveSchema()
-
-    let oldSchemaSDL: string | undefined
-    try {
-      oldSchemaSDL = config.getSchemaSDL()
-    } catch (e) {
-      // ignore error if no previous schema file existed
-      if (e.code !== 'ENOENT') {
-        throw e
+    async function update(log: (message: string) => void) {
+      const config = context.getProjectConfig()
+      if (!config.endpointsExtension) {
+        throw noEndpointError
       }
-    }
-    if (oldSchemaSDL) {
-      const newSchemaSDL = printSchema(newSchema)
-      if (newSchemaSDL === oldSchemaSDL) {
-        log(chalk.green('No changes'))
-        return false
+      const endpoint = config.endpointsExtension.getEndpoint(argv.endpoint)
+
+      if (!argv.console) {
+        log(`Downloading introspection from ${chalk.blue(endpoint.url)}`)
       }
+      const newSchemaResult = argv.json ? await endpoint.resolveIntrospection() : await endpoint.resolveSchema()
+
+      let oldSchema: string | undefined
+      if (!argv.console) {
+        try {
+          oldSchema = argv.json ? fs.readFileSync(argv.output, 'utf-8') : config.getSchemaSDL()
+        } catch (e) {
+          // ignore error if no previous schema file existed
+          if (e.code !== 'ENOENT') {
+            throw e
+          }
+        }
+        if (oldSchema) {
+          const newSchema = argv.json ? JSON.stringify(newSchemaResult, null, 2) : printSchema(newSchemaResult as GraphQLSchema)
+          if (newSchema === oldSchema) {
+            log(chalk.green('No changes'))
+            return false
+          }
+        }
+      }
+
+      const schemaPath = argv.json ? argv.output : relative(process.cwd(), config.schemaPath as string)
+      if (argv.console) {
+        console.log(argv.json ? JSON.stringify(newSchemaResult, null, 2) : printSchema(newSchemaResult as GraphQLSchema))
+      } else if (argv.json) {
+        fs.writeFileSync(schemaPath, JSON.stringify(newSchemaResult, null, 2))
+      } else {
+        await writeSchema(config.schemaPath as string, newSchemaResult as GraphQLSchema, {
+          source: endpoint.url,
+          timestamp: new Date().toString()
+        })
+      }
+
+      if (!argv.console) {
+        const existed = fs.existsSync(schemaPath)
+        log(
+          chalk.green(
+            `Schema file was ${existed ? 'updated' : 'created'}: ${chalk.blue(
+              schemaPath
+            )}`
+          )
+        )
+      }
+
+      return true
     }
-
-    const schemaPath = relative(process.cwd(), config.schemaPath as string)
-    await writeSchema(config.schemaPath as string, newSchema, {
-      source: endpoint.url,
-      timestamp: (new Date()).toString(),
-    })
-
-    const existed = existsSync(schemaPath)
-    log(chalk.green(`Schema file was ${existed ? 'updated' : 'created'}: ${chalk.blue(schemaPath)}`))
-    return true
   }
 }
 
-function wait (interval: number): Promise<void> {
+function wait(interval: number): Promise<void> {
   return new Promise(resolve => {
     setTimeout(() => resolve(), interval)
   })
 }
+
+export = command
