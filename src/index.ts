@@ -90,7 +90,8 @@ function wrapCommand(commandObject: CommandObject): CommandModule {
           ),
         )
       }
-      // FIXME: set non-zero exit code
+
+      process.exitCode = 1
     })
   }
   return commandObject as CommandModule
