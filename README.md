@@ -75,6 +75,7 @@ graphql completion >> ~/.bash_profile
 - [`graphql-cli-codegen`](https://github.com/rricard/graphql-cli-codegen) - Generates type annotation from your GraphQL queries using [`apollo-codegen`](https://github.com/apollographql/apollo-codegen).
 - [`graphql-cli-load`](https://github.com/neo4j-graphql/graphql-cli-load) - Easy batched loading of JSON/CSV files using your mutations, by matching input fields to mutation parameters from the schema.
 - [`graphql-cli-bundle`](https://github.com/supergraphql/graphql-cli-bundle) - Bundle schemas with imports into a single schema file using [`graphql-import`](https://github.com/graphcool/graphql-import)
+- [`graphql-cli-binding`](https://github.com/supergraphql/graphql-cli-binding) - Generate static binding files for query delegation using [`graphql-static-binding`](https://github.com/supergraphql/graphql-static-binding)
 
 Do you want to create your own plugin? [Here is a simple example.](plugin-example)
 
