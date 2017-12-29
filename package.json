@@ -1,12 +1,12 @@
 {
   "name": "graphql-cli",
+  "version": "0.0.0-semantic-release",
   "main": "dist/index.js",
   "bin": {
     "graphql": "dist/bin.js",
     "gql": "dist/bin.js"
   },
   "typings": "./dist/index.d.ts",
-  "version": "2.2.0",
   "description": "GraphQL CLI",
   "files": [
     "LICENSE",
@@ -22,13 +22,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/graphcool/graphql-cli.git"
+    "url": "https://github.com/graphql-cli/graphql-cli.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/graphcool/graphql-cli/issues"
+    "url": "https://github.com/graphql-cli/graphql-cli/issues"
   },
-  "homepage": "https://github.com/graphcool/graphql-cli#readme",
+  "homepage": "https://github.com/graphql-cli/graphql-cli#readme",
   "devDependencies": {
     "@types/express": "4.11.0",
     "@types/graphql": "0.11.7",
