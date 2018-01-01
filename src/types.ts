@@ -1,20 +1,19 @@
 import { PromptModule } from 'inquirer'
 import { GraphQLProjectConfig, GraphQLConfig } from 'graphql-config'
-import * as ora from 'ora'
-import { Argv, CommandBuilder } from 'yargs'
+import { CommandBuilder } from 'yargs'
 
 import { Context } from './index'
 
 export interface CommandObject {
-  command: string,
-  describe?: string,
+  command: string
+  describe?: string
   handler: (context: Context, argv: any) => any
   builder?: CommandBuilder
 }
 
 export interface Context {
-  prompt: PromptModule,
+  prompt: PromptModule
   spinner: any
-  getProjectConfig: () => GraphQLProjectConfig,
-  getConfig: () => GraphQLConfig,
+  getProjectConfig: () => Promise<GraphQLProjectConfig>
+  getConfig: () => Promise<GraphQLConfig>
 }

@@ -4,18 +4,22 @@ export const desc = 'Show source & timestamp of local schema'
 import * as _ from 'lodash'
 import chalk from 'chalk'
 import { relative } from 'path'
-import { existsSync, fstatSync } from 'fs'
+import { existsSync } from 'fs'
 import { getSchemaExtensions } from 'graphql-config'
 import { Context } from '../'
 
-export async function handler (context: Context) {
-  const schemaPath = context.getProjectConfig().schemaPath as string
+export async function handler(context: Context) {
+  const { schemaPath } = await context.getProjectConfig()
+  if (!schemaPath) {
+    throw new Error('No `schemaPath` found in GraphQL config file.')
+  }
+
   const relativeSchemaPath = relative(process.cwd(), schemaPath)
 
   if (!existsSync(schemaPath)) {
     console.log(
-      chalk.yellow('Schema file doesn\'t exist at ') +
-      chalk.blue(relativeSchemaPath),
+      chalk.yellow("Schema file doesn't exist at ") +
+        chalk.blue(relativeSchemaPath),
     )
     return
   }
@@ -24,7 +28,10 @@ export async function handler (context: Context) {
     schemaPath: relativeSchemaPath,
     ...getSchemaExtensions(schemaPath),
   }
-  const maxLength = _(extensions).keys().map('length').max()
+  const maxLength = _(extensions)
+    .keys()
+    .map('length')
+    .max()
 
   for (let name in extensions) {
     const padName = _.padStart(name, maxLength)

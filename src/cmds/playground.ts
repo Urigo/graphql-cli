@@ -45,7 +45,6 @@ export async function handler(
   const localPlaygroundPath = `/Applications/GraphQL\ Playground.app/Contents/MacOS/GraphQL\ Playground`
 
   if (fs.existsSync(localPlaygroundPath) && !argv.web) {
-    const config = context.getConfig().config
     const envPath = path.join(os.tmpdir(), `${randomString()}.json`)
     fs.writeFileSync(envPath, JSON.stringify(process.env))
     const url = `graphql-playground://?cwd=${process.cwd()}&envPath=${envPath}`
@@ -53,11 +52,11 @@ export async function handler(
   } else {
     const app = express()
 
-    const config = context.getConfig()
+    const config = await context.getConfig()
     const projects = config.getProjects()
 
     if (projects === undefined) {
-      const projectConfig = context.getProjectConfig()
+      const projectConfig = await context.getProjectConfig()
       if (!projectConfig.endpointsExtension) {
         throw noEndpointError
       }

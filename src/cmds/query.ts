@@ -2,7 +2,6 @@ export const command = 'query <file>'
 export const describe = 'Run query/mutation'
 
 import * as fs from 'fs'
-import { Argv } from 'yargs'
 import fetch from 'node-fetch'
 import { parse, OperationDefinitionNode } from 'graphql'
 import { Context, noEndpointError } from '../'
@@ -30,7 +29,7 @@ export async function handler(
   context: Context,
   argv: { file: string; operation: string; endpoint: string; all: boolean },
 ) {
-  const config = context.getProjectConfig()
+  const config = await context.getProjectConfig()
   if (!config.endpointsExtension) {
     throw noEndpointError
   }

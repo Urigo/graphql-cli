@@ -11,8 +11,8 @@ export const builder = {
 import chalk from 'chalk'
 import { Context, noEndpointError } from '../'
 
-export async function handler (context: Context, argv: {endpoint: string}) {
-  const config = context.getProjectConfig()
+export async function handler(context: Context, argv: { endpoint: string }) {
+  const config = await context.getProjectConfig()
   if (!config.endpointsExtension) {
     throw noEndpointError
   }

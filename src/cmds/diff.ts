@@ -27,7 +27,7 @@ export const builder = yargs => {
 }
 
 export async function handler (context: Context, argv: {endpoint: string, target: string}) {
-  const config = context.getProjectConfig()
+  const config = await context.getProjectConfig()
   if (!config.endpointsExtension) {
     throw noEndpointError
   }

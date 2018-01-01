@@ -5,7 +5,7 @@ import { writeSchema } from 'graphql-config'
 import chalk from 'chalk'
 
 import { Context, noEndpointError, CommandObject } from '..'
-import { Argv, CommandModule, Arguments } from 'yargs'
+import { Arguments } from 'yargs'
 
 const command: CommandObject = {
   command: 'get-schema',
@@ -17,32 +17,33 @@ const command: CommandObject = {
         watch: {
           alias: 'w',
           boolean: true,
-          description: 'watch server for schema changes and update local schema'
+          description:
+            'watch server for schema changes and update local schema',
         },
         endpoint: {
           alias: 'e',
           describe: 'Endpoint name',
-          type: 'string'
+          type: 'string',
         },
         json: {
           alias: 'j',
           describe: 'Output as JSON',
-          type: 'boolean'
+          type: 'boolean',
         },
         output: {
           alias: 'o',
           describe: 'Output file name',
-          type: 'string'
+          type: 'string',
         },
         console: {
           alias: 'c',
-          describe: 'Output to console'
+          describe: 'Output to console',
         },
         insecure: {
           alias: 'i',
           describe: 'Allow insecure (self-signed) certificates',
-          type: 'boolean'
-        }
+          type: 'boolean',
+        },
       })
       .implies('console', ['--no-output', '--no-watch'])
       .implies('--no-json', '--no-output'),
@@ -84,11 +85,15 @@ const command: CommandObject = {
         await wait(10000)
       }
     }
-  }
+  },
 }
 
-async function update(context: Context, argv: Arguments, log: (message: string) => void) {
-  const config = context.getProjectConfig()
+async function update(
+  context: Context,
+  argv: Arguments,
+  log: (message: string) => void,
+) {
+  const config = await context.getProjectConfig()
   if (!config.endpointsExtension) {
     throw noEndpointError
   }
@@ -131,7 +136,7 @@ async function update(context: Context, argv: Arguments, log: (message: string) 
     console.log(
       argv.json
         ? JSON.stringify(newSchemaResult, null, 2)
-        : printSchema(newSchemaResult as GraphQLSchema)
+        : printSchema(newSchemaResult as GraphQLSchema),
     )
   } else if (argv.json) {
     fs.writeFileSync(schemaPath, JSON.stringify(newSchemaResult, null, 2))
@@ -141,8 +146,8 @@ async function update(context: Context, argv: Arguments, log: (message: string) 
       newSchemaResult as GraphQLSchema,
       {
         source: endpoint.url,
-        timestamp: new Date().toString()
-      }
+        timestamp: new Date().toString(),
+      },
     )
   }
 
@@ -151,9 +156,9 @@ async function update(context: Context, argv: Arguments, log: (message: string) 
     log(
       chalk.green(
         `Schema file was ${existed ? 'updated' : 'created'}: ${chalk.blue(
-          schemaPath
-        )}`
-      )
+          schemaPath,
+        )}`,
+      ),
     )
   }
 

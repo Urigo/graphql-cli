@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "preserveConstEnums": true,
+    "noUnusedLocals": true,
     "strictNullChecks": true,
     "sourceMap": true,
     "target": "es5",

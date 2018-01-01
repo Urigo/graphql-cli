@@ -6,10 +6,10 @@ import { addEndpoint } from './init'
 import { difference } from 'lodash'
 import { Context } from '../'
 
-export async function handler (context: Context) {
+export async function handler(context: Context) {
   const { prompt, getConfig, getProjectConfig } = context
 
-  const projectConfig = getProjectConfig()
+  const projectConfig = await getProjectConfig()
   const extensionEndpoints = projectConfig.extensions.endpoints || {}
 
   const oldEndpoints = Object.keys(extensionEndpoints)
@@ -20,7 +20,7 @@ export async function handler (context: Context) {
   const newEndpoints = difference(Object.keys(extensionEndpoints), oldEndpoints)
 
   if (newEndpoints.length === 0) {
-    console.log(chalk.yellow('You haven\'t added any endpoint'))
+    console.log(chalk.yellow("You haven't added any endpoint"))
     return
   }
 
@@ -41,7 +41,8 @@ export async function handler (context: Context) {
   })
 
   if (save) {
-    getConfig().saveConfig(newConfig, projectConfig.projectName)
+    const config = await getConfig()
+    config.saveConfig(newConfig, projectConfig.projectName)
   } else {
     console.log('Aborted.')
   }

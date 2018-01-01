@@ -1,23 +1,22 @@
-export * from './types'
-export * from './utils'
-
 import { join as joinPaths } from 'path'
 import { existsSync, readdirSync } from 'fs'
-
-import { CommandObject } from './types'
-import { CommandModule, Argv } from 'yargs'
+import { CommandObject, Context } from './types'
+import { CommandModule } from 'yargs'
 import * as _ from 'lodash'
 import * as ora from 'ora'
 import * as inquirer from 'inquirer'
 import * as npmPaths from 'npm-paths'
+import * as dotenv from 'dotenv'
 import chalk from 'chalk'
+import { patchEndpointsToConfig } from 'graphql-config-extension-graphcool'
 import {
   getGraphQLProjectConfig,
   getGraphQLConfig,
   ConfigNotFoundError,
 } from 'graphql-config'
 
-import * as dotenv from 'dotenv'
+export * from './types'
+export * from './utils'
 
 function listPluggings(dir: string): string[] {
   return readdirSync(dir)
@@ -51,20 +50,24 @@ export function installCommands() {
 function wrapCommand(commandObject: CommandObject): CommandModule {
   const originalHandler = commandObject.handler
   commandObject.handler = argv => {
+    // load env vars from .env file
     const envPath = argv['dotenv'] || '.env'
     dotenv.config({ path: envPath })
-    const context = {
+
+    // prepare context object
+    const context: Context = {
       prompt: inquirer.createPromptModule(),
       spinner: ora(),
-      getProjectConfig() {
-        if (argv['project']) {
-          return getGraphQLProjectConfig(process.cwd(), argv['project'])
-        } else {
-          return getGraphQLProjectConfig()
-        }
+      async getProjectConfig() {
+        const config = argv['project']
+          ? getGraphQLProjectConfig(process.cwd(), argv['project'])
+          : getGraphQLProjectConfig(process.cwd())
+
+        return patchEndpointsToConfig(config, process.cwd())
       },
-      getConfig() {
-        return getGraphQLConfig()
+      async getConfig() {
+        const config = getGraphQLConfig(process.cwd())
+        return patchEndpointsToConfig(config)
       },
     }
 
