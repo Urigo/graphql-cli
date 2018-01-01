@@ -1,6 +1,6 @@
 # graphql-cli
 
-[![npm version](https://badge.fury.io/js/graphql-cli.svg)](https://badge.fury.io/js/graphql-cli) [![Build Status](https://travis-ci.org/graphql-cli/graphql-cli.svg?branch=master)](https://travis-ci.org/graphql-cli/graphql-cli)
+[![npm version](https://badge.fury.io/js/graphql-cli.svg)](https://badge.fury.io/js/graphql-cli) [![CircleCI](https://circleci.com/gh/graphql-cli/graphql-cli.svg?style=shield)](https://circleci.com/gh/graphql-cli/graphql-cli)
 
 📟 Command line tool for common GraphQL development workflows
 
