@@ -28,7 +28,7 @@ installCommands()
   .alias('h', 'help')
   .alias('v', 'version')
   .epilogue(
-    'For more information go to https://github.com/graphcool/graphql-cli',
+    'For more information go to https://github.com/graphql-cli/graphql-cli',
   )
   .fail((msg, err, yargs) => {
     if (err) throw err // preserve stack

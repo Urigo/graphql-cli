@@ -62,4 +62,10 @@ export const defaultBoilerplates: Boilerplate[] = [
 //     repo:
 //       'https://github.com/graphql-boilerplates/vue-fullstack-graphql/tree/master/apollo-client/basic',
 //   },
+//   {
+//     name: 'angular-fullstack-basic',
+//     description: 'Vue app + GraphQL server (incl. database )',
+//     repo:
+//       'https://github.com/graphql-boilerplates/vue-fullstack-graphql/tree/master/apollo-client/basic',
+//   },
 ]

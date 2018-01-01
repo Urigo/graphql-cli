@@ -14,7 +14,7 @@ You can see it in action here:
 
 ![demo](http://imgur.com/0kuqZFY.gif)
 
-> Note: The `graphql-cli` has a different use case than the [Graphcool CLI](https://docs-next.graph.cool/reference/graphcool-cli/overview-zboghez5go). Read more about the differences [here](https://docs-next.graph.cool/faq/other-reob2ohph7/#whats-the-difference-between-the-graphcool-cli-and-the-graphql-cli).
+> Note: The `graphql-cli` has a different use case than the [Graphcool CLI](https://www.graph.cool/docs/reference/graphcool-cli/overview-zboghez5go/). Graphcool CLI is specific to the Graphcool Framework, while `graphql-cli` can be used with any GraphQL project.
 
 ## Install
 
