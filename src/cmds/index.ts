@@ -9,4 +9,5 @@ module.exports = [
   require('./diff'),
   require('./playground'),
   require('./lint'),
+  require('graphql-cli-prepare'),
 ]
