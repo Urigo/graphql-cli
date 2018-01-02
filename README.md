@@ -30,17 +30,22 @@ npm install -g graphql-cli
 Usage: graphql [command]
 
 Commands:
-  init           Initial config setup
-  add-endpoint   Add new endpoint to .graphqlconfig
-  get-schema     Download schema from endpoint
-  schema-status  Show source and timestamp of the local schema file
-  ping           Ping GraphQL endpoint
-  query <file>   Run query/mutation
-  diff           Show a diff between two schemas
-  playground     Open interactive GraphQL Playground
-  lint           Check schema for linting errors
+  graphql create [directory]             Bootstrap a new GraphQL project
+  graphql add-endpoint                   Add new endpoint to .graphqlconfig
+  graphql get-schema                     Download schema from endpoint
+  graphql schema-status                  Show source & timestamp of local schema
+  graphql ping                           Ping GraphQL endpoint
+  graphql query <file>                   Run query/mutation
+  graphql diff                           Show a diff between two schemas
+  graphql playground                     Open interactive GraphQL Playground
+  graphql lint                           Check schema for linting errors
+  graphql prepare                        Bundle schemas and generate bindings
+  graphql codegen [--target] [--output]  Generates apollo-codegen
+                                         code/annotations from your
+                                         .graphqlconfig
 
 Options:
+  --dotenv       Path to .env file                                      [string]
   -p, --project  Project name                                           [string]
   -h, --help     Show help                                             [boolean]
   -v, --version  Show version number                                   [boolean]
@@ -48,9 +53,11 @@ Options:
 Examples:
   graphql init                 Interactively setup .graphqlconfig file
   graphql get-schema -e dev    Update local schema to match "dev" endpoint
-  graphql diff -e dev -t prod  Show schema diff between "dev" and "prod" endpoints
+  graphql diff -e dev -t prod  Show schema diff between "dev" and "prod"
+                               endpoints
 
 For more information go to https://github.com/graphql-cli/graphql-cli
+
 ```
 
 ### Initial setup and schema download
