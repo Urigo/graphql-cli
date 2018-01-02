@@ -1217,6 +1217,17 @@ crypto-random-string@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-1.0.0.tgz#a230f64f568310e1498009940790ec99545bca7e"
 
+cucumber-html-reporter@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/cucumber-html-reporter/-/cucumber-html-reporter-3.0.4.tgz#1be0dee83f30a2f4719207859a5440ce082ffadd"
+  dependencies:
+    find "^0.2.7"
+    fs-extra "^3.0.1"
+    js-base64 "^2.3.2"
+    jsonfile "^3.0.0"
+    lodash "^4.17.2"
+    open "0.0.5"
+
 currently-unhandled@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/currently-unhandled/-/currently-unhandled-0.4.1.tgz#988df33feab191ef799a61369dd76c17adf957ea"
@@ -1605,6 +1616,12 @@ find-up@^2.0.0, find-up@^2.1.0:
   dependencies:
     locate-path "^2.0.0"
 
+find@^0.2.7:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/find/-/find-0.2.7.tgz#7afbd00f8f08c5b622f97cda6f714173d547bb3f"
+  dependencies:
+    traverse-chain "~0.1.0"
+
 fn-name@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/fn-name/-/fn-name-2.0.1.tgz#5214d7537a4d06a4a301c0cc262feb84188002e7"
@@ -1653,6 +1670,14 @@ fs-extra@5.0.0:
   dependencies:
     graceful-fs "^4.1.2"
     jsonfile "^4.0.0"
+    universalify "^0.1.0"
+
+fs-extra@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-3.0.1.tgz#3794f378c58b342ea7dbbb23095109c4b3b62291"
+  dependencies:
+    graceful-fs "^4.1.2"
+    jsonfile "^3.0.0"
     universalify "^0.1.0"
 
 fs-extra@^4.0.3:
@@ -1835,14 +1860,14 @@ graphcool-yml@^0.1.7:
     scuid "^1.0.2"
     yaml-ast-parser "^0.0.40"
 
-graphql-cli-prepare@1.4.2:
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/graphql-cli-prepare/-/graphql-cli-prepare-1.4.2.tgz#8115141d027bc80cb14819ae3c898eee3dc4bbd0"
+graphql-cli-prepare@1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/graphql-cli-prepare/-/graphql-cli-prepare-1.4.3.tgz#8a2205a4cbc0941fd8f7819b5d52ff110bc76513"
   dependencies:
     chalk "2.3.0"
     fs-extra "5.0.0"
     graphql-import "0.1.9"
-    graphql-static-binding "0.4.0"
+    graphql-static-binding "0.5.0"
     lodash "4.17.4"
 
 graphql-config-extension-graphcool@0.3.1:
@@ -1919,10 +1944,11 @@ graphql-schema-linter@0.0.25:
     graphql "^0.10.1"
     graphql-config "^1.0.0"
 
-graphql-static-binding@0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/graphql-static-binding/-/graphql-static-binding-0.4.0.tgz#1054356fb1889727b2b01ebe060169eab12f80bd"
+graphql-static-binding@0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/graphql-static-binding/-/graphql-static-binding-0.5.0.tgz#2aecdcd289800bb60b95f7785ec42ab6117eef6b"
   dependencies:
+    cucumber-html-reporter "^3.0.4"
     graphql "0.12.3"
 
 graphql@0.12.3, graphql@^0.12.3:
@@ -2357,6 +2383,10 @@ iterall@1.1.3, iterall@^1.1.0:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.1.3.tgz#1cbbff96204056dde6656e2ed2e2226d0e6d72c9"
 
+js-base64@^2.3.2:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.0.tgz#9e566fee624751a1d720c966cd6226d29d4025aa"
+
 js-string-escape@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/js-string-escape/-/js-string-escape-1.0.1.tgz#e2625badbc0d67c7533e9edc1068c587ae4137ef"
@@ -2409,6 +2439,12 @@ json-stringify-safe@~5.0.1:
 json5@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/json5/-/json5-0.5.1.tgz#1eade7acc012034ad84e2396767ead9fa5495821"
+
+jsonfile@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/jsonfile/-/jsonfile-3.0.1.tgz#a5ecc6f65f53f662c4415c7675a0331d0992ec66"
+  optionalDependencies:
+    graceful-fs "^4.1.6"
 
 jsonfile@^4.0.0:
   version "4.0.0"
@@ -2586,7 +2622,7 @@ lodash.once@^4.0.0:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.once/-/lodash.once-4.1.1.tgz#0dd3971213c7c56df880977d504c88fb471a97ac"
 
-lodash@4.17.4, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.6.1:
+lodash@4.17.4, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.6.1:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -2888,6 +2924,10 @@ onetime@^2.0.0:
   resolved "https://registry.yarnpkg.com/onetime/-/onetime-2.0.1.tgz#067428230fd67443b2794b22bba528b6867962d4"
   dependencies:
     mimic-fn "^1.0.0"
+
+open@0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/open/-/open-0.0.5.tgz#42c3e18ec95466b6bf0dc42f3a2945c3f0cad8fc"
 
 opn@^5.1.0:
   version "5.1.0"
@@ -3812,6 +3852,10 @@ tough-cookie@~2.3.0, tough-cookie@~2.3.3:
   resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.3.3.tgz#0b618a5565b6dea90bf3425d04d55edc475a7561"
   dependencies:
     punycode "^1.4.1"
+
+traverse-chain@~0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/traverse-chain/-/traverse-chain-0.1.0.tgz#61dbc2d53b69ff6091a12a168fd7d433107e40f1"
 
 trim-newlines@^1.0.0:
   version "1.0.0"
