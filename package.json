@@ -16,7 +16,10 @@
   "scripts": {
     "prepare": "npm run build",
     "build": "rm -rf dist && tsc -d",
-    "test": "npm run build && npm run lint && ava --serial",
+    "pretest": "npm run build && npm run lint",
+    "test": "ava --serial",
+    "prepack": "npm run build",
+    "pack": "pkg dist/bin.js -c package.json -o packed/graphql --options no-warnings",
     "lint": "tslint {src,test}/**/*.ts",
     "start": "ts-node src/bin.ts"
   },
@@ -29,6 +32,24 @@
     "url": "https://github.com/graphql-cli/graphql-cli/issues"
   },
   "homepage": "https://github.com/graphql-cli/graphql-cli#readme",
+  "pkg": {
+    "scripts": "dist/**/*.js",
+    "targets": [
+      "node9-alpine-x64",
+      "node9-linux-x64",
+      "node9-macos-x64",
+      "node9-win-x64"
+    ]
+  },
+  "release": {
+    "publish": [
+      "@semantic-release/npm",
+      {
+        "path": "@semantic-release/github",
+        "assets": "packed/*"
+      }
+    ]
+  },
   "devDependencies": {
     "@types/express": "4.11.0",
     "@types/graphql": "0.11.7",
@@ -40,6 +61,7 @@
     "@types/request": "2.0.9",
     "@types/yargs": "10.0.0",
     "ava": "0.24.0",
+    "pkg": "4.3.0-beta.5",
     "ts-node": "4.1.0",
     "tslint": "5.8.0",
     "tslint-config-standard": "7.0.0",
