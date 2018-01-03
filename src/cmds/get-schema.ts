@@ -49,12 +49,20 @@ const command: CommandObject = {
           alias: 'i',
           describe: 'Allow insecure (self-signed) certificates',
           type: 'boolean'
+        },
+        all: {
+          describe: 'Get schema for all projects and all endpoints',
+          type: 'boolean'
         }
       })
       .implies('console', ['--no-output', '--no-watch'])
-      .implies('--no-json', '--no-output'),
+      .implies('--no-json', '--no-output')
+      .implies('all', ['--no-output', '--no-endpoint', '--no-project']),
 
   handler: async (context: Context, argv: Arguments) => {
+    if (argv.all) {
+      argv.project = argv.endpoint = '*'
+    }
     const spinner = context.spinner
 
     start = text => {
