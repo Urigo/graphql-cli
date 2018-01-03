@@ -1926,9 +1926,9 @@ graphcool-yml@^0.1.7:
     scuid "^1.0.2"
     yaml-ast-parser "^0.0.40"
 
-graphql-cli-prepare@1.4.3:
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/graphql-cli-prepare/-/graphql-cli-prepare-1.4.3.tgz#8a2205a4cbc0941fd8f7819b5d52ff110bc76513"
+graphql-cli-prepare@1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/graphql-cli-prepare/-/graphql-cli-prepare-1.4.4.tgz#16284b2d3cf8c4e0c4c86f177541a038522330cd"
   dependencies:
     chalk "2.3.0"
     fs-extra "5.0.0"
