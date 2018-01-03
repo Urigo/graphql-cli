@@ -4,7 +4,7 @@ import { relative } from 'path'
 import { printSchema, GraphQLSchema } from 'graphql'
 import { writeSchema, GraphQLConfig, GraphQLProjectConfig, GraphQLEndpoint } from 'graphql-config'
 import chalk from 'chalk'
-
+import * as isUrl from 'is-url-superb'
 import { Context, noEndpointError, CommandObject } from '..'
 import { Arguments } from 'yargs'
 import { merge } from 'lodash'
@@ -27,7 +27,7 @@ const command: CommandObject = {
         },
         endpoint: {
           alias: 'e',
-          describe: 'Endpoint name',
+          describe: 'Endpoint name or URL',
           type: 'string'
         },
         json: {
@@ -53,11 +53,15 @@ const command: CommandObject = {
         all: {
           describe: 'Get schema for all projects and all endpoints',
           type: 'boolean'
+        },
+        header: {
+          describe: 'Header to use for downloading (with endpoint URL)',
+          type: 'string'
         }
       })
       .implies('console', ['--no-output', '--no-watch'])
-      .implies('--no-json', '--no-output')
-      .implies('all', ['--no-output', '--no-endpoint', '--no-project']),
+      .implies('all', ['--no-output', '--no-endpoint', '--no-project'])
+      .implies('--no-endpoint', '--no-header'),
 
   handler: async (context: Context, argv: Arguments) => {
     if (argv.all) {
@@ -123,6 +127,15 @@ async function updateWrapper(context: Context, argv: Arguments) {
 }
 
 async function update(context: Context, argv: Arguments) {
+  if (isUrl(argv.endpoint)) {
+    if (argv.output || argv.console) {
+      await downloadFromEndpointUrl(argv)
+      return
+    } else {
+      emitter.emit('error', new Error('No output file specified!'))
+    }
+  }
+
   const projects = await getProjectConfig(context, argv)
 
   for (const projectName in projects) {
@@ -139,8 +152,21 @@ async function update(context: Context, argv: Arguments) {
   }
 }
 
+async function downloadFromEndpointUrl(argv: Arguments) {
+
+  const endpointHeaders = {}
+  if (argv.header) {
+    const headers = Array.isArray(argv.header) ? argv.header : [argv.header]
+    Object.assign(endpointHeaders, ...headers.map(h => ({ [h.split('=')[0]]: h.split('=')[1] })))
+  }
+  console.log({ url: argv.endpoint, headers: endpointHeaders })
+  const endpoint = new GraphQLEndpoint({ url: argv.endpoint, headers: endpointHeaders })
+
+  await updateSingleProjectEndpoint(undefined, endpoint, 'unnamed', argv)
+}
+
 async function updateSingleProjectEndpoint(
-  config: GraphQLProjectConfig,
+  config: GraphQLProjectConfig | undefined,
   endpoint: GraphQLEndpoint,
   endpointName: string,
   argv: Arguments
@@ -150,16 +176,18 @@ async function updateSingleProjectEndpoint(
     ? await endpoint.resolveIntrospection()
     : await endpoint.resolveSchema()
 
+  let oldSchema: string | undefined
   if (!argv.console) {
-    let oldSchema: string | undefined
+
     try {
-      oldSchema = argv.json ? fs.readFileSync(argv.output, 'utf-8') : config.getSchemaSDL()
+      oldSchema = argv.output ? fs.readFileSync(argv.output, 'utf-8') : config!.getSchemaSDL()
     } catch (e) {
       // ignore error if no previous schema file existed
       if (e.code !== 'ENOENT') {
         throw e
       }
     }
+
     if (oldSchema) {
       const newSchema = argv.json
         ? JSON.stringify(newSchemaResult, null, 2)
@@ -167,7 +195,7 @@ async function updateSingleProjectEndpoint(
       if (newSchema === oldSchema) {
         log(
           chalk.green(
-            `${config.projectName && config.projectName !== 'unnamed' ? `project ${chalk.blue(config.projectName)} - ` : ''}${
+            `${config && config.projectName && config.projectName !== 'unnamed' ? `project ${chalk.blue(config.projectName)} - ` : ''}${
               endpointName && endpointName !== 'unnamed' ? `endpoint ${chalk.blue(endpointName)} - ` : ''
             }No changes`
           )
@@ -178,7 +206,7 @@ async function updateSingleProjectEndpoint(
     }
   }
 
-  const schemaPath = argv.json ? argv.output : relative(process.cwd(), config.schemaPath as string)
+  let schemaPath
   if (argv.console) {
     console.log(
       argv.json
@@ -186,18 +214,21 @@ async function updateSingleProjectEndpoint(
         : printSchema(newSchemaResult as GraphQLSchema)
     )
   } else if (argv.json) {
-    fs.writeFileSync(schemaPath, JSON.stringify(newSchemaResult, null, 2))
+    schemaPath = argv.output
+    fs.writeFileSync(argv.output, JSON.stringify(newSchemaResult, null, 2))
   } else {
-    await writeSchema(config.schemaPath as string, newSchemaResult as GraphQLSchema, {
+    schemaPath = argv.output ? argv.output : config!.schemaPath
+    await writeSchema(schemaPath as string, newSchemaResult as GraphQLSchema, {
       source: endpoint.url,
       timestamp: new Date().toString()
     })
   }
 
-  const existed = fs.existsSync(schemaPath)
-  log(chalk.green(`${config.projectName && config.projectName !== 'unnamed' ? `project ${chalk.blue(config.projectName)} - ` : ''}${
-    endpointName && endpointName !== 'unnamed' ? `endpoint ${chalk.blue(endpointName)} - ` : ''
-  }Schema file was ${existed ? 'updated' : 'created'}: ${chalk.blue(schemaPath)}`))
+  if (schemaPath) {
+    log(chalk.green(`${config && config.projectName && config.projectName !== 'unnamed' ? `project ${chalk.blue(config.projectName)} - ` : ''}${
+      endpointName && endpointName !== 'unnamed' ? `endpoint ${chalk.blue(endpointName)} - ` : ''
+    }Schema file was ${oldSchema ? 'updated' : 'created'}: ${chalk.blue(schemaPath)}`))
+  }
   emitter.emit('checked')
 }
 
