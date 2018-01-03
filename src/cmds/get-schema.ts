@@ -167,9 +167,9 @@ async function updateSingleProjectEndpoint(
       if (newSchema === oldSchema) {
         log(
           chalk.green(
-            `No changes${config.projectName && config.projectName !== 'unnamed' ? ` - project ${chalk.white(config.projectName)}` : ''}${
-              endpointName && endpointName !== 'unnamed' ? ` - endpoint ${chalk.white(endpointName)}` : ''
-            }`
+            `${config.projectName && config.projectName !== 'unnamed' ? `project ${chalk.blue(config.projectName)} - ` : ''}${
+              endpointName && endpointName !== 'unnamed' ? `endpoint ${chalk.blue(endpointName)} - ` : ''
+            }No changes`
           )
         )
         emitter.emit('checked')
@@ -195,7 +195,9 @@ async function updateSingleProjectEndpoint(
   }
 
   const existed = fs.existsSync(schemaPath)
-  log(chalk.green(`Schema file was ${existed ? 'updated' : 'created'}: ${chalk.blue(schemaPath)}`))
+  log(chalk.green(`${config.projectName && config.projectName !== 'unnamed' ? `project ${chalk.blue(config.projectName)} - ` : ''}${
+    endpointName && endpointName !== 'unnamed' ? `endpoint ${chalk.blue(endpointName)} - ` : ''
+  }Schema file was ${existed ? 'updated' : 'created'}: ${chalk.blue(schemaPath)}`))
   emitter.emit('checked')
 }
 
