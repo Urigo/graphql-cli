@@ -222,9 +222,9 @@
   dependencies:
     "@types/node" "*"
 
-"@types/yargs@10.0.0":
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-10.0.0.tgz#b93aa88155fe5106cddf3f934517411ca2a45939"
+"@types/yargs@10.0.1":
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-10.0.1.tgz#f986e2b5d37f1fb8c13c0ed15f45d01bcc3fb3d6"
 
 abbrev@1:
   version "1.1.1"
