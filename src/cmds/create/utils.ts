@@ -8,7 +8,7 @@ export function getZipInfo(boilerplate: string): ZipInfo {
   let branch = 'master'
   let subDir = ''
 
-  const branchMatches = boilerplate.match(/^(.*)\/tree\/([a-zA-Z-_]*)\/?(.*)$/)
+  const branchMatches = boilerplate.match(/^(.*)\/tree\/([a-zA-Z-_0-9]*)\/?(.*)$/)
   if (branchMatches) {
     baseUrl = branchMatches[1]
     branch = branchMatches[2]

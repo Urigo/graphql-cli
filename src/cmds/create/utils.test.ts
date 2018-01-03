@@ -15,6 +15,13 @@ test('branch', t => {
   })
 })
 
+test('branch', t => {
+  t.deepEqual(getZipInfo('https://github.com/graphcool/boilerplate/tree/new-feature-3'), {
+    url: 'https://github.com/graphcool/boilerplate/archive/new-feature-3.zip',
+    path: 'boilerplate-new-feature-3/',
+  })
+})
+
 test('sub dir', t => {
   t.deepEqual(
     getZipInfo('https://github.com/graphcool/boilerplate/tree/dev/src/tests'),
