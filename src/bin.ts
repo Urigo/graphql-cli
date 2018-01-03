@@ -7,6 +7,7 @@ let showedHelp = false
 
 installCommands()
   .demandCommand(1, 1, 'Missing command name')
+  .env('GRAPHQL_CONFIG')
   .strict()
   .help()
   .completion('completion', false)
