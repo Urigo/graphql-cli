@@ -1903,9 +1903,32 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
+graphcool-json-schema@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/graphcool-json-schema/-/graphcool-json-schema-1.2.0.tgz#6c7a9de36a130c5048fa8d9817dff2b5a88bc226"
+
 graphcool-json-schema@^1.0.1-beta.5:
   version "1.0.1-beta.8"
   resolved "https://registry.yarnpkg.com/graphcool-json-schema/-/graphcool-json-schema-1.0.1-beta.8.tgz#b85ce5ee5b1998585d206f3c67570e73b120c78a"
+
+graphcool-yml@0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/graphcool-yml/-/graphcool-yml-0.2.1.tgz#3f5b53c64e917550830a62d3a87bb64ee3ce3e66"
+  dependencies:
+    ajv "^5.5.1"
+    bluebird "^3.5.1"
+    debug "^3.1.0"
+    dotenv "^4.0.0"
+    fs-extra "^4.0.3"
+    graphcool-json-schema "1.2.0"
+    isomorphic-fetch "^2.2.1"
+    js-yaml "^3.10.0"
+    json-stable-stringify "^1.0.1"
+    jsonwebtoken "^8.1.0"
+    lodash "^4.17.4"
+    replaceall "^0.1.6"
+    scuid "^1.0.2"
+    yaml-ast-parser "^0.0.40"
 
 graphcool-yml@^0.1.7:
   version "0.1.7"
@@ -1936,11 +1959,11 @@ graphql-cli-prepare@1.4.4:
     graphql-static-binding "0.5.0"
     lodash "4.17.4"
 
-graphql-config-extension-graphcool@0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/graphql-config-extension-graphcool/-/graphql-config-extension-graphcool-0.3.1.tgz#87ca71f6d9e91a8670fc81eff7831dc6b68b1066"
+graphql-config-extension-graphcool@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/graphql-config-extension-graphcool/-/graphql-config-extension-graphcool-1.0.0.tgz#aeac68bc54126f17f263058893b556529ec46f94"
   dependencies:
-    graphcool-yml "^0.1.7"
+    graphcool-yml "0.2.1"
     graphql-config "^1.1.4"
 
 graphql-config-extension-graphcool@^0.2.0:
