@@ -227,7 +227,7 @@ async function updateSingleProjectEndpoint(
   if (schemaPath) {
     log(chalk.green(`${config && config.projectName && config.projectName !== 'unnamed' ? `project ${chalk.blue(config.projectName)} - ` : ''}${
       endpointName && endpointName !== 'unnamed' ? `endpoint ${chalk.blue(endpointName)} - ` : ''
-    }Schema file was ${oldSchema ? 'updated' : 'created'}: ${chalk.blue(schemaPath)}`))
+    }Schema file was ${oldSchema ? 'updated' : 'created'}: ${chalk.blue(relative(process.cwd(), schemaPath))}`))
   }
   emitter.emit('checked')
 }
