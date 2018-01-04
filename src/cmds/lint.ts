@@ -5,12 +5,12 @@ import { Context } from '../'
 import { runner } from 'graphql-schema-linter'
 
 export async function handler(context: Context) {
-  const config = context.getProjectConfig()
+  const { schemaPath } = await context.getProjectConfig()
 
   const exitCode = runner.run(process.stdout, process.stdin, process.stderr, [
     '',
     '',
-    config['config']['schemaPath'],
+    schemaPath,
   ])
 
   if (exitCode !== 0) {
