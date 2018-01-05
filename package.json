@@ -80,7 +80,7 @@
     "graphql-cli-prepare": "1.4.6",
     "graphql-config": "1.1.4",
     "graphql-config-extension-graphcool": "1.0.1",
-    "graphql-playground-middleware-express": "1.4.3",
+    "graphql-playground-middleware-express": "1.4.4",
     "graphql-schema-linter": "0.0.25",
     "inquirer": "^4.0.1",
     "is-url-superb": "2.0.0",
