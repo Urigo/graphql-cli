@@ -11,6 +11,8 @@ import chalk from 'chalk'
 import { patchEndpointsToConfig } from 'graphql-config-extension-graphcool'
 import {
   getGraphQLProjectConfig,
+  GraphQLProjectConfig,
+  GraphQLConfig,
   getGraphQLConfig,
   ConfigNotFoundError,
 } from 'graphql-config'
@@ -59,14 +61,14 @@ function wrapCommand(commandObject: CommandObject): CommandModule {
       prompt: inquirer.createPromptModule(),
       spinner: ora(),
       async getProjectConfig() {
-        const config = argv['project']
+        const config: GraphQLProjectConfig = argv['project']
           ? getGraphQLProjectConfig(process.cwd(), argv['project'])
           : getGraphQLProjectConfig(process.cwd())
 
         return patchEndpointsToConfig(config, process.cwd())
       },
       async getConfig() {
-        const config = getGraphQLConfig(process.cwd())
+        const config: GraphQLConfig = getGraphQLConfig(process.cwd())
         return patchEndpointsToConfig(config)
       },
     }
