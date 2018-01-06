@@ -8,6 +8,7 @@ import { padEnd } from 'lodash'
 import * as path from 'path'
 import * as request from 'request'
 import * as tmp from 'tmp'
+import * as rimraf from 'rimraf'
 
 import { Context } from '../..'
 import { defaultBoilerplates } from './boilerplates'
@@ -75,7 +76,7 @@ export async function handler(
   }
 
   // make sure that project directory is empty
-  const projectPath = path.resolve(directory)
+  const projectPath = path.resolve(directory!)
 
   if (fs.existsSync(projectPath)) {
     const allowedFiles = ['.git', '.gitignore']
@@ -166,14 +167,18 @@ export async function handler(
   process.chdir(projectPath)
 
   // run & delete setup script
-  const installPath = path.join(projectPath, 'install.js')
+  let installPath = path.join(projectPath, 'install.js')
+  if (!fs.existsSync(installPath)) {
+    installPath = path.join(projectPath, '/.install/')
+  }
+
   if (fs.existsSync(installPath)) {
     console.log(`[graphql create] Running boilerplate install script... `)
     const installFunction = require(installPath)
 
     await installFunction({ context, project: directory })
 
-    fs.unlinkSync(installPath)
+    rimraf.sync(installPath)
   }
 }
 
