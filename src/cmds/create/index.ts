@@ -169,7 +169,7 @@ export async function handler(
   // run & delete setup script
   let installPath = path.join(projectPath, 'install.js')
   if (!fs.existsSync(installPath)) {
-    installPath = path.join(projectPath, '/.install/')
+    installPath = path.join(projectPath, '.install')
   }
 
   if (fs.existsSync(installPath)) {
