@@ -1938,25 +1938,6 @@ graphcool-json-schema@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/graphcool-json-schema/-/graphcool-json-schema-1.2.0.tgz#6c7a9de36a130c5048fa8d9817dff2b5a88bc226"
 
-graphcool-yml@0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/graphcool-yml/-/graphcool-yml-0.2.1.tgz#3f5b53c64e917550830a62d3a87bb64ee3ce3e66"
-  dependencies:
-    ajv "^5.5.1"
-    bluebird "^3.5.1"
-    debug "^3.1.0"
-    dotenv "^4.0.0"
-    fs-extra "^4.0.3"
-    graphcool-json-schema "1.2.0"
-    isomorphic-fetch "^2.2.1"
-    js-yaml "^3.10.0"
-    json-stable-stringify "^1.0.1"
-    jsonwebtoken "^8.1.0"
-    lodash "^4.17.4"
-    replaceall "^0.1.6"
-    scuid "^1.0.2"
-    yaml-ast-parser "^0.0.40"
-
 graphcool-yml@0.4.8:
   version "0.4.8"
   resolved "https://registry.yarnpkg.com/graphcool-yml/-/graphcool-yml-0.4.8.tgz#c1e70a88ccc8b8eea81fb80b7c369a2b734240b9"
@@ -1993,13 +1974,6 @@ graphql-config-extension-graphcool@1.0.4:
     graphcool-yml "0.4.8"
     graphql-config "^1.1.4"
 
-graphql-config-extension-graphcool@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/graphql-config-extension-graphcool/-/graphql-config-extension-graphcool-1.0.0.tgz#aeac68bc54126f17f263058893b556529ec46f94"
-  dependencies:
-    graphcool-yml "0.2.1"
-    graphql-config "^1.1.4"
-
 graphql-config@1.1.4, graphql-config@^1.0.0, graphql-config@^1.1.1, graphql-config@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-1.1.4.tgz#af09659f877b96451838de456e4e4f4be45be6dd"
@@ -2027,26 +2001,19 @@ graphql-import@^0.1.7:
     graphql "^0.12.3"
     lodash "^4.17.4"
 
-graphql-playground-html@1.4.2:
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/graphql-playground-html/-/graphql-playground-html-1.4.2.tgz#af97a84ea6cf6ba18e8ff148a6a8b17eef40aa46"
+graphql-playground-html@1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/graphql-playground-html/-/graphql-playground-html-1.4.3.tgz#e31c48bc43b6c4f4c7a96182bafa436f16a20376"
   dependencies:
     dotenv "^4.0.0"
     graphql-config "^1.1.1"
-    graphql-config-extension-graphcool "^1.0.0"
+    graphql-config-extension-graphcool "1.0.4"
 
-graphql-playground-middleware-express@1.4.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/graphql-playground-middleware-express/-/graphql-playground-middleware-express-1.4.4.tgz#0f8f4d6536fa107fb6fdf1ab970ae898d70a2938"
+graphql-playground-middleware-express@1.4.8:
+  version "1.4.8"
+  resolved "https://registry.yarnpkg.com/graphql-playground-middleware-express/-/graphql-playground-middleware-express-1.4.8.tgz#b2c4303e4929ca5f1cef78153c9ef597f4fd8b61"
   dependencies:
-    graphql-playground-html "1.4.2"
-    graphql-playground-middleware "^1.2.1-beta.6"
-
-graphql-playground-middleware@^1.2.1-beta.6:
-  version "1.2.1-beta.6"
-  resolved "https://registry.yarnpkg.com/graphql-playground-middleware/-/graphql-playground-middleware-1.2.1-beta.6.tgz#b302bda88d28fae716d127a483659c8e70a18776"
-  dependencies:
-    find-up "^2.1.0"
+    graphql-playground-html "1.4.3"
 
 graphql-request@^1.4.0:
   version "1.4.1"
