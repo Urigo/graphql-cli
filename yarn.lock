@@ -1957,9 +1957,9 @@ graphcool-yml@0.2.1:
     scuid "^1.0.2"
     yaml-ast-parser "^0.0.40"
 
-graphcool-yml@0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/graphcool-yml/-/graphcool-yml-0.2.2.tgz#b9f67b6581e149d573f631afdd938cb5f44f9813"
+graphcool-yml@0.4.8:
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/graphcool-yml/-/graphcool-yml-0.4.8.tgz#c1e70a88ccc8b8eea81fb80b7c369a2b734240b9"
   dependencies:
     ajv "^5.5.1"
     bluebird "^3.5.1"
@@ -1986,11 +1986,11 @@ graphql-cli-prepare@1.4.7:
     graphql-static-binding "0.6.0"
     lodash "4.17.4"
 
-graphql-config-extension-graphcool@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/graphql-config-extension-graphcool/-/graphql-config-extension-graphcool-1.0.1.tgz#841210ddac9ea43d97a3c1faf65555ec5fb6fcbf"
+graphql-config-extension-graphcool@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/graphql-config-extension-graphcool/-/graphql-config-extension-graphcool-1.0.4.tgz#9346aace7e42688e35e4bd44039117608916aad0"
   dependencies:
-    graphcool-yml "0.2.2"
+    graphcool-yml "0.4.8"
     graphql-config "^1.1.4"
 
 graphql-config-extension-graphcool@^1.0.0:
