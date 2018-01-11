@@ -2054,9 +2054,9 @@ graphql-request@^1.4.0:
   dependencies:
     cross-fetch "1.1.1"
 
-graphql-schema-linter@0.0.25:
-  version "0.0.25"
-  resolved "https://registry.yarnpkg.com/graphql-schema-linter/-/graphql-schema-linter-0.0.25.tgz#3cd79aeaff56cf73b3e8e1e01d409a987ed5c5b8"
+graphql-schema-linter@0.0.26:
+  version "0.0.26"
+  resolved "https://registry.yarnpkg.com/graphql-schema-linter/-/graphql-schema-linter-0.0.26.tgz#a505cc55b2eb561ee4b594a38ff178a9f0d137fb"
   dependencies:
     chalk "^2.0.1"
     columnify "^1.5.4"
@@ -2066,6 +2066,7 @@ graphql-schema-linter@0.0.25:
     glob "^7.1.2"
     graphql "^0.10.1"
     graphql-config "^1.0.0"
+    lodash "^4.17.4"
 
 graphql-static-binding@0.6.0:
   version "0.6.0"
