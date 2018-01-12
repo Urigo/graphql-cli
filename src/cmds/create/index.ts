@@ -20,7 +20,8 @@ export const describe = 'Bootstrap a new GraphQL project'
 export const builder = {
   boilerplate: {
     alias: 'b',
-    describe: 'Full URL or repo shorthand (e.g. `owner/repo`) to boilerplate GitHub repository',
+    describe:
+      'Full URL or repo shorthand (e.g. `owner/repo`) to boilerplate GitHub repository',
     type: 'string',
   },
   'no-install': {
@@ -30,9 +31,7 @@ export const builder = {
   },
 }
 
-function getGitHubUrl(
-  boilerplate: string
-): string | undefined {
+function getGitHubUrl(boilerplate: string): string | undefined {
   const details = gh(boilerplate)
 
   if (details.host && details.owner && details.repo) {
@@ -53,7 +52,7 @@ export async function handler(
 
   if (directory && directory.match(/[A-Z]/)) {
     console.log(
-      `Project/directory name cannot contain uppercase letters: ${directory}`
+      `Project/directory name cannot contain uppercase letters: ${directory}`,
     )
     directory = undefined
   }
@@ -176,7 +175,11 @@ export async function handler(
     console.log(`[graphql create] Running boilerplate install script... `)
     const installFunction = require(installPath)
 
-    await installFunction({ context, project: directory })
+    await installFunction({
+      context,
+      project: path.basename(projectPath),
+      projectDir: directory,
+    })
 
     rimraf.sync(installPath)
   }
