@@ -1976,14 +1976,14 @@ graphcool-yml@0.4.8:
     scuid "^1.0.2"
     yaml-ast-parser "^0.0.40"
 
-graphql-cli-prepare@1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/graphql-cli-prepare/-/graphql-cli-prepare-1.4.7.tgz#3179f3c385584fa377fd5d5849c357ac96dd9209"
+graphql-cli-prepare@1.4.9:
+  version "1.4.9"
+  resolved "https://registry.yarnpkg.com/graphql-cli-prepare/-/graphql-cli-prepare-1.4.9.tgz#78826cffa917b887236c29d3a99b913653659cfb"
   dependencies:
     chalk "2.3.0"
     fs-extra "5.0.0"
-    graphql-import "0.3.0"
-    graphql-static-binding "0.6.0"
+    graphql-import "0.3.1"
+    graphql-static-binding "0.7.0"
     lodash "4.17.4"
 
 graphql-config-extension-graphcool@1.0.4:
@@ -2011,9 +2011,9 @@ graphql-config@1.1.4, graphql-config@^1.0.0, graphql-config@^1.1.1, graphql-conf
     minimatch "^3.0.4"
     rimraf "^2.6.2"
 
-graphql-import@0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.3.0.tgz#4eb2c8aabac7fdb535fd1507b565336f4f707a64"
+graphql-import@0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.3.1.tgz#953f31323e851b5246602ea8e3d36a95b8fc47b5"
   dependencies:
     graphql "^0.12.3"
     lodash "^4.17.4"
@@ -2067,9 +2067,9 @@ graphql-schema-linter@0.0.25:
     graphql "^0.10.1"
     graphql-config "^1.0.0"
 
-graphql-static-binding@0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/graphql-static-binding/-/graphql-static-binding-0.6.0.tgz#9990a11f445a6fde798d71f49611d6cd97a407e6"
+graphql-static-binding@0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/graphql-static-binding/-/graphql-static-binding-0.7.0.tgz#642ca2829d6720f25e52d63116ca7cb194bbef8f"
   dependencies:
     cucumber-html-reporter "^3.0.4"
     graphql "0.12.3"
