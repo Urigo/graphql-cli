@@ -86,10 +86,11 @@ function wrapCommand(commandObject: CommandObject): CommandModule {
       if (context.spinner['enabled']) {
         context.spinner.fail()
       }
-      // TODO: add debug flag for calltrace
       if (process.env.DEBUG === '*') {
         if (e.stack) {
           console.log(e.stack)
+        } else {
+          console.log(e)
         }
       } else {
         console.log(chalk.red(e.message))
