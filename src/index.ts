@@ -16,6 +16,7 @@ import {
   getGraphQLConfig,
   ConfigNotFoundError,
 } from 'graphql-config'
+import 'source-map-support/register'
 
 export * from './types'
 export * from './utils'
@@ -86,7 +87,13 @@ function wrapCommand(commandObject: CommandObject): CommandModule {
         context.spinner.fail()
       }
       // TODO: add debug flag for calltrace
-      console.log(chalk.red(e.message))
+      if (process.env.DEBUG === '*') {
+        if (e.stack) {
+          console.log(e.stack)
+        }
+      } else {
+        console.log(chalk.red(e.message))
+      }
 
       if (e instanceof ConfigNotFoundError) {
         console.log(
