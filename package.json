@@ -79,7 +79,7 @@
     "express-request-proxy": "^2.0.0",
     "graphql": "0.12.3",
     "graphql-cli-prepare": "1.4.9",
-    "graphql-config": "1.1.4",
+    "graphql-config": "1.1.7",
     "graphql-config-extension-graphcool": "1.0.4",
     "graphql-playground-middleware-express": "1.4.9",
     "graphql-schema-linter": "0.0.26",
