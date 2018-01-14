@@ -14,7 +14,6 @@ export const command = 'playground'
 export const describe = 'Open interactive GraphQL Playground'
 export const builder = {
   port: {
-    alias: 'p',
     description: 'port to start local server with voyager on',
   },
   endpoint: {
@@ -76,7 +75,7 @@ export async function handler(
     } else {
       app.use(
         '/playground',
-        expressPlayground({ folderName: process.cwd() } as any),
+        expressPlayground({ useGraphQLConfig: true } as any),
       )
     }
 
