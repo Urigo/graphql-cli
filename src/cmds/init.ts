@@ -9,7 +9,7 @@ import chalk from 'chalk'
 import {
   GRAPHQL_CONFIG_NAME,
   GRAPHQL_CONFIG_YAML_NAME,
-  GraphQLConfigData,
+  GraphQLResolvedConfigData,
 } from 'graphql-config'
 
 import { Context } from '../'
@@ -17,7 +17,13 @@ import { Context } from '../'
 export async function handler (context: Context) {
   const { prompt } = context
 
-  const config: GraphQLConfigData = await prompt({
+  const { projectName }: {[key: string]: string} = await prompt({
+    type: 'input',
+    name: 'projectName',
+    message: 'Enter project name (Enter to skip):'
+  })
+
+  let config: GraphQLResolvedConfigData = await prompt({
     type: 'input',
     name: 'schemaPath',
     message: `Local schema file path:`,
@@ -28,21 +34,26 @@ export async function handler (context: Context) {
         return `Parent dir doesn't exists: ${parentDir}`
       }
       if (!schemaPath.endsWith('.json') && !schemaPath.endsWith('.graphql')) {
-        return `Please specify extension '*.json' for insrospection or '*.graphql' for SDL`
+        return `Please specify extension '*.json' for introspection or '*.graphql' for SDL`
       }
       return true
     },
-  }) as GraphQLConfigData
+  }) as GraphQLResolvedConfigData
 
   let extensionEndpoints = {}
-  while (await addEndpoint(prompt, extensionEndpoints)) {
-    /* noop */
-  }
+  await addEndpoint(prompt, extensionEndpoints)
 
   if (Object.keys(extensionEndpoints).length !== 0) {
     config.extensions = {
       endpoints: extensionEndpoints,
     }
+  }
+
+  let finalConfig: any = config
+  if (projectName) {
+    finalConfig = { projects: {
+      [projectName]: config
+    }}
   }
 
   // TODO: add validation of entire config
@@ -59,8 +70,8 @@ export async function handler (context: Context) {
     configFormat === 'JSON' ? GRAPHQL_CONFIG_NAME : GRAPHQL_CONFIG_YAML_NAME,
   )
   const configData = configFormat === 'JSON' ?
-    JSON.stringify(config, null, 2) :
-    yaml.safeDump(config)
+    JSON.stringify(finalConfig, null, 2) :
+    yaml.safeDump(finalConfig)
 
   console.log(
     `\nAbout to write to ${chalk.blue(configFilename)}:\n\n` +
