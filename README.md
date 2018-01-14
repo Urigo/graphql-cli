@@ -32,6 +32,7 @@ Usage: graphql [command]
 Commands:
   graphql create [directory]             Bootstrap a new GraphQL project
   graphql add-endpoint                   Add new endpoint to .graphqlconfig
+  graphql add-project                    Add new project to .graphqlconfig
   graphql get-schema                     Download schema from endpoint
   graphql schema-status                  Show source & timestamp of local schema
   graphql ping                           Ping GraphQL endpoint
