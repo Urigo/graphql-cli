@@ -10,7 +10,7 @@ import {
 } from 'graphql-config'
 import chalk from 'chalk'
 import * as isUrl from 'is-url-superb'
-import { Context, noEndpointError, CommandObject } from '..'
+import { Context, CommandObject } from '..'
 import { Arguments } from 'yargs'
 import { merge } from 'lodash'
 
@@ -105,6 +105,10 @@ const command: CommandObject = {
           spinner.fail(chalk.red(err.message))
         }
       })
+      emitter.on('warning', message => {
+        spinner.warn(chalk.yellow(message))
+      })
+
       start()
       await updateWrapper(context, argv)
       spinner.stop()
@@ -124,6 +128,9 @@ const command: CommandObject = {
         spinner.fail(chalk.red(err.message))
         clearInterval(handle)
       })
+      emitter.on('warning', message => {
+        spinner.warn(chalk.yellow(message))
+      })
 
       updateWrapper(context, argv)
       spinner.start()
@@ -141,7 +148,7 @@ async function updateWrapper(context: Context, argv: Arguments) {
 }
 
 async function update(context: Context, argv: Arguments) {
-  if (isUrl(argv.endpoint)) {
+  if (argv.endpoint && isUrl(argv.endpoint)) {
     if (argv.output || argv.console) {
       await downloadFromEndpointUrl(argv)
       return
@@ -155,9 +162,8 @@ async function update(context: Context, argv: Arguments) {
   for (const projectName in projects) {
     const config = projects[projectName]
     if (!config.endpointsExtension) {
-      throw noEndpointError
+      return
     }
-
     const endpoints = getEndpoints(config, argv)
     for (const endpointName in endpoints) {
       const endpoint = endpoints[endpointName]
@@ -175,7 +181,7 @@ async function downloadFromEndpointUrl(argv: Arguments) {
       ...headers.map(h => ({ [h.split('=')[0]]: h.split('=')[1] })),
     )
   }
-  console.log({ url: argv.endpoint, headers: endpointHeaders })
+
   const endpoint = new GraphQLEndpoint({
     url: argv.endpoint,
     headers: endpointHeaders,
@@ -191,9 +197,15 @@ async function updateSingleProjectEndpoint(
   argv: Arguments,
 ): Promise<void> {
   log(`Downloading introspection from ${chalk.blue(endpoint.url)}`)
-  const newSchemaResult = argv.json
+  let newSchemaResult
+  try {
+    newSchemaResult = argv.json
     ? await endpoint.resolveIntrospection()
     : await endpoint.resolveSchema()
+  } catch (err) {
+    emitter.emit('warning', err.message)
+    return
+  }
 
   let oldSchema: string | undefined
   if (!argv.console) {
