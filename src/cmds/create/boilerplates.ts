@@ -43,13 +43,13 @@ export const defaultBoilerplates: Boilerplate[] = [
     repo:
       'https://github.com/graphql-boilerplates/typescript-graphql-server/tree/master/advanced',
   },
+  {
+    name: 'react-fullstack-basic',
+    description: 'React app + GraphQL server (incl. database )',
+    repo:
+      'https://github.com/graphql-boilerplates/react-fullstack-graphql/tree/master/basic',
+  },
 // currently broken
-//  {
-//    name: 'react-fullstack-basic',
-//    description: 'React app + GraphQL server (incl. database )',
-//    repo:
-//      'https://github.com/graphql-boilerplates/react-fullstack-graphql/tree/master/basic',
-//  },
 //   {
 //     name: 'react-native-basic',
 //     description: 'React Native app + GraphQL server (incl. database )',
