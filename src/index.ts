@@ -9,6 +9,7 @@ import * as npmPaths from 'npm-paths'
 import * as dotenv from 'dotenv'
 import chalk from 'chalk'
 import { patchEndpointsToConfig } from 'graphql-config-extension-graphcool'
+import { patchEndpointsToConfig as patchPrismaEndpointsToConfig } from 'graphql-config-extension-prisma'
 import {
   getGraphQLProjectConfig,
   GraphQLProjectConfig,
@@ -62,15 +63,19 @@ function wrapCommand(commandObject: CommandObject): CommandModule {
       prompt: inquirer.createPromptModule(),
       spinner: ora(),
       async getProjectConfig() {
-        const config: GraphQLProjectConfig = argv['project']
+        let config: GraphQLProjectConfig = argv['project']
           ? getGraphQLProjectConfig(process.cwd(), argv['project'])
           : getGraphQLProjectConfig(process.cwd())
 
-        return patchEndpointsToConfig(config, process.cwd())
+        config = await patchEndpointsToConfig(config, process.cwd())
+        config = await patchPrismaEndpointsToConfig(config, process.cwd())
+        return config
       },
       async getConfig() {
-        const config: GraphQLConfig = getGraphQLConfig(process.cwd())
-        return patchEndpointsToConfig(config)
+        let config: GraphQLConfig = getGraphQLConfig(process.cwd())
+        config = await patchEndpointsToConfig(config)
+        config = await patchPrismaEndpointsToConfig(config)
+        return config
       },
     }
 

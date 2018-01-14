@@ -1994,6 +1994,13 @@ graphql-config-extension-prisma@0.0.3:
     graphql-config "^1.1.4"
     prisma-yml "0.0.4"
 
+graphql-config-extension-prisma@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/graphql-config-extension-prisma/-/graphql-config-extension-prisma-0.0.3.tgz#2fea0a34ef128e1763cb3ebfa6becd99549fe1ef"
+  dependencies:
+    graphql-config "^1.1.4"
+    prisma-yml "0.0.4"
+
 graphql-config@1.1.4, graphql-config@^1.0.0, graphql-config@^1.1.1, graphql-config@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-1.1.4.tgz#af09659f877b96451838de456e4e4f4be45be6dd"
