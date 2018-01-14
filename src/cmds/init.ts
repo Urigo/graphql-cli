@@ -41,7 +41,9 @@ export async function handler (context: Context) {
   }) as GraphQLResolvedConfigData
 
   let extensionEndpoints = {}
-  await addEndpoint(prompt, extensionEndpoints)
+  while (await addEndpoint(prompt, extensionEndpoints)) {
+    /* noop */
+  }
 
   if (Object.keys(extensionEndpoints).length !== 0) {
     config.extensions = {
