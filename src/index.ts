@@ -63,12 +63,36 @@ function wrapCommand(commandObject: CommandObject): CommandModule {
       prompt: inquirer.createPromptModule(),
       spinner: ora(),
       async getProjectConfig() {
-        let config: GraphQLProjectConfig = argv['project']
-          ? getGraphQLProjectConfig(process.cwd(), argv['project'])
-          : getGraphQLProjectConfig(process.cwd())
+        let config: GraphQLProjectConfig | undefined
+        while (!config) {
+          try {
+            config = argv['project']
+            ? getGraphQLProjectConfig(process.cwd(), argv['project'])
+            : getGraphQLProjectConfig(process.cwd())
 
-        config = await patchEndpointsToConfig(config, process.cwd())
-        config = await patchPrismaEndpointsToConfig(config, process.cwd())
+            config = await patchEndpointsToConfig(config, process.cwd())
+            config = await patchPrismaEndpointsToConfig(config, process.cwd())
+          } catch (error) {
+            const config: GraphQLConfig = getGraphQLConfig(process.cwd())
+            const projectNames = Object.keys(config.getProjects() || {})
+            if (projectNames) {
+              if (error.message.includes('multiproject')) {
+                console.log(chalk.yellow('No project name specified'))
+              } else if (error.message.includes('not a valid project name')) {
+                console.log(chalk.yellow('Invalid project name specified'))
+              }
+              const { projectName } = await inquirer.prompt({
+                type: 'list',
+                name: 'projectName',
+                choices: projectNames,
+                message: 'Select a project:'
+              })
+              argv['project'] = projectName
+            } else {
+              throw error
+            }
+          }
+        }
         return config
       },
       async getConfig() {
