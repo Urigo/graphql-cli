@@ -71,11 +71,17 @@ export async function handler(
         }),
       )
 
-      app.use('/playground', expressPlayground({ endpoint: '/graphql' } as any))
+      app.use(
+        '/playground',
+        expressPlayground({
+          endpoint: '/graphql',
+          config: config.config,
+        }),
+      )
     } else {
       app.use(
         '/playground',
-        expressPlayground({ useGraphQLConfig: true } as any),
+        expressPlayground({ config: config.config } as any),
       )
     }
 
