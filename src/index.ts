@@ -16,6 +16,7 @@ import {
   GraphQLConfig,
   getGraphQLConfig,
   ConfigNotFoundError,
+  resolveEnvsInValues,
 } from 'graphql-config'
 import * as updateNotifier from 'update-notifier'
 const pkg = require('../package.json')
@@ -74,6 +75,7 @@ function wrapCommand(commandObject: CommandObject): CommandModule {
               ? getGraphQLProjectConfig(process.cwd(), argv['project'])
               : getGraphQLProjectConfig(process.cwd())
 
+            config.config = resolveEnvsInValues(config.config, process.env)
             config = await patchEndpointsToConfig(config, process.cwd())
             config = await patchPrismaEndpointsToConfig(config, process.cwd())
           } catch (error) {
@@ -101,6 +103,7 @@ function wrapCommand(commandObject: CommandObject): CommandModule {
       },
       async getConfig() {
         let config: GraphQLConfig = getGraphQLConfig(process.cwd())
+        config.config = resolveEnvsInValues(config.config, process.env)
         config = await patchEndpointsToConfig(config)
         config = await patchPrismaEndpointsToConfig(config)
         return config
