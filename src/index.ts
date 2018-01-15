@@ -17,10 +17,14 @@ import {
   getGraphQLConfig,
   ConfigNotFoundError,
 } from 'graphql-config'
+import * as updateNotifier from 'update-notifier'
+const pkg = require('../package.json')
 import 'source-map-support/register'
 
 export * from './types'
 export * from './utils'
+
+updateNotifier({ pkg }).notify()
 
 function listPluggings(dir: string): string[] {
   return readdirSync(dir)
@@ -67,8 +71,8 @@ function wrapCommand(commandObject: CommandObject): CommandModule {
         while (!config) {
           try {
             config = argv['project']
-            ? getGraphQLProjectConfig(process.cwd(), argv['project'])
-            : getGraphQLProjectConfig(process.cwd())
+              ? getGraphQLProjectConfig(process.cwd(), argv['project'])
+              : getGraphQLProjectConfig(process.cwd())
 
             config = await patchEndpointsToConfig(config, process.cwd())
             config = await patchPrismaEndpointsToConfig(config, process.cwd())
@@ -85,7 +89,7 @@ function wrapCommand(commandObject: CommandObject): CommandModule {
                 type: 'list',
                 name: 'projectName',
                 choices: projectNames,
-                message: 'Select a project:'
+                message: 'Select a project:',
               })
               argv['project'] = projectName
             } else {
