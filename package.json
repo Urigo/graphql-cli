@@ -72,7 +72,7 @@
     "adm-zip": "^0.4.7",
     "chalk": "^2.3.0",
     "command-exists": "^1.2.2",
-    "cross-spawn": "^5.1.0",
+    "cross-spawn": "^6.0.0",
     "disparity": "^2.0.0",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
