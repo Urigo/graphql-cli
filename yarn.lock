@@ -1992,6 +1992,16 @@ graphql-config@1.1.7, graphql-config@^1.0.0, graphql-config@^1.1.4:
     js-yaml "^3.10.0"
     minimatch "^3.0.4"
 
+graphql-config@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-1.2.0.tgz#c1396e7705ce82870923134426d1b19b2de6c326"
+  dependencies:
+    graphql "^0.12.3"
+    graphql-import "^0.4.0"
+    graphql-request "^1.4.0"
+    js-yaml "^3.10.0"
+    minimatch "^3.0.4"
+
 graphql-import@0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.1.tgz#ef1c047d6250bc8c009b12b64c26924ac4f4716c"
