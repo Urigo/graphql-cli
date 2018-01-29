@@ -8,8 +8,9 @@ import * as inquirer from 'inquirer'
 import * as npmPaths from 'npm-paths'
 import * as dotenv from 'dotenv'
 import chalk from 'chalk'
-import { patchEndpointsToConfig } from 'graphql-config-extension-graphcool'
+import { patchEndpointsToConfig as patchGraphcoolEndpointsToConfig } from 'graphql-config-extension-graphcool'
 import { patchEndpointsToConfig as patchPrismaEndpointsToConfig } from 'graphql-config-extension-prisma'
+import { patchEndpointsToConfig as patchOpenApiEndpointsToConfig } from 'graphql-config-extension-openapi'
 import {
   getGraphQLProjectConfig,
   GraphQLProjectConfig,
@@ -76,8 +77,9 @@ function wrapCommand(commandObject: CommandObject): CommandModule {
               : getGraphQLProjectConfig(process.cwd())
 
             config.config = resolveEnvsInValues(config.config, process.env)
-            config = await patchEndpointsToConfig(config, process.cwd())
+            config = await patchGraphcoolEndpointsToConfig(config, process.cwd())
             config = await patchPrismaEndpointsToConfig(config, process.cwd())
+            config = await patchOpenApiEndpointsToConfig(config)
           } catch (error) {
             const config: GraphQLConfig = getGraphQLConfig(process.cwd())
             const projectNames = Object.keys(config.getProjects() || {})
@@ -104,8 +106,9 @@ function wrapCommand(commandObject: CommandObject): CommandModule {
       async getConfig() {
         let config: GraphQLConfig = getGraphQLConfig(process.cwd())
         config.config = resolveEnvsInValues(config.config, process.env)
-        config = await patchEndpointsToConfig(config)
+        config = await patchGraphcoolEndpointsToConfig(config)
         config = await patchPrismaEndpointsToConfig(config)
+        config = await patchOpenApiEndpointsToConfig(config)
         return config
       },
     }
