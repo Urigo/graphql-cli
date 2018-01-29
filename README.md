@@ -85,6 +85,7 @@ graphql completion >> ~/.bash_profile
 - [`graphql-cli-codegen`](https://github.com/rricard/graphql-cli-codegen) - Generates type annotation from your GraphQL queries using [`apollo-codegen`](https://github.com/apollographql/apollo-codegen).
 - [`graphql-cli-load`](https://github.com/neo4j-graphql/graphql-cli-load) - Easy batched loading of JSON/CSV files using your mutations, by matching input fields to mutation parameters from the schema.
 - [`graphql-cli-up`](https://github.com/supergraphql/graphql-cli-up) - Run `graphql-up` as `graphql up`.
+- [`graphql-cli-generate-fragments`](https://github.com/develomark/graphql-cli-generate-fragments) - Generates GraphQL fragments for each type in the project schema.
 
 Do you want to create your own plugin? [Here is a simple example.](plugin-example)
 
