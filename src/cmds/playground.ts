@@ -26,6 +26,11 @@ export const builder = {
     describe: 'Open web version (even if desktop app available)',
     type: 'boolean',
   },
+  serverOnly: {
+    describe: 'Run only server',
+    type: 'boolean',
+    'default': 'false'
+  }
 }
 
 function randomString(len = 32) {
@@ -39,10 +44,9 @@ function randomString(len = 32) {
 
 export async function handler(
   context: Context,
-  argv: { endpoint: string; port: string; web: boolean },
+  argv: { endpoint: string; port: string; web: boolean, serverOnly: boolean },
 ) {
   const localPlaygroundPath = `/Applications/GraphQL\ Playground.app/Contents/MacOS/GraphQL\ Playground`
-
   if (fs.existsSync(localPlaygroundPath) && !argv.web) {
     const envPath = path.join(os.tmpdir(), `${randomString()}.json`)
     fs.writeFileSync(envPath, JSON.stringify(process.env))
@@ -94,7 +98,9 @@ export async function handler(
       }
       const link = `http://${host}:${port}/playground`
       console.log('Serving playground at %s', chalk.blue(link))
-      opn(link)
+      if (!argv.serverOnly) {
+        opn(link)
+      }
     })
   }
 }
