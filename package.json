@@ -79,7 +79,7 @@
     "express-request-proxy": "^2.0.0",
     "graphql": "0.12.3",
     "graphql-cli-prepare": "1.4.13",
-    "graphql-config": "1.2.0",
+    "graphql-config": "1.2.1",
     "graphql-config-extension-graphcool": "1.0.6",
     "graphql-config-extension-openapi": "1.0.1",
     "graphql-config-extension-prisma": "0.0.4",
