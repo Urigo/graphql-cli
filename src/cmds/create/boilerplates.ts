@@ -4,20 +4,6 @@ export interface Boilerplate {
   repo: string
 }
 
-// TODO implement the following
-// * node-minimal
-// * node-minimal-fullstack
-// * node-basic
-// * node-basic-fullstack
-// * node-advanced
-// * node-advanced-fullstack
-// * typescript-minimal
-// * typescript-minimal-fullstack
-// * typescript-basic
-// * typescript-basic-fullstack
-// * typescript-advanced
-// * typescript-advanced-fullstack
-
 export const defaultBoilerplates: Boilerplate[] = [
   {
     name: 'node-minimal',
@@ -61,17 +47,4 @@ export const defaultBoilerplates: Boilerplate[] = [
     repo:
       'https://github.com/graphql-boilerplates/vue-fullstack-graphql/tree/master/basic',
   },
-  // currently broken
-  //   {
-  //     name: 'react-native-basic',
-  //     description: 'React Native app + GraphQL server (incl. database )',
-  //     repo:
-  //       'https://github.com/graphql-boilerplates/react-native-graphql/tree/master/apollo-client/basic',
-  //   },
-  //   {
-  //     name: 'angular-fullstack-basic',
-  //     description: 'Vue app + GraphQL server (incl. database )',
-  //     repo:
-  //       'https://github.com/graphql-boilerplates/vue-fullstack-graphql/tree/master/apollo-client/basic',
-  //   },
 ]
