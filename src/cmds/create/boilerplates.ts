@@ -4,6 +4,8 @@ export interface Boilerplate {
   repo: string
 }
 
+// a list of available boilerplate projects from:
+// https://github.com/graphql-boilerplates/
 export const defaultBoilerplates: Boilerplate[] = [
   {
     name: 'node-minimal',
