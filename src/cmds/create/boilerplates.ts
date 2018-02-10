@@ -20,6 +20,12 @@ export interface Boilerplate {
 
 export const defaultBoilerplates: Boilerplate[] = [
   {
+    name: 'node-minimal',
+    description: '"Hello World" GraphQL server',
+    repo:
+      'https://github.com/graphql-boilerplates/node-graphql-server/tree/master/minimal',
+  },
+  {
     name: 'node-basic',
     description: 'Basic GraphQL server (incl. database)',
     repo:
@@ -49,23 +55,23 @@ export const defaultBoilerplates: Boilerplate[] = [
     repo:
       'https://github.com/graphql-boilerplates/react-fullstack-graphql/tree/master/basic',
   },
-// currently broken
-//   {
-//     name: 'react-native-basic',
-//     description: 'React Native app + GraphQL server (incl. database )',
-//     repo:
-//       'https://github.com/graphql-boilerplates/react-native-graphql/tree/master/apollo-client/basic',
-//   },
-//   {
-//     name: 'vue-fullstack-basic',
-//     description: 'Vue app + GraphQL server (incl. database )',
-//     repo:
-//       'https://github.com/graphql-boilerplates/vue-fullstack-graphql/tree/master/apollo-client/basic',
-//   },
-//   {
-//     name: 'angular-fullstack-basic',
-//     description: 'Vue app + GraphQL server (incl. database )',
-//     repo:
-//       'https://github.com/graphql-boilerplates/vue-fullstack-graphql/tree/master/apollo-client/basic',
-//   },
+  {
+    name: 'vue-fullstack-basic',
+    description: 'Vue app + GraphQL server (incl. database )',
+    repo:
+      'https://github.com/graphql-boilerplates/vue-fullstack-graphql/tree/master/basic',
+  },
+  // currently broken
+  //   {
+  //     name: 'react-native-basic',
+  //     description: 'React Native app + GraphQL server (incl. database )',
+  //     repo:
+  //       'https://github.com/graphql-boilerplates/react-native-graphql/tree/master/apollo-client/basic',
+  //   },
+  //   {
+  //     name: 'angular-fullstack-basic',
+  //     description: 'Vue app + GraphQL server (incl. database )',
+  //     repo:
+  //       'https://github.com/graphql-boilerplates/vue-fullstack-graphql/tree/master/apollo-client/basic',
+  //   },
 ]
