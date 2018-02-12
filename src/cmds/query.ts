@@ -24,7 +24,6 @@ export const builder = {
     type: 'boolean',
   },
   variables: {
-    alias: 'g',
     describe: 'Inject variables into your query request (as a JSON string)',
     type: 'string',
   },
@@ -41,7 +40,6 @@ export async function handler(
 
   const endpoint = config.endpointsExtension.getEndpoint(argv.endpoint)
   const query = fs.readFileSync(argv.file, { encoding: 'utf8' })
-  const variables = argv.variables || '{}'
 
   const document = parse(query)
   const operationNames = document.definitions.map(
@@ -50,10 +48,10 @@ export async function handler(
 
   if (argv.all) {
     for (const operationName of operationNames) {
-      await runQuery(query, operationName, endpoint, variables)
+      await runQuery(query, operationName, endpoint, argv.variables)
     }
   } else if (argv.operation) {
-    await runQuery(query, argv.operation, endpoint, variables)
+    await runQuery(query, argv.operation, endpoint, argv.variables)
   } else {
     const { selectedOperationNames } = await context.prompt({
       type: 'checkbox',
@@ -63,7 +61,7 @@ export async function handler(
     })
 
     for (const operationName of selectedOperationNames) {
-      await runQuery(query, operationName, endpoint, variables)
+      await runQuery(query, operationName, endpoint, argv.variables)
     }
   }
 }
@@ -83,7 +81,7 @@ async function runQuery(
     body: JSON.stringify({
       query,
       operationName,
-      variables: JSON.parse(variables)
+      variables: parseVariables(variables)
     }),
   })
 
@@ -94,4 +92,16 @@ async function runQuery(
   } catch (e) {
     console.log(JSON.parse(result))
   }
+}
+
+function parseVariables(variables: string= '{}'): object {
+  let obj = {}
+  try {
+    obj = JSON.parse(variables)
+  } catch (e) {
+    console.error(`There was a problem parsing your variables: ${variables}`)
+    console.error(`Error: ${e}`)
+    console.error('Passing empty variables instead.')
+  }
+  return obj
 }
