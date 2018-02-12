@@ -23,11 +23,16 @@ export const builder = {
     describe: 'Run all operations in order',
     type: 'boolean',
   },
+  variables: {
+    alias: 'g',
+    describe: 'Inject variables into your query request (as a JSON string)',
+    type: 'string',
+  },
 }
 
 export async function handler(
   context: Context,
-  argv: { file: string; operation: string; endpoint: string; all: boolean },
+  argv: { file: string; operation: string; endpoint: string; all: boolean; variables: string },
 ) {
   const config = await context.getProjectConfig()
   if (!config.endpointsExtension) {
@@ -36,6 +41,7 @@ export async function handler(
 
   const endpoint = config.endpointsExtension.getEndpoint(argv.endpoint)
   const query = fs.readFileSync(argv.file, { encoding: 'utf8' })
+  const variables = argv.variables || "{}"
 
   const document = parse(query)
   const operationNames = document.definitions.map(
@@ -44,10 +50,10 @@ export async function handler(
 
   if (argv.all) {
     for (const operationName of operationNames) {
-      await runQuery(query, operationName, endpoint)
+      await runQuery(query, operationName, endpoint, variables)
     }
   } else if (argv.operation) {
-    await runQuery(query, argv.operation, endpoint)
+    await runQuery(query, argv.operation, endpoint, variables)
   } else {
     const { selectedOperationNames } = await context.prompt({
       type: 'checkbox',
@@ -57,7 +63,7 @@ export async function handler(
     })
 
     for (const operationName of selectedOperationNames) {
-      await runQuery(query, operationName, endpoint)
+      await runQuery(query, operationName, endpoint, variables)
     }
   }
 }
@@ -66,6 +72,7 @@ async function runQuery(
   query: string,
   operationName: string,
   endpoint: GraphQLEndpoint,
+  variables: string
 ): Promise<void> {
   const response = await fetch(endpoint.url, {
     method: 'POST',
@@ -76,6 +83,7 @@ async function runQuery(
     body: JSON.stringify({
       query,
       operationName,
+      variables: JSON.parse(variables)
     }),
   })
 
