@@ -18,14 +18,14 @@ export const builder = {
     describe: 'Operation name',
     type: 'string',
   },
+  variables: {
+    describe: 'GraphQL query variables as JSON string',
+    type: 'string',
+  },
   all: {
     alias: 'a',
     describe: 'Run all operations in order',
     type: 'boolean',
-  },
-  variables: {
-    describe: 'Inject variables into your query request (as a JSON string)',
-    type: 'string',
   },
 }
 
