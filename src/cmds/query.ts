@@ -18,6 +18,10 @@ export const builder = {
     describe: 'Operation name',
     type: 'string',
   },
+  variables: {
+    describe: 'GraphQL query variables as JSON string',
+    type: 'string',
+  },
   all: {
     alias: 'a',
     describe: 'Run all operations in order',
@@ -27,7 +31,7 @@ export const builder = {
 
 export async function handler(
   context: Context,
-  argv: { file: string; operation: string; endpoint: string; all: boolean },
+  argv: { file: string; operation: string; endpoint: string; all: boolean; variables: string },
 ) {
   const config = await context.getProjectConfig()
   if (!config.endpointsExtension) {
@@ -44,10 +48,10 @@ export async function handler(
 
   if (argv.all) {
     for (const operationName of operationNames) {
-      await runQuery(query, operationName, endpoint)
+      await runQuery(query, operationName, endpoint, argv.variables)
     }
   } else if (argv.operation) {
-    await runQuery(query, argv.operation, endpoint)
+    await runQuery(query, argv.operation, endpoint, argv.variables)
   } else {
     const { selectedOperationNames } = await context.prompt({
       type: 'checkbox',
@@ -57,7 +61,7 @@ export async function handler(
     })
 
     for (const operationName of selectedOperationNames) {
-      await runQuery(query, operationName, endpoint)
+      await runQuery(query, operationName, endpoint, argv.variables)
     }
   }
 }
@@ -66,6 +70,7 @@ async function runQuery(
   query: string,
   operationName: string,
   endpoint: GraphQLEndpoint,
+  variables: string
 ): Promise<void> {
   const response = await fetch(endpoint.url, {
     method: 'POST',
@@ -76,6 +81,7 @@ async function runQuery(
     body: JSON.stringify({
       query,
       operationName,
+      variables: parseVariables(variables)
     }),
   })
 
@@ -86,4 +92,16 @@ async function runQuery(
   } catch (e) {
     console.log(JSON.parse(result))
   }
+}
+
+function parseVariables(variables: string= '{}'): object {
+  let obj = {}
+  try {
+    obj = JSON.parse(variables)
+  } catch (e) {
+    console.error(`There was a problem parsing your variables: ${variables}`)
+    console.error(`Error: ${e}`)
+    console.error('Passing empty variables instead.')
+  }
+  return obj
 }
