@@ -41,7 +41,7 @@ export async function handler(
 
   const endpoint = config.endpointsExtension.getEndpoint(argv.endpoint)
   const query = fs.readFileSync(argv.file, { encoding: 'utf8' })
-  const variables = argv.variables || "{}"
+  const variables = argv.variables || '{}'
 
   const document = parse(query)
   const operationNames = document.definitions.map(
