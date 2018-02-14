@@ -119,9 +119,9 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/graphql@0.12.3":
-  version "0.12.3"
-  resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.12.3.tgz#c429585aaa4523135e0ab4e12dec72d2d913946f"
+"@types/graphql@0.12.4":
+  version "0.12.4"
+  resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.12.4.tgz#d43bb55d45c6de0178bbd11dd59d04fd42138d94"
 
 "@types/inquirer@0.0.36":
   version "0.0.36"
