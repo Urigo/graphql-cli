@@ -2047,12 +2047,12 @@ graphql-cli-prepare@1.4.14:
     graphql-static-binding "0.9.0"
     lodash "4.17.4"
 
-graphql-config-extension-graphcool@1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/graphql-config-extension-graphcool/-/graphql-config-extension-graphcool-1.0.6.tgz#65c1a43d128251b2415c2d02f924158338f05f6a"
+graphql-config-extension-graphcool@1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/graphql-config-extension-graphcool/-/graphql-config-extension-graphcool-1.0.7.tgz#18b794e5a4ab614593febc96b253b2c26bf64d35"
   dependencies:
     graphcool-yml "0.4.15"
-    graphql-config "1.2.0"
+    graphql-config "2.0.0"
 
 graphql-config-extension-openapi@1.0.1:
   version "1.0.1"
@@ -2093,6 +2093,16 @@ graphql-config@1.2.1:
   resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-1.2.1.tgz#97b4403707db408feb335fbc159651f2a36cb558"
   dependencies:
     graphql "^0.12.3"
+    graphql-import "^0.4.0"
+    graphql-request "^1.4.0"
+    js-yaml "^3.10.0"
+    lodash "^4.17.4"
+    minimatch "^3.0.4"
+
+graphql-config@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-2.0.0.tgz#daf69091055c6f675d63893a2d14c48f3fec3327"
+  dependencies:
     graphql-import "^0.4.0"
     graphql-request "^1.4.0"
     js-yaml "^3.10.0"
