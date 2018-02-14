@@ -74,10 +74,13 @@ function wrapCommand(commandObject: CommandObject): CommandModule {
           try {
             config = argv['project']
               ? getGraphQLProjectConfig(process.cwd(), argv['project'])
-              : getGraphQLProjectConfig(process.cwd())
+              : (getGraphQLProjectConfig(process.cwd()) as GraphQLProjectConfig)
 
             config.config = resolveEnvsInValues(config.config, process.env)
-            config = await patchGraphcoolEndpointsToConfig(config, process.cwd())
+            config = await patchGraphcoolEndpointsToConfig(
+              config,
+              process.cwd(),
+            )
             config = await patchPrismaEndpointsToConfig(config, process.cwd())
             config = await patchOpenApiEndpointsToConfig(config)
           } catch (error) {
@@ -104,7 +107,7 @@ function wrapCommand(commandObject: CommandObject): CommandModule {
         return config
       },
       async getConfig() {
-        let config: GraphQLConfig = getGraphQLConfig(process.cwd())
+        let config = getGraphQLConfig(process.cwd())
         config.config = resolveEnvsInValues(config.config, process.env)
         config = await patchGraphcoolEndpointsToConfig(config)
         config = await patchPrismaEndpointsToConfig(config)
@@ -148,6 +151,3 @@ function wrapCommand(commandObject: CommandObject): CommandModule {
   }
   return commandObject as CommandModule
 }
-
-// Mutation calls "graphql mutation addUser --id 1 --name Test"
-// Execute static .graphql files
