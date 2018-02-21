@@ -26,6 +26,12 @@ export const builder = {
     describe: 'Open web version (even if desktop app available)',
     type: 'boolean',
   },
+  serverOnly: {
+    alias: 's',
+    describe: 'Don\'t open GraphQL playground in browser automatically',
+    type: 'boolean',
+    default: false
+  }
 }
 
 function randomString(len = 32) {
@@ -39,7 +45,7 @@ function randomString(len = 32) {
 
 export async function handler(
   context: Context,
-  argv: { endpoint: string; port: string; web: boolean },
+  argv: { endpoint: string; port: string; web: boolean, serverOnly: boolean },
 ) {
   const localPlaygroundPath = `/Applications/GraphQL\ Playground.app/Contents/MacOS/GraphQL\ Playground`
 
@@ -94,7 +100,8 @@ export async function handler(
       }
       const link = `http://${host}:${port}/playground`
       console.log('Serving playground at %s', chalk.blue(link))
-      opn(link)
+
+      !argv.serverOnly && opn(link)
     })
   }
 }
