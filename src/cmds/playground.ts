@@ -26,7 +26,7 @@ export const builder = {
     describe: 'Open web version (even if desktop app available)',
     type: 'boolean',
   },
-  serverOnly: {
+  'server-only': {
     alias: 's',
     describe: 'Don\'t open GraphQL playground in browser automatically',
     type: 'boolean',
