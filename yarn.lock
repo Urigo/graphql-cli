@@ -2065,12 +2065,12 @@ graphql-config-extension-openapi@1.0.2:
     "@kbrandwijk/swagger-to-graphql" "1.4.2"
     graphql-config "2.0.0"
 
-graphql-config-extension-prisma@0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/graphql-config-extension-prisma/-/graphql-config-extension-prisma-0.0.6.tgz#51d2f552d94ef983e07bd86a23054aac144bbbc7"
+graphql-config-extension-prisma@0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/graphql-config-extension-prisma/-/graphql-config-extension-prisma-0.0.7.tgz#2abe12d7e4a4e523af32b28941d41ebed8b2c343"
   dependencies:
     graphql-config "^2.0.0"
-    prisma-yml "1.0.21"
+    prisma-yml "1.0.25"
 
 graphql-config@1.1.7:
   version "1.1.7"
@@ -3518,9 +3518,9 @@ prisma-json-schema@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/prisma-json-schema/-/prisma-json-schema-0.0.1.tgz#0802e156a293faefdf21e5e41beb8d3681f45cb1"
 
-prisma-yml@1.0.21:
-  version "1.0.21"
-  resolved "https://registry.yarnpkg.com/prisma-yml/-/prisma-yml-1.0.21.tgz#dbf0b7a1ae70ca6af880662d8fd97a14fa1c2dca"
+prisma-yml@1.0.25:
+  version "1.0.25"
+  resolved "https://registry.yarnpkg.com/prisma-yml/-/prisma-yml-1.0.25.tgz#e7989efa85320d7f7695d2280ba305abe5262f75"
   dependencies:
     ajv "5"
     bluebird "^3.5.1"
