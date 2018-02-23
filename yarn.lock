@@ -44,9 +44,9 @@
   dependencies:
     arrify "^1.0.1"
 
-"@kbrandwijk/swagger-to-graphql@2.4.2":
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/@kbrandwijk/swagger-to-graphql/-/swagger-to-graphql-2.4.2.tgz#1b1b0537cd94b31d1bd83091ac795740e231af19"
+"@kbrandwijk/swagger-to-graphql@2.4.3":
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/@kbrandwijk/swagger-to-graphql/-/swagger-to-graphql-2.4.3.tgz#7c0fb2410eb0b6b9cc81fad28cc20f9386153cf1"
   dependencies:
     babel-runtime "^6.25.0"
     isomorphic-fetch "^2.2.1"
@@ -2057,11 +2057,11 @@ graphql-config-extension-graphcool@1.0.7:
     graphcool-yml "0.4.15"
     graphql-config "2.0.0"
 
-graphql-config-extension-openapi@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/graphql-config-extension-openapi/-/graphql-config-extension-openapi-1.0.4.tgz#268a533e2489c7fbeb91f15ad4bbfb45deaa96de"
+graphql-config-extension-openapi@1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/graphql-config-extension-openapi/-/graphql-config-extension-openapi-1.0.5.tgz#6877d31832eb7586c541c1b9686aae8c2de9986c"
   dependencies:
-    "@kbrandwijk/swagger-to-graphql" "2.4.2"
+    "@kbrandwijk/swagger-to-graphql" "2.4.3"
     graphql-config "2.0.0"
 
 graphql-config-extension-prisma@0.0.7:
