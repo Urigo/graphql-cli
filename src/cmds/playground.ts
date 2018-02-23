@@ -26,6 +26,11 @@ export const builder = {
     describe: 'Open web version (even if desktop app available)',
     type: 'boolean',
   },
+  'server-only': {
+    describe: 'Run only server',
+    type: 'boolean',
+    'default': false
+  }
 }
 
 function randomString(len = 32) {
@@ -37,37 +42,27 @@ function randomString(len = 32) {
     .replace(/\//g, '0')
 }
 
-export async function handler(
-  context: Context,
-  argv: { endpoint: string; port: string; web: boolean },
-) {
-  const localPlaygroundPath = `/Applications/GraphQL\ Playground.app/Contents/MacOS/GraphQL\ Playground`
-
-  if (fs.existsSync(localPlaygroundPath) && !argv.web) {
-    const envPath = path.join(os.tmpdir(), `${randomString()}.json`)
-    fs.writeFileSync(envPath, JSON.stringify(process.env))
-    const url = `graphql-playground://?cwd=${process.cwd()}&envPath=${envPath}`
-    opn(url, { wait: false })
-  } else {
+const startServer = async ({ context, endpoint, port = 3000 }: {context: Context, endpoint: string, port: string}) =>
+  new Promise<string>(async (resolve, reject) => {
     const app = express()
-
     const config = await context.getConfig()
     const projects = config.getProjects()
 
     if (projects === undefined) {
       const projectConfig = await context.getProjectConfig()
+
       if (!projectConfig.endpointsExtension) {
         throw noEndpointError
       }
-      const endpoint = projectConfig.endpointsExtension.getEndpoint(
-        argv.endpoint,
+      const { url, headers } = projectConfig.endpointsExtension.getEndpoint(
+        endpoint,
       )
 
       app.use(
         '/graphql',
         requestProxy({
-          url: endpoint.url,
-          headers: endpoint.headers,
+          url,
+          headers,
         }),
       )
 
@@ -85,8 +80,6 @@ export async function handler(
       )
     }
 
-    const port = argv.port || 3000
-
     const listener = app.listen(port, () => {
       let host = listener.address().address
       if (host === '::') {
@@ -94,7 +87,33 @@ export async function handler(
       }
       const link = `http://${host}:${port}/playground`
       console.log('Serving playground at %s', chalk.blue(link))
-      opn(link)
+
+      resolve(link)
     })
+  })
+
+export async function handler(
+  context: Context,
+  argv: { endpoint: string; port: string; web: boolean, serverOnly: boolean },
+) {
+  const localPlaygroundPath = `/Applications/GraphQL\ Playground.app/Contents/MacOS/GraphQL\ Playground`
+
+  const isLocalPlaygroundAvailable = fs.existsSync(localPlaygroundPath)
+
+  const shouldStartServer = argv.serverOnly || argv.web || !isLocalPlaygroundAvailable
+
+  const shouldOpenBrowser = !argv.serverOnly
+
+  if (shouldStartServer) {
+    const link = await startServer({ context, endpoint: argv.endpoint, port: argv.port })
+
+    if (shouldOpenBrowser) {
+      opn(link)
+    }
+  } else {
+    const envPath = path.join(os.tmpdir(), `${randomString()}.json`)
+    fs.writeFileSync(envPath, JSON.stringify(process.env))
+    const url = `graphql-playground://?cwd=${process.cwd()}&envPath=${envPath}`
+    opn(url, { wait: false })
   }
 }
