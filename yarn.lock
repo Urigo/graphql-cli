@@ -2032,13 +2032,13 @@ graphcool-yml@0.4.15:
     scuid "^1.0.2"
     yaml-ast-parser "^0.0.40"
 
-graphql-cli-prepare@1.4.16:
-  version "1.4.16"
-  resolved "https://registry.yarnpkg.com/graphql-cli-prepare/-/graphql-cli-prepare-1.4.16.tgz#9ef39bf3df29a05f23f249bb6ab0238cf8ed94dd"
+graphql-cli-prepare@1.4.17:
+  version "1.4.17"
+  resolved "https://registry.yarnpkg.com/graphql-cli-prepare/-/graphql-cli-prepare-1.4.17.tgz#80b321e655b109030845df2bd333a1ead145ccb8"
   dependencies:
     chalk "2.3.1"
     fs-extra "5.0.0"
-    graphql-import "0.4.3"
+    graphql-import "0.4.4"
     graphql-static-binding "0.9.3"
     lodash "4.17.5"
 
@@ -2073,11 +2073,10 @@ graphql-config@2.0.0, graphql-config@^2.0.0:
     lodash "^4.17.4"
     minimatch "^3.0.4"
 
-graphql-import@0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.3.tgz#5fc68244e0908d6d8f2b91658a82be3d11f4ec62"
+graphql-import@0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.4.tgz#57a485f3b954fd3fa80ae58bf35d8d158e263e92"
   dependencies:
-    graphql "^0.13.0"
     lodash "^4.17.4"
 
 graphql-import@^0.4.0:
