@@ -2056,14 +2056,14 @@ graphql-config-extension-openapi@1.0.5:
     "@kbrandwijk/swagger-to-graphql" "2.4.3"
     graphql-config "2.0.0"
 
-graphql-config-extension-prisma@0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/graphql-config-extension-prisma/-/graphql-config-extension-prisma-0.0.7.tgz#2abe12d7e4a4e523af32b28941d41ebed8b2c343"
+graphql-config-extension-prisma@0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/graphql-config-extension-prisma/-/graphql-config-extension-prisma-0.0.9.tgz#239aaa9e1fec5a98573b635bc2c41aeff914d16c"
   dependencies:
-    graphql-config "^2.0.0"
-    prisma-yml "1.0.25"
+    graphql-config "^2.0.1"
+    prisma-yml "1.0.28"
 
-graphql-config@2.0.0, graphql-config@^2.0.0:
+graphql-config@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-2.0.0.tgz#daf69091055c6f675d63893a2d14c48f3fec3327"
   dependencies:
@@ -2073,7 +2073,17 @@ graphql-config@2.0.0, graphql-config@^2.0.0:
     lodash "^4.17.4"
     minimatch "^3.0.4"
 
-graphql-import@0.4.4:
+graphql-config@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-2.0.1.tgz#d34a9bdf1d7360af7b01db9b20260a342ddc7390"
+  dependencies:
+    graphql-import "^0.4.4"
+    graphql-request "^1.5.0"
+    js-yaml "^3.10.0"
+    lodash "^4.17.4"
+    minimatch "^3.0.4"
+
+graphql-import@0.4.4, graphql-import@^0.4.4:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.4.tgz#57a485f3b954fd3fa80ae58bf35d8d158e263e92"
   dependencies:
@@ -2101,6 +2111,12 @@ graphql-playground-middleware-express@1.5.7:
 graphql-request@^1.4.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/graphql-request/-/graphql-request-1.4.1.tgz#0772743cfac8dfdd4d69d36106a96c9bdd191ce8"
+  dependencies:
+    cross-fetch "1.1.1"
+
+graphql-request@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/graphql-request/-/graphql-request-1.5.0.tgz#69b30a1767189fcba27f5c907c0a87339f90b5d8"
   dependencies:
     cross-fetch "1.1.1"
 
@@ -3497,9 +3513,9 @@ prisma-json-schema@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/prisma-json-schema/-/prisma-json-schema-0.0.1.tgz#0802e156a293faefdf21e5e41beb8d3681f45cb1"
 
-prisma-yml@1.0.25:
-  version "1.0.25"
-  resolved "https://registry.yarnpkg.com/prisma-yml/-/prisma-yml-1.0.25.tgz#e7989efa85320d7f7695d2280ba305abe5262f75"
+prisma-yml@1.0.28:
+  version "1.0.28"
+  resolved "https://registry.yarnpkg.com/prisma-yml/-/prisma-yml-1.0.28.tgz#5dd9bb99353cf2fba5bb12880b25faaaf72b9f5e"
   dependencies:
     ajv "5"
     bluebird "^3.5.1"
@@ -3507,6 +3523,7 @@ prisma-yml@1.0.25:
     debug "^3.1.0"
     dotenv "^4.0.0"
     fs-extra "^5.0.0"
+    graphql-request "^1.5.0"
     isomorphic-fetch "^2.2.1"
     js-yaml "^3.10.0"
     json-stable-stringify "^1.0.1"
