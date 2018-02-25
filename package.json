@@ -92,7 +92,7 @@
     "node-fetch": "^2.0.0",
     "npm-paths": "^1.0.0",
     "opn": "^5.2.0",
-    "ora": "^1.4.0",
+    "ora": "^2.0.0",
     "parse-github-url": "^1.0.2",
     "request": "^2.83.0",
     "rimraf": "2.6.2",
