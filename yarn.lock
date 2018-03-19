@@ -1501,6 +1501,13 @@ color@^2.0.1:
     color-convert "^1.9.1"
     color-string "^1.5.2"
 
+color@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/color/-/color-3.0.0.tgz#d920b4328d534a3ac8295d68f7bd4ba6c427be9a"
+  dependencies:
+    color-convert "^1.9.1"
+    color-string "^1.5.2"
+
 color@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/color/-/color-1.0.3.tgz#e48e832d85f14ef694fb468811c2d5cfe729b55d"
@@ -4847,13 +4854,13 @@ react-native-safe-module@^1.1.0:
   dependencies:
     dedent "^0.6.0"
 
-react-native-style-tachyons@3.5.3:
-  version "3.5.3"
-  resolved "https://registry.yarnpkg.com/react-native-style-tachyons/-/react-native-style-tachyons-3.5.3.tgz#9511853edf12b50a998d1c5b69e943abba7d5c05"
+react-native-style-tachyons@3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-style-tachyons/-/react-native-style-tachyons-3.6.0.tgz#6cb7d59b14880cdf8760211b8a065d4db257f2ca"
   dependencies:
-    color "^2.0.1"
+    color "^3.0.0"
     css-color-names "0.0.4"
-    lodash "^4.17.4"
+    lodash "^4.17.5"
 
 "react-native-svg@https://github.com/expo/react-native-svg/archive/5.5.1-exp.1.tar.gz":
   version "5.5.1"
