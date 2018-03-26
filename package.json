@@ -36,7 +36,7 @@
     "native-base": "2.3.10",
     "prop-types": "15.6.1",
     "react": "16.2.0",
-    "react-apollo": "2.1.0-rc.3",
+    "react-apollo": "2.1.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
     "react-native-device-detection": "0.2.0",
     "react-native-style-tachyons": "3.5.3",
