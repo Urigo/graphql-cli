@@ -21,7 +21,7 @@
     "@expo/vector-icons": "6.3.1",
     "apollo-cache-inmemory": "1.1.11",
     "apollo-cache-persist": "0.1.1",
-    "apollo-client": "2.2.7",
+    "apollo-client": "2.2.8",
     "apollo-link": "1.2.1",
     "apollo-link-http": "1.5.3",
     "apollo-link-schema": "1.0.6",
