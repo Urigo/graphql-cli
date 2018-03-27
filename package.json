@@ -33,7 +33,7 @@
     "graphql-subscriptions": "0.5.8",
     "graphql-tag": "2.8.0",
     "graphql-tools": "2.23.1",
-    "native-base": "2.3.10",
+    "native-base": "2.4.1",
     "prop-types": "15.6.1",
     "react": "16.2.0",
     "react-apollo": "2.1.0-rc.3",
