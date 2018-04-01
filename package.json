@@ -2,7 +2,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "format": "prettier --write \"**/*.{js,json,md}\"",
-    "lint": "eslint .",
+    "test": "eslint .",
     "precommit": "lint-staged"
   },
   "lint-staged": {
