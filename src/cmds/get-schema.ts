@@ -61,7 +61,7 @@ const command: CommandObject = {
           type: 'boolean',
         },
         header: {
-          describe: 'Header to use for downloading (with endpoint URL)',
+          describe: 'Header to use for downloading (with endpoint URL). Format: Header=Value',
           type: 'string',
         },
       })
