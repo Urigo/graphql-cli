@@ -67,6 +67,7 @@ const command: CommandObject = {
       })
       .implies('console', ['--no-output', '--no-watch'])
       .implies('all', ['--no-output', '--no-endpoint', '--no-project'])
+      .implies('json', 'output')
       .implies('--no-endpoint', '--no-header'),
 
   handler: async (context: Context, argv: Arguments) => {
