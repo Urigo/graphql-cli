@@ -2042,6 +2042,15 @@ graphql-cli-prepare@1.4.19:
     graphql-static-binding "0.9.3"
     lodash "4.17.5"
 
+graphql-codegen-binding@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/graphql-codegen-binding/-/graphql-codegen-binding-0.0.7.tgz#04988c095e799b66f7bd57248c38774926d41a20"
+  dependencies:
+    graphql "^0.11.0 || ^0.12.0 || ^0.13.0"
+    graphql-config "2.0.1"
+    mkdirp "^0.5.1"
+    yargs "^11.0.0"
+
 graphql-config-extension-graphcool@1.0.8:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/graphql-config-extension-graphcool/-/graphql-config-extension-graphcool-1.0.8.tgz#320bf4572b207183fb069d155f4102fdf61b7f63"
@@ -4611,7 +4620,7 @@ yargs-parser@^9.0.2:
   dependencies:
     camelcase "^4.1.0"
 
-yargs@11.0.0:
+yargs@11.0.0, yargs@^11.0.0:
   version "11.0.0"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-11.0.0.tgz#c052931006c5eee74610e5fc0354bedfd08a201b"
   dependencies:
