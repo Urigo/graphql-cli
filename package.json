@@ -96,6 +96,7 @@
     "ora": "^1.4.0",
     "parse-github-url": "^1.0.2",
     "request": "^2.83.0",
+    "resolve": "^1.7.1",
     "rimraf": "2.6.2",
     "source-map-support": "^0.5.3",
     "update-notifier": "^2.3.0",
