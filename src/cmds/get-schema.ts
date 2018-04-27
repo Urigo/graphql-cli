@@ -1,6 +1,7 @@
 import { EventEmitter } from 'events'
 import * as fs from 'fs'
-import { relative } from 'path'
+import * as mkdirp from 'mkdirp'
+import { relative, dirname } from 'path'
 import { printSchema, GraphQLSchema } from 'graphql'
 import {
   writeSchema,
@@ -61,7 +62,8 @@ const command: CommandObject = {
           type: 'boolean',
         },
         header: {
-          describe: 'Header to use for downloading (with endpoint URL). Format: Header=Value',
+          describe:
+            'Header to use for downloading (with endpoint URL). Format: Header=Value',
           type: 'string',
         },
       })
@@ -201,8 +203,8 @@ async function updateSingleProjectEndpoint(
   let newSchemaResult
   try {
     newSchemaResult = argv.json
-    ? await endpoint.resolveIntrospection()
-    : await endpoint.resolveSchema()
+      ? await endpoint.resolveIntrospection()
+      : await endpoint.resolveSchema()
   } catch (err) {
     emitter.emit('warning', err.message)
     return
@@ -245,7 +247,7 @@ async function updateSingleProjectEndpoint(
     }
   }
 
-  let schemaPath
+  let schemaPath = argv.output
   if (argv.console) {
     console.log(
       argv.json
@@ -253,10 +255,15 @@ async function updateSingleProjectEndpoint(
         : printSchema(newSchemaResult as GraphQLSchema),
     )
   } else if (argv.json) {
-    schemaPath = argv.output
+    if (!fs.existsSync(schemaPath)) {
+      mkdirp.sync(dirname(schemaPath))
+    }
     fs.writeFileSync(argv.output, JSON.stringify(newSchemaResult, null, 2))
   } else {
-    schemaPath = argv.output ? argv.output : config!.schemaPath
+    schemaPath = schemaPath || config!.schemaPath
+    if (!fs.existsSync(schemaPath)) {
+      mkdirp.sync(dirname(schemaPath))
+    }
     await writeSchema(schemaPath as string, newSchemaResult as GraphQLSchema, {
       source: endpoint.url,
       timestamp: new Date().toString(),
