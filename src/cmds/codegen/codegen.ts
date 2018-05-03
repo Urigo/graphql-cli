@@ -1,9 +1,30 @@
 import chalk from 'chalk'
 import { GraphQLConfig, GraphQLProjectConfig } from 'graphql-config'
-import { get, has, merge } from 'lodash'
+import { merge } from 'lodash'
 import { Arguments } from 'yargs'
-import * as resolve from 'resolve'
+import { spawnSync } from 'npm-run'
 // import * as generatorModule from 'graphql-codegen-binding'
+
+export type CodegenConfigs = CodegenConfig[] | CodegenConfig
+
+export interface CodegenConfig {
+  input: CodegenInput
+  output: CodegenOutput
+  language: string
+  generator: string
+}
+
+export type CodegenInput = CodegenInputObject | string
+
+export interface CodegenInputObject {
+  schema: string
+  typeDefs: string
+}
+
+export interface CodegenOutput {
+  binding: string
+  typeDefs: string
+}
 
 export class Codegen {
   private config: GraphQLConfig
@@ -52,82 +73,85 @@ export class Codegen {
   }
 
   private codegen() {
-    if (has(this.project.config, 'extensions.codegen')) {
+    if (
+      this.project.config.extensions &&
+      this.project.config.extensions.codegen
+    ) {
       this.context.spinner.start(
         `Generating bindings for project ${this.projectDisplayName()}...`,
       )
 
-      const {
-        target,
-        generator,
-        language,
-      } = this.project.config.extensions!.codegen
-      // TODO reenable
-      let generatorModule: any
-      try {
-        const modulePath = resolve.sync(generator, { basedir: process.cwd() })
-        if (!modulePath) {
-          throw new Error('Could not find module')
-        }
-        generatorModule = require(modulePath)
-      } catch (e) {
-        throw new Error(
-          `Generator ${generator} could not be found. Please try yarn add --dev ${generator}`,
-        )
-      }
-
-      let sdl
-      if (this.project.config.schemaPath) {
-        try {
-          sdl = this.project.getSchemaSDL()
-        } catch (e) {
-          if (!has(this.project.config, 'extensions.endpoints')) {
-            this.context.spinner.info(`Project ${
-              this.projectName
-            } has a schemaPath, but the schema doesn't exist.
-Make sure to either provide a correct schemaPath or endpoint to fetch the schema from.`)
-            return
-          }
-        }
-      } else if (!has(this.project.config, 'extensions.endpoints')) {
-        this.context.spinner.info(`Project ${
-          this.projectName
-        } has no schemaPath and no endpoint.
-Make sure to either provide a correct schemaPath or endpoint to fetch the schema from.`)
-        return
-      }
-
-      let endpoint = sdl
-        ? undefined
-        : get(this.project.config, 'extensions.endpoints')
-      // endpoint can either be a string or an object with a url
-      if (endpoint && Object.keys(endpoint).length > 0) {
-        endpoint = endpoint[Object.keys(endpoint)[0]]
-      }
-      const headers =
-        endpoint && endpoint.headers ? endpoint.headers : undefined
-      if (endpoint && endpoint.url) {
-        endpoint = endpoint.url
-      }
-
-      generatorModule.generateCode({
-        schema: sdl,
-        endpoint,
-        target,
-        generator: language,
-        headers,
-      })
-
-      this.context.spinner.succeed(
-        `Code for project ${this.projectDisplayName()} generated to ${chalk.green(
-          target,
-        )}`,
+      const codegenConfigs: CodegenConfig[] = Array.isArray(
+        this.project.config.extensions.codegen,
       )
+        ? this.project.config.extensions.codegen
+        : [this.project.config.extensions.codegen]
+
+      codegenConfigs.forEach(codegenConfig => {
+        const { output, input, generator, language } = codegenConfig
+        const inputSchemaPath =
+          this.getInputSchemaPath(input) || this.project.schemaPath
+
+        if (!inputSchemaPath) {
+          throw new Error(
+            `Please either provide a 'schemaPath' or 'input' for the codegen extension in your .graphqlconfig`,
+          )
+        }
+
+        if (!output) {
+          throw new Error(
+            `Please specify the 'output' of the codegen extension in your .graphqlconfig`,
+          )
+        }
+
+        if (!generator) {
+          throw new Error(
+            `Please specify the 'generator' of codegen extension in your .graphqlconfig`,
+          )
+        }
+
+        if (!language) {
+          throw new Error(
+            `Please specify the 'language' of the codegen extension in your .graphqlconfig`,
+          )
+        }
+
+        const args = ['--input', inputSchemaPath, '--generator', language]
+        if (output.binding) {
+          args.push('--outputBinding', output.binding)
+        }
+        if (output.typeDefs) {
+          args.push('--outputTypedefs', output.typeDefs)
+        }
+        const child = spawnSync(generator, args)
+        const stderr = child.stderr.toString()
+        if (stderr && stderr.length > 0) {
+          console.error(child.stderr.toString())
+        }
+
+        this.context.spinner.succeed(
+          `Code for project ${this.projectDisplayName()} generated to ${chalk.green(
+            output.binding,
+          )}`,
+        )
+      })
     } else if (this.argv.verbose) {
       this.context.spinner.info(
         `Codegen not configured for project ${this.projectDisplayName()}. Skipping`,
       )
     }
+  }
+
+  private getInputSchemaPath(input?: CodegenInput) {
+    if (!input) {
+      return null
+    }
+
+    if (typeof input === 'string') {
+      return input
+    }
+
+    return input.schema
   }
 
   private getProjectConfig(): { [name: string]: GraphQLProjectConfig } {
