@@ -169,7 +169,11 @@ export class Codegen {
           this.context.spinner.succeed(
             `Code for project ${this.projectDisplayName()} generated to ${chalk.green(
               output.binding,
-            )}`,
+            )}${
+              output.typeDefs
+                ? `. Typedefs written to ${chalk.green(output.typeDefs)}`
+                : ''
+            }`,
           )
         }
       }
