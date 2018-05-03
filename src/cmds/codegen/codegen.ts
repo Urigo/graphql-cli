@@ -3,6 +3,16 @@ import { GraphQLConfig, GraphQLProjectConfig } from 'graphql-config'
 import { merge } from 'lodash'
 import { Arguments } from 'yargs'
 import { spawnSync } from 'npm-run'
+import getApolloCodegenBin from './getApolloCodegenBin'
+import * as crossSpawn from 'cross-spawn'
+import { getTmpPath } from '../..'
+import * as fs from 'fs'
+import {
+  graphql,
+  introspectionQuery,
+  GraphQLSchema,
+  ExecutionResult,
+} from 'graphql'
 // import * as generatorModule from 'graphql-codegen-binding'
 
 export type CodegenConfigs = CodegenConfig[] | CodegenConfig
@@ -24,6 +34,7 @@ export interface CodegenInputObject {
 export interface CodegenOutput {
   binding: string
   typeDefs: string
+  typings: string
 }
 
 export class Codegen {
@@ -59,7 +70,7 @@ export class Codegen {
 
         this.setCurrentProject(project, projectName)
 
-        this.codegen()
+        await this.codegen()
       }
     }
   }
@@ -72,7 +83,7 @@ export class Codegen {
     this.projectName = projectName
   }
 
-  private codegen() {
+  private async codegen() {
     if (
       this.project.config.extensions &&
       this.project.config.extensions.codegen
@@ -87,12 +98,12 @@ export class Codegen {
         ? this.project.config.extensions.codegen
         : [this.project.config.extensions.codegen]
 
-      codegenConfigs.forEach(codegenConfig => {
+      for (const codegenConfig of codegenConfigs) {
         const { output, input, generator, language } = codegenConfig
-        const inputSchemaPath =
+        let inputSchemaPath =
           this.getInputSchemaPath(input) || this.project.schemaPath
 
-        if (!inputSchemaPath) {
+        if (!inputSchemaPath && generator !== 'typegen') {
           throw new Error(
             `Please either provide a 'schemaPath' or 'input' for the codegen extension in your .graphqlconfig`,
           )
@@ -116,25 +127,52 @@ export class Codegen {
           )
         }
 
-        const args = ['--input', inputSchemaPath, '--generator', language]
-        if (output.binding) {
-          args.push('--outputBinding', output.binding)
-        }
-        if (output.typeDefs) {
-          args.push('--outputTypedefs', output.typeDefs)
-        }
-        const child = spawnSync(generator, args)
-        const stderr = child.stderr && child.stderr.toString()
-        if (stderr && stderr.length > 0) {
-          console.error(child.stderr.toString())
-        }
+        if (generator === 'typegen') {
+          inputSchemaPath = inputSchemaPath || '**/*.ts'
+          const binPath = await getApolloCodegenBin()
+          const tmpSchemaPath = getTmpPath()
+          fs.writeFileSync(
+            tmpSchemaPath,
+            await introspect(this.project.getSchema()),
+          )
+          const args = [
+            'generate',
+            input,
+            '--schema',
+            tmpSchemaPath,
+            '--output',
+            output.typings,
+            '--target',
+            language,
+          ]
+          crossSpawn.sync(binPath, args)
+          this.context.spinner.succeed(
+            `Typedefs for project ${this.projectDisplayName()} generated to ${chalk.green(
+              output.typings,
+            )}`,
+          )
+          fs.unlinkSync(tmpSchemaPath)
+        } else {
+          const args = ['--input', inputSchemaPath, '--generator', language]
+          if (output.binding) {
+            args.push('--outputBinding', output.binding)
+          }
+          if (output.typeDefs) {
+            args.push('--outputTypedefs', output.typeDefs)
+          }
+          const child = spawnSync(generator, args)
+          const stderr = child.stderr && child.stderr.toString()
+          if (stderr && stderr.length > 0) {
+            console.error(child.stderr.toString())
+          }
 
-        this.context.spinner.succeed(
-          `Code for project ${this.projectDisplayName()} generated to ${chalk.green(
-            output.binding,
-          )}`,
-        )
-      })
+          this.context.spinner.succeed(
+            `Code for project ${this.projectDisplayName()} generated to ${chalk.green(
+              output.binding,
+            )}`,
+          )
+        }
+      }
     } else if (this.argv.verbose) {
       this.context.spinner.info(
         `Codegen not configured for project ${this.projectDisplayName()}. Skipping`,
@@ -181,4 +219,8 @@ export class Codegen {
   }
 
   private projectDisplayName = () => chalk.green(this.projectName)
+}
+
+export function introspect(schema: GraphQLSchema): Promise<ExecutionResult> {
+  return graphql(schema, introspectionQuery)
 }
