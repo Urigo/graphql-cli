@@ -124,7 +124,7 @@ export class Codegen {
           args.push('--outputTypedefs', output.typeDefs)
         }
         const child = spawnSync(generator, args)
-        const stderr = child.stderr.toString()
+        const stderr = child.stderr && child.stderr.toString()
         if (stderr && stderr.length > 0) {
           console.error(child.stderr.toString())
         }
