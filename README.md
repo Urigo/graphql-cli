@@ -24,8 +24,8 @@ You can simply install the CLI using `npm` or `yarn` by running the following co
 npm install -g graphql-cli
 ```
 
-
 ## Usage
+
 ```
 Usage: graphql [command]
 
@@ -88,7 +88,6 @@ graphql completion >> ~/.bash_profile
 - [`graphql-cli-generate-fragments`](https://github.com/develomark/graphql-cli-generate-fragments) - Generates GraphQL fragments for each type in the project schema.
 
 Do you want to create your own plugin? [Here is a simple example.](plugin-example)
-
 
 ## Contributors
 

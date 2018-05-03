@@ -38,10 +38,22 @@ export const defaultBoilerplates: Boilerplate[] = [
       'https://github.com/graphql-boilerplates/typescript-graphql-server/tree/master/advanced',
   },
   {
+    name: 'react-fullstack-minimal',
+    description: '"Hello World" fullstack app with React & GraphQL',
+    repo:
+      'https://github.com/graphql-boilerplates/react-fullstack-graphql/tree/master/minimal',
+  },
+  {
     name: 'react-fullstack-basic',
-    description: 'React app + GraphQL server (incl. database )',
+    description: 'React app + GraphQL server (incl. database)',
     repo:
       'https://github.com/graphql-boilerplates/react-fullstack-graphql/tree/master/basic',
+  },
+  {
+    name: 'react-fullstack-advanced',
+    description: 'React app + GraphQL server (incl. database & authentication)',
+    repo:
+      'https://github.com/graphql-boilerplates/react-fullstack-graphql/tree/master/advanced',
   },
   {
     name: 'vue-fullstack-minimal',
@@ -51,8 +63,14 @@ export const defaultBoilerplates: Boilerplate[] = [
   },
   {
     name: 'vue-fullstack-basic',
-    description: 'Vue app + GraphQL server (incl. database )',
+    description: 'Vue app + GraphQL server (incl. database)',
     repo:
       'https://github.com/graphql-boilerplates/vue-fullstack-graphql/tree/master/basic',
+  },
+  {
+    name: 'vue-fullstack-advanced',
+    description: 'Vue app + GraphQL server (incl. database & authentication)',
+    repo:
+      'https://github.com/graphql-boilerplates/vue-fullstack-graphql/tree/master/advanced',
   },
 ]
