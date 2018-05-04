@@ -1,6 +1,6 @@
 {
   "name": "graphql-cli",
-  "version": "2.16.0-beta.4",
+  "version": "2.16.0-beta.5",
   "main": "dist/index.js",
   "bin": {
     "graphql": "dist/bin.js",

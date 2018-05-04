@@ -133,7 +133,7 @@ export class Codegen {
           const tmpSchemaPath = getTmpPath()
           fs.writeFileSync(
             tmpSchemaPath,
-            await introspect(this.project.getSchema()),
+            JSON.stringify(await introspect(this.project.getSchema())),
           )
           const args = [
             'generate',
@@ -145,15 +145,19 @@ export class Codegen {
             '--target',
             language,
           ]
-          crossSpawn.sync(binPath, args)
+          const child = crossSpawn.sync(binPath, args)
+          const stderr = child.stderr && child.stderr.toString()
+          if (stderr && stderr.length > 0) {
+            console.error(child.stderr.toString())
+          }
           this.context.spinner.succeed(
             `Typedefs for project ${this.projectDisplayName()} generated to ${chalk.green(
               output.typings,
             )}`,
           )
-          fs.unlinkSync(tmpSchemaPath)
+          // fs.unlinkSync(tmpSchemaPath)
         } else {
-          const args = ['--input', inputSchemaPath, '--generator', language]
+          const args = ['--input', inputSchemaPath, '--language', language]
           if (output.binding) {
             args.push('--outputBinding', output.binding)
           }
@@ -215,11 +219,7 @@ export class Codegen {
       projects = this.config.getProjects()
     }
 
-    if (!projects) {
-      throw new Error('No projects defined in config file')
-    }
-
-    return projects
+    return projects || { default: this.config.getProjectConfig() }
   }
 
   private projectDisplayName = () => chalk.green(this.projectName)
