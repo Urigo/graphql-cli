@@ -43,12 +43,24 @@ export function installCommands() {
     .value() as string[]
 
   let yargs = require('yargs')
+  const processedCommands = {}
   for (const moduleName of ['./cmds', ...plugins]) {
     try {
       const cmdModule = require(moduleName)
       const cmdModules = Array.isArray(cmdModule) ? cmdModule : [cmdModule]
       for (const cmd of cmdModules) {
-        yargs = yargs.command(wrapCommand(cmd))
+        const commandName = cmd.command.split(' ')[0]
+        if (!processedCommands[commandName]) {
+          yargs = yargs.command(wrapCommand(cmd))
+          processedCommands[commandName] = moduleName
+        } else {
+          if (processedCommands[commandName] === './cmds') {
+            console.warn(`${chalk.yellow(
+              `warning`,
+            )} command ${commandName} both exists in plugin ${moduleName} and is shipped with the graphql-cli.
+The plugin is being ignored.`)
+          }
+        }
       }
     } catch (e) {
       console.log(`Can't load ${moduleName} plugin:` + e.stack)
