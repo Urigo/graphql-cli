@@ -301,7 +301,7 @@ acorn@5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.1.1.tgz#53fe161111f912ab999ee887a90a0bc52822fd75"
 
-adm-zip@^0.4.7:
+adm-zip@0.4.7:
   version "0.4.7"
   resolved "https://registry.yarnpkg.com/adm-zip/-/adm-zip-0.4.7.tgz#8606c2cbf1c426ce8c8ec00174447fd49b6eafc1"
 
@@ -2120,9 +2120,9 @@ graphql-playground-html@1.5.5:
   dependencies:
     graphql-config "2.0.0"
 
-graphql-playground-middleware-express@1.6.1:
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/graphql-playground-middleware-express/-/graphql-playground-middleware-express-1.6.1.tgz#d6287d124a1c55845a52a7d727c371da99cdf0b0"
+graphql-playground-middleware-express@1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/graphql-playground-middleware-express/-/graphql-playground-middleware-express-1.6.2.tgz#3efe103cd222d6cf39e71f70c48be550c47b7a9b"
   dependencies:
     graphql-playground-html "1.5.5"
 
