@@ -167,7 +167,7 @@ export class Codegen {
           const child = spawnSync(generator, args)
           const stderr = child.stderr && child.stderr.toString()
           if (stderr && stderr.length > 0) {
-            console.error(child.stderr.toString())
+            console.error(stderr)
           }
 
           this.context.spinner.succeed(
