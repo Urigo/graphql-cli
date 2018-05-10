@@ -1,14 +1,11 @@
 import chalk from 'chalk'
-import * as crypto from 'crypto'
 import * as express from 'express'
 import * as requestProxy from 'express-request-proxy'
 import * as fs from 'fs'
 import expressPlayground from 'graphql-playground-middleware-express'
 import * as opn from 'opn'
-import * as os from 'os'
-import * as path from 'path'
 
-import { Context, noEndpointError } from '../'
+import { Context, noEndpointError, getTmpPath } from '../'
 
 export const command = 'playground'
 export const describe = 'Open interactive GraphQL Playground'
@@ -29,20 +26,19 @@ export const builder = {
   'server-only': {
     describe: 'Run only server',
     type: 'boolean',
-    'default': false
-  }
+    default: false,
+  },
 }
 
-function randomString(len = 32) {
-  return crypto
-    .randomBytes(Math.ceil(len * 3 / 4))
-    .toString('base64')
-    .slice(0, len)
-    .replace(/\+/g, '0')
-    .replace(/\//g, '0')
-}
-
-const startServer = async ({ context, endpoint, port = 3000 }: {context: Context, endpoint: string, port: string}) =>
+const startServer = async ({
+  context,
+  endpoint,
+  port = 3000,
+}: {
+  context: Context
+  endpoint: string
+  port: string
+}) =>
   new Promise<string>(async (resolve, reject) => {
     const app = express()
     const config = await context.getConfig()
@@ -94,24 +90,29 @@ const startServer = async ({ context, endpoint, port = 3000 }: {context: Context
 
 export async function handler(
   context: Context,
-  argv: { endpoint: string; port: string; web: boolean, serverOnly: boolean },
+  argv: { endpoint: string; port: string; web: boolean; serverOnly: boolean },
 ) {
   const localPlaygroundPath = `/Applications/GraphQL\ Playground.app/Contents/MacOS/GraphQL\ Playground`
 
   const isLocalPlaygroundAvailable = fs.existsSync(localPlaygroundPath)
 
-  const shouldStartServer = argv.serverOnly || argv.web || !isLocalPlaygroundAvailable
+  const shouldStartServer =
+    argv.serverOnly || argv.web || !isLocalPlaygroundAvailable
 
   const shouldOpenBrowser = !argv.serverOnly
 
   if (shouldStartServer) {
-    const link = await startServer({ context, endpoint: argv.endpoint, port: argv.port })
+    const link = await startServer({
+      context,
+      endpoint: argv.endpoint,
+      port: argv.port,
+    })
 
     if (shouldOpenBrowser) {
       opn(link)
     }
   } else {
-    const envPath = path.join(os.tmpdir(), `${randomString()}.json`)
+    const envPath = getTmpPath()
     fs.writeFileSync(envPath, JSON.stringify(process.env))
     const url = `graphql-playground://?cwd=${process.cwd()}&envPath=${envPath}`
     opn(url, { wait: false })

@@ -60,6 +60,7 @@ const command: CommandObject = {
         all: {
           describe: 'Get schema for all projects and all endpoints',
           type: 'boolean',
+          default: true,
         },
         header: {
           describe:
@@ -68,12 +69,12 @@ const command: CommandObject = {
         },
       })
       .implies('console', ['--no-output', '--no-watch'])
-      .implies('all', ['--no-output', '--no-endpoint', '--no-project'])
+      .implies('all', ['--no-output', '--no-endpoint'])
       .implies('json', 'output')
       .implies('--no-endpoint', '--no-header'),
 
   handler: async (context: Context, argv: Arguments) => {
-    if (argv.all) {
+    if (argv.all && !argv.project) {
       argv.project = argv.endpoint = '*'
     }
     const spinner = context.spinner
