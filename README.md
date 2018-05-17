@@ -114,4 +114,4 @@ A big thank you to all contributors and supporters of this repository 💚
 
 Join our [Slack community](http://slack.graph.cool/) if you run into issues or have questions. We love talking to you!
 
-![](http://i.imgur.com/5RHR6Ku.png)
+<p align="center"><a href="https://oss.prisma.io"><img src="https://imgur.com/IMU2ERq.png" alt="Prisma" height="170px"></a></p>
