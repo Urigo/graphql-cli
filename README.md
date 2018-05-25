@@ -24,8 +24,8 @@ You can simply install the CLI using `npm` or `yarn` by running the following co
 npm install -g graphql-cli
 ```
 
-## [Docs :books:](https://oss.prisma.io/graphql-cli)
-Check out the detailed docs about the possible workflows [here](https://oss.prisma.io/graphql-cli).
+## [Docs :books:](https://oss.prisma.io/content/GraphQL-CLI/01-Overview.html)
+Check out the detailed docs about the possible workflows [here](https://oss.prisma.io/content/GraphQL-CLI/01-Overview.html).
 
 
 ## Usage
@@ -34,20 +34,18 @@ Check out the detailed docs about the possible workflows [here](https://oss.pris
 Usage: graphql [command]
 
 Commands:
-  graphql create [directory]             Bootstrap a new GraphQL project
-  graphql add-endpoint                   Add new endpoint to .graphqlconfig
-  graphql add-project                    Add new project to .graphqlconfig
-  graphql get-schema                     Download schema from endpoint
-  graphql schema-status                  Show source & timestamp of local schema
-  graphql ping                           Ping GraphQL endpoint
-  graphql query <file>                   Run query/mutation
-  graphql diff                           Show a diff between two schemas
-  graphql playground                     Open interactive GraphQL Playground
-  graphql lint                           Check schema for linting errors
-  graphql prepare                        Bundle schemas and generate bindings
-  graphql codegen [--target] [--output]  Generates apollo-codegen
-                                         code/annotations from your
-                                         .graphqlconfig
+  graphql init                Setup .graphqlconfig file
+  graphql add-endpoint        Add new endpoint to .graphqlconfig
+  graphql add-project         Add new project to .graphqlconfig
+  graphql get-schema          Download schema from endpoint
+  graphql schema-status       Show source & timestamp of local schema
+  graphql create [directory]  Bootstrap a new GraphQL project
+  graphql ping                Ping GraphQL endpoint
+  graphql query <file>        Run query/mutation
+  graphql diff                Show a diff between two schemas
+  graphql playground          Open interactive GraphQL Playground
+  graphql lint                Check schema for linting errors
+  graphql prepare             Bundle schemas and generate bindings
 
 Options:
   --dotenv       Path to .env file                                      [string]
