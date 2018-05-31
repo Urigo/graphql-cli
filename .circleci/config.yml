@@ -5,7 +5,7 @@ jobs:
       - image: circleci/node:latest@sha256:23e53550bd5ebb3377c273e64a639de453248bcc8e06e68633e89a963d6e4cf1
     steps:
       - checkout
-      - run: sudo npm install -g yarn semantic-release@12.0.0
+      - run: sudo npm install -g yarn semantic-release@15.1.1
       - run: yarn install
       - run: yarn test
       - run: yarn run pack
