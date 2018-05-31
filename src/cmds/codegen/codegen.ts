@@ -129,7 +129,7 @@ export class Codegen {
         if (generator === 'typegen') {
 
           if (!output.typings || output.typings === '') {
-            throw new Error("Please provide output.typings path to use typegen")
+            throw new Error("Please provide output.typings path in graphql config to use typegen")
           }
 
           inputSchemaPath = inputSchemaPath || '**/*.ts'
@@ -173,7 +173,7 @@ export class Codegen {
           const args = ['--input', inputSchemaPath, '--language', language]
 
           if (!output.binding || output.binding === '' && !output.typeDefs || output.typeDefs === '') {
-            throw new Error("Please provide either output.binding or output.typeDefs to use this generator")
+            throw new Error("Please provide either output.binding or output.typeDefs in graphql config to use this generator")
           }
 
           if (output.binding) {
