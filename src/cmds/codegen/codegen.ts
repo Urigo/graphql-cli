@@ -186,8 +186,8 @@ export class Codegen {
 
           if (child.error) {
             if (child.error.message === `spawnSync ${generator} ENOENT`) {
-              const prismaVersionMessage = generator === 'prisma-binding' ? 
-              'Please install prisma-binding version > 2.x to use "graphql codegen"' : ''
+              const prismaVersionMessage = generator === 'prisma-binding' || 'graphql-binding' ? 
+              `Please install ${generator} version > 2.x to use "graphql codegen"` : ''
               throw new Error(`Generator ${generator} is not installed. ${prismaVersionMessage}`)
             }
             throw new Error(child.error.message)
