@@ -5,6 +5,7 @@ jobs:
       - image: circleci/node:8
     steps:
       - checkout
+      - run: sudo npm install -g yarn@1.7.0
       - run: sudo yarn global add semantic-release@15.1.1
       - run: yarn install
       - run: yarn test
