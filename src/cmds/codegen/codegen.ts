@@ -3,7 +3,6 @@ import { GraphQLConfig, GraphQLProjectConfig } from 'graphql-config'
 import { merge } from 'lodash'
 import { Arguments } from 'yargs'
 import { spawnSync } from 'npm-run'
-import getApolloCodegenBin from './getApolloCodegenBin'
 import * as crossSpawn from 'cross-spawn'
 import { getTmpPath } from '../..'
 import * as fs from 'fs'
@@ -128,8 +127,13 @@ export class Codegen {
         }
 
         if (generator === 'typegen') {
+
+          if (!output.typings || output.typings === '') {
+            throw new Error("Please provide output.typings path to use typegen")
+          }
+
           inputSchemaPath = inputSchemaPath || '**/*.ts'
-          const binPath = await getApolloCodegenBin()
+          const binPath = require.resolve('apollo-codegen').replace('index.js', 'cli.js')
           const tmpSchemaPath = getTmpPath()
           fs.writeFileSync(
             tmpSchemaPath,
@@ -137,7 +141,7 @@ export class Codegen {
           )
           const args = [
             'generate',
-            input,
+            input || '{binding,prisma}/*.ts',
             '--schema',
             tmpSchemaPath,
             '--output',
@@ -145,10 +149,19 @@ export class Codegen {
             '--target',
             language,
           ]
+
           const child = crossSpawn.sync(binPath, args)
+        
+          if (child.error) {
+            if (child.error.message === `spawnSync apollo-codegen ENOENT`) {
+              throw new Error(`Generator apollo-codegen is not installed.`)
+            }
+            throw new Error(child.error.message)
+          }
+
           const stderr = child.stderr && child.stderr.toString()
           if (stderr && stderr.length > 0) {
-            console.error(child.stderr.toString())
+            throw new Error(child.stderr.toString())
           }
           this.context.spinner.succeed(
             `Typedefs for project ${this.projectDisplayName()} generated to ${chalk.green(
@@ -158,6 +171,11 @@ export class Codegen {
           // fs.unlinkSync(tmpSchemaPath)
         } else {
           const args = ['--input', inputSchemaPath, '--language', language]
+
+          if (!output.binding || output.binding === '' && !output.typeDefs || output.typeDefs === '') {
+            throw new Error("Please provide either output.binding or output.typeDefs to use this generator")
+          }
+
           if (output.binding) {
             args.push('--outputBinding', output.binding)
           }
@@ -165,9 +183,19 @@ export class Codegen {
             args.push('--outputTypedefs', output.typeDefs)
           }
           const child = spawnSync(generator, args)
+
+          if (child.error) {
+            if (child.error.message === `spawnSync ${generator} ENOENT`) {
+              const prismaVersionMessage = generator === 'prisma-binding' ? 
+              'Please install prisma-binding version > 2.x to use "graphql codegen"' : ''
+              throw new Error(`Generator ${generator} is not installed. ${prismaVersionMessage}`)
+            }
+            throw new Error(child.error.message)
+          }
+
           const stderr = child.stderr && child.stderr.toString()
           if (stderr && stderr.length > 0) {
-            console.error(stderr)
+            throw new Error(stderr)
           }
 
           this.context.spinner.succeed(
