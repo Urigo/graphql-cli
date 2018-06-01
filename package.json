@@ -93,7 +93,7 @@
     "mkdirp": "^0.5.1",
     "node-fetch": "^2.0.0",
     "npm-paths": "^1.0.0",
-    "npm-run": "^5.0.1",
+    "npm-run": "4.1.2",
     "opn": "^5.2.0",
     "ora": "^1.4.0",
     "parse-github-url": "^1.0.2",
