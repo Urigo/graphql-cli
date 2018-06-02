@@ -219,6 +219,12 @@ async function updateSingleProjectEndpoint(
         : config!.getSchemaSDL()
     } catch (e) {
       // ignore error if no previous schema file existed
+      if (e.message === 'Unsupported schema file extention. Only ".graphql" and ".json" are supported') {
+        log(chalk.red(e.message))
+        setTimeout(() => {
+          process.exit(1)
+        }, 500)
+      }
       if (e.code !== 'ENOENT') {
         throw e
       }
