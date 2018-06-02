@@ -220,7 +220,7 @@ async function updateSingleProjectEndpoint(
     } catch (e) {
       // ignore error if no previous schema file existed
       if (e.message === 'Unsupported schema file extention. Only ".graphql" and ".json" are supported') {
-        log(chalk.red(e.message))
+        console.error(e.message)
         setTimeout(() => {
           process.exit(1)
         }, 500)
