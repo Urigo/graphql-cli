@@ -26,6 +26,12 @@ export const defaultBoilerplates: Boilerplate[] = [
       'https://github.com/graphql-boilerplates/node-graphql-server/tree/master/advanced',
   },
   {
+    name: 'typescript-minimal',
+    description: '"Hello World" GraphQL server',
+    repo:
+      'https://github.com/graphql-boilerplates/typescript-graphql-server/tree/master/minimal',
+  },
+  {
     name: 'typescript-basic',
     description: 'Basic GraphQL server (incl. database)',
     repo:
