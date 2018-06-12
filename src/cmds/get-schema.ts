@@ -240,7 +240,7 @@ async function updateSingleProjectEndpoint(
         }, 500)
       }
       // TODO: Add other non-blocking errors to this list
-      if (e.message.toLowerCase().indexOf("syntax error") > -1) {
+      if (e.message.toLowerCase().indexOf('syntax error') > -1) {
         console.log(`${os.EOL}Ignoring existing schema because it is invalid: ${chalk.red(e.message)}`)
       } else if (e.code !== 'ENOENT') {
         throw e
