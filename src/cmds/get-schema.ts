@@ -225,7 +225,10 @@ async function updateSingleProjectEndpoint(
           process.exit(1)
         }, 500)
       }
-      if (e.code !== 'ENOENT') {
+      // TODO: Add other non-blocking errors to this list
+      if (e.message.toLowerCase().indexOf("syntax error") > -1) {
+        console.log(`\nIgnoring existing schema because it is invalid: ${chalk.red(e.message)}`)
+      } else if (e.code !== 'ENOENT') {
         throw e
       }
     }
