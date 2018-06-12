@@ -1,8 +1,9 @@
 import { EventEmitter } from 'events'
 import * as fs from 'fs'
+import * as os from 'os'
 import * as mkdirp from 'mkdirp'
 import { relative, dirname } from 'path'
-import { printSchema, GraphQLSchema } from 'graphql'
+import { printSchema, GraphQLSchema, buildClientSchema, validateSchema } from 'graphql'
 import {
   writeSchema,
   GraphQLConfig,
@@ -206,6 +207,19 @@ async function updateSingleProjectEndpoint(
     newSchemaResult = argv.json
       ? await endpoint.resolveIntrospection()
       : await endpoint.resolveSchema()
+
+    // Do not save an invalid schema
+    const clientSchema = argv.json
+      ? buildClientSchema(newSchemaResult)
+      : newSchemaResult
+    const errors = validateSchema(clientSchema)
+    if (errors.length > 0) {
+      console.error(chalk.red(`${os.EOL}GraphQL endpoint generated invalid schema: ${errors}`))
+      setTimeout(() => {
+        process.exit(1)
+      }, 500)
+      return
+    }
   } catch (err) {
     emitter.emit('warning', err.message)
     return
@@ -227,7 +241,7 @@ async function updateSingleProjectEndpoint(
       }
       // TODO: Add other non-blocking errors to this list
       if (e.message.toLowerCase().indexOf("syntax error") > -1) {
-        console.log(`\nIgnoring existing schema because it is invalid: ${chalk.red(e.message)}`)
+        console.log(`${os.EOL}Ignoring existing schema because it is invalid: ${chalk.red(e.message)}`)
       } else if (e.code !== 'ENOENT') {
         throw e
       }
