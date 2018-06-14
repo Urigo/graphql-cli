@@ -25,7 +25,7 @@ npm install -g graphql-cli
 ```
 
 ## [Docs :books:](https://oss.prisma.io/graphql-cli)
-Check out the detailed docs about the possible workflows [here](https://oss.prisma.io/graphql-cli).
+Check out the detailed docs about the possible workflows [here](https://oss.prisma.io/content/graphql-cli/01-overview).
 
 
 ## Usage
