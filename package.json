@@ -63,7 +63,7 @@
     "@types/yargs": "11.0.0",
     "ava": "0.25.0",
     "pkg": "4.3.0",
-    "ts-node": "5.0.0",
+    "ts-node": "6.2.0",
     "tslint": "5.9.1",
     "tslint-config-standard": "7.0.0",
     "typescript": "2.7.2"
