@@ -53,13 +53,6 @@ export function installCommands() {
         if (!processedCommands[commandName]) {
           yargs = yargs.command(wrapCommand(cmd))
           processedCommands[commandName] = moduleName
-        } else {
-          if (processedCommands[commandName] === './cmds') {
-            console.warn(`${chalk.yellow(
-              `warning`,
-            )} command ${commandName} both exists in plugin ${moduleName} and is shipped with the graphql-cli.
-The plugin is being ignored.`)
-          }
         }
       }
     } catch (e) {
