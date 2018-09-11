@@ -170,7 +170,7 @@ async function update(context: Context, argv: Arguments) {
   for (const projectName in projects) {
     const config = projects[projectName]
     if (!config.endpointsExtension) {
-      return
+      continue
     }
     const endpoints = getEndpoints(config, argv)
     for (const endpointName in endpoints) {
