@@ -57,8 +57,8 @@ export async function handler(context: Context) {
       if (!existsSync(parentDir)) {
         return `Parent dir doesn't exists: ${parentDir}`
       }
-      if (!schemaPath.endsWith('.json') && !schemaPath.endsWith('.graphql')) {
-        return `Please specify extension '*.json' for introspection or '*.graphql' for SDL`
+      if (!schemaPath.endsWith('.json') && !schemaPath.endsWith('.graphql') && !schemaPath.endsWith('.prisma')) {
+        return `Please specify extension '*.json' for introspection, '*.graphql' for SDL or '*.prisma' for Prisma`
       }
       return true
     },
