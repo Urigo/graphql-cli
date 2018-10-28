@@ -213,7 +213,7 @@ async function updateSingleProjectEndpoint(
 
     // Do not save an invalid schema
     const clientSchema = argv.json
-      ? buildClientSchema(newSchemaResult)
+      ? buildClientSchema(newSchemaResult.data)
       : newSchemaResult
     const errors = validateSchema(clientSchema)
     if (errors.length > 0) {
