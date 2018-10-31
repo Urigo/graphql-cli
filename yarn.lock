@@ -153,10 +153,10 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/graphql@0.13.1":
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.13.1.tgz#7d39750355c9ecb921816d6f76c080405b5f6bea"
-  integrity sha512-a6vRcP4M6+7Lqev1JeF3hGFmC3FNBIJ5cRnaSN/z1LtGVr/CaY6nqSlQbnFr2j8ucDlUAQU43LCnJrz6uLUyHg==
+"@types/graphql@0.13.4":
+  version "0.13.4"
+  resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.13.4.tgz#55ae9c29f0fd6b85ee536f5c72b4769d5c5e06b1"
+  integrity sha512-B4yel4ro2nTb3v0pYO8vO6SjgvFJSrwUY+IO6TUSLdOSB+gQFslylrhRCHxvXMIhxB71mv5PEE9dAX+24S8sew==
 
 "@types/inquirer@0.0.36":
   version "0.0.36"
