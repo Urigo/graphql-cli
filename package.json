@@ -70,7 +70,7 @@
   },
   "dependencies": {
     "adm-zip": "0.4.7",
-    "apollo-codegen": "^0.19.1",
+    "apollo-codegen": "^0.20.0",
     "chalk": "^2.3.1",
     "command-exists": "^1.2.2",
     "cross-spawn": "^6.0.5",
