@@ -84,7 +84,7 @@
     "graphql-config-extension-graphcool": "1.0.11",
     "graphql-config-extension-prisma": "0.2.5",
     "graphql-playground-middleware-express": "1.7.6",
-    "graphql-schema-linter": "0.1.1",
+    "graphql-schema-linter": "0.1.6",
     "inquirer": "5.1.0",
     "is-url-superb": "2.0.0",
     "js-yaml": "^3.10.0",
