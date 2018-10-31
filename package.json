@@ -65,7 +65,7 @@
     "pkg": "4.3.0",
     "ts-node": "5.0.0",
     "tslint": "5.9.1",
-    "tslint-config-standard": "7.0.0",
+    "tslint-config-standard": "7.1.0",
     "typescript": "2.7.2"
   },
   "dependencies": {
