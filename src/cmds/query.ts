@@ -2,7 +2,7 @@ export const command = 'query <file>'
 export const describe = 'Run query/mutation'
 
 import * as fs from 'fs'
-import fetch from 'node-fetch'
+import * as fetch from 'node-fetch'
 import { parse, OperationDefinitionNode } from 'graphql'
 import { Context, noEndpointError } from '../'
 import { GraphQLEndpoint } from 'graphql-config'
@@ -31,7 +31,13 @@ export const builder = {
 
 export async function handler(
   context: Context,
-  argv: { file: string; operation: string; endpoint: string; all: boolean; variables: string },
+  argv: {
+    file: string
+    operation: string
+    endpoint: string
+    all: boolean
+    variables: string
+  },
 ) {
   const config = await context.getProjectConfig()
   if (!config.endpointsExtension) {
@@ -53,7 +59,9 @@ export async function handler(
   } else if (argv.operation) {
     await runQuery(query, argv.operation, endpoint, argv.variables)
   } else {
-    const { selectedOperationNames } = await context.prompt({
+    const { selectedOperationNames } = await context.prompt<{
+      selectedOperationNames: string[]
+    }>({
       type: 'checkbox',
       name: 'selectedOperationNames',
       message: 'Select operation to run',
@@ -70,7 +78,7 @@ async function runQuery(
   query: string,
   operationName: string,
   endpoint: GraphQLEndpoint,
-  variables: string
+  variables: string,
 ): Promise<void> {
   const response = await fetch(endpoint.url, {
     method: 'POST',
@@ -81,7 +89,7 @@ async function runQuery(
     body: JSON.stringify({
       query,
       operationName,
-      variables: parseVariables(variables)
+      variables: parseVariables(variables),
     }),
   })
 
@@ -94,7 +102,7 @@ async function runQuery(
   }
 }
 
-function parseVariables(variables: string= '{}'): object {
+function parseVariables(variables: string = '{}'): object {
   let obj = {}
   try {
     obj = JSON.parse(variables)

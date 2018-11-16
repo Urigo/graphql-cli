@@ -97,7 +97,9 @@ function wrapCommand(commandObject: CommandObject): CommandModule {
               } else if (error.message.includes('not a valid project name')) {
                 console.log(chalk.yellow('Invalid project name specified'))
               }
-              const { projectName } = await inquirer.prompt({
+              const { projectName } = await inquirer.prompt<{
+                projectName: string
+              }>({
                 type: 'list',
                 name: 'projectName',
                 choices: projectNames,
