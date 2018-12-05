@@ -1,6 +1,6 @@
 {
   "name": "@sklik/graphql-cli",
-  "version": "0.0.0-semantic-release",
+  "version": "2.17.0-1",
   "main": "dist/index.js",
   "bin": {
     "graphql": "dist/bin.js",
