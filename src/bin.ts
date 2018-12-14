@@ -3,6 +3,12 @@
 import { installCommands } from './index'
 import chalk from 'chalk'
 
+/* Cleanup */
+
+process.on('uncaughtException', () => process.exit(1))
+
+/* Main */
+
 let showedHelp = false
 
 installCommands()
