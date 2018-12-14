@@ -35,10 +35,10 @@
   "pkg": {
     "scripts": "dist/**/*.js",
     "targets": [
-      "node11-alpine-x64",
-      "node11-linux-x64",
-      "node11-macos-x64",
-      "node11-win-x64"
+      "node10-alpine-x64",
+      "node10-linux-x64",
+      "node10-macos-x64",
+      "node10-win-x64"
     ]
   },
   "release": {
