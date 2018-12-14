@@ -4,6 +4,7 @@ import * as requestProxy from 'express-request-proxy'
 import * as fs from 'fs'
 import expressPlayground from 'graphql-playground-middleware-express'
 import * as opn from 'opn'
+import { AddressInfo } from 'net'
 
 import { Context, noEndpointError, getTmpPath } from '../'
 
@@ -33,7 +34,7 @@ export const builder = {
 const startServer = async ({
   context,
   endpoint,
-  port = 3000,
+  port = '3000',
 }: {
   context: Context
   endpoint: string
@@ -77,7 +78,7 @@ const startServer = async ({
     }
 
     const listener = app.listen(port, () => {
-      let host = listener.address().address
+      let host = (listener.address() as AddressInfo).address
       if (host === '::') {
         host = 'localhost'
       }

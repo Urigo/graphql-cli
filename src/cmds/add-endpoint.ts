@@ -33,7 +33,7 @@ export async function handler(context: Context) {
     chalk.blue(newEndpoints.join(', ')),
   )
 
-  const { save } = await prompt({
+  const { save } = await prompt<{ save: boolean }>({
     type: 'confirm',
     name: 'save',
     message: `Is this ok?`,

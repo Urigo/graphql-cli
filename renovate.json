@@ -1,7 +1,8 @@
 {
-  "extends": [
-    "config:base",
-    "docker:disable"
-  ],
-  "ignoreDeps": ["npm-run"]
+  "extends": ["config:base", "docker:disable"],
+  "ignoreDeps": ["npm-run"],
+  "automerge": true,
+  "major": {
+    "automerge": false
+  }
 }

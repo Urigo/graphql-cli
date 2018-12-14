@@ -58,7 +58,7 @@ export async function handler(
   }
 
   if (!directory) {
-    const { newDir } = await context.prompt({
+    const { newDir } = await context.prompt<{ newDir: string }>({
       type: 'input',
       name: 'newDir',
       default: '.',
@@ -112,7 +112,7 @@ export async function handler(
     const choices = defaultBoilerplates.map(
       bp => `${padEnd(bp.name, maxNameLength + 2)} ${bp.description}`,
     )
-    const { choice } = await context.prompt({
+    const { choice } = await context.prompt<{ choice: string }>({
       type: 'list',
       name: 'choice',
       message: `Choose GraphQL boilerplate project:`,

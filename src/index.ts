@@ -10,7 +10,7 @@ import * as dotenv from 'dotenv'
 import chalk from 'chalk'
 import { patchEndpointsToConfig as patchGraphcoolEndpointsToConfig } from 'graphql-config-extension-graphcool'
 import { patchEndpointsToConfig as patchPrismaEndpointsToConfig } from 'graphql-config-extension-prisma'
-import { patchEndpointsToConfig as patchOpenApiEndpointsToConfig } from 'graphql-config-extension-openapi'
+import { patchEndpointsToConfig as patchOpenApiEndpointsToConfig } from 'tmp-graphql-config-extension-openapi'
 import {
   getGraphQLProjectConfig,
   GraphQLProjectConfig,
@@ -97,7 +97,9 @@ function wrapCommand(commandObject: CommandObject): CommandModule {
               } else if (error.message.includes('not a valid project name')) {
                 console.log(chalk.yellow('Invalid project name specified'))
               }
-              const { projectName } = await inquirer.prompt({
+              const { projectName } = await inquirer.prompt<{
+                projectName: string
+              }>({
                 type: 'list',
                 name: 'projectName',
                 choices: projectNames,

@@ -17,20 +17,24 @@ export async function handler(context: Context) {
   const config = await getConfig()
   if (config.config.schemaPath && !config.config.projects) {
     console.log(chalk.yellow('Your existing config does not use projects.'))
-    const { existingProjectName }: {[key: string]: string} = await prompt({
-      type: 'input',
-      name: 'existingProjectName',
-      message: 'Enter project name for existing configuration:'
-    })
+    const { existingProjectName }: { [key: string]: string } = await prompt<{}>(
+      {
+        type: 'input',
+        name: 'existingProjectName',
+        message: 'Enter project name for existing configuration:',
+      },
+    )
 
-    newConfig = { projects: {
-      [existingProjectName]: config.config }
+    newConfig = {
+      projects: {
+        [existingProjectName]: config.config,
+      },
     }
   } else {
     newConfig = config.config
   }
 
-  const { projectName }: {[key: string]: string} = await prompt({
+  const { projectName }: { [key: string]: string } = await prompt<{}>({
     type: 'input',
     name: 'projectName',
     message: 'Enter project name for new project:',
@@ -42,17 +46,17 @@ export async function handler(context: Context) {
         return true
       }
       return false
-    }
+    },
   })
 
   merge(newConfig, { projects: { [projectName]: {} } })
 
-  let projectConfig: GraphQLResolvedConfigData = await prompt({
+  let projectConfig: GraphQLResolvedConfigData = (await prompt({
     type: 'input',
     name: 'schemaPath',
     message: `Local schema file path:`,
     default: 'schema.graphql',
-    validate (schemaPath) {
+    validate(schemaPath) {
       const parentDir = dirname(schemaPath)
       if (!existsSync(parentDir)) {
         return `Parent dir doesn't exists: ${parentDir}`
@@ -62,7 +66,7 @@ export async function handler(context: Context) {
       }
       return true
     },
-  }) as GraphQLResolvedConfigData
+  })) as GraphQLResolvedConfigData
 
   newConfig.projects[projectName] = projectConfig
 
@@ -78,18 +82,24 @@ export async function handler(context: Context) {
   }
 
   let configData: string
-  if (config.configPath.endsWith('.yaml') || config.configPath.endsWith('.yml')) {
+  if (
+    config.configPath.endsWith('.yaml') ||
+    config.configPath.endsWith('.yml')
+  ) {
     configData = yaml.safeDump(newConfig)
   } else {
     configData = JSON.stringify(newConfig, null, 2)
   }
 
   console.log(
-    `\nAbout to write new configuration to ${chalk.blue(config.configPath)}:\n\n` +
-    chalk.yellow(configData) + '\n',
+    `\nAbout to write new configuration to ${chalk.blue(
+      config.configPath,
+    )}:\n\n` +
+      chalk.yellow(configData) +
+      '\n',
   )
 
-  const { save } = await prompt({
+  const { save } = await prompt<{ save: boolean }>({
     type: 'confirm',
     name: 'save',
     message: `Is this ok?`,
