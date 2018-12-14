@@ -3278,7 +3278,7 @@ hullabaloo-config-manager@^1.1.0:
     resolve-from "^3.0.0"
     safe-buffer "^5.0.1"
 
-husky@^1.1.4:
+husky@1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/husky/-/husky-1.1.4.tgz#92f61383527d2571e9586234e5864356bfaceaa9"
   integrity sha512-cZjGpS7qsaBSo3fOMUuR7erQloX3l5XzL1v/RkIqU6zrQImDdU70z5Re9fGDp7+kbYlM2EtS4aYMlahBeiCUGw==
@@ -5176,7 +5176,7 @@ preserve@^0.2.0:
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
   integrity sha1-gV7R9uvGWSb4ZbMQwHE7yzMVzks=
 
-prettier@^1.15.2:
+prettier@1.15.2:
   version "1.15.2"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.15.2.tgz#d31abe22afa4351efa14c7f8b94b58bb7452205e"
   integrity sha512-YgPLFFA0CdKL4Eg2IHtUSjzj/BWgszDHiNQAe0VAIBse34148whfdzLagRL+QiKS+YfK5ftB6X4v/MBw8yCoug==
@@ -5196,7 +5196,7 @@ pretty-ms@^3.0.0:
     parse-ms "^1.0.0"
     plur "^2.1.2"
 
-pretty-quick@^1.8.0:
+pretty-quick@1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/pretty-quick/-/pretty-quick-1.8.0.tgz#067ebe744ddb4e1ed4e1ee1af9648815121f78fc"
   integrity sha512-qV25sQF/ivJpdZ5efwemQYkQJa7sp3HqT/Vf/7z5vGYMcq1VrT2lDpFKAxJPf6219N1YAdR8mGkIhPAZ1odTmQ==
@@ -6456,12 +6456,12 @@ tslib@^1.9.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==
 
-tslint-config-prettier@^1.16.0:
+tslint-config-prettier@1.16.0:
   version "1.16.0"
   resolved "https://registry.yarnpkg.com/tslint-config-prettier/-/tslint-config-prettier-1.16.0.tgz#4627d0e2639554d89210e480093c381b5186963f"
   integrity sha512-zu6RAcpBtqdvhT6KpBh9kRPYATjOf9BnRi718kNqVKFjEgSE4rFrPprFju1YJrkOa3RbtbWI1ZSuLd2NBX1MDw==
 
-tslint-config-standard@^8.0.1:
+tslint-config-standard@8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/tslint-config-standard/-/tslint-config-standard-8.0.1.tgz#e4dd3128e84b0e34b51990b68715a641f2b417e4"
   integrity sha512-OWG+NblgjQlVuUS/Dmq3ax2v5QDZwRx4L0kEuDi7qFY9UI6RJhhNfoCV1qI4el8Fw1c5a5BTrjQJP0/jhGXY/Q==
@@ -6477,7 +6477,7 @@ tslint-eslint-rules@^5.3.1:
     tslib "1.9.0"
     tsutils "^3.0.0"
 
-tslint@^5.11.0:
+tslint@5.11.0:
   version "5.11.0"
   resolved "https://registry.yarnpkg.com/tslint/-/tslint-5.11.0.tgz#98f30c02eae3cde7006201e4c33cb08b48581eed"
   integrity sha1-mPMMAurjzecAYgHkwzywi0hYHu0=
