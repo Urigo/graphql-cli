@@ -2997,17 +2997,17 @@ graphql-import@^0.7.1:
     lodash "^4.17.4"
     resolve-from "^4.0.0"
 
-graphql-playground-html@1.6.5:
-  version "1.6.5"
-  resolved "https://registry.yarnpkg.com/graphql-playground-html/-/graphql-playground-html-1.6.5.tgz#0de1a68db891f7356312cf03dcf371d67388e95a"
-  integrity sha512-v0joMZdGEUW5tOdyy7a3WkjEH5s/beYdpuPkg7KVYEed7o2D/I1mp6NssZ5A2/7MVQdYAIRl9f40wDhkbZnFlQ==
+graphql-playground-html@1.6.6:
+  version "1.6.6"
+  resolved "https://registry.yarnpkg.com/graphql-playground-html/-/graphql-playground-html-1.6.6.tgz#f4efe0915a01dc79154b836fe3c980cebb7b56d2"
+  integrity sha512-VfCnMK24BwOAGhFzjknlboK0qs92d+1sHUDGQUgIAjOsTSNWmqfgNkDZsONZqUajfuVjOYRd0PxCDkCkaJs7Rw==
 
-graphql-playground-middleware-express@1.7.7:
-  version "1.7.7"
-  resolved "https://registry.yarnpkg.com/graphql-playground-middleware-express/-/graphql-playground-middleware-express-1.7.7.tgz#554be59abae79566eb8a20d82d3c715ee0776097"
-  integrity sha512-Htx4X6j2zTLnprD8DdGnHdcm2XkbWHOByxn4p8TOyWjGFI5Ivm9PBMTrmSvn4V2YkGboM0gZfR0bnqun1xI5QA==
+graphql-playground-middleware-express@1.7.8:
+  version "1.7.8"
+  resolved "https://registry.yarnpkg.com/graphql-playground-middleware-express/-/graphql-playground-middleware-express-1.7.8.tgz#eb05f26f2b23084e4bb29ce41f2c5983ce870dfc"
+  integrity sha512-3wFOfsJGUtWJuGsA+jQhbVMYAI8x1f5noj4wyySPMhLOK13NiElmsNKrV1sUDb0DJaf5tfg72N0ULMfFQagy9A==
   dependencies:
-    graphql-playground-html "1.6.5"
+    graphql-playground-html "1.6.6"
 
 graphql-request@^1.5.0:
   version "1.8.2"
