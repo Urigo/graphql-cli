@@ -62,6 +62,12 @@ export const defaultBoilerplates: Boilerplate[] = [
       'https://github.com/graphql-boilerplates/vue-fullstack-graphql/tree/master/minimal',
   },
   {
+    name: 'react-fullstack-advanced',
+    description: 'Advanced boilerplate with a GraphQL database, authentication and real-time subscriptions',
+    repo:
+      'https://github.com/graphql-boilerplates/react-fullstack-graphql/tree/master/advanced',
+  },
+  {
     name: 'vue-fullstack-basic',
     description: 'Vue app + GraphQL server (incl. database)',
     repo:
