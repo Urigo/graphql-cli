@@ -101,7 +101,7 @@
     "ora": "^3.0.0",
     "parse-github-url": "^1.0.2",
     "request": "^2.88.0",
-    "rimraf": "2.6.2",
+    "rimraf": "2.6.3",
     "source-map-support": "^0.5.9",
     "tmp-graphql-config-extension-openapi": "^1.0.7",
     "update-notifier": "^2.5.0",
