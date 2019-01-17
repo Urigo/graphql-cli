@@ -3010,10 +3010,10 @@ graphql-request@^1.5.0:
   dependencies:
     cross-fetch "2.2.2"
 
-graphql-schema-linter@0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/graphql-schema-linter/-/graphql-schema-linter-0.1.6.tgz#cc25f42443afae451ea30ff682a03bee3cb7b602"
-  integrity sha512-MlELNaR+kmWZQ2uO7dWqPkqxxXjo7i5ftm6ig6RSgvYDQAnjJ3XJXVTIQzO34n4jRa1k/UI3YQF3t9sYFT0PAw==
+graphql-schema-linter@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/graphql-schema-linter/-/graphql-schema-linter-0.2.0.tgz#deacc9e1a887d49c63ee2b7b742ef17a575e7447"
+  integrity sha512-IXldy6nCmzAZgweBzQUGPLVO1aRLRy/n/jEm8h8pQHmMYoHv2hQgUcRQRaCbjcdNKYKToN1cfHvdgtGJ+DWSNQ==
   dependencies:
     chalk "^2.0.1"
     columnify "^1.5.4"
@@ -3021,7 +3021,7 @@ graphql-schema-linter@0.1.6:
     cosmiconfig "^4.0.0"
     figures "^2.0.0"
     glob "^7.1.2"
-    graphql "^0.13.0"
+    graphql "^14.0.0"
     lodash "^4.17.4"
 
 graphql-static-binding@0.9.3:
@@ -3031,19 +3031,19 @@ graphql-static-binding@0.9.3:
   dependencies:
     cucumber-html-reporter "^3.0.4"
 
-graphql@^0.13.0:
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.13.0.tgz#d1b44a282279a9ce0a6ec1037329332f4c1079b6"
-  integrity sha512-WlO+ZJT9aY3YrBT+H5Kk+eVb3OVVehB9iRD/xqeHdmrrn4AFl5FIcOpfHz/vnBr6Y6JthGMlnFqU8XRnDjSR7A==
-  dependencies:
-    iterall "1.1.x"
-
 graphql@^0.13.1:
   version "0.13.2"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.13.2.tgz#4c740ae3c222823e7004096f832e7b93b2108270"
   integrity sha512-QZ5BL8ZO/B20VA8APauGBg3GyEgZ19eduvpLWoq5x7gMmWnHoy8rlQWPLmWgFvo1yNgjSEFMesmS4R6pPr7xog==
   dependencies:
     iterall "^1.2.1"
+
+graphql@^14.0.0:
+  version "14.1.1"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.1.1.tgz#d5d77df4b19ef41538d7215d1e7a28834619fac0"
+  integrity sha512-C5zDzLqvfPAgTtP8AUPIt9keDabrdRAqSWjj2OPRKrKxI9Fb65I36s1uCs1UUBFnSWTdO7hyHi7z1ZbwKMKF6Q==
+  dependencies:
+    iterall "^1.2.2"
 
 graphql@^14.0.2:
   version "14.0.2"
@@ -3788,11 +3788,6 @@ isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
-
-iterall@1.1.x:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.1.4.tgz#0db40d38fdcf53ae14dc8ec674e62ab190d52cfc"
-  integrity sha512-eaDsM/PY8D/X5mYQhecVc5/9xvSHED7yPON+ffQroBeTuqUVm7dfphMkK8NksXuImqZlVRoKtrNfMIVCYIqaUQ==
 
 iterall@^1.2.1, iterall@^1.2.2:
   version "1.2.2"
