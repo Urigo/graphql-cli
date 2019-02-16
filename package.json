@@ -85,7 +85,7 @@
     "graphql-cli-prepare": "1.4.19",
     "graphql-config": "2.2.1",
     "graphql-config-extension-graphcool": "1.0.11",
-    "graphql-config-extension-prisma": "0.2.5",
+    "graphql-config-extension-prisma": "0.3.0",
     "graphql-playground-middleware-express": "1.7.11",
     "graphql-schema-linter": "0.2.0",
     "inquirer": "6.2.0",
