@@ -1,3 +1,5 @@
+<p align="center"><img src="https://i.imgur.com/HKzrr8F.png" width="150" /></p>
+
 # graphql-cli
 
 [![npm version](https://badge.fury.io/js/graphql-cli.svg)](https://badge.fury.io/js/graphql-cli) [![CircleCI](https://circleci.com/gh/graphql-cli/graphql-cli.svg?style=shield)](https://circleci.com/gh/graphql-cli/graphql-cli)
