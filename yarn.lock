@@ -1828,7 +1828,7 @@ cross-fetch@2.2.2:
     node-fetch "2.1.2"
     whatwg-fetch "2.0.4"
 
-cross-spawn@^5.0.1, cross-spawn@^5.1.0:
+cross-spawn@^5.0.1:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
   integrity sha1-6L0O/uWPz/b4+UUQoKVUu/ojVEk=
@@ -4623,7 +4623,7 @@ normalize-path@^2.0.0, normalize-path@^2.0.1:
   dependencies:
     remove-trailing-separator "^1.0.1"
 
-npm-path@^2.0.2, npm-path@^2.0.3:
+npm-path@^2.0.2, npm-path@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/npm-path/-/npm-path-2.0.4.tgz#c641347a5ff9d6a09e4d9bce5580c4f505278e64"
   integrity sha512-IFsj0R9C7ZdR5cP+ET342q77uSRdtWOlWpih5eC+lu29tIDbNEgDbzgVJ5UFvYHWhxDZ5TFkJafFioO0pPQjCw==
@@ -4645,17 +4645,15 @@ npm-run-path@^2.0.0:
   dependencies:
     path-key "^2.0.0"
 
-npm-run@4.1.2:
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/npm-run/-/npm-run-4.1.2.tgz#1030e1ec56908c89fcc3fa366d03a2c2ba98eb99"
-  integrity sha1-EDDh7FaQjIn8w/o2bQOiwrqY65k=
+npm-run@5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/npm-run/-/npm-run-5.0.1.tgz#1baea93389b50ae25a32382c8ca322398e50cd16"
+  integrity sha512-s7FyRpHUgaJfzkRgOnevX8rAWWsv1dofY1XS7hliWCF6LSQh+HtDfBvpigPS1krLvXw+Fi17CYMY8mUtblnyWw==
   dependencies:
-    cross-spawn "^5.1.0"
     minimist "^1.2.0"
-    npm-path "^2.0.3"
+    npm-path "^2.0.4"
     npm-which "^3.0.1"
     serializerr "^1.0.3"
-    sync-exec "^0.6.2"
 
 npm-which@^3.0.1:
   version "3.0.1"
@@ -6272,11 +6270,6 @@ symbol-observable@^1.0.4, symbol-observable@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.1.0.tgz#5c68fd8d54115d9dfb72a84720549222e8db9b32"
   integrity sha512-dQoid9tqQ+uotGhuTKEY11X4xhyYePVnqGSoSm3OGKh2E8LZ6RPULp1uXTctk33IeERlrRJYoVSBglsL05F5Uw==
-
-sync-exec@^0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/sync-exec/-/sync-exec-0.6.2.tgz#717d22cc53f0ce1def5594362f3a89a2ebb91105"
-  integrity sha1-cX0izFPwzh3vVZQ2LzqJouu5EQU=
 
 tar-pack@^3.4.0:
   version "3.4.1"
