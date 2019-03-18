@@ -3,7 +3,12 @@ import * as fs from 'fs'
 import * as os from 'os'
 import * as mkdirp from 'mkdirp'
 import { relative, dirname } from 'path'
-import { printSchema, GraphQLSchema, buildClientSchema, validateSchema } from 'graphql'
+import {
+  printSchema,
+  GraphQLSchema,
+  buildClientSchema,
+  validateSchema,
+} from 'graphql'
 import {
   writeSchema,
   GraphQLConfig,
@@ -14,7 +19,7 @@ import chalk from 'chalk'
 import * as isUrl from 'is-url-superb'
 import { Context, CommandObject } from '..'
 import { Arguments } from 'yargs'
-import { merge } from 'lodash'
+import { merge, truncate } from 'lodash'
 
 const emitter = new EventEmitter()
 let log: (text) => void
@@ -68,6 +73,11 @@ const command: CommandObject = {
             'Header to use for downloading (with endpoint URL). Format: Header=Value',
           type: 'string',
         },
+        strict: {
+          describe:
+            'Exit with a nonzero code if the remote endpoint returns any type of error',
+          type: 'boolean',
+        },
       })
       .implies('console', ['--no-output', '--no-watch'])
       .implies('json', 'output')
@@ -111,6 +121,9 @@ const command: CommandObject = {
           throw err
         } else {
           spinner.fail(chalk.red(err.message))
+          if (argv.strict) {
+            process.exit(1)
+          }
         }
       })
       emitter.on('warning', message => {
@@ -217,15 +230,27 @@ async function updateSingleProjectEndpoint(
       : newSchemaResult
     const errors = validateSchema(clientSchema)
     if (errors.length > 0) {
-      console.error(chalk.red(`${os.EOL}GraphQL endpoint generated invalid schema: ${errors}`))
+      console.error(
+        chalk.red(
+          `${os.EOL}GraphQL endpoint generated invalid schema: ${errors}`,
+        ),
+      )
       setTimeout(() => {
         process.exit(1)
       }, 500)
       return
     }
   } catch (err) {
-    emitter.emit('warning', err.message)
-    return
+    if (argv.strict) {
+      const message = truncate(err.message, {
+        length: 400,
+        omission: `[...truncated, ${err.message.length - 400} more characters]`,
+      })
+      throw new Error(`GraphQL endpoint returned an error: ${message}`)
+    } else {
+      emitter.emit('warning', err.message)
+      return
+    }
   }
 
   let oldSchema: string | undefined
@@ -236,7 +261,10 @@ async function updateSingleProjectEndpoint(
         : config!.getSchemaSDL()
     } catch (e) {
       // ignore error if no previous schema file existed
-      if (e.message === 'Unsupported schema file extention. Only ".graphql" and ".json" are supported') {
+      if (
+        e.message ===
+        'Unsupported schema file extention. Only ".graphql" and ".json" are supported'
+      ) {
         console.error(e.message)
         setTimeout(() => {
           process.exit(1)
@@ -244,8 +272,14 @@ async function updateSingleProjectEndpoint(
       }
       // TODO: Add other non-blocking errors to this list
       if (e.message.toLowerCase().indexOf('syntax error') > -1) {
-        console.log(`${os.EOL}Ignoring existing schema because it is invalid: ${chalk.red(e.message)}`)
+        console.log(
+          `${os.EOL}Ignoring existing schema because it is invalid: ${chalk.red(
+            e.message,
+          )}`,
+        )
       } else if (e.code !== 'ENOENT') {
+        throw e
+      } else if (e.message.indexOf('endpoint returned an error') > -1) {
         throw e
       }
     }
