@@ -44,3 +44,6 @@ package-lock.json
 
 # es5 output dir
 /dist/
+
+# vscode workspace
+.vscode
