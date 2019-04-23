@@ -68,6 +68,16 @@ const command: CommandObject = {
             'Header to use for downloading (with endpoint URL). Format: Header=Value',
           type: 'string',
         },
+        source: {
+          describe: 'Avoid to print the source url',
+          type: 'boolean',
+          default: true,
+        },
+        timestamp: {
+          describe: 'Avoid to print the timestamp',
+          type: 'boolean',
+          default: true,
+        },
       })
       .implies('console', ['--no-output', '--no-watch'])
       .implies('json', 'output')
@@ -292,8 +302,8 @@ async function updateSingleProjectEndpoint(
       mkdirp.sync(dirname(schemaPath))
     }
     await writeSchema(schemaPath as string, newSchemaResult as GraphQLSchema, {
-      source: endpoint.url,
-      timestamp: new Date().toString(),
+      ...(argv.source ? { source: endpoint.url } : {}),
+      ...(argv.timestamp ? { timestamp: new Date().toString() } : {}),
     })
   }
 
