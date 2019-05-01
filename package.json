@@ -78,7 +78,7 @@
     "creato": "^1.0.3",
     "cross-spawn": "^6.0.5",
     "disparity": "^2.0.0",
-    "dotenv": "^6.1.0",
+    "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "express-request-proxy": "^2.2.2",
     "graphql": "^14.0.2",
