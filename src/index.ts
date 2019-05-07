@@ -19,14 +19,14 @@ import {
   ConfigNotFoundError,
   resolveEnvsInValues,
 } from 'graphql-config'
-// import * as updateNotifier from 'update-notifier'
-// const pkg = require('../package.json')
+import * as updateNotifier from 'update-notifier'
+const pkg = require('../package.json')
 import 'source-map-support/register'
 
 export * from './types'
 export * from './utils'
 
-// updateNotifier({ pkg }).notify()
+updateNotifier({ pkg }).notify()
 
 function listPluggings(dir: string): string[] {
   return readdirSync(dir)
