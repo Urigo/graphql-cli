@@ -19,6 +19,12 @@ export const command = 'create [directory]'
 export const describe = 'Bootstrap a new GraphQL project'
 
 export const builder = {
+  boilerplate: {
+    alias: 'b',
+    describe:
+      'Name of boilerplate or full URL to boilerplate on GitHub repository',
+    type: 'string',
+  },
   'no-install': {
     describe: `Don't install project dependencies`,
     type: 'boolean',
@@ -26,23 +32,15 @@ export const builder = {
   },
 }
 
-// function getGitHubUrl(boilerplate: string): string | undefined {
-//   const details = gh(boilerplate)
-
-//   if (details.host && details.owner && details.repo) {
-//     const branch = details.branch ? `/tree/${details.branch}` : ''
-//     return `https://${details.host}/${details.repo}${branch}`
-//   }
-// }
-
 export async function handler(
   context: Context,
   argv: {
+    boilerplate?: string
     directory?: string
     noInstall: boolean
   },
 ) {
-  let { directory, noInstall } = argv
+  let { boilerplate, directory, noInstall } = argv
 
   if (directory && directory.match(/[A-Z]/)) {
     console.log(
@@ -95,12 +93,34 @@ export async function handler(
       value: bp,
     }
   })
-  const { choice } = await context.prompt<{ choice: creato.Template }>({
-    type: 'list',
-    name: 'choice',
-    message: `Choose GraphQL boilerplate project:`,
-    choices,
-  })
+
+  let choice
+  // interactive selection if boilerplate arg is not passed
+  if (!boilerplate) {
+    const { selected } = await context.prompt<{ selected: creato.Template }>({
+      type: 'list',
+      name: 'selected',
+      message: `Choose GraphQL boilerplate project:`,
+      choices,
+    })
+    choice = selected
+  }
+
+  if (boilerplate) {
+    if (!boilerplate.startsWith('http')) {
+      // Find the boilerplate based on the name
+      choice = defaultBoilerplates.find(option => option.name === boilerplate)
+    } else {
+      // Or handle the boilerplate argument as repo URL
+      choice = {
+        repo: {
+          branch: 'master',
+          uri: boilerplate,
+          path: '/minimal',
+        },
+      }
+    }
+  }
 
   const template = await creato.loadTemplate(choice, projectPath)
 

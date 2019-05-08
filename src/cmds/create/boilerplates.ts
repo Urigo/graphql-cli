@@ -1,11 +1,5 @@
 import { Template } from 'creato'
 
-export interface Boilerplate {
-  name: string
-  description: string
-  repo: string
-}
-
 // a list of available boilerplate projects from:
 // https://github.com/graphql-boilerplates/
 export const defaultBoilerplates: Template[] = [
