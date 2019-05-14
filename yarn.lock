@@ -204,10 +204,10 @@
     "@types/rx" "*"
     "@types/through" "*"
 
-"@types/lodash@4.14.126":
-  version "4.14.126"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.126.tgz#47cff3ea014aa083194f8ca3ec351136c3786613"
-  integrity sha512-HxQ+wQnBtnL0LszZrVdMqWIlzZNyKuMLUb6swQ3mo6ysPqpAu7gfnapCQIi0B+Mrf0fNLZh8AWgJs2njejVasg==
+"@types/lodash@4.14.127":
+  version "4.14.127"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.127.tgz#66a094af48e66af04e96d3d2e0f29396fe8139c8"
+  integrity sha512-n4kNk5CA+Tivr2Mhd80CZPZWfdslLXpdLFF5SmOljOtkV9Powkdfg0XP9rRa626lzZs++1cnMoyApkjHVSBH1w==
 
 "@types/mime@*":
   version "2.0.0"
