@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@types/express": "4.17.0",
-    "@types/graphql": "14.2.1",
+    "@types/graphql": "14.2.2",
     "@types/inquirer": "0.0.44",
     "@types/lodash": "4.14.134",
     "@types/node": "10.14.10",
