@@ -1,10 +1,10 @@
 import { resolve } from 'path';
-import { CliPlugin, DetailedError } from '@test-graphql-cli/common';
+import { CliPlugin, DetailedError } from '@graphql-cli/common';
 
 export async function getPluginByName<TConfig>(name: string): Promise<CliPlugin> {
   const possibleNames = [
-    `@test-graphql-cli/${name}`,
-    `@test-graphql-cli/${name}-plugin`,
+    `@graphql-cli/${name}`,
+    `@graphql-cli/${name}-plugin`,
     name
   ];
   const possibleModules = possibleNames.concat(resolve(process.cwd(), name)).concat(...possibleNames.map(name => resolve(process.cwd(), './node_modules/' + name)));

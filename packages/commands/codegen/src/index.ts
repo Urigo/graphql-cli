@@ -1,4 +1,4 @@
-import { CliPlugin } from '@test-graphql-cli/common';
+import { CliPlugin } from '@graphql-cli/common';
 import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
 import { codegen } from '@graphql-codegen/core';
 import { parse, print } from 'graphql';

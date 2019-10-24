@@ -1,0 +1,32 @@
+
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Master
+        uses: actions/checkout@master
+      - name: Use Node
+        uses: actions/setup-node@master
+      - name: Install Dependencies using Yarn
+        run: yarn install
+      - name: Test
+        run: yarn test
+      - name: Build
+        run: yarn build
+      - name: Publish Canary
+        env: # Or as an environment variable
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        run: |
+            echo "Fork PR: $GITHUB_REPOSITORY"
+            if [ "${GITHUB_REPOSITORY}" == "Urigo/graphql-cli" ] && [ "${NPM_AUTH_TOKEN}" != "" ]
+            then
+                echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > .npmrc
+                npm run ci:release:canary
+            else    
+                echo "Skipping canary publish due to a fork/PR..."
+            fi
+

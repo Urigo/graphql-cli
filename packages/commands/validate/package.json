@@ -1,5 +1,5 @@
 {
-  "name": "@test-graphql-cli/validate",
+  "name": "@graphql-cli/validate",
   "version": "0.0.3",
   "license": "MIT",
   "main": "dist/index.js",
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@graphql-inspector/core": "1.24.0",
-    "@test-graphql-cli/common": "0.0.3",
+    "@graphql-cli/common": "0.0.3",
     "chalk": "2.4.2",
     "commander": "3.0.0",
     "@graphql-toolkit/code-file-loader": "0.6.1-alpha-c775427.3+c775427",
