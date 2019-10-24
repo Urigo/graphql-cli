@@ -18,17 +18,10 @@ jobs:
       - name: Build
         run: yarn build
       - name: Publish Canary
-        env:
+        env: # Or as an environment variable
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         run: |
             echo "Fork PR: ${{github.repository}}"
-            echo "1"
-            echo "${NPM_AUTH_TOKEN}" | cut -c1-5
-            echo "2"
-            echo "$NPM_AUTH_TOKEN" | cut -c1-5
-            echo "3"
-            echo "${{ secrets.NPM_AUTH_TOKEN }}" | cut -c1-5
-
             if [ "${{github.repository}}" == "Urigo/graphql-cli" ] && [ "${NPM_AUTH_TOKEN}" != "" ]
             then
                 echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > .npmrc

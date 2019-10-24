@@ -1,6 +1,6 @@
 import { Command } from 'commander';
 import { getPluginByName } from './get-plugin';
-import { LoadConfigOptions } from '@graphql-cli/common';
+import { LoadConfigOptions } from '@test-graphql-cli/common';
 import { loadConfig } from 'graphql-config';
 
 export async function cli(argv = process.argv): Promise<void> {

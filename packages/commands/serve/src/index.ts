@@ -1,4 +1,4 @@
-import { CliPlugin } from '@graphql-cli/common';
+import { CliPlugin } from '@test-graphql-cli/common';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
 import { addMockFunctionsToSchema } from 'graphql-tools';

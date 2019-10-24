@@ -1,4 +1,4 @@
-import { CliPlugin } from "@graphql-cli/common";
+import { CliPlugin } from "@test-graphql-cli/common";
 import { prompt } from 'inquirer';
 import { join } from 'path';
 import simpleGit from 'simple-git/promise';
