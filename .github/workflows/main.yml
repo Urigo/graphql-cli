@@ -12,7 +12,7 @@ jobs:
       - name: Use Node
         uses: actions/setup-node@master
       - name: Install Dependencies using Yarn
-        run: yarn install
+        run: yarn install --ignore-engines
       - name: Test
         run: yarn test
       - name: Build
