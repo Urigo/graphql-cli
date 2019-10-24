@@ -21,8 +21,8 @@ jobs:
         env: # Or as an environment variable
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         run: |
-            echo "Fork PR: $GITHUB_REPOSITORY"
-            if [ "${GITHUB_REPOSITORY}" == "Urigo/graphql-cli" ] && [ "${NPM_AUTH_TOKEN}" != "" ]
+            echo "Fork PR: ${{github.repository}}"
+            if [ "${{github.repository}}" == "Urigo/graphql-cli" ] && [ "${NPM_AUTH_TOKEN}" != "" ]
             then
                 echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > .npmrc
                 npm run ci:release:canary
