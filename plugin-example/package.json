@@ -1,7 +1,0 @@
-{
-  "name": "graphql-cli-plugin-example",
-  "version": "1.0.0",
-  "description": "Plugin example for graphql-cli",
-  "main": "index.js",
-  "license": "MIT"
-}

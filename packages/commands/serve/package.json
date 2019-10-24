@@ -1,0 +1,35 @@
+{
+  "name": "@test-graphql-cli/serve",
+  "version": "0.0.3",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "peerDependencies": {
+    "graphql": "14.5.4"
+  },
+  "dependencies": {
+    "@test-graphql-cli/common": "0.0.3",
+    "chalk": "2.4.2",
+    "commander": "3.0.0",
+    "express": "4.17.1",
+    "express-graphql": "^0.9.0",
+    "@graphql-toolkit/code-file-loader": "0.6.1-alpha-c775427.3+c775427",
+    "graphql-tools": "4.0.5",
+    "log-symbols": "3.0.0",
+    "open": "6.4.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.1",
+    "@types/express-graphql": "^0.9.0",
+    "@types/node": "12.7.1",
+    "@types/open": "6.2.1",
+    "graphql": "^14.5.8",
+    "ts-node": "8.3.0",
+    "typescript": "3.6.4"
+  }
+}
