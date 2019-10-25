@@ -16,7 +16,7 @@
     "@graphql-codegen/cli": "1.7.1-alpha-b4e56daa.28",
     "@graphql-codegen/core": "1.7.1-alpha-b4e56daa.28",
     "@graphql-codegen/plugin-helpers": "1.7.1-alpha-b4e56daa.28",
-    "@graphql-toolkit/code-file-loader": "0.6.1-alpha-c775427.3+c775427",
+    "@graphql-toolkit/code-file-loader": "0.6.2",
     "@test-graphql-cli/common": "0.0.3",
     "chalk": "2.4.2",
     "commander": "3.0.0",

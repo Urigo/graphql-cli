@@ -18,7 +18,7 @@
     "@test-graphql-cli/init": "0.0.3",
     "chalk": "2.4.2",
     "commander": "3.0.0",
-    "graphql-config": "3.0.0-alpha.11",
+    "graphql-config": "3.0.0-alpha.13",
     "log-symbols": "3.0.0"
   },
   "devDependencies": {

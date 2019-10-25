@@ -17,11 +17,11 @@
     "@test-graphql-cli/common": "0.0.3",
     "chalk": "2.4.2",
     "commander": "3.0.0",
-    "@graphql-toolkit/core":  "0.6.1-alpha-c775427.3+c775427",
-    "@graphql-toolkit/code-file-loader": "0.6.1-alpha-c775427.3+c775427",
-    "@graphql-toolkit/graphql-file-loader": "0.6.1-alpha-c775427.3+c775427",
-    "@graphql-toolkit/json-file-loader": "0.6.1-alpha-c775427.3+c775427",
-    "@graphql-toolkit/url-loader": "0.6.1-alpha-c775427.3+c775427",
+    "@graphql-toolkit/core":  "0.6.2",
+    "@graphql-toolkit/code-file-loader": "0.6.2",
+    "@graphql-toolkit/graphql-file-loader": "0.6.2",
+    "@graphql-toolkit/json-file-loader": "0.6.2",
+    "@graphql-toolkit/url-loader": "0.6.2",
     "log-symbols": "3.0.0"
   },
   "devDependencies": {
