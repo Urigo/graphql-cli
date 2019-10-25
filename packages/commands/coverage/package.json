@@ -1,0 +1,30 @@
+{
+  "name": "@test-graphql-cli/coverage",
+  "version": "0.0.3",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "peerDependencies": {
+    "graphql": "14.5.4"
+  },
+  "dependencies": {
+    "@graphql-inspector/core": "1.24.0",
+    "@test-graphql-cli/common": "0.0.3",
+    "chalk": "2.4.2",
+    "commander": "3.0.0",
+    "@graphql-toolkit/code-file-loader": "0.6.2",
+    "log-symbols": "3.0.0"
+  },
+  "devDependencies": {
+    "graphql": "^14.5.8",
+    "@types/node": "12.7.1",
+    "@types/open": "6.2.1",
+    "ts-node": "8.3.0",
+    "typescript": "3.6.4"
+  }
+}
