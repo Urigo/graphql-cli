@@ -11,6 +11,9 @@ jobs:
         uses: actions/checkout@master
       - name: Use Node
         uses: actions/setup-node@master
+        with:
+          registry-url: https://registry.npmjs.org/
+          scope: getify
       - name: Install Dependencies using Yarn
         run: yarn install --ignore-engines
       - name: Build
@@ -18,12 +21,15 @@ jobs:
       - name: Test
         run: yarn test
       - name: Publish Canary
+        env: # Or as an environment variable
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         run: |
             echo "Fork PR: ${{github.repository}}"
             if [ "${{github.repository}}" == "Urigo/graphql-cli" ] && [ "${{ secrets.NPM_AUTH_TOKEN }}" != "" ]
             then
                 echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > .npmrc
-                npm run ci:release:canary
+                npm run ci:release:canary --@getify:registry=https://registry.npmjs.org/
             else    
                 echo "Skipping canary publish due to a fork/PR..."
             fi
