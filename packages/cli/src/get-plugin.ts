@@ -49,4 +49,5 @@ export async function getPluginByName<TConfig>(name: string): Promise<CliPlugin>
         ${possibleNamesMsg}
       `
   );
+
 }
