@@ -1,11 +1,10 @@
 import { CliPlugin } from '@test-graphql-cli/common';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
-import { addMockFunctionsToSchema } from 'graphql-tools';
 import open from 'open';
 import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
 import { GraphQLExtensionDeclaration } from 'graphql-config/dist';
-import { IMocks } from '@kamilkisiela/graphql-tools';
+import { IMocks, addMockFunctionsToSchema } from '@kamilkisiela/graphql-tools';
 
 const ServeExtension: GraphQLExtensionDeclaration = api => {
   // Schema

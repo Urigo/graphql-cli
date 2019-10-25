@@ -7,7 +7,6 @@ import { JsonFileLoader } from '@graphql-toolkit/json-file-loader';
 import { UrlLoader } from '@graphql-toolkit/url-loader';
 import { GraphQLBackendCreator, GraphQLGeneratorConfig, Client, IGraphQLBackend, DatabaseSchemaManager } from 'graphback';
 import { join } from 'path';
-import { printSchema } from 'graphql';
 export interface GenerateConfig {
   folders: {
     model: string;
@@ -85,7 +84,7 @@ export async function createBackend(backend: GraphQLBackendCreator, config: Gene
 
 export async function createFragments(generated: Client, config: GenerateConfig) {
   return Promise.all(generated.fragments.map(fragment => writeFile(
-    join(process.cwd(), config.folders.client, 'generated' ,'fragments', fragment.name + '.ts'),
+    join(process.cwd(), config.folders.client, 'generated', 'fragments', fragment.name + '.ts'),
     fragment.implementation,
   )));
 }
@@ -128,12 +127,10 @@ export async function createDatabase(backend: GraphQLBackendCreator, config: Gen
   await backend.createDatabase()
 }
 
-
 export const plugin: CliPlugin = {
   init({ program, loadConfig, reportError }) {
     program
       .command('generate')
-      .option('--openApi')
       .option('--db')
       .option('--client')
       .option('--backend')
@@ -152,39 +149,35 @@ export const plugin: CliPlugin = {
             throw new Error(`You should provide a valid 'generate' config to generate schema from data model`);
           }
 
-          if(!openApi && !db && !client) {
+          if (!openApi && !db && !client) {
             backend = true;
           }
 
-          if (openApi) {
-            await createSchemaFromOpenApi(generateConfig);
-          } else {
 
-            const models = await loadSchemaUsingLoaders([
-              new UrlLoader(),
-              new GraphQLFileLoader(),
-              new JsonFileLoader(),
-              new CodeFileLoader(),
-            ], generateConfig.folders.model + '/**/*.graphql');
+          const models = await loadSchemaUsingLoaders([
+            new UrlLoader(),
+            new GraphQLFileLoader(),
+            new JsonFileLoader(),
+            new CodeFileLoader(),
+          ], generateConfig.folders.model + '/**/*.graphql');
 
-            const backendCreator = new GraphQLBackendCreator(
-              printSchemaWithDirectives(models),
-              generateConfig.graphqlCRUD
-            );
+          const backendCreator = new GraphQLBackendCreator(
+            printSchemaWithDirectives(models),
+            generateConfig.graphqlCRUD
+          );
 
-            const jobs: Promise<void>[] = [];
-            if (db) {
-              jobs.push(createDatabase(backendCreator, generateConfig));
-            }
-            if (backend) {
-              jobs.push(createBackend(backendCreator, generateConfig));
-            }
-            if (client) {
-              jobs.push(createClient(backendCreator, generateConfig));
-            }
-
-            await Promise.all(jobs);
+          const jobs: Promise<void>[] = [];
+          if (db) {
+            jobs.push(createDatabase(backendCreator, generateConfig));
           }
+          if (backend) {
+            jobs.push(createBackend(backendCreator, generateConfig));
+          }
+          if (client) {
+            jobs.push(createClient(backendCreator, generateConfig));
+          }
+
+          await Promise.all(jobs);
         } catch (e) {
           reportError(e);
         }
