@@ -8,31 +8,6 @@ import { UrlLoader } from '@graphql-toolkit/url-loader';
 import { GraphQLBackendCreator, GraphQLGeneratorConfig, Client, IGraphQLBackend, DatabaseSchemaManager } from 'graphback';
 import { join } from 'path';
 import { printSchema } from 'graphql';
-import { removeCommentsFromSchema, removeOperationsFromSchema } from './openApiHelpers';
-
-export interface OpenApiConfig {
-  /**
-   * Transform OpenAPI to GraphQL Schema 
-   * 
-   * @default false
-   */
-  includeComments: boolean,
-
-  /**
-   * Migration migrates GraphQL schema only once.
-   * Use this flag to continusly migrate OpenAPI definition in model folder
-   * 
-   * @default false
-   */
-  reuseOpenAPIModel: boolean
-
-  /**
-   * Removes queries and mutations comming from OpenAPI spec
-   * 
-   * @default false
-   */
-  includeQueriesAndMutations: boolean
-}
 export interface GenerateConfig {
   folders: {
     model: string;
@@ -42,7 +17,6 @@ export interface GenerateConfig {
   };
   graphqlCRUD: GraphQLGeneratorConfig;
   db: { database: string; dbConfig: any; };
-  openApi: OpenApiConfig
 }
 
 export function writeFile(path: string, data: any) {
@@ -154,53 +128,6 @@ export async function createDatabase(backend: GraphQLBackendCreator, config: Gen
   await backend.createDatabase()
 }
 
-async function processSingleOpenAPIDefinition(model: string, isYaml: boolean, openApiConfig: OpenApiConfig) {
-  console.info(`Processing OpenAPI definition: ${model}`);
-  const { readFileSync, writeFileSync, renameSync } = await import('fs');
-  const schemaText: string = readFileSync(`${model}`, 'utf8');
-  let parsedObject;
-  if (isYaml) {
-    const { safeLoad } = await import('js-yaml');
-    parsedObject = safeLoad(schemaText);
-  } else {
-    parsedObject = JSON.parse(schemaText);
-  }
-  try {
-    const { createGraphQlSchema } = await import('openapi-to-graphql');
-    let { schema } = await createGraphQlSchema(parsedObject, {
-      strict: true,
-      fillEmptyResponses: true,
-      equivalentToMessages: false,
-
-    });
-    if (!openApiConfig.includeComments) {
-      schema = removeCommentsFromSchema(schema)
-    }
-    if (!openApiConfig.includeQueriesAndMutations) {
-      schema = removeOperationsFromSchema(schema);
-    }
-
-    const schemaString = printSchema(schema);
-
-    writeFileSync(`${model}.graphql`, schemaString);
-    if (!openApiConfig.reuseOpenAPIModel) {
-      renameSync(`${model}`, `${model}_processed`)
-    }
-    console.info(`   Finished transforming OpenAPI definition: ${model}`);
-  }
-  catch (err) {
-    console.info(`   Failed to process OpenAPI definition: ${model}. Error: ${err}`);
-  }
-}
-
-export async function createSchemaFromOpenApi(config: GenerateConfig) {
-  const { folders, openApi } = config;
-  const jobs = await Promise.all([
-    globPromise(`${folders.model}/*.yaml`).then(models => models.map(model => processSingleOpenAPIDefinition(model, true, openApi))),
-    globPromise(`${folders.model}/*.json`).then(models => models.map(model => processSingleOpenAPIDefinition(model, false, openApi))),
-  ]);
-  await Promise.all(jobs.map(j => Promise.all(j)));
-}
 
 export const plugin: CliPlugin = {
   init({ program, loadConfig, reportError }) {
