@@ -1,6 +1,6 @@
-<p align="center"><img src="https://i.imgur.com/HKzrr8F.png" width="150" /></p>
+# GraphQL CLI
 
-# graphql-cli
+![GraphQL CLI](https://i.imgur.com/ix5NO45.gif "GraphQL CLI")
 
 [![npm version](https://badge.fury.io/js/%40test-graphql-cli%2Fcli.svg)](https://badge.fury.io/js/%40test-graphql-cli%2Fcli)
 [![Discord Chat](https://img.shields.io/discord/625400653321076807)](https://discord.gg/xud7bH)
