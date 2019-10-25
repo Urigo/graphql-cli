@@ -19,9 +19,11 @@
     "inquirer": "7.0.0",
     "log-symbols": "3.0.0",
     "open": "6.4.0",
-    "simple-git": "1.126.0"
+    "simple-git": "1.126.0",
+    "yamljs": "0.3.0"
   },
   "devDependencies": {
+    "@types/yamljs": "0.2.30", 
     "@types/chalk": "2.2.0",
     "@types/inquirer": "6.5.0",
     "@types/node": "12.7.1",
