@@ -2,7 +2,7 @@
 
 ![GraphQL CLI](https://i.imgur.com/ix5NO45.gif "GraphQL CLI")
 
-[![npm version](https://badge.fury.io/js/%40test-graphql-cli%2Fcli.svg)](https://badge.fury.io/js/%40test-graphql-cli%2Fcli)
+[![npm version](https://badge.fury.io/js/graphql-cli.svg)](https://badge.fury.io/js/graphql-cli)
 [![Discord Chat](https://img.shields.io/discord/625400653321076807)](https://discord.gg/xud7bH)
 
 📟 Command line tool for common GraphQL development workflows
@@ -68,10 +68,6 @@ For more information go to https://github.com/graphql-cli/graphql-cli
 
 ```
 
-### Initial setup and schema download
-
-### Listen to schema changes
-
 ### Autocompletion setup
 To install autocompletion in your terminal run
 
@@ -102,8 +98,8 @@ A big thank you to all contributors and supporters of this repository 💚
 <a href="https://github.com/IvanGoncharov/" target="_blank">
   <img src="https://github.com/IvanGoncharov.png?size=64" width="64" height="64" alt="IvanGoncharov">
 </a>
-<a href="https://github.com/RomanGotsiy/" target="_blank">
-  <img src="https://github.com/RomanGotsiy.png?size=64" width="64" height="64" alt="RomanGotsiy">
+<a href="https://github.com/RomanHotsiy/" target="_blank">
+  <img src="https://github.com/RomanHotsiy.png?size=64" width="64" height="64" alt="RomanHotsiy">
 </a>
 <a href="https://github.com/schickling/" target="_blank">
   <img src="https://github.com/schickling.png?size=64" width="64" height="64" alt="schickling">
@@ -112,8 +108,6 @@ A big thank you to all contributors and supporters of this repository 💚
   <img src="https://github.com/kbrandwijk.png?size=64" width="64" height="64" alt="kbrandwijk">
 </a>
 
-## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
+## Help & Community
 
-Join our [Slack community](http://slack.graph.cool/) if you run into issues or have questions. We love talking to you!
-
-<p align="center"><a href="https://oss.prisma.io"><img src="https://imgur.com/IMU2ERq.png" alt="Prisma" height="170px"></a></p>
+Join our [Discord Chat](https://discord.gg/xud7bH) if you run into issues or have questions. We're happy to help and excited to welcome you into the community.
