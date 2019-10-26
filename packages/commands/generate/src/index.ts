@@ -135,8 +135,8 @@ export const plugin: CliPlugin = {
       .option('--client')
       .option('--backend')
       .action(async ({
-        openApi, db, client, backend
-      }: { openApi: boolean, db: boolean, client: boolean, backend: boolean }) => {
+        db, client, backend
+      }: { db: boolean, client: boolean, backend: boolean }) => {
         try {
           const config = await loadConfig({
             extensions: [
@@ -149,7 +149,7 @@ export const plugin: CliPlugin = {
             throw new Error(`You should provide a valid 'generate' config to generate schema from data model`);
           }
 
-          if (!openApi && !db && !client) {
+          if (!db && !client) {
             backend = true;
           }
 
