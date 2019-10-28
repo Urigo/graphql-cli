@@ -7,8 +7,6 @@
 Currently we have `4.0.0-alpha.0` version. Help us to improve new GraphQL CLI. Checkout new structure and commands below!
 Feel free to contact us in Discord channel. We would love to hear your feedback.
 
-📟 Command line tool for common GraphQL development workflows
-
 ## Features
 
 - Helpful commands to improve your workflows
