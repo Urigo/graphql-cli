@@ -27,10 +27,10 @@
     "log-symbols": "3.0.0"
   },
   "devDependencies": {
-    "@types/fs-extra": "8.0.0",
-    "@types/node": "12.7.1",
+    "@types/fs-extra": "8.0.1",
+    "@types/node": "12.11.7",
     "graphql": "14.5.8",
-    "ts-node": "8.3.0",
+    "ts-node": "8.4.1",
     "typescript": "3.6.4"
   }
 }
