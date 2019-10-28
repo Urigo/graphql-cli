@@ -388,7 +388,7 @@ export const plugin: CliPlugin = {
                             {
                                 type: 'confirm',
                                 name: 'isFrontendInspectorAsked',
-                                message: 'Do you want to have GraphQL Inspector tools for frontend?',
+                                message: 'Do you want to have GraphQL Inspector tools for your frontend?',
                                 default: true,
                             }
                         ]);
@@ -403,7 +403,7 @@ export const plugin: CliPlugin = {
                             {
                                 type: 'confirm',
                                 name: 'isBackendInspectorAsked',
-                                message: 'Do you want to have GraphQL Inspector tools for frontend?',
+                                message: 'Do you want to have GraphQL Inspector tools for your backend?',
                                 default: true,
                             }
                         ]);
