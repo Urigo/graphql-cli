@@ -13,7 +13,7 @@
     "graphql": "14.5.4"
   },
   "dependencies": {
-    "@graphql-inspector/core": "1.24.0",
+    "@graphql-inspector/core": "1.26.0",
     "@graphql-toolkit/code-file-loader": "0.6.2",
     "@test-graphql-cli/common": "4.0.1",
     "chalk": "2.4.2",
