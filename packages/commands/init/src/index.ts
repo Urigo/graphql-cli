@@ -278,6 +278,7 @@ export const plugin: CliPlugin = {
                         const { isCodegenAsked } = await prompt([
                             {
                                 type: 'confirm',
+                                name: 'isCodegenAsked',
                                 message: 'Do you want to use GraphQL Code Generator?',
                                 default: true,
                             }
