@@ -4,7 +4,7 @@
 
 [![Discord Chat](https://img.shields.io/discord/625400653321076807)](https://discord.gg/xud7bH)
 
-Currently we have `4.0.0-alpha.3` version. Help us to improve new GraphQL CLI. Checkout new structure and commands below!
+Currently we have `next` version. Help us to improve new GraphQL CLI. Checkout new structure and commands below!
 Feel free to contact us in Discord channel. We would love to hear your feedback.
 
 ## Features
@@ -27,7 +27,7 @@ yarn global add graphql-cli@next
 You can create a GraphQL Config file by yourself. [Learn more about GraphQL Config](https://graphql-config.com/docs/introduction)
 ```yaml
 schema: src/schema/**/*.graphql
-documents: src/documents//**/*.graphql
+documents: src/documents/**/*.graphql
 ```
 
 Or you can create a GraphQL Config file for GraphQL CLI for your project or create a GraphQL project from scratch even with using a OpenAPI/Swagger file. After installing the CLI like above, you can run the following command;
