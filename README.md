@@ -1,6 +1,6 @@
 # GraphQL CLI
 
-![GraphQL CLI](https://i.imgur.com/ix5NO45.gif "GraphQL CLI")
+![image](https://user-images.githubusercontent.com/20847995/67651234-85bf1500-f916-11e9-90e5-cb3bd0e6a338.png)
 
 [![npm version](https://badge.fury.io/js/%40test-graphql-cli%2Fcli.svg)](https://badge.fury.io/js/%40test-graphql-cli%2Fcli)
 [![Discord Chat](https://img.shields.io/discord/625400653321076807)](https://discord.gg/xud7bH)
@@ -9,81 +9,21 @@
 
 ## Features
 
-- Helpful commands to improve your workflows like `get-schema`, `diff` & `playground`
-- Compatible with editors and IDEs based on [`graphql-config`](https://github.com/graphcool/graphql-config)
+- Helpful commands to improve your workflows
+- Compatible with editors and IDEs based on [`graphql-config`](https://github.com/kamilkisiela/graphql-config)
 - Powerful plugin system to extend `graphql-cli` with custom commands
 
-You can see it in action here:
-
-![demo](http://imgur.com/0kuqZFY.gif)
-
-> Note: The `graphql-cli` has a different use case than the [Graphcool CLI](https://www.graph.cool/docs/reference/graphcool-cli/overview-zboghez5go/). Graphcool CLI is specific to the Graphcool Framework, while `graphql-cli` can be used with any GraphQL project.
 
 ## Install
 
-You can simply install the CLI using `npm` or `yarn` by running the following command. This will add the `graphql` (and shorter `gql`) binary to your path.
+You can simply install the CLI using `npm` or `yarn` by running the following command. This will add the `graphql` binary to your path.
 
 ```sh
 npm install -g graphql-cli
 ```
 
-## [Docs :books:](https://oss.prisma.io/content/graphql-cli/01-overview)
-Check out the detailed docs about the possible workflows [here](https://oss.prisma.io/content/graphql-cli/04-Common-Workflows.html).
-
-
 ## Usage
 
-```
-Usage: graphql [command]
-
-Commands:
-  graphql create [directory]             Bootstrap a new GraphQL project
-  graphql add-endpoint                   Add new endpoint to .graphqlconfig
-  graphql add-project                    Add new project to .graphqlconfig
-  graphql get-schema                     Download schema from endpoint
-  graphql schema-status                  Show source & timestamp of local schema
-  graphql ping                           Ping GraphQL endpoint
-  graphql query <file>                   Run query/mutation
-  graphql diff                           Show a diff between two schemas
-  graphql playground                     Open interactive GraphQL Playground
-  graphql lint                           Check schema for linting errors
-  graphql prepare                        Bundle schemas and generate bindings
-  graphql codegen [--target] [--output]  Generates apollo-codegen
-                                         code/annotations from your
-                                         .graphqlconfig
-
-Options:
-  --dotenv       Path to .env file                                      [string]
-  -p, --project  Project name                                           [string]
-  -h, --help     Show help                                             [boolean]
-  -v, --version  Show version number                                   [boolean]
-
-Examples:
-  graphql init                 Interactively setup .graphqlconfig file
-  graphql get-schema -e dev    Update local schema to match "dev" endpoint
-  graphql diff -e dev -t prod  Show schema diff between "dev" and "prod"
-                               endpoints
-
-For more information go to https://github.com/graphql-cli/graphql-cli
-
-```
-
-### Initial setup and schema download
-
-### Listen to schema changes
-
-### Autocompletion setup
-To install autocompletion in your terminal run
-
-```
-graphql completion >> ~/.bashrc
-```
-
-or on OSX
-
-```sh
-graphql completion >> ~/.bash_profile
-```
 
 ## Plugins
 
@@ -95,25 +35,6 @@ graphql completion >> ~/.bash_profile
 
 Do you want to create your own plugin? [Here is a simple example.](plugin-example)
 
-## Contributors
+## Help & Community [![Discord Chat](https://img.shields.io/discord/625400653321076807)](https://discord.gg/xud7bH9)
 
-A big thank you to all contributors and supporters of this repository 💚
-
-<a href="https://github.com/IvanGoncharov/" target="_blank">
-  <img src="https://github.com/IvanGoncharov.png?size=64" width="64" height="64" alt="IvanGoncharov">
-</a>
-<a href="https://github.com/RomanGotsiy/" target="_blank">
-  <img src="https://github.com/RomanGotsiy.png?size=64" width="64" height="64" alt="RomanGotsiy">
-</a>
-<a href="https://github.com/schickling/" target="_blank">
-  <img src="https://github.com/schickling.png?size=64" width="64" height="64" alt="schickling">
-</a>
-<a href="https://github.com/kbrandwijk/" target="_blank">
-  <img src="https://github.com/kbrandwijk.png?size=64" width="64" height="64" alt="kbrandwijk">
-</a>
-
-## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
-
-Join our [Slack community](http://slack.graph.cool/) if you run into issues or have questions. We love talking to you!
-
-<p align="center"><a href="https://oss.prisma.io"><img src="https://imgur.com/IMU2ERq.png" alt="Prisma" height="170px"></a></p>
+Join our [Discord chat](https://discord.gg/xud7bH9) if you run into issues or have questions. We love talking to you!
