@@ -11,7 +11,7 @@ const templateMap = {
         repository: 'git@github.com:ardatan/graphql-cli-example.git',
         projectType: 'Full Stack',
         graphqlConfig: {
-            schema: './server/src/schema/**/*.ts',
+            schema: './src/schema/**/*.ts',
             documents: './client/src/graphql/**/*.ts',
             generate: {
                 db: {
@@ -37,10 +37,20 @@ const templateMap = {
                 },
                 folders: {
                     model: './model',
-                    resolvers: './server/src/resolvers',
-                    schema: './server/src/schema',
+                    resolvers: './src/resolvers',
+                    schema: './src/schema',
                     client: './client/src/graphql'
                 },
+            },
+            codegen: {
+                './src/generated-types.ts': {
+                    'typescript': {},
+                    'typescript-resolvers': {},
+                },
+                './client/src/generated-types.ts': {
+                    'typescript': {},
+                    'typescript-operations': {}
+                }
             }
         }
     }
@@ -171,7 +181,7 @@ export const plugin: CliPlugin = {
                         }
                     };
 
-                    
+
                     if (initializationType === InitializationType.ExistingOpenAPI) {
                         const { openApiPath } = await prompt<{ openApiPath: string }>([
                             {
@@ -263,111 +273,114 @@ export const plugin: CliPlugin = {
                     let npmPackages = [
                         '@test-graphql-cli/cli'
                     ];
-                    const { isCodegenAsked } = await prompt([
-                        {
-                            type: 'confirm',
-                            message: 'Do you want to use GraphQL Code Generator?',
-                            default: true,
-                        }
-                    ]);
-                    if (isCodegenAsked) {
-                        npmPackages.push('@test-graphql-cli/codegen');
-                        graphqlConfig.codegen = {};
-                        let codegenPlugins = new Set<string>();
-                        if (projectType === 'Full Stack' || projectType === 'Backend only') {
-                            const { backendType } = await prompt([
-                                {
-                                    type: 'list',
-                                    name: 'backendType',
-                                    message: 'What type of backend do you have?',
-                                    choices: [
-                                        'TypeScript',
-                                        'Java',
-                                        'Kotlin'
-                                    ]
-                                }
-                            ]);
-                            switch (backendType) {
-                                case 'TypeScript':
-                                    codegenPlugins.add('typescript');
-                                    codegenPlugins.add('typescript-resolvers');
-                                    break;
-                                case 'Java':
-                                    codegenPlugins.add('java');
-                                    codegenPlugins.add('java-resolvers');
-                                    break;
-                                case 'Kotlin':
-                                    codegenPlugins.add('java');
-                                    codegenPlugins.add('java-kotlin');
-                                    break;
+                    if (!graphqlConfig.codegen) {
+
+                        const { isCodegenAsked } = await prompt([
+                            {
+                                type: 'confirm',
+                                message: 'Do you want to use GraphQL Code Generator?',
+                                default: true,
                             }
-
-                            const { backendGeneratedFile } = await prompt([
-                                {
-                                    type: 'input',
-                                    name: 'backendGeneratedFile',
-                                    message: 'Where do you want to have generated backend code?',
-                                    default: './generated-backend.ts',
+                        ]);
+                        if (isCodegenAsked) {
+                            npmPackages.push('@test-graphql-cli/codegen');
+                            graphqlConfig.codegen = {};
+                            let codegenPlugins = new Set<string>();
+                            if (projectType === 'Full Stack' || projectType === 'Backend only') {
+                                const { backendType } = await prompt([
+                                    {
+                                        type: 'list',
+                                        name: 'backendType',
+                                        message: 'What type of backend do you have?',
+                                        choices: [
+                                            'TypeScript',
+                                            'Java',
+                                            'Kotlin'
+                                        ]
+                                    }
+                                ]);
+                                switch (backendType) {
+                                    case 'TypeScript':
+                                        codegenPlugins.add('typescript');
+                                        codegenPlugins.add('typescript-resolvers');
+                                        break;
+                                    case 'Java':
+                                        codegenPlugins.add('java');
+                                        codegenPlugins.add('java-resolvers');
+                                        break;
+                                    case 'Kotlin':
+                                        codegenPlugins.add('java');
+                                        codegenPlugins.add('java-kotlin');
+                                        break;
                                 }
-                            ]);
 
-                            graphqlConfig.codegen[backendGeneratedFile] = [...codegenPlugins];
-                        }
-                        if (projectType === 'Full Stack' || projectType === 'Frontend only') {
+                                const { backendGeneratedFile } = await prompt([
+                                    {
+                                        type: 'input',
+                                        name: 'backendGeneratedFile',
+                                        message: 'Where do you want to have generated backend code?',
+                                        default: './generated-backend.ts',
+                                    }
+                                ]);
 
-                            const { frontendType } = await prompt([
-                                {
-                                    type: 'list',
-                                    name: 'frontendType',
-                                    choices: [
-                                        'TypeScript React Apollo',
-                                        'Apollo Angular',
-                                        'Stencil Apollo',
-                                        'TypeScript Urql',
-                                        'GraphQL Request',
-                                        'Apollo Android'
-                                    ]
-                                }
-                            ]);
-
-                            switch (frontendType) {
-                                case 'TypeScript React Apollo':
-                                    codegenPlugins.add('typescript');
-                                    codegenPlugins.add('typescript-react-apollo');
-                                    break;
-                                case 'Apollo Angular':
-                                    codegenPlugins.add('typescript');
-                                    codegenPlugins.add('typescript-apollo-angular');
-                                    break;
-                                case 'Stencil Apollo':
-                                    codegenPlugins.add('typescript');
-                                    codegenPlugins.add('typescript-stencil-apollo');
-                                    break;
-                                case 'TypeScript Urql':
-                                    codegenPlugins.add('typescript');
-                                    codegenPlugins.add('typescript-urql');
-                                    break;
-                                case 'GraphQL Request':
-                                    codegenPlugins.add('typescript');
-                                    codegenPlugins.add('typescript-graphql-request');
-                                    break;
-                                case 'Apollo Android':
-                                    codegenPlugins.add('java-apollo-android');
-                                    break;
+                                graphqlConfig.codegen[backendGeneratedFile] = [...codegenPlugins];
                             }
+                            if (projectType === 'Full Stack' || projectType === 'Frontend only') {
 
-                            const { frontendGeneratedFile } = await prompt([
-                                {
-                                    type: 'input',
-                                    name: 'frontendGeneratedFile',
-                                    message: 'Where do you want to have generated frontend code?',
-                                    default: './generated-frontend.ts',
+                                const { frontendType } = await prompt([
+                                    {
+                                        type: 'list',
+                                        name: 'frontendType',
+                                        choices: [
+                                            'TypeScript React Apollo',
+                                            'Apollo Angular',
+                                            'Stencil Apollo',
+                                            'TypeScript Urql',
+                                            'GraphQL Request',
+                                            'Apollo Android'
+                                        ]
+                                    }
+                                ]);
+
+                                switch (frontendType) {
+                                    case 'TypeScript React Apollo':
+                                        codegenPlugins.add('typescript');
+                                        codegenPlugins.add('typescript-react-apollo');
+                                        break;
+                                    case 'Apollo Angular':
+                                        codegenPlugins.add('typescript');
+                                        codegenPlugins.add('typescript-apollo-angular');
+                                        break;
+                                    case 'Stencil Apollo':
+                                        codegenPlugins.add('typescript');
+                                        codegenPlugins.add('typescript-stencil-apollo');
+                                        break;
+                                    case 'TypeScript Urql':
+                                        codegenPlugins.add('typescript');
+                                        codegenPlugins.add('typescript-urql');
+                                        break;
+                                    case 'GraphQL Request':
+                                        codegenPlugins.add('typescript');
+                                        codegenPlugins.add('typescript-graphql-request');
+                                        break;
+                                    case 'Apollo Android':
+                                        codegenPlugins.add('java-apollo-android');
+                                        break;
                                 }
-                            ]);
 
-                            graphqlConfig.codegen[frontendGeneratedFile] = [...codegenPlugins];
+                                const { frontendGeneratedFile } = await prompt([
+                                    {
+                                        type: 'input',
+                                        name: 'frontendGeneratedFile',
+                                        message: 'Where do you want to have generated frontend code?',
+                                        default: './generated-frontend.ts',
+                                    }
+                                ]);
+
+                                graphqlConfig.codegen[frontendGeneratedFile] = [...codegenPlugins];
+                            }
+                            npmPackages.push(...[...codegenPlugins].map(plugin => '@graphql-codegen/' + plugin));
                         }
-                        npmPackages.push(...[...codegenPlugins].map(plugin => '@graphql-codegen/' + plugin));
                     }
 
                     if (projectType === 'Full Stack' || projectType === 'Frontend only') {
@@ -400,7 +413,7 @@ export const plugin: CliPlugin = {
                         }
                     }
 
-                    const configPath = join(process.cwd(), '.graphqlrc.yml');
+                    const configPath = join(projectPath, '.graphqlrc.yml');
                     await ensureFile(configPath);
                     writeFileSync(
                         configPath,
@@ -408,10 +421,10 @@ export const plugin: CliPlugin = {
                     );
                     console.info(`Config file created at ${configPath}`);
 
-                    const packageJson = await import(join(process.cwd(), 'package.json'));
-                    packageJson.devDependencies = npmPackages;
-
-                    console.info('!')
+                    const packageJson = await import(join(projectPath, 'package.json'));
+                    for (const npmDependency of npmPackages) {
+                        packageJson.devDependencies[npmDependency] = 'latest';
+                    } 
 
                     console.info(`
                     GraphQL CLI project successfully initialized into the folder; /${name} :rocket:
