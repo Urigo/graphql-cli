@@ -1,6 +1,6 @@
 {
   "name": "@test-graphql-cli/common",
-  "version": "0.0.3",
+  "version": "3.0.0-alpha.0",
   "license": "MIT",
   "main": "dist/index.js",
   "publishConfig": {
@@ -12,13 +12,13 @@
   "dependencies": {
     "chalk": "2.4.2",
     "commander": "3.0.0",
-    "log-symbols": "3.0.0",
-    "graphql-config": "3.0.0-alpha.13"
+    "graphql-config": "3.0.0-alpha.13",
+    "log-symbols": "3.0.0"
   },
   "devDependencies": {
     "@types/node": "12.7.1",
-    "typescript": "3.6.4",
-    "graphql": "14.5.8"
+    "graphql": "14.5.8",
+    "typescript": "3.6.4"
   },
   "peerDependencies": {
     "graphql": "^14.5.8"

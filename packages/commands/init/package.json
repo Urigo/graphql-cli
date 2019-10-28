@@ -1,6 +1,6 @@
 {
   "name": "@test-graphql-cli/init",
-  "version": "0.0.3",
+  "version": "3.0.0-alpha.0",
   "license": "MIT",
   "main": "dist/index.js",
   "publishConfig": {
@@ -13,23 +13,23 @@
     "graphql": "14.5.4"
   },
   "dependencies": {
-    "@test-graphql-cli/common": "0.0.3",
+    "@test-graphql-cli/common": "3.0.0-alpha.0",
     "chalk": "2.4.2",
     "commander": "3.0.0",
+    "fs-extra": "^8.1.0",
     "inquirer": "7.0.0",
     "log-symbols": "3.0.0",
-    "fs-extra": "^8.1.0",
     "open": "6.4.0",
+    "openapi-to-graphql": "1.6.1",
     "simple-git": "1.126.0",
-    "yamljs": "0.3.0",
-    "openapi-to-graphql": "1.6.1"
+    "yamljs": "0.3.0"
   },
   "devDependencies": {
-    "@types/fs-extra": "8.0.0",
-    "@types/yamljs": "0.2.30", 
     "@types/chalk": "2.2.0",
+    "@types/fs-extra": "8.0.0",
     "@types/inquirer": "6.5.0",
     "@types/node": "12.7.1",
+    "@types/yamljs": "0.2.30",
     "graphql": "14.5.8",
     "ts-node": "8.3.0",
     "typescript": "3.6.4"
