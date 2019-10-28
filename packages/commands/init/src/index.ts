@@ -417,7 +417,7 @@ export const plugin: CliPlugin = {
                     await ensureFile(configPath);
                     writeFileSync(
                         configPath,
-                        YAML.stringify(graphqlConfig),
+                        YAML.stringify(graphqlConfig, Infinity),
                     );
                     console.info(`Config file created at ${configPath}`);
 
