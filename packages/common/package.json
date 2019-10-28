@@ -12,15 +12,12 @@
   "dependencies": {
     "chalk": "2.4.2",
     "commander": "3.0.0",
-    "graphql-config": "3.0.0-alpha.13",
+    "graphql-config": "3.0.0-alpha.14",
     "log-symbols": "3.0.0"
   },
   "devDependencies": {
     "@types/node": "12.7.1",
     "graphql": "14.5.8",
     "typescript": "3.6.4"
-  },
-  "peerDependencies": {
-    "graphql": "^14.5.8"
   }
 }

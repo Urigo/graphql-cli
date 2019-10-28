@@ -9,9 +9,6 @@
   "scripts": {
     "build": "tsc"
   },
-  "peerDependencies": {
-    "graphql": "14.5.4"
-  },
   "dependencies": {
     "@test-graphql-cli/common": "4.0.1",
     "chalk": "2.4.2",
@@ -33,8 +30,5 @@
     "graphql": "14.5.8",
     "ts-node": "8.3.0",
     "typescript": "3.6.4"
-  },
-  "resolutions": {
-    "graphql": "14.5.8"
   }
 }

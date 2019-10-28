@@ -9,8 +9,8 @@
   "scripts": {
     "build": "tsc"
   },
-  "peerDependencies": {
-    "graphql": "14.5.4"
+   "peerDependencies": {
+    "graphql": "^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0"
   },
   "dependencies": {
     "@graphql-codegen/cli": "1.7.1-alpha-b4e56daa.28",
@@ -29,8 +29,5 @@
     "graphql": "14.5.8",
     "ts-node": "8.3.0",
     "typescript": "3.6.4"
-  },
-  "resolutions": {
-    "graphql": "14.5.8"
   }
 }

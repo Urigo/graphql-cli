@@ -3477,9 +3477,9 @@ graphql-config@2.2.1:
     lodash "^4.17.4"
     minimatch "^3.0.4"
 
-graphql-config@3.0.0-alpha.13:
-  version "3.0.0-alpha.13"
-  resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-3.0.0-alpha.13.tgz#d006f3a4eceb14fcb6f8d715af8ad0c0059abc71"
+graphql-config@3.0.0-alpha.14:
+  version "3.0.0-alpha.14"
+  resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-3.0.0-alpha.14.tgz#d006f3a4eceb14fcb6f8d715af8ad0c0059abc71"
   integrity sha512-m7WIG+ejUZTeYg8oB2L8wkUDgl/seSvYJCW6BnWLbS8sQ/DCO3O1qzEWdVhqe9A8YXfXvdoW17DHeFEeO+q85A==
   dependencies:
     "@graphql-toolkit/common" "0.6.1-alpha-cee1e98.4+cee1e98"
