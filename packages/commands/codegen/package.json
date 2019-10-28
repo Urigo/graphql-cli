@@ -1,6 +1,6 @@
 {
   "name": "@test-graphql-cli/codegen",
-  "version": "4.0.0-alpha-1",
+  "version": "4.0.0-alpha-2",
   "license": "MIT",
   "main": "dist/index.js",
   "publishConfig": {
@@ -17,7 +17,7 @@
     "@graphql-codegen/core": "1.7.1-alpha-b4e56daa.28",
     "@graphql-codegen/plugin-helpers": "1.7.1-alpha-b4e56daa.28",
     "@graphql-toolkit/code-file-loader": "0.6.2",
-    "@test-graphql-cli/common": "4.0.0-alpha-1",
+    "@test-graphql-cli/common": "4.0.0-alpha-2",
     "chalk": "2.4.2",
     "commander": "3.0.0",
     "graphql-tag-pluck": "0.8.4",
