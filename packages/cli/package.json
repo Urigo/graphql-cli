@@ -1,6 +1,6 @@
 {
   "name": "graphql-cli",
-  "version": "4.0.0-alpha-3",
+  "version": "4.0.1",
   "license": "MIT",
   "main": "dist/index.js",
   "publishConfig": {
@@ -14,8 +14,8 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@test-graphql-cli/common": "4.0.0-alpha-3",
-    "@test-graphql-cli/init": "4.0.0-alpha-3",
+    "@test-graphql-cli/common": "4.0.1",
+    "@test-graphql-cli/init": "4.0.1",
     "chalk": "2.4.2",
     "commander": "3.0.0",
     "graphql-config": "3.0.0-alpha.13",
