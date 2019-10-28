@@ -3,7 +3,7 @@ import express from 'express';
 import graphqlHTTP from 'express-graphql';
 import open from 'open';
 import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
-import { GraphQLExtensionDeclaration } from 'graphql-config/dist';
+import { GraphQLExtensionDeclaration } from 'graphql-config/extension';
 import { IMocks, addMockFunctionsToSchema } from '@kamilkisiela/graphql-tools';
 
 const ServeExtension: GraphQLExtensionDeclaration = api => {

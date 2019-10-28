@@ -1,7 +1,7 @@
 import { CliPlugin } from "@test-graphql-cli/common";
 import { similar } from "@graphql-inspector/core";
 import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
-import { GraphQLExtensionDeclaration } from 'graphql-config/dist';
+import { GraphQLExtensionDeclaration } from 'graphql-config/extension';
 import { writeFileSync } from 'fs';
 import { join } from 'path';
 
