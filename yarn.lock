@@ -237,10 +237,10 @@
     import-from "3.0.0"
     tslib "1.10.0"
 
-"@graphql-inspector/core@1.24.0":
-  version "1.24.0"
-  resolved "https://registry.yarnpkg.com/@graphql-inspector/core/-/core-1.24.0.tgz#7da467182608b31f84ee66a506c07b5a67a180a2"
-  integrity sha512-n3gMb0RDRgMn3hpkbhDStSkzJlnvC5e08bwj01C0cT99M77Fup5xYiuoyhydm7OWIffJiIBjCKbAaU6lgKNV0A==
+"@graphql-inspector/core@1.26.0":
+  version "1.26.0"
+  resolved "https://registry.yarnpkg.com/@graphql-inspector/core/-/core-1.26.0.tgz#859147519ab777124894a3312fd3c50d90dd9836"
+  integrity sha512-j9jz2+RhJnJjbYNm9TyqoqTDIpuPZJBXmha6kjZSS363gJiRlEyIjoSYp6MbAsrxysdfm3QVEurlWTdfGY6Ssw==
   dependencies:
     dependency-graph "0.8.0"
 
