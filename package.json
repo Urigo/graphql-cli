@@ -10,15 +10,15 @@
   },
   "scripts": {
     "release": "lerna publish --exact --force-publish=\"*\"",
-    "ci:release:canary": "lerna publish --force-publish=\"*\" --canary --preid=experimental --exact --yes",
+    "ci:release:canary": "lerna publish --force-publish=\"*\" --canary --exact --yes",
     "test": "lerna run test",
     "build": "lerna run build"
   },
   "devDependencies": {
     "graphql": "14.5.4",
-    "husky": "3.0.5",
+    "husky": "3.0.9",
     "lerna": "3.18.3",
-    "lint-staged": "9.2.5",
+    "lint-staged": "9.4.2",
     "prettier": "1.18.2",
     "rimraf": "3.0.0"
   },
