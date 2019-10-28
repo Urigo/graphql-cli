@@ -4,7 +4,7 @@
 
 [![Discord Chat](https://img.shields.io/discord/625400653321076807)](https://discord.gg/xud7bH)
 
-Currently we have `3.0.0-alpha.0` version.
+Currently we have `4.0.0-alpha.0` version.
 
 📟 Command line tool for common GraphQL development workflows
 
