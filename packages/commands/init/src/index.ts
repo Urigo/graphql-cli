@@ -67,8 +67,8 @@ export const plugin: CliPlugin = {
                 try {
                     enum InitializationType {
                         FromScratch = 'I want to create a new project from scratch using a template.',
-                        ExistingOpenAPI = 'I have an existing project uses OpenAPI/Swagger Schema Definition.',
-                        ExistingGraphQL = 'I have an existing project uses GraphQL.'
+                        ExistingOpenAPI = 'I have an existing project using OpenAPI/Swagger Schema Definition.',
+                        ExistingGraphQL = 'I have an existing project using GraphQL.'
                     }
                     const { initializationType } = await prompt<{ initializationType: InitializationType }>([
                         {
@@ -141,7 +141,7 @@ export const plugin: CliPlugin = {
                                 type: 'confirm',
                                 name: 'isBackendGenerationAsked',
                                 default: false,
-                                message: 'Do you want to generate the backend code using data model',
+                                message: 'Do you want to generate the backend code using a data model?',
                             }
                         ])
                         if (isBackendGenerationAsked) {
