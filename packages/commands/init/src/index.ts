@@ -95,7 +95,7 @@ export const plugin: CliPlugin = {
                                 }
                             ]);
                             projectName = enteredName;
-                            projectPath = join(process.cwd(), projectPath);
+                            projectPath = join(process.cwd(), projectName);
                         }
                         if (!templateName) {
                             const templateNames = Object.keys(templateMap);
