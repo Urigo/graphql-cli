@@ -3,12 +3,12 @@ import { prompt } from 'inquirer';
 import { join } from 'path';
 import simpleGit from 'simple-git/promise';
 import chalk from 'chalk';
-import { ensureFile, writeFileSync, readFileSync, unlinkSync } from 'fs-extra';
+import { ensureFile, writeFileSync, readFileSync } from 'fs-extra';
 import YAML from 'yamljs';
 
 const templateMap = {
-    'graphql-cli-example': {
-        repository: 'git@github.com:ardatan/graphql-cli-example.git',
+    'graphql-cli-template': {
+        repository: 'git@github.com:ardatan/graphql-cli-template.git',
         projectType: 'Full Stack',
         graphqlConfig: {
             schema: './src/schema/**/*.ts',
@@ -131,11 +131,11 @@ export const plugin: CliPlugin = {
                             }
                             const git = simpleGit();
                             await git.clone(templateUrl, projectPath);
-                            unlinkSync(join(projectPath, '.git'));
+                            // unlinkSync(join(projectPath, '.git'));
                         }
                     }
 
-                    if (!(graphqlConfig && graphqlConfig.generate)) {
+                    if (!graphqlConfig.generate) {
                         const { isBackendGenerationAsked } = await prompt([
                             {
                                 type: 'confirm',
@@ -149,7 +149,7 @@ export const plugin: CliPlugin = {
                         }
                     }
 
-                    if (graphqlConfig && graphqlConfig.generate && !graphqlConfig.folders) {
+                    if (graphqlConfig.generate && !graphqlConfig.generate.folders) {
                         const {
                             model,
                             resolvers,
@@ -249,7 +249,7 @@ export const plugin: CliPlugin = {
                         projectType = enteredProjectType;
                     }
 
-                    if (projectType === 'Full Stack' && graphqlConfig && graphqlConfig.generate && !graphqlConfig.client) {
+                    if (projectType === 'Full Stack' && graphqlConfig.generate && !graphqlConfig.generate.folders.client) {
                         const { client } = await prompt([
                             {
                                 type: 'input',
@@ -427,9 +427,9 @@ export const plugin: CliPlugin = {
                     } 
 
                     console.info(`
-                    GraphQL CLI project successfully initialized into the folder; /${name} :rocket:
+                    GraphQL CLI project successfully initialized into the folder; /${projectName} :rocket:
                     Next Steps:
-                    - Change directory into project folder - ${chalk.cyan(`cd ${projectPath}`)}
+                    - Change directory into project folder - ${chalk.cyan(`cd ${projectName}`)}
                     - Install ${chalk.cyan(`yarn install`)} to install dependencies
                     ${initializationType !== InitializationType.ExistingGraphQL ? `
                     - Edit the .graphql file inside your model folder.
