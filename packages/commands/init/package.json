@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@types/chalk": "2.2.0",
-    "@types/fs-extra": "8.0.0",
+    "@types/fs-extra": "8.0.1",
     "@types/inquirer": "6.5.0",
     "@types/node": "12.7.1",
     "@types/yamljs": "0.2.30",
