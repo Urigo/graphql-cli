@@ -5494,10 +5494,10 @@ open@6.4.0:
   dependencies:
     is-wsl "^1.1.0"
 
-openapi-to-graphql@1.6.1:
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/openapi-to-graphql/-/openapi-to-graphql-1.6.1.tgz#bdbb6a2418a8152b61eedb8e9ba86d86db94fb4b"
-  integrity sha512-iFvp9BHcprRc9T5O0gJTOjrFBRcti+UvWJFMJu0A6LSxBxaya3qFkaf7QjWAOWW/I+LBls5+0DgNXolmu2898g==
+openapi-to-graphql@1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/openapi-to-graphql/-/openapi-to-graphql-1.6.2.tgz#33cd5098db67ea2b9132fa50ae2f3e8b892b8bde"
+  integrity sha512-3Pmbl47xrxNrvwvlGmM+X646BWvRRPW9TIG79CJSFA9qj/LaexbnxzxhV7x9fJOU/d9pBGL18cqOzat1XtMkGg==
   dependencies:
     "@types/request" "^2.48.1"
     debug "^4.1.0"
