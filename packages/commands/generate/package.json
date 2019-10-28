@@ -21,7 +21,7 @@
     "@graphql-toolkit/url-loader": "0.6.2",
     "@test-graphql-cli/common": "4.0.0-alpha.10",
     "chalk": "2.4.2",
-    "commander": "3.0.0",
+    "commander": "3.0.2",
     "fs-extra": "^8.1.0",
     "graphback": "0.9.2",
     "log-symbols": "3.0.0"
