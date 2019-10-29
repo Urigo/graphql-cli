@@ -29,10 +29,6 @@ export async function cli(argv = process.argv): Promise<void> {
 
     let projectName = 'default';
 
-    if (program.project) {
-      projectName = program.project;
-    }
-
     await plugin.init({
       cwd: process.cwd(),
       program,
@@ -52,6 +48,10 @@ export async function cli(argv = process.argv): Promise<void> {
     });
 
     program.parse(argv);
+
+    if (program.project) {
+      projectName = program.project;
+    }
 
   } catch (e) {
     console.error(e);

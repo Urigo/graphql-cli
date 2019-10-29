@@ -1,11 +1,11 @@
-# Migration from GraphQL 3.x or older
+# Migration from GraphQL CLI 3.x or older
 
 We now have a different structure for GraphQL CLI after 4.xx.
 
 ## Install the new version
 First install the new version like below;
 ```bash
-yarn global add graphql-cli@4.0.0-alpha.14
+yarn global add graphql-cli@4.0.0-alpha.15
 ```
 
 ## Update your configuration file
@@ -39,9 +39,10 @@ After that, you can specify the output path of the local schema file;
 
 ```yaml
 schema: http://localhost:4000/graphql
-codegen:
-    ./schema.graphql:
-        - schema-ast
+extensions:
+    codegen:
+        ./schema.graphql:
+            - schema-ast
 ```
 
 By running `graphql codegen`, you will have `schema.graphql` file in the root path of your project.
@@ -88,11 +89,7 @@ So, you need to rename the file to `.graphqlrc.yml` then update the file like be
 ```yaml
 projects:
   app:
-    schema: http://localhost:4000
-    extensions:
-      codegen:
-            src/schema.graphql:
-                - schema-ast
+    schema: src/schema.graphql
   database:
     schema: 
         http://localhost:4466/myservice/dev: # This is the URL endpoint of your Prisma instance
@@ -110,4 +107,4 @@ Make sure you have installed `@test-graphql-cli/codegen` and `@graphql-codegen/s
 yarn add @test-graphql-cli/codegen @graphql-codegen/schema-ast --dev
 ```
 
-So you can run `graphql codegen --project database` for generating `prisma.graphql` and `graphql codegen --project app` to generate `src/schema.graphql` from those endpoints
+So you can run `graphql codegen --project database` for generating `prisma.graphql`.
