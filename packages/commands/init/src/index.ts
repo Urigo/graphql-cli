@@ -238,6 +238,7 @@ export const plugin: CliPlugin = {
                             {
                                 type: 'list',
                                 name: 'projectType',
+                                message: 'What is the type of your project?',
                                 choices: [
                                     'Full Stack',
                                     'Backend only',
@@ -271,7 +272,7 @@ export const plugin: CliPlugin = {
                         graphqlConfig.documents = documents;
                     }
                     let npmPackages = [
-                        '@test-graphql-cli/cli'
+                        'graphql-cli'
                     ];
                     if (!graphqlConfig.codegen) {
 
@@ -296,7 +297,8 @@ export const plugin: CliPlugin = {
                                         choices: [
                                             'TypeScript',
                                             'Java',
-                                            'Kotlin'
+                                            'Kotlin',
+                                            'Other'
                                         ]
                                     }
                                 ]);
@@ -338,7 +340,8 @@ export const plugin: CliPlugin = {
                                             'Stencil Apollo',
                                             'TypeScript Urql',
                                             'GraphQL Request',
-                                            'Apollo Android'
+                                            'Apollo Android',
+                                            'Other'
                                         ]
                                     }
                                 ]);
@@ -422,15 +425,23 @@ export const plugin: CliPlugin = {
                     );
                     console.info(`Config file created at ${configPath}`);
 
-                    const packageJson = await import(join(projectPath, 'package.json'));
+                    let packageJson: any = {};
+                    try {
+                        const importedPackageJson = await import(join(projectPath, 'package.json'));
+                        packageJson = importedPackageJson.default || {};
+                    } catch (err) {}
+                    packageJson.devDependencies = packageJson.devDependencies || {};
                     for (const npmDependency of npmPackages) {
                         packageJson.devDependencies[npmDependency] = 'latest';
-                    } 
+                    }
+
+                    await ensureFile(join(projectPath, 'package.json'));
+                    writeFileSync(join(projectPath, 'package.json'), JSON.stringify(packageJson, null, 2));
 
                     console.info(`
-                    GraphQL CLI project successfully initialized into the folder; /${projectName} :rocket:
+                    GraphQL CLI project successfully initialized into the folder; ${projectPath} :rocket:
                     Next Steps:
-                    - Change directory into project folder - ${chalk.cyan(`cd ${projectName}`)}
+                    - Change directory into project folder - ${chalk.cyan(`cd ${projectPath}`)}
                     - Install ${chalk.cyan(`yarn install`)} to install dependencies
                     ${initializationType !== InitializationType.ExistingGraphQL ? `
                     - Edit the .graphql file inside your model folder.
