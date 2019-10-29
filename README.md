@@ -22,6 +22,9 @@ You can simply install the CLI using `npm` or `yarn` by running the following co
 yarn global add graphql-cli@4.0.0-alpha.14
 ```
 
+## Migration from 3.x.x to 4.x.x
+Check our [Migration guide](MIGRATION.md)
+
 ## Usage / Initialization
 
 You can create a GraphQL Config file by yourself. [Learn more about GraphQL Config](https://graphql-config.com/docs/introduction)

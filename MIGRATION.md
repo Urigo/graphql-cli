@@ -67,6 +67,7 @@ Instead of these, you can have a faked server to test your schema you can use `y
 
 ## Special Notes for Prisma users
 You need to download your schema from a URL endpoint for Prisma. Assume that, your old GraphQL Config file like below;
+
 `.graphqlconfig`
 ```yaml
 projects:
@@ -82,6 +83,7 @@ projects:
 ```
 
 So, you need to rename the file to `.graphqlrc.yml` then update the file like below;
+
 `.graphqlrc.yml`
 ```yaml
 projects:
