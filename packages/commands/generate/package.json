@@ -13,12 +13,12 @@
     "graphql": "^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0"
   },
   "dependencies": {
-    "@graphql-toolkit/code-file-loader": "0.6.2",
-    "@graphql-toolkit/common": "0.6.2",
-    "@graphql-toolkit/core": "0.6.2",
-    "@graphql-toolkit/graphql-file-loader": "0.6.2",
-    "@graphql-toolkit/json-file-loader": "0.6.2",
-    "@graphql-toolkit/url-loader": "0.6.2",
+    "@graphql-toolkit/code-file-loader": "0.6.3",
+    "@graphql-toolkit/common": "0.6.3",
+    "@graphql-toolkit/core": "0.6.3",
+    "@graphql-toolkit/graphql-file-loader": "0.6.3",
+    "@graphql-toolkit/json-file-loader": "0.6.3",
+    "@graphql-toolkit/url-loader": "0.6.3",
     "@test-graphql-cli/common": "4.0.0-alpha.16",
     "chalk": "2.4.2",
     "commander": "3.0.2",
