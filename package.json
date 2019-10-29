@@ -9,6 +9,7 @@
     ]
   },
   "scripts": {
+    "bootstrap": "lerna bootstrap",
     "release": "lerna publish --exact --force-publish=\"*\"",
     "ci:release:canary": "lerna publish --force-publish=\"*\" --canary --exact --yes",
     "test": "lerna run test",
