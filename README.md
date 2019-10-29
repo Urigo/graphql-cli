@@ -42,8 +42,8 @@ After a series of questions from the command-prompt, the system will use the inp
 You can also get started with GraphQL CLI by creating your own GraphQL Config file using an editor of your choice. Starting with a filename `.graphqlrc.yml`, for instance, we could add:
 
 ```yml
-schema: src/schema/**/*.graphql
-documents: src/documents/**/*.graphql
+schema: server/src/schema/**/*.graphql
+documents: client/src/documents/**/*.graphql
 ```
 
 This is now a valid YAML-syntax GraphQL Config file. Using `init` from the GraphQL CLI will generate a project based on the instructions in your YAML.
@@ -57,9 +57,23 @@ Each command in GraphQL CLI is a seperate package, so you can have your own plug
 To configure a command/plugin, you need to update the `extensions` field in your GraphQL Config file (`.graphqlrc.yml`). See `extensions:` in the example below.
 
 ```yml
-schema: ./src/schema/**/*.ts:
+schema: 
+  ./server/src/schema/**/*.ts:
+    require: ts-node/register
 documents: ./client/src/graphql/**/*.ts
 extensions:
+  codegen:
+    ./server/src/generated-types.d.ts:
+      plugins:
+        - typescript
+        - typescript-resolvers
+    ./client/src/generated-types.tsx:
+      plugins:
+        - typescript
+        - typescript-operations
+        - typescript-react-apollo
+      config:
+        withHooks: true
   generate:
     db:
       dbConfig:

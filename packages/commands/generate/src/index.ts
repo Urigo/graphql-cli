@@ -178,6 +178,7 @@ export const plugin: CliPlugin = {
           }
 
           await Promise.all(jobs);
+          process.exit(0);
         } catch (e) {
           reportError(e);
         }
