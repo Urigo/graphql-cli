@@ -1,7 +1,7 @@
 import { CliPlugin } from '@test-graphql-cli/common';
 import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
 import { codegen } from '@graphql-codegen/core';
-import { parse } from 'graphql';
+import { parse, GraphQLSchema } from 'graphql';
 import { writeFileSync } from 'fs';
 import { join } from 'path';
 import { GraphQLExtensionDeclaration } from 'graphql-config/extension';
@@ -52,8 +52,7 @@ export const plugin: CliPlugin = {
                 plugins.push({ [pluginName]: {}});
               }
               jobs.push(codegen({
-                  schema: parse(printSchemaWithDirectives(schema)),
-                  schemaAst: schema,
+                  schema: schema instanceof GraphQLSchema ? parse(printSchemaWithDirectives(schema)) : schema,
                   documents: documents.map(
                     doc => ({ filePath: doc.location, content: doc.document })
                   ),
