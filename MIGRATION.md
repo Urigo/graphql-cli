@@ -9,6 +9,12 @@ yarn global add graphql-cli@4.0.0-alpha.16
 ```
 You can also globally install using npm.
 
+> NOTE: If you have previous version of the GraphQL-CLI installed make sure to uninstall it first
+
+```bash
+npm uninstall graphql-cli
+```
+
 ## Update your configuration file
 If you are working from an existing project, the GraphQL Config file that is used by GraphQL CLI is now called `.graphqlrc.yml` (by default) instead of `.graphqlconfig`. [Other options exist](https://graphql-config.com/docs/usage) for naming the config files supported by GraphQL CLI, but this guide will assume you're using YAML syntax.
 
