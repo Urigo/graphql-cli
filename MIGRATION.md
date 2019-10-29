@@ -66,6 +66,30 @@ graphql diff http://my-dev-instance.com/graphql
 GraphQL CLI and Config doesn't seperate `endpoints` and `schemaPath` like before. New `schema` field means your single endpoint of your GraphQL schema. So it can be a URL endpoint or a local file. If your project uses a remote schema, you can directly define this URL in `schema` path without downloading it or defining it as an extra `endpoint` etc.
 Instead of these, you can have a faked server to test your schema you can use `yarn serve` command.
 
+### `codegen` now uses GraphQL Code Generator
+GraphQL CLI now uses GraphQL Code Generator which has a lot of plugins and templates for various environments, platforms and use cases. You can generate resolver signatures, TypeScript representation of your GraphQL Schema and more. [Check it out](https://graphql-code-generator.com/)
+
+The usage is slightly different from the old one;
+```yaml
+schema: src/schema/**/*.graphql
+extensions:
+    codegen:
+        src/generated-types.ts: # Output file name
+            - typescript # Plugin names to be used
+            - typescript-resolvers
+```
+
+Assume that, we need to generate TypeScript resolvers signatures for our GraphQL project. So, you need to install `codegen` plugin and the other plugins and templates for GraphQL Code Generator. Here we need `typescript` and `typescript-resolvers` plugins.
+
+```bash
+yarn add @test-graphql-cli/codegen @graphql-codegen/typescript @graphql-code-gener/typescript-resolvers --dev
+```
+
+So, in a single command we can run GraphQL Code Generator through GraphQL CLI;
+```bash
+graphql codegen
+```
+
 ## Special Notes for Prisma users
 You need to download your schema from a URL endpoint for Prisma. Assume that, your old GraphQL Config file like below;
 
@@ -111,7 +135,7 @@ So you can run `graphql codegen --project database` for generating `prisma.graph
 
 Also you need to update your `prisma.yml` file, if you're using `graphql get-schema` there;
 ```yaml
-
+...
 # Ensures Prisma client is re-generated after a datamodel change.
 hooks:
   post-deploy:
