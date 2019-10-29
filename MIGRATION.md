@@ -93,7 +93,7 @@ extensions:
 Assume that, we need to generate TypeScript resolvers signatures for our GraphQL project. So, you need to install `codegen` plugin and the other plugins and templates for GraphQL Code Generator. Here we need `typescript` and `typescript-resolvers` plugins.
 
 ```bash
-yarn add @test-graphql-cli/codegen @graphql-codegen/typescript @graphql-code-gener/typescript-resolvers --dev
+yarn add @test-graphql-cli/codegen @graphql-codegen/typescript @graphql-codegen/typescript-resolvers --dev
 ```
 
 So, in a single command we can run GraphQL Code Generator through GraphQL CLI;
@@ -150,6 +150,6 @@ Also you need to update your `prisma.yml` file, if you're using `graphql get-sch
 # Ensures Prisma client is re-generated after a datamodel change.
 hooks:
   post-deploy:
-    - graphql codegen # instead of graphql get-schema
-    - prisma generate
+    - graphql codegen --project database # instead of graphql get-schema
+    - prisma generate 
 ```
