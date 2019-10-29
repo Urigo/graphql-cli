@@ -7,12 +7,11 @@ import { ensureFile, writeFileSync, readFileSync } from 'fs-extra';
 import YAML from 'yamljs';
 
 const templateMap = {
-    'graphql-cli-template': {
-        repository: 'git@github.com:ardatan/graphql-cli-template.git',
-        projectType: 'Full Stack',
+    'graphql-cli-backend-template': {
+        repository: 'git@github.com:ardatan/graphql-cli-backend-template.git',
+        projectType: 'Backend only',
         graphqlConfig: {
             schema: './src/schema/**/*.ts',
-            documents: './client/src/graphql/**/*.ts',
             generate: {
                 db: {
                     dbConfig: {
@@ -38,18 +37,13 @@ const templateMap = {
                 folders: {
                     model: './model',
                     resolvers: './src/resolvers',
-                    schema: './src/schema',
-                    client: './client/src/graphql'
+                    schema: './src/schema'
                 },
             },
             codegen: {
                 './src/generated-types.ts': {
                     'typescript': {},
                     'typescript-resolvers': {},
-                },
-                './client/src/generated-types.ts': {
-                    'typescript': {},
-                    'typescript-operations': {}
                 }
             }
         }
