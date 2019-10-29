@@ -35,7 +35,7 @@ export const plugin: CliPlugin = {
           ]);
           const jobs: Promise<any>[] = [];
           for (const filename in codegenConfig) {
-            if (filename !== 'schema' && filename !== 'documents') {
+            if (filename !== 'schema' && filename !== 'documents' && filename !== 'include' && filename !== 'exclude') {
               const pluginNames = codegenConfig[filename];
               const pluginInstances = await Promise.all(pluginNames.map(m => import('@graphql-codegen/' + m)));
               const pluginMap:any = {};
