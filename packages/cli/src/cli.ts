@@ -42,7 +42,13 @@ export async function cli(argv = process.argv): Promise<void> {
         throwOnEmpty: false,
         throwOnMissing: false,
         ...loadConfigOptions,
-      }).then(c => c.getProject(projectName)),
+      }).then(c => {
+        const projectNames = Object.keys(c.projects);
+        if (!projectNames.includes(projectName)) {
+          throw new Error(`You don't have project ${projectName}. Available projects are ${projectNames.join(',')}`);
+        }
+        return c.getProject(projectName);
+      }),
     });
 
     program.parse(argv);

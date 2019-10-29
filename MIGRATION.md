@@ -5,7 +5,7 @@ We now have a different structure for GraphQL CLI after 4.xx.
 ## Install the new version
 First install the new version like below;
 ```bash
-yarn global add graphql-cli@4.0.0-alpha.10
+yarn global add graphql-cli@4.0.0-alpha.11
 ```
 
 ## Update your configuration file
@@ -64,3 +64,48 @@ graphql diff http://my-dev-instance.com/graphql
 ### `add-endpoint`, `add-project`, `schema-status`, `ping`, `query`, `prepare`, `lint` and `playground` commands are no longer available.
 GraphQL CLI and Config doesn't seperate `endpoints` and `schemaPath` like before. New `schema` field means your single endpoint of your GraphQL schema. So it can be a URL endpoint or a local file. If your project uses a remote schema, you can directly define this URL in `schema` path without downloading it or defining it as an extra `endpoint` etc.
 Instead of these, you can have a faked server to test your schema you can use `yarn serve` command.
+
+## Special Notes for Prisma users
+You need to download your schema from a URL endpoint for Prisma. Assume that, your old GraphQL Config file like below;
+`.graphqlconfig`
+```yaml
+projects:
+  app:
+    schemaPath: src/schema.graphql
+    extensions:
+      endpoints:
+        default: http://localhost:4000
+  database:
+    schemaPath: src/generated/prisma-client/prisma.graphql
+    extensions:
+      prisma: prisma/prisma.yml
+```
+
+So, you need to rename the file to `.graphqlrc.yml` then update the file like below;
+`.graphqlrc.yml`
+```yaml
+projects:
+  app:
+    schema: http://localhost:4000
+    extensions:
+      codegen:
+            src/schema.graphql:
+                - schema-ast
+  database:
+    schema: 
+        http://localhost:4466/myservice/dev: # This is the URL endpoint of your Prisma instance
+            headers:
+                # You have to replace [TOKEN] after obtaining a valid token by running `prisma token`.
+                Authorization: Bearer [TOKEN] 
+    extensions:
+        codegen:
+            src/generated/prisma-client/prisma.graphql:
+                - schema-ast
+```
+
+Make sure you have installed `@test-graphql-cli/codegen` and `@graphql-codegen/schema-ast` plugins like below;
+```sh
+yarn add @test-graphql-cli/codegen @graphql-codegen/schema-ast --dev
+```
+
+So you can run `graphql codegen --project database` for generating `prisma.graphql` and `graphql codegen --project app` to generate `src/schema.graphql` from those endpoints
