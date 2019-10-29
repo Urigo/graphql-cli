@@ -47,6 +47,17 @@ extensions:
 
 By running `graphql codegen`, you will have `schema.graphql` file in the root path of your project.
 
+#### For JSON Output
+If you want to download the schema as `json` file, you need to install `@graphql-codegen/introspection` instead, and add `introspection` instead of `schema-ast`.
+
+```yaml
+schema: http://localhost:4000/graphql
+extensions:
+    codegen:
+        ./schema.json:
+            - introspection
+```
+
 ### `create` is no longer available, it is replaced by `init` command.
 If you want to create a GraphQL Config file on an existing project or create a project using a template from scratch, you can use `graphql init` command.
 This command will ask some questions about your new or existing project to update your dependencies and create a new configuration file for GraphQL CLI.
