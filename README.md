@@ -4,7 +4,7 @@
 
 [![npm version](http://img.shields.io/npm/v/graphql-cli.svg?style=flat)](https://npmjs.org/package/graphql-cli "View this project on npm") [![Discord Chat](https://img.shields.io/discord/625400653321076807)](https://discord.gg/xud7bH)
 
-The current version is `4.0.0-alpha.16`. Help us to improve new GraphQL CLI. Check out the new structure and commands below!
+The current version is `4.0.0-alpha.17`. Help us to improve new GraphQL CLI. Check out the new structure and commands below!
 
 Feel free to contact us in Discord channel. We would love to hear your feedback.
 
@@ -19,7 +19,7 @@ Feel free to contact us in Discord channel. We would love to hear your feedback.
 You can install the CLI using `yarn` by running the following command. This will add the `graphql` binary to your path.
 
 ```sh
-yarn global add graphql-cli@4.0.0-alpha.16
+yarn global add graphql-cli@4.0.0-alpha.17
 ```
 
 The equivalent npm global install will also work.
@@ -46,13 +46,13 @@ schema: src/schema/**/*.graphql
 documents: src/documents/**/*.graphql
 ```
 
-This is now a valid YAML-syntax GraphQL Config file. Using Init from the GraphQL CLI will generate a project based on the instructions in your YAML.
+This is now a valid YAML-syntax GraphQL Config file. Using `init` from the GraphQL CLI will generate a project based on the instructions in your YAML.
 
-Finally one of the options with `graphql-init` is to access schema using an OpenAPI or Swagger endpoint. Choose this option at the start of the Init question tree, and then follow the instructions to navigate to the URL of your choice.
+Finally one of the options with `graphql init` is to access schema using an OpenAPI or Swagger endpoint. Choose this option at the start of the Init question tree, and then follow the instructions to navigate to the URL of your choice.
 
 ## Plugin System
 
-Each command in GraphQL CLI is a seperate package, so you can have your own plugins or use the ones we maintain. You can have those commands by installing them like `@test-graphql-cli/[COMMAND-NAME]@4.0.0-alpha.16`.
+Each command in GraphQL CLI is a seperate package, so you can have your own plugins or use the ones we maintain. You can have those commands by installing them like `@test-graphql-cli/[COMMAND-NAME]@4.0.0-alpha.17`.
 
 To configure a command/plugin, you need to update the `extensions` field in your GraphQL Config file (`.graphqlrc.yml`). See `extensions:` in the example below.
 
