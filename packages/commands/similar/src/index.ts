@@ -6,6 +6,7 @@ import { GithubLoader } from '@graphql-toolkit/github-loader';
 import { GraphQLExtensionDeclaration } from 'graphql-config/extension';
 import { writeFileSync } from 'fs';
 import { join } from 'path';
+import chalk from 'chalk';
 
 const SimilarExtension: GraphQLExtensionDeclaration = api => {
     // Schema
@@ -35,7 +36,14 @@ export const plugin: CliPlugin = {
                 });
                 const schema = await config.getSchema();
                 const results = similar(schema, options.type, options.threshold);
-                console.info(results);
+                for (const key in results) {
+                    console.info(chalk.bold.underline(key) + ':');
+                    const result = results[key];
+                    for (const rating of result.ratings) {
+                        console.info(`  Target:` + chalk.underline(rating.target.typeId + ' ' + rating.target.value))
+                        console.info(`  Rating:` + rating.rating.toString())
+                    }
+                }
                 if (options.write) {
                     writeFileSync(join(process.cwd(), options.write), JSON.stringify(results));
                 }
