@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@graphql-toolkit/code-file-loader": "0.6.2",
-    "@graphql-toolkit/common": "0.6.2",
+    "@graphql-toolkit/common": "0.6.3",
     "@graphql-toolkit/core": "0.6.2",
     "@graphql-toolkit/graphql-file-loader": "0.6.2",
     "@graphql-toolkit/json-file-loader": "0.6.2",
