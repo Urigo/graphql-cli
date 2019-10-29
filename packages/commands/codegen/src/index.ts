@@ -1,5 +1,7 @@
 import { CliPlugin } from '@test-graphql-cli/common';
 import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
+import { GitLoader } from '@graphql-toolkit/git-loader';
+import { GithubLoader } from '@graphql-toolkit/github-loader';
 import { codegen } from '@graphql-codegen/core';
 import { parse, GraphQLSchema } from 'graphql';
 import { writeFileSync } from 'fs';
@@ -9,9 +11,13 @@ import { printSchemaWithDirectives } from '@graphql-toolkit/common';
 
 const CodegenExtension: GraphQLExtensionDeclaration = api => {
   // Schema
-  api.loaders.schema.register(new CodeFileLoader() as any);
+  api.loaders.schema.register(new CodeFileLoader());
+  api.loaders.documents.register(new GitLoader());
+  api.loaders.documents.register(new GithubLoader());
   // Documents
-  api.loaders.documents.register(new CodeFileLoader() as any);
+  api.loaders.documents.register(new CodeFileLoader());
+  api.loaders.documents.register(new GitLoader());
+  api.loaders.documents.register(new GithubLoader());
 
   return {
     name: 'codegen',

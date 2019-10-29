@@ -5,6 +5,8 @@ import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
 import { GraphQLFileLoader } from '@graphql-toolkit/graphql-file-loader';
 import { JsonFileLoader } from '@graphql-toolkit/json-file-loader';
 import { UrlLoader } from '@graphql-toolkit/url-loader';
+import { GitLoader } from '@graphql-toolkit/git-loader';
+import { GithubLoader } from '@graphql-toolkit/github-loader';
 import { GraphQLBackendCreator, GraphQLGeneratorConfig, Client, IGraphQLBackend, DatabaseSchemaManager } from 'graphback';
 import { join } from 'path';
 export interface GenerateConfig {
@@ -159,6 +161,8 @@ export const plugin: CliPlugin = {
             new GraphQLFileLoader(),
             new JsonFileLoader(),
             new CodeFileLoader(),
+            new GitLoader(),
+            new GithubLoader(),
           ], generateConfig.folders.model + '/**/*.graphql');
 
           const backendCreator = new GraphQLBackendCreator(

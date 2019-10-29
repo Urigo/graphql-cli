@@ -3,12 +3,16 @@ import express from 'express';
 import graphqlHTTP from 'express-graphql';
 import open from 'open';
 import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
+import { GitLoader } from '@graphql-toolkit/git-loader';
+import { GithubLoader } from '@graphql-toolkit/github-loader';
 import { GraphQLExtensionDeclaration } from 'graphql-config/extension';
 import { IMocks, addMockFunctionsToSchema } from '@kamilkisiela/graphql-tools';
 
 const ServeExtension: GraphQLExtensionDeclaration = api => {
   // Schema
-  api.loaders.schema.register(new CodeFileLoader() as any);
+  api.loaders.schema.register(new CodeFileLoader());
+  api.loaders.schema.register(new GitLoader());
+  api.loaders.schema.register(new GithubLoader());
 
   return {
     name: 'serve',

@@ -1,13 +1,17 @@
 import { CliPlugin } from "@test-graphql-cli/common";
 import { similar } from "@graphql-inspector/core";
 import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
+import { GitLoader } from '@graphql-toolkit/git-loader';
+import { GithubLoader } from '@graphql-toolkit/github-loader';
 import { GraphQLExtensionDeclaration } from 'graphql-config/extension';
 import { writeFileSync } from 'fs';
 import { join } from 'path';
 
 const SimilarExtension: GraphQLExtensionDeclaration = api => {
     // Schema
-    api.loaders.schema.register(new CodeFileLoader() as any);
+    api.loaders.schema.register(new CodeFileLoader());
+    api.loaders.documents.register(new GitLoader());
+    api.loaders.documents.register(new GithubLoader());
 
     return {
         name: 'similar',

@@ -2,6 +2,8 @@ import { CliPlugin, InitOptions } from '@test-graphql-cli/common';
 import { loadSchemaUsingLoaders } from '@graphql-toolkit/core';
 import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
 import { GraphQLFileLoader } from '@graphql-toolkit/graphql-file-loader';
+import { GitLoader } from '@graphql-toolkit/git-loader';
+import { GithubLoader } from '@graphql-toolkit/github-loader';
 import { JsonFileLoader } from '@graphql-toolkit/json-file-loader';
 import { UrlLoader } from '@graphql-toolkit/url-loader';
 import { diff, CriticalityLevel, Change } from '@graphql-inspector/core';
@@ -11,7 +13,9 @@ import { GraphQLExtensionDeclaration } from 'graphql-config';
 
 const DiffExtension: GraphQLExtensionDeclaration = api => {
   // Schema
-  api.loaders.schema.register(new CodeFileLoader() as any);
+  api.loaders.schema.register(new CodeFileLoader());
+  api.loaders.schema.register(new GitLoader());
+  api.loaders.schema.register(new GithubLoader());
 
   return {
     name: 'diff'
@@ -41,7 +45,7 @@ export const plugin: CliPlugin = {
     program
       .command('diff [baseSchema]')
       .action(async (baseSchemaPtr: string) => {
-        try { 
+        try {
           const config = await loadConfig({
             extensions: [DiffExtension]
           })
@@ -50,7 +54,15 @@ export const plugin: CliPlugin = {
             baseSchemaPtr = (diffConfig && diffConfig.baseSchema) || 'git:origin/master:schema.graphql';
           }
           const [baseSchema, currentSchema] = await Promise.all([
-            loadSchemaUsingLoaders([new UrlLoader(), new GraphQLFileLoader(), new JsonFileLoader(), new CodeFileLoader()], baseSchemaPtr),
+            loadSchemaUsingLoaders([
+              new UrlLoader(), 
+              new GraphQLFileLoader(), 
+              new JsonFileLoader(), 
+              new CodeFileLoader(), 
+              new GitLoader(), 
+              new GithubLoader()
+            ], 
+              baseSchemaPtr),
             config.getSchema(),
           ]);
           const changes = diff(baseSchema, currentSchema);
