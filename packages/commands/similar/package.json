@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@graphql-inspector/core": "1.26.0",
-    "@graphql-toolkit/code-file-loader": "0.6.3",
+    "@graphql-toolkit/code-file-loader": "0.6.4",
     "@test-graphql-cli/common": "4.0.0-alpha.17",
     "chalk": "2.4.2",
     "commander": "3.0.2",
