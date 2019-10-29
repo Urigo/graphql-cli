@@ -7,8 +7,9 @@ yarn install
 yarn build
 ```
  
-### Using cli
+### Using command line tool from source
 
 ```
+cd packages/cli
 npm link .
 ```
