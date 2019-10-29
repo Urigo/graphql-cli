@@ -1,6 +1,6 @@
 {
   "name": "@test-graphql-cli/diff",
-  "version": "4.0.0-alpha.15",
+  "version": "4.0.0-alpha.16",
   "license": "MIT",
   "main": "dist/index.js",
   "publishConfig": {
@@ -19,7 +19,7 @@
     "@graphql-toolkit/graphql-file-loader": "0.6.2",
     "@graphql-toolkit/json-file-loader": "0.6.2",
     "@graphql-toolkit/url-loader": "0.6.2",
-    "@test-graphql-cli/common": "4.0.0-alpha.15",
+    "@test-graphql-cli/common": "4.0.0-alpha.16",
     "chalk": "2.4.2",
     "commander": "3.0.2",
     "log-symbols": "3.0.0"
