@@ -21,7 +21,7 @@
     "log-symbols": "3.0.0"
   },
   "devDependencies": {
-    "@types/node": "12.11.7",
+    "@types/node": "12.12.0",
     "@types/open": "6.2.1",
     "graphql": "14.5.8",
     "ts-node": "8.4.1",
