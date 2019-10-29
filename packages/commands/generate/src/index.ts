@@ -166,18 +166,18 @@ export const plugin: CliPlugin = {
             generateConfig.graphqlCRUD
           );
 
-          const jobs: Promise<void>[] = [];
-          if (db) {
-            jobs.push(createDatabase(backendCreator, generateConfig));
-          }
+     
           if (backend) {
-            jobs.push(createBackend(backendCreator, generateConfig));
+            await createBackend(backendCreator, generateConfig);
           }
           if (client) {
-            jobs.push(createClient(backendCreator, generateConfig));
+            await createClient(backendCreator, generateConfig);
+          }
+          if (db) {
+            await createDatabase(backendCreator, generateConfig);
           }
 
-          await Promise.all(jobs);
+          process.exit(0);
         } catch (e) {
           reportError(e);
         }
