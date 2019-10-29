@@ -42,7 +42,7 @@ export const plugin: CliPlugin = {
               filename !== 'include' && 
               filename !== 'exclude' &&
               filename !== 'config') {
-              const pluginNames = codegenConfig[filename];
+              const pluginNames = codegenConfig[filename].plugins || codegenConfig[filename];
               const pluginInstances: any = await Promise.all(pluginNames.map((m: string) => import('@graphql-codegen/' + m)));
               const pluginMap:any = {};
               const plugins:any = [];
@@ -57,7 +57,7 @@ export const plugin: CliPlugin = {
                     doc => ({ filePath: doc.location, content: doc.document })
                   ),
                   filename,
-                  config: codegenExtensionConfig.config,
+                  config: {...(codegenConfig[filename].config || {}), ...(codegenExtensionConfig.config || {})},
                   pluginMap,
                   plugins,
                 })
