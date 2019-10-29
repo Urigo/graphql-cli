@@ -28,16 +28,22 @@ export const plugin: CliPlugin = {
           const config = await loadConfig({
             extensions: [CodegenExtension],
           });
-          const [schema, documents, codegenConfig] = await Promise.all([
+          const [schema, documents, codegenExtensionConfig] = await Promise.all([
             config.getSchema(),
             config.getDocuments(),
-            config.extension<{ [filename: string]: string[] }>('codegen'),
+            config.extension<{ [filename: string]: any }>('codegen'),
           ]);
           const jobs: Promise<any>[] = [];
+          let codegenConfig = codegenExtensionConfig.generates || codegenExtensionConfig;
           for (const filename in codegenConfig) {
-            if (filename !== 'schema' && filename !== 'documents' && filename !== 'include' && filename !== 'exclude') {
+            if (
+              filename !== 'schema' && 
+              filename !== 'documents' && 
+              filename !== 'include' && 
+              filename !== 'exclude' &&
+              filename !== 'config') {
               const pluginNames = codegenConfig[filename];
-              const pluginInstances = await Promise.all(pluginNames.map(m => import('@graphql-codegen/' + m)));
+              const pluginInstances: any = await Promise.all(pluginNames.map(m => import('@graphql-codegen/' + m)));
               const pluginMap:any = {};
               const plugins:any = [];
               for (const pluginNameIndex in pluginNames) {
@@ -52,10 +58,13 @@ export const plugin: CliPlugin = {
                     doc => ({ filePath: doc.location, content: doc.document })
                   ),
                   filename,
-                  config: {},
+                  config: codegenExtensionConfig.config,
                   pluginMap,
                   plugins,
-                }).then(result => writeFileSync(join(process.cwd(), filename), result))
+                })
+                .then(result => writeFileSync(join(process.cwd(), filename), result))
+                .then(() => console.info(`Generated: ${filename}`)
+                )
               );
             }
           }

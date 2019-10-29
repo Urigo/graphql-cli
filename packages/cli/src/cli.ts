@@ -7,7 +7,10 @@ export async function cli(argv = process.argv): Promise<void> {
   const rootCommand = argv[2];
 
   if (!rootCommand || rootCommand === '') {
-    throw new Error('Command not specified!');
+    throw new Error(`
+      You need to specify a valid command!
+      Check out https://github.com/Urigo/graphql-cli for available commands and how to use them.
+    `);
   }
 
   const plugin = await getPluginByName(rootCommand);
@@ -20,14 +23,10 @@ export async function cli(argv = process.argv): Promise<void> {
 
   try {
 
-    program.option('-r, --require <moduleName>');
     program.option('-p, --project <projectName>');
-  
-    if (program.require) {
-      await import(program.require);
-    }
+    program.option('-r, --require <moduleName>');
 
-    let projectName = 'default';
+    let projectName = '';
 
     await plugin.init({
       cwd: process.cwd(),
@@ -40,9 +39,19 @@ export async function cli(argv = process.argv): Promise<void> {
         ...loadConfigOptions,
       }).then(c => {
         const projectNames = Object.keys(c.projects);
-        if (!projectNames.includes(projectName)) {
-          throw new Error(`You don't have project ${projectName}. Available projects are ${projectNames.join(',')}`);
+        if (projectName && !projectNames.includes(projectName)) {
+          throw new Error(`
+            You don't have project ${projectName}.
+            Available projects are ${projectNames.join(',')}.
+          `);
         }
+        if (!projectNames.includes('default') && projectNames.length > 0) {
+          throw new Error(`
+            You don't have 'default' project so you need to specify a project name.
+            Available projects are ${projectNames.join(',')}.
+          `)
+        }
+        projectName = 'default';
         return c.getProject(projectName);
       }),
     });
@@ -51,6 +60,10 @@ export async function cli(argv = process.argv): Promise<void> {
 
     if (program.project) {
       projectName = program.project;
+    }
+
+    if (program.require) {
+      await import(program.require);
     }
 
   } catch (e) {
