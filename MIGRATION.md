@@ -8,6 +8,12 @@ First install the new version like below;
 yarn global add graphql-cli@4.0.0-alpha.16
 ```
 
+> NOTE: If you have previous version of the GraphQL-CLI installed make sure to uninstall it first
+
+```bash
+npm uninstall graphql-cli
+```
+
 ## Update your configuration file
 You need to have a configuration file under `.graphqlrc.yml` instead of `.graphqlconfig`. But other file types are also supported. This guide will assume you're using YAML syntax.
 
