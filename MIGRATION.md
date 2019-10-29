@@ -108,3 +108,13 @@ yarn add @test-graphql-cli/codegen @graphql-codegen/schema-ast --dev
 ```
 
 So you can run `graphql codegen --project database` for generating `prisma.graphql`.
+
+Also you need to update your `prisma.yml` file, if you're using `graphql get-schema` there;
+```yaml
+
+# Ensures Prisma client is re-generated after a datamodel change.
+hooks:
+  post-deploy:
+    - graphql codegen # instead of graphql get-schema
+    - prisma generate
+```
