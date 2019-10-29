@@ -4,7 +4,7 @@
 
 [![Discord Chat](https://img.shields.io/discord/625400653321076807)](https://discord.gg/xud7bH)
 
-Currently we have `4.0.0-alpha.15` version. Help us to improve new GraphQL CLI. Checkout new structure and commands below!
+Currently we have `4.0.0-alpha.16` version. Help us to improve new GraphQL CLI. Checkout new structure and commands below!
 Feel free to contact us in Discord channel. We would love to hear your feedback.
 
 ## Features
@@ -19,7 +19,7 @@ Feel free to contact us in Discord channel. We would love to hear your feedback.
 You can simply install the CLI using `npm` or `yarn` by running the following command. This will add the `graphql` binary to your path.
 
 ```sh
-yarn global add graphql-cli@4.0.0-alpha.15
+yarn global add graphql-cli@4.0.0-alpha.16
 ```
 
 ## Migration from 3.x.x to 4.x.x
@@ -43,7 +43,7 @@ So, it will ask some questions about your project. Then it will create a GraphQL
 
 ## Plugin system
 
-Each command in GraphQL CLI is a seperate package, so you can have your own plugins or use the ones we maintain. You can have those commands by installing them like `@test-graphql-cli/[COMMAND-NAME]@4.0.0-alpha.15`.
+Each command in GraphQL CLI is a seperate package, so you can have your own plugins or use the ones we maintain. You can have those commands by installing them like `@test-graphql-cli/[COMMAND-NAME]@4.0.0-alpha.16`.
 
 To configure a command/plugin, you need to use `extensions` field in your config file. [Check out the example](https://github.com/ardatan/graphql-cli-template/blob/924c6dc880a06abe468c10bea369e249dcb2aa4c/.graphqlrc.yml#L5)
 

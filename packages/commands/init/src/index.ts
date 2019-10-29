@@ -47,6 +47,63 @@ const templateMap = {
                 }
             }
         }
+    },
+    'graphql-cli-fullstack-template': {
+        repository: 'git@github.com:ardatan/graphql-cli-fullstack-template.git',
+        projectType: 'Backend only',
+        graphqlConfig: {
+            schema: './server/src/schema/**/*.ts',
+            documents: './client/src/graphql/**/*.ts',
+            generate: {
+                db: {
+                    dbConfig: {
+                        user: 'postgresql',
+                        password: 'postgres',
+                        database: 'users',
+                        host: 'localhost',
+                        port: 55432,
+                    },
+                    database: 'pg',
+                },
+                graphqlCRUD: {
+                    create: true,
+                    update: true,
+                    findAll: true,
+                    find: true,
+                    delete: false,
+                    subCreate: false,
+                    subUpdate: false,
+                    subDelete: false,
+                    disableGen: false,
+                },
+                folders: {
+                    model: './model',
+                    resolvers: './server/src/resolvers',
+                    schema: './server/src/schema',
+                    client: './client/src/graphql'
+                },
+            },
+            codegen: {
+                './server/src/generated-types.ts': {
+                    plugins: [
+                        'typescript',
+                        'typescript-resolvers'
+                    ]
+                },
+                './client/src/generated-types.ts': {
+                    plugins: [
+                        'typescript',
+                        'typescript-operations',
+                        'typescript-react-apollo'
+                    ],
+                    config: {
+                        withComponent: true,
+                        withHOC:false,
+                        withHooks: true,
+                    }
+                },
+            }
+        }
     }
 };
 

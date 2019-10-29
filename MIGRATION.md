@@ -5,7 +5,7 @@ We now have a different structure for GraphQL CLI after 4.xx.
 ## Install the new version
 First install the new version like below;
 ```bash
-yarn global add graphql-cli@4.0.0-alpha.15
+yarn global add graphql-cli@4.0.0-alpha.16
 ```
 
 ## Update your configuration file
