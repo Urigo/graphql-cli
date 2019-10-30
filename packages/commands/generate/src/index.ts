@@ -147,9 +147,20 @@ export const plugin: CliPlugin = {
           });
           const generateConfig: GenerateConfig = await config.extension('generate');
 
-          if (!generateConfig) {
+          if (!generateConfig && generateConfig.folders) {
             throw new Error(`You should provide a valid 'generate' config to generate schema from data model`);
           }
+          
+          if (!generateConfig.folders) {
+            throw new Error(`'generate' config missing 'folders' section that is required`);
+          }
+          
+          if (!generateConfig.graphqlCRUD) {
+            throw new Error(`'generate' config missing 'graphqlCRUD' section that is required`);
+          }
+          
+
+
 
           if (!db && !client) {
             backend = true;
