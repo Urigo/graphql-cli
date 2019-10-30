@@ -155,10 +155,6 @@ export const plugin: CliPlugin = {
             throw new Error(`'generate' config missing 'folders' section that is required`);
           }
           
-          if (!generateConfig.graphqlCRUD) {
-            throw new Error(`'generate' config missing 'graphqlCRUD' section that is required`);
-          }
-          
           if (!db && !client) {
             backend = true;
           }
