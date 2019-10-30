@@ -98,7 +98,7 @@ const templateMap = {
                         'typescript-resolvers'
                     ]
                 },
-                './client/src/generated-types.ts': {
+                './client/src/generated-types.tsx': {
                     plugins: [
                         'typescript',
                         'typescript-operations',
