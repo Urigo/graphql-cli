@@ -58,7 +58,8 @@ export async function cli(argv = process.argv): Promise<void> {
 
     // Remove the root object before running, to allow develoeprs to write
     // their own sub-commands.
-    argv.splice(2, 1);
+    // argv.splice(2, 1);
+
     program.parse(argv);
 
     if (program.project) {
