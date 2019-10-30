@@ -22,7 +22,7 @@ const SimilarExtension: GraphQLExtensionDeclaration = api => {
 export const plugin: CliPlugin = {
     init({ program, loadConfig }) {
         program
-            .command('similar', 'Get a list of similar types in order to find duplicates.')
+            .command('similar')
             .option('-n, --type <s>', 'Check only a single type (checks all types by default)')
             .option('-t, --threshold <n>', 'Threshold of similarity ratio (default: 0.4)')
             .option('-w, --write <s>', 'Write a file with results')

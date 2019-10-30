@@ -7,6 +7,7 @@ import { GithubLoader } from '@graphql-toolkit/github-loader';
 import { GraphQLExtensionDeclaration } from 'graphql-config/extension';
 import { writeFileSync } from 'fs';
 import { join } from 'path';
+import chalk from 'chalk';
 
 const CoverageExtension: GraphQLExtensionDeclaration = api => {
   // Schema
@@ -26,10 +27,9 @@ const CoverageExtension: GraphQLExtensionDeclaration = api => {
 export const plugin: CliPlugin = {
     init({ program, loadConfig }) {
         program
-            .command('coverage', 'Schema coverage based on documents. Find out how many times types and fields are used in your application.')
+            .command('coverage')
             .option('-s, --silent', 'Do not render any stats in the terminal (default: false)')
             .option('-w, --write <s>', 'Write a file with coverage stats (disabled by default)')
-            .option('-d, --deprecated', 'Fail on deprecated usage (default: false)')
             .action(async (options: {
                 silent: boolean;
                 write: string;
@@ -43,8 +43,14 @@ export const plugin: CliPlugin = {
                     config.getDocuments(),
                 ])
                 const results = coverage(schema, documents.map(doc => new Source(print(doc.document), doc.location)));
-                if(options.deprecated) {
-                    //TODO   
+                for (const typeName in results.types) {
+                    const result = results.types[typeName];
+                    console.info(chalk.bold.underline(result.type.name.toString()) + ` x ${result.hits} {`)
+                    for (const childName in result.children) {
+                        const childResult = result.children[childName];
+                        console.info(`  ` + chalk.bold(childName) + ` x ${childResult.hits}`)
+                    }
+                    console.info(`}`)
                 }
                 if (options.write) {
                     writeFileSync(join(process.cwd(), options.write), JSON.stringify(results));
