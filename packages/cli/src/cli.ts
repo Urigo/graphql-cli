@@ -4,24 +4,25 @@ import { LoadConfigOptions } from '@test-graphql-cli/common';
 import { loadConfig } from 'graphql-config';
 
 export async function cli(argv = process.argv): Promise<void> {
-  const rootCommand = argv[2];
 
-  if (!rootCommand || rootCommand === '') {
-    throw new Error(`
+  try {
+
+    const rootCommand = argv[2];
+
+    if (!rootCommand || rootCommand === '') {
+      throw new Error(`
       You need to specify a valid command!
       Check out https://github.com/Urigo/graphql-cli for available commands and how to use them.
     `);
-  }
+    }
 
-  const plugin = await getPluginByName(rootCommand);
-  const program = new Command();
+    const plugin = await getPluginByName(rootCommand);
+    const program = new Command();
 
-  const reportError = (e: Error) => {
-    console.error(e);
-    process.exit(1);
-  };
-
-  try {
+    const reportError = (e: Error) => {
+      console.error(e);
+      process.exit(1);
+    };
 
     program.option('-p, --project <projectName>');
     program.option('-r, --require <moduleName>');
