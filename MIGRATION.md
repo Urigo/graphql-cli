@@ -5,7 +5,7 @@ Starting with GraphQL CLI 4.0 and higher, the way projects are set up is signifi
 ## Install the new version
 To get started, install the new version:
 ```sh
-yarn global add graphql-cli@4.0.0-alpha.17
+yarn global add graphql-cli@4.0.0-alpha.18
 ```
 You can also globally install using npm.
 
