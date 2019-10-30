@@ -11,7 +11,11 @@ const templateMap = {
         repository: 'git@github.com:ardatan/graphql-cli-backend-template.git',
         projectType: 'Backend only',
         graphqlConfig: {
-            schema: './src/schema/**/*.ts',
+            schema: {
+                './src/schema/**/*.ts': {
+                    require: 'ts-node/register'
+                }
+            },
             generate: {
                 db: {
                     dbConfig: {
@@ -52,7 +56,11 @@ const templateMap = {
         repository: 'git@github.com:ardatan/graphql-cli-fullstack-template.git',
         projectType: 'Backend only',
         graphqlConfig: {
-            schema: './server/src/schema/**/*.ts',
+            schema: {
+                './src/schema/**/*.ts': {
+                    require: 'ts-node/register'
+                }
+            },
             documents: './client/src/graphql/**/*.ts',
             generate: {
                 db: {
@@ -282,7 +290,15 @@ export const plugin: CliPlugin = {
                                 default: './schema.graphql',
                             }
                         ]);
-                        graphqlConfig.schema = schema;
+                        if (schema.endsWith('.ts')) {
+                            graphqlConfig.schema = {
+                                [schema]: {
+                                    require: 'ts-node/register',
+                                }
+                            }
+                        } else {
+                            graphqlConfig.schema = schema;
+                        }
                     }
                     if (!projectType) {
                         const { projectType: enteredProjectType } = await prompt([
