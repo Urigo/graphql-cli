@@ -10,6 +10,7 @@
   },
   "scripts": {
     "release": "lerna publish --exact --force-publish=\"*\"",
+    "release:canary": "lerna publish --exact --force-publish=\"*\" --canary",
     "ci:release:canary": "lerna publish --force-publish=\"*\" --canary --exact --yes",
     "test": "lerna run test",
     "build": "lerna run build"
