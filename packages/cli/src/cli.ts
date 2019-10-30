@@ -4,9 +4,7 @@ import { LoadConfigOptions } from '@test-graphql-cli/common';
 import { loadConfig } from 'graphql-config';
 
 export async function cli(argv = process.argv): Promise<void> {
-
   try {
-
     const rootCommand = argv[2];
 
     if (!rootCommand || rootCommand === '') {
@@ -33,30 +31,34 @@ export async function cli(argv = process.argv): Promise<void> {
       cwd: process.cwd(),
       program,
       reportError,
-      loadConfig: (loadConfigOptions: LoadConfigOptions = {}) => loadConfig({
-        rootDir: process.cwd(),
-        throwOnEmpty: false,
-        throwOnMissing: false,
-        ...loadConfigOptions,
-      }).then(c => {
-        const projectNames = Object.keys(c.projects);
-        if (projectName && !projectNames.includes(projectName)) {
-          throw new Error(`
+      loadConfig: (loadConfigOptions: LoadConfigOptions = {}) =>
+        loadConfig({
+          rootDir: process.cwd(),
+          throwOnEmpty: false,
+          throwOnMissing: false,
+          ...loadConfigOptions
+        }).then(c => {
+          const projectNames = Object.keys(c.projects);
+          if (projectName && !projectNames.includes(projectName)) {
+            throw new Error(`
             You don't have project ${projectName}.
             Available projects are ${projectNames.join(',')}.
           `);
-        }
-        if (!projectNames.includes('default') && projectNames.length > 0) {
-          throw new Error(`
+          }
+          if (!projectNames.includes('default') && projectNames.length > 0) {
+            throw new Error(`
             You don't have 'default' project so you need to specify a project name.
             Available projects are ${projectNames.join(',')}.
-          `)
-        }
-        projectName = 'default';
-        return c.getProject(projectName);
-      }),
+          `);
+          }
+          projectName = 'default';
+          return c.getProject(projectName);
+        })
     });
 
+    // Remove the root object before running, to allow develoeprs to write
+    // their own sub-commands.
+    argv.splice(2, 1);
     program.parse(argv);
 
     if (program.project) {
@@ -66,7 +68,6 @@ export async function cli(argv = process.argv): Promise<void> {
     if (program.require) {
       await import(program.require);
     }
-
   } catch (e) {
     console.error(e);
     process.exit(1);
