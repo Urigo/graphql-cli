@@ -10,10 +10,9 @@ jobs:
       - name: Checkout Master
         uses: actions/checkout@master
       - name: Use Node
-        uses: actions/setup-node@master
+        uses: actions/setup-node@v1
         with:
-          registry-url: https://registry.npmjs.org/
-          scope: getify
+          node-version: '12.x'
       - name: Install Dependencies using Yarn
         run: yarn install
       - name: Build
