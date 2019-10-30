@@ -508,7 +508,7 @@ export const plugin: CliPlugin = {
                     } catch (err) { }
                     packageJson.devDependencies = packageJson.devDependencies || {};
                     for (const npmDependency of npmPackages) {
-                        packageJson.devDependencies[npmDependency] = 'latest';
+                        packageJson.devDependencies[npmDependency] = 'canary';
                     }
 
                     await ensureFile(join(projectPath, 'package.json'));
