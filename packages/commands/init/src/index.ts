@@ -119,7 +119,7 @@ export const plugin: CliPlugin = {
                     enum InitializationType {
                         FromScratch = 'I want to create a new project from a GraphQL CLI Project Template.',
                         ExistingOpenAPI = 'I have an existing project using OpenAPI/Swagger Schema Definition.',
-                        ExistingGraphQL = 'I have an existing project or config document using GraphQL Config.'
+                        ExistingGraphQL = 'I have an existing project using GraphQL and want to add GraphQL CLI (run from project root).'
                     }
                     const { initializationType } = await prompt<{ initializationType: InitializationType }>([
                         {
