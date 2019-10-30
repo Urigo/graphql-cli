@@ -26,7 +26,7 @@ The equivalent npm global install will also work.
 
 ## Migration from 3.x.x to 4.x.x
 
-**Important: many aspects of GraphQL CLI syntax and structure have changed in 4.x.x.** Please check out the [Migration Guide](MIGRATION.md) to learn more.
+**Important: many aspects of GraphQL CLI syntax and structure have changed in 4.x.x.** Please check out the [Migration Guide](./docs/MIGRATION.md) to learn more.
 
 ## Usage / Initialization
 
@@ -125,6 +125,10 @@ extensions:
 ```
 
 More plugins are definitely welcome! Please check the existing ones to see how to use GraphQL Config and GraphQL CLI API.
+
+## Writing you own plugin
+
+GraphQL CLI supports custom plugins, [you can find a tutorial and example here](./docs/CUSTOM_EXTENSION.md)
 
 ## Help & Community [![Discord Chat](https://img.shields.io/discord/625400653321076807)](https://discord.gg/xud7bH9)
 

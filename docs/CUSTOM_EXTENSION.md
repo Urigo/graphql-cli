@@ -2,7 +2,7 @@
 
 `graphql-cli` allow you to write your own plugin/extenion, and intergrate external tools and configuration, and run it from a single CLI.
 
-The current implementationo of `graphql-cli` is using [Commander](https://github.com/tj/commander.js#common-option-types-boolean-and-value) to manage it's CLI commands, and it exposes a ready-to-use `Commander` instance that you can extend and add logic to it.
+The current implementation of `graphql-cli` is using [Commander](https://github.com/tj/commander.js#common-option-types-boolean-and-value) to manage it's CLI commands, and it exposes a ready-to-use `Commander` instance that you can extend and add logic to it.
 
 Plugins and extension are treated as NodeJS module by the `graphql-cli`, so it means you can use JavaScript/TypeScript/Any other super-set of JavaScript to write your extension. It means that you plugin will be loaded by it's name under `node_modules` - for example `graphql-cli my-custom-plugin ...`.
 
