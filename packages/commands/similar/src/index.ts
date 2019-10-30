@@ -37,11 +37,14 @@ export const plugin: CliPlugin = {
                 const schema = await config.getSchema();
                 const results = similar(schema, options.type, options.threshold);
                 for (const key in results) {
-                    console.info(chalk.bold.underline(key) + ':');
                     const result = results[key];
-                    for (const rating of result.ratings) {
-                        console.info(`  Target:` + chalk.underline(rating.target.typeId + ' ' + rating.target.value))
-                        console.info(`  Rating:` + rating.rating.toString())
+                    if (result.ratings.length > 0) {
+                        console.info(chalk.bold.underline(key) + ':');
+                        for (const rating of result.ratings) {
+                            console.info(`  Similar Type: ` + rating.target.typeId);
+                            console.info(`  Content: ${rating.target.value}`);
+                            console.info(`  Similarity: ` + rating.rating * 100 + '%');
+                        }
                     }
                 }
                 if (options.write) {
