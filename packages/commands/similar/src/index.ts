@@ -13,11 +13,25 @@ const SimilarExtension: GraphQLExtensionDeclaration = api => {
     api.loaders.schema.register(new CodeFileLoader());
     api.loaders.documents.register(new GitLoader());
     api.loaders.documents.register(new GithubLoader());
+    // Documents
+    api.loaders.documents.register(new CodeFileLoader());
+    api.loaders.documents.register(new GitLoader());
+    api.loaders.documents.register(new GithubLoader());
 
     return {
         name: 'similar',
     };
 };
+
+export const colorizePercentage = (percentage: number) => {
+    if (percentage > 75) {
+        return chalk.red(Math.floor(percentage) + '%');
+    }
+    if (percentage > 50) {
+        return chalk.yellow(Math.floor(percentage) + '%');
+    }
+    return chalk.green(Math.floor(percentage) + '%');
+}
 
 export const plugin: CliPlugin = {
     init({ program, loadConfig }) {
@@ -41,9 +55,7 @@ export const plugin: CliPlugin = {
                     if (result.ratings.length > 0) {
                         console.info(chalk.bold.underline(key) + ':');
                         for (const rating of result.ratings) {
-                            console.info(`  Similar Type: ` + rating.target.typeId);
-                            console.info(`  Content: ${rating.target.value}`);
-                            console.info(`  Similarity: ` + rating.rating * 100 + '%');
+                            console.info(`  ` + rating.target.typeId + ': ' + colorizePercentage(rating.rating * 100));
                         }
                     }
                 }
