@@ -45,7 +45,7 @@ export const plugin: CliPlugin = {
                     }
                 }
                 if (options.write) {
-                    writeFileSync(join(process.cwd(), options.write), JSON.stringify(results));
+                    writeFileSync(join(process.cwd(), options.write), JSON.stringify(results, null, 2));
                 }
             });
     }

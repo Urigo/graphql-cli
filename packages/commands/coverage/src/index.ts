@@ -43,20 +43,19 @@ export const plugin: CliPlugin = {
                     config.getDocuments(),
                 ])
                 const results = coverage(schema, documents.map(doc => new Source(print(doc.document), doc.location)));
-                for (const typeName in results.types) {
-                    const result = results.types[typeName];
-                    console.info(chalk.bold.underline(result.type.name.toString()) + ` x ${result.hits} {`)
-                    for (const childName in result.children) {
-                        const childResult = result.children[childName];
-                        console.info(`  ` + chalk.bold(childName) + ` x ${childResult.hits}`)
+                if(!options.silent) {
+                    for (const typeName in results.types) {
+                        const result = results.types[typeName];
+                        console.info(`type ` + chalk.bold.underline(result.type.name.toString()) + ` x ${result.hits} {`)
+                        for (const childName in result.children) {
+                            const childResult = result.children[childName];
+                            console.info(`  ` + chalk.bold(childName) + ` x ${childResult.hits}`)
+                        }
+                        console.info(`}`)
                     }
-                    console.info(`}`)
                 }
                 if (options.write) {
-                    writeFileSync(join(process.cwd(), options.write), JSON.stringify(results));
-                }
-                if(!options.silent) {
-                    console.info(results);
+                    writeFileSync(join(process.cwd(), options.write), JSON.stringify(results, null, 2));
                 }
             });
     }
