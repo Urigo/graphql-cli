@@ -1,6 +1,6 @@
 {
   "name": "@test-graphql-cli/codegen",
-  "version": "4.0.0-alpha.23",
+  "version": "4.0.0",
   "license": "MIT",
   "main": "dist/index.js",
   "publishConfig": {
@@ -20,7 +20,7 @@
     "@graphql-toolkit/git-loader": "0.6.4",
     "@graphql-toolkit/github-loader": "0.6.4",
     "@graphql-toolkit/graphql-file-loader": "0.6.4",
-    "@test-graphql-cli/common": "4.0.0-alpha.23",
+    "@test-graphql-cli/common": "4.0.0",
     "chalk": "2.4.2",
     "commander": "3.0.2",
     "graphql-tag-pluck": "0.8.6",
