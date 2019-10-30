@@ -164,7 +164,7 @@ export const plugin: CliPlugin = {
                                     {
                                         type: 'input',
                                         name: 'templateUrl',
-                                        message: 'Enter Git URL of the template. For example (git://github.com/wtrocki/graphback-example)',
+                                        message: 'Enter Git URL of the template. For example (http://github.com/ardatan/graphql-cli-example#master)',
                                         validate: async (value: string) => {
                                             if (value.startsWith('git:')) {
                                                 return true;
