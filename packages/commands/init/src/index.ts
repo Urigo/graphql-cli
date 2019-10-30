@@ -489,8 +489,7 @@ export const plugin: CliPlugin = {
                     await ensureFile(join(projectPath, 'package.json'));
                     writeFileSync(join(projectPath, 'package.json'), JSON.stringify(packageJson, null, 2));
 
-                    console.info(`
-                    GraphQL CLI project successfully initialized into the folder; ${projectPath} :rocket:
+                    console.info(`GraphQL CLI project successfully initialized into the folder; ${projectPath} :rocket:
                     Next Steps:
                     - Change directory into project folder - ${chalk.cyan(`cd ${projectPath}`)}
                     - Install ${chalk.cyan(`yarn install`)} to install dependencies
