@@ -150,7 +150,11 @@ export const plugin: CliPlugin = {
           if (!generateConfig) {
             throw new Error(`You should provide a valid 'generate' config to generate schema from data model`);
           }
-
+          
+          if (!generateConfig.folders) {
+            throw new Error(`'generate' config missing 'folders' section that is required`);
+          }
+          
           if (!db && !client) {
             backend = true;
           }
