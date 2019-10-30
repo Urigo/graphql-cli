@@ -132,9 +132,9 @@ export const plugin: CliPlugin = {
             .action(async ({ projectName, templateName, templateUrl }: { projectName?: string, templateName?: string, templateUrl?: string }) => {
                 try {
                     enum InitializationType {
-                        FromScratch = 'I want to create a new project from scratch using a template.',
+                        FromScratch = 'I want to create a new project from a GraphQL CLI Project Template.',
                         ExistingOpenAPI = 'I have an existing project using OpenAPI/Swagger Schema Definition.',
-                        ExistingGraphQL = 'I have an existing project using GraphQL.'
+                        ExistingGraphQL = 'I have an existing project using GraphQL and want to add GraphQL CLI (run from project root).'
                     }
                     const { initializationType } = await prompt<{ initializationType: InitializationType }>([
                         {
@@ -514,8 +514,7 @@ export const plugin: CliPlugin = {
                     await ensureFile(join(projectPath, 'package.json'));
                     writeFileSync(join(projectPath, 'package.json'), JSON.stringify(packageJson, null, 2));
 
-                    console.info(`
-                    GraphQL CLI project successfully initialized into the folder; ${projectPath} :rocket:
+                    console.info(`GraphQL CLI project successfully initialized into the folder; ${projectPath} :rocket:
                     Next Steps:
                     - Change directory into project folder - ${chalk.cyan(`cd ${projectPath}`)}
                     - Install ${chalk.cyan(`yarn install`)} to install dependencies
