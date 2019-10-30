@@ -12,106 +12,113 @@ const templateMap = {
         projectType: 'Backend only',
         graphqlConfig: {
             schema: {
-                './src/schema/**/*.ts': {
+                './src/schema/index.ts': {
                     require: 'ts-node/register'
                 }
             },
-            generate: {
-                db: {
-                    dbConfig: {
-                        user: 'postgresql',
-                        password: 'postgres',
-                        database: 'users',
-                        host: 'localhost',
-                        port: 55432,
+            extensions: {
+                generate: {
+                    db: {
+                        dbConfig: {
+                            user: 'postgresql',
+                            password: 'postgres',
+                            database: 'users',
+                            host: 'localhost',
+                            port: 55432,
+                        },
+                        database: 'pg',
                     },
-                    database: 'pg',
+                    graphqlCRUD: {
+                        create: true,
+                        update: true,
+                        findAll: true,
+                        find: true,
+                        delete: false,
+                        subCreate: false,
+                        subUpdate: false,
+                        subDelete: false,
+                        disableGen: false,
+                    },
+                    folders: {
+                        model: './model',
+                        resolvers: './src/resolvers',
+                        schema: './src/schema'
+                    },
                 },
-                graphqlCRUD: {
-                    create: true,
-                    update: true,
-                    findAll: true,
-                    find: true,
-                    delete: false,
-                    subCreate: false,
-                    subUpdate: false,
-                    subDelete: false,
-                    disableGen: false,
-                },
-                folders: {
-                    model: './model',
-                    resolvers: './src/resolvers',
-                    schema: './src/schema'
-                },
-            },
-            codegen: {
-                './src/generated-types.ts': {
-                    'typescript': {},
-                    'typescript-resolvers': {},
+                codegen: {
+                    './src/generated-types.ts': {
+                        plugins: [
+                            'typescript',
+                            'typescript-resolvers'
+                        ]
+                    }
                 }
             }
         }
     },
     'graphql-cli-fullstack-template': {
         repository: 'git@github.com:ardatan/graphql-cli-fullstack-template.git',
-        projectType: 'Backend only',
+        projectType: 'Full Stack',
         graphqlConfig: {
             schema: {
-                './src/schema/**/*.ts': {
+                './server/src/schema/index.ts': {
                     require: 'ts-node/register'
                 }
             },
             documents: './client/src/graphql/**/*.ts',
-            generate: {
-                db: {
-                    dbConfig: {
-                        user: 'postgresql',
-                        password: 'postgres',
-                        database: 'users',
-                        host: 'localhost',
-                        port: 55432,
+            extensions: {
+                generate: {
+                    db: {
+                        dbConfig: {
+                            user: 'postgresql',
+                            password: 'postgres',
+                            database: 'users',
+                            host: 'localhost',
+                            port: 55432,
+                        },
+                        database: 'pg',
                     },
-                    database: 'pg',
+                    graphqlCRUD: {
+                        create: true,
+                        update: true,
+                        findAll: true,
+                        find: true,
+                        delete: false,
+                        subCreate: false,
+                        subUpdate: false,
+                        subDelete: false,
+                        disableGen: false,
+                    },
+                    folders: {
+                        model: './model',
+                        resolvers: './server/src/resolvers',
+                        schema: './server/src/schema',
+                        client: './client/src/graphql'
+                    },
                 },
-                graphqlCRUD: {
-                    create: true,
-                    update: true,
-                    findAll: true,
-                    find: true,
-                    delete: false,
-                    subCreate: false,
-                    subUpdate: false,
-                    subDelete: false,
-                    disableGen: false,
-                },
-                folders: {
-                    model: './model',
-                    resolvers: './server/src/resolvers',
-                    schema: './server/src/schema',
-                    client: './client/src/graphql'
-                },
-            },
-            codegen: {
-                './server/src/generated-types.ts': {
-                    plugins: [
-                        'typescript',
-                        'typescript-resolvers'
-                    ]
-                },
-                './client/src/generated-types.tsx': {
-                    plugins: [
-                        'typescript',
-                        'typescript-operations',
-                        'typescript-react-apollo'
-                    ],
-                    config: {
-                        withComponent: true,
-                        withHOC:false,
-                        withHooks: true,
-                    }
-                },
+                codegen: {
+                    './server/src/generated-types.ts': {
+                        plugins: [
+                            'typescript',
+                            'typescript-resolvers'
+                        ]
+                    },
+                    './client/src/generated-types.tsx': {
+                        plugins: [
+                            'typescript',
+                            'typescript-operations',
+                            'typescript-react-apollo'
+                        ],
+                        config: {
+                            withComponent: false,
+                            withHOC: false,
+                            withHooks: true,
+                        }
+                    },
+                }
             }
         }
+
     }
 };
 
@@ -139,7 +146,9 @@ export const plugin: CliPlugin = {
                         }
                     ]);
 
-                    let graphqlConfig: any = {};
+                    let graphqlConfig: any = {
+                        extensions: {}
+                    };
                     let projectPath = process.cwd();
                     let projectType;
 
@@ -194,7 +203,7 @@ export const plugin: CliPlugin = {
                         }
                     }
 
-                    if (!graphqlConfig.generate) {
+                    if (!graphqlConfig.extensions.generate) {
                         const { isBackendGenerationAsked } = await prompt([
                             {
                                 type: 'confirm',
@@ -204,11 +213,11 @@ export const plugin: CliPlugin = {
                             }
                         ])
                         if (isBackendGenerationAsked) {
-                            graphqlConfig.generate = {};
+                            graphqlConfig.extensions.generate = {};
                         }
                     }
 
-                    if (graphqlConfig.generate && !graphqlConfig.generate.folders) {
+                    if (graphqlConfig.extensions.generate && !graphqlConfig.extensions.generate.folders) {
                         const {
                             model,
                             resolvers,
@@ -233,7 +242,7 @@ export const plugin: CliPlugin = {
                                 default: './server/src/schema'
                             }
                         ]);
-                        graphqlConfig.generate.folders = {
+                        graphqlConfig.extensions.generate.folders = {
                             model,
                             resolvers,
                             schema,
@@ -260,7 +269,7 @@ export const plugin: CliPlugin = {
                         } else {
                             parsedObject = JSON.parse(schemaText);
                         }
-                        const datamodelPath = `${graphqlConfig.generate.model}/datamodel.graphql`;
+                        const datamodelPath = `${graphqlConfig.extensions.generate.model}/datamodel.graphql`;
                         try {
                             const { createGraphQlSchema } = await import('openapi-to-graphql');
                             let { schema } = await createGraphQlSchema(parsedObject, {
@@ -317,7 +326,7 @@ export const plugin: CliPlugin = {
                         projectType = enteredProjectType;
                     }
 
-                    if (projectType === 'Full Stack' && graphqlConfig.generate && !graphqlConfig.generate.folders.client) {
+                    if (projectType === 'Full Stack' && graphqlConfig.extensions.generate && !graphqlConfig.extensions.generate.folders.client) {
                         const { client } = await prompt([
                             {
                                 type: 'input',
@@ -326,7 +335,7 @@ export const plugin: CliPlugin = {
                                 default: './client/graphql'
                             }
                         ])
-                        graphqlConfig.generate.folders.client = client;
+                        graphqlConfig.extensions.generate.folders.client = client;
                     }
                     if (!graphqlConfig.documents && (projectType === 'Full Stack' || projectType === 'Frontend only')) {
                         const { documents } = await prompt([
@@ -341,7 +350,7 @@ export const plugin: CliPlugin = {
                     let npmPackages = [
                         'graphql-cli'
                     ];
-                    if (!graphqlConfig.codegen) {
+                    if (!graphqlConfig.extensions.codegen) {
 
                         const { isCodegenAsked } = await prompt([
                             {
@@ -353,7 +362,7 @@ export const plugin: CliPlugin = {
                         ]);
                         if (isCodegenAsked) {
                             npmPackages.push('@test-graphql-cli/codegen');
-                            graphqlConfig.codegen = {};
+                            graphqlConfig.extensions.codegen = {};
                             let codegenPlugins = new Set<string>();
                             if (projectType === 'Full Stack' || projectType === 'Backend only') {
                                 const { backendType } = await prompt([
@@ -393,7 +402,7 @@ export const plugin: CliPlugin = {
                                     }
                                 ]);
 
-                                graphqlConfig.codegen[backendGeneratedFile] = [...codegenPlugins];
+                                graphqlConfig.extensions.codegen[backendGeneratedFile] = [...codegenPlugins];
                             }
                             if (projectType === 'Full Stack' || projectType === 'Frontend only') {
 
@@ -448,7 +457,7 @@ export const plugin: CliPlugin = {
                                     }
                                 ]);
 
-                                graphqlConfig.codegen[frontendGeneratedFile] = [...codegenPlugins];
+                                graphqlConfig.extensions.codegen[frontendGeneratedFile] = [...codegenPlugins];
                             }
                             npmPackages.push(...[...codegenPlugins].map(plugin => '@graphql-codegen/' + plugin));
                         }
@@ -496,7 +505,7 @@ export const plugin: CliPlugin = {
                     try {
                         const importedPackageJson = await import(join(projectPath, 'package.json'));
                         packageJson = importedPackageJson.default || {};
-                    } catch (err) {}
+                    } catch (err) { }
                     packageJson.devDependencies = packageJson.devDependencies || {};
                     for (const npmDependency of npmPackages) {
                         packageJson.devDependencies[npmDependency] = 'latest';

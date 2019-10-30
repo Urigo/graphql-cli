@@ -57,13 +57,14 @@ export const plugin: CliPlugin = {
                 pluginMap[pluginName] = pluginInstances[pluginNameIndex];
                 plugins.push({ [pluginName]: {}});
               }
+              const pluginConfig = {...(codegenConfig[filename].config || {}), ...(codegenExtensionConfig.config || {})};
               jobs.push(codegen({
                   schema: schema instanceof GraphQLSchema ? parse(printSchemaWithDirectives(schema)) : schema,
                   documents: documents.map(
                     doc => ({ filePath: doc.location, content: doc.document })
                   ),
                   filename,
-                  config: {...(codegenConfig[filename].config || {}), ...(codegenExtensionConfig.config || {})},
+                  config: pluginConfig,
                   pluginMap,
                   plugins,
                 })
