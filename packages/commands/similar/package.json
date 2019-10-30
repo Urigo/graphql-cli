@@ -1,6 +1,6 @@
 {
   "name": "@test-graphql-cli/similar",
-  "version": "4.0.0-alpha.17",
+  "version": "4.0.0-alpha.18",
   "license": "MIT",
   "main": "dist/index.js",
   "publishConfig": {
@@ -14,10 +14,10 @@
   },
   "dependencies": {
     "@graphql-inspector/core": "1.26.0",
+    "@graphql-toolkit/code-file-loader": "0.6.4",
     "@graphql-toolkit/git-loader": "0.6.4",
     "@graphql-toolkit/github-loader": "0.6.4",
-    "@graphql-toolkit/code-file-loader": "0.6.4",
-    "@test-graphql-cli/common": "4.0.0-alpha.17",
+    "@test-graphql-cli/common": "4.0.0-alpha.18",
     "chalk": "2.4.2",
     "commander": "3.0.2",
     "log-symbols": "3.0.0"
