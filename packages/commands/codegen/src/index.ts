@@ -39,6 +39,7 @@ export const plugin: CliPlugin = {
             config.getDocuments(),
             config.extension<{ [filename: string]: any }>('codegen'),
           ]);
+          const cwd = config.dirpath;
           const jobs: Promise<any>[] = [];
           let codegenConfig = codegenExtensionConfig.generates || codegenExtensionConfig;
           for (const filename in codegenConfig) {
@@ -68,7 +69,7 @@ export const plugin: CliPlugin = {
                   pluginMap,
                   plugins,
                 })
-                .then(result => writeFileSync(join(process.cwd(), filename), result))
+                .then(result => writeFileSync(join(cwd, filename), result))
                 .then(() => console.info(`Generated: ${filename}`)
                 )
               );

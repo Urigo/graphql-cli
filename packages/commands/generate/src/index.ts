@@ -55,70 +55,70 @@ export function globPromise(glob: string, options: import('glob').IOptions = {})
   })
 }
 
-export async function createSchema(generated: IGraphQLBackend, config: GenerateConfig) {
-  return writeFile(join(process.cwd(), config.folders.schema, 'generated.ts'), generated.schema);
+export async function createSchema(cwd: string, generated: IGraphQLBackend, config: GenerateConfig) {
+  return writeFile(join(cwd, config.folders.schema, 'generated.ts'), generated.schema);
 }
 
-export async function createResolvers(generated: IGraphQLBackend, config: GenerateConfig) {
+export async function createResolvers(cwd: string, generated: IGraphQLBackend, config: GenerateConfig) {
   return Promise.all([
     Promise.all(
       generated.resolvers.custom.map(customResolver =>
-        writeFile(join(process.cwd(), config.folders.resolvers, 'custom', customResolver.name + '.ts'), customResolver.output)
+        writeFile(join(cwd, config.folders.resolvers, 'custom', customResolver.name + '.ts'), customResolver.output)
       )
     ),
     Promise.all(
       generated.resolvers.types.map(typeResolver =>
-        writeFile(join(process.cwd(), config.folders.resolvers, 'generated', typeResolver.name + '.ts'), typeResolver.output)
+        writeFile(join(cwd, config.folders.resolvers, 'generated', typeResolver.name + '.ts'), typeResolver.output)
       )
     ),
-    writeFile(join(process.cwd(), config.folders.resolvers, 'index.ts'), generated.resolvers.index)
+    writeFile(join(cwd, config.folders.resolvers, 'index.ts'), generated.resolvers.index)
   ]
   );
 }
 
-export async function createBackend(backend: GraphQLBackendCreator, config: GenerateConfig) {
+export async function createBackend(cwd: string, backend: GraphQLBackendCreator, config: GenerateConfig) {
   const generated = await backend.createBackend(config.db.database);
   await Promise.all([
-    createSchema(generated, config),
-    createResolvers(generated, config),
+    createSchema(cwd, generated, config),
+    createResolvers(cwd, generated, config),
   ])
 }
 
-export async function createFragments(generated: Client, config: GenerateConfig) {
+export async function createFragments(cwd: string, generated: Client, config: GenerateConfig) {
   return Promise.all(generated.fragments.map(fragment => writeFile(
-    join(process.cwd(), config.folders.client, 'generated', 'fragments', fragment.name + '.ts'),
+    join(cwd, config.folders.client, 'generated', 'fragments', fragment.name + '.ts'),
     fragment.implementation,
   )));
 }
 
-export async function createQueries(generated: Client, config: GenerateConfig) {
+export async function createQueries(cwd: string, generated: Client, config: GenerateConfig) {
   return Promise.all(generated.queries.map(query => writeFile(
-    join(process.cwd(), config.folders.client, 'generated', 'queries', query.name + '.ts'),
+    join(cwd, config.folders.client, 'generated', 'queries', query.name + '.ts'),
     query.implementation,
   )));
 }
 
-export async function createMutations(generated: Client, config: GenerateConfig) {
+export async function createMutations(cwd: string, generated: Client, config: GenerateConfig) {
   return Promise.all(generated.mutations.map(mutation => writeFile(
-    join(process.cwd(), config.folders.client, 'generated', 'mutations', mutation.name + '.ts'),
+    join(cwd, config.folders.client, 'generated', 'mutations', mutation.name + '.ts'),
     mutation.implementation,
   )));
 }
 
-export async function createSubscriptions(generated: Client, config: GenerateConfig) {
+export async function createSubscriptions(cwd: string, generated: Client, config: GenerateConfig) {
   return Promise.all(generated.subscriptions.map(subscription => writeFile(
-    join(process.cwd(), config.folders.client, 'generated', 'subscriptions', subscription.name + '.ts'),
+    join(cwd, config.folders.client, 'generated', 'subscriptions', subscription.name + '.ts'),
     subscription.implementation,
   )));
 }
 
-export async function createClient(backend: GraphQLBackendCreator, config: GenerateConfig) {
+export async function createClient(cwd: string, backend: GraphQLBackendCreator, config: GenerateConfig) {
   const generated = await backend.createClient();
   await Promise.all([
-    createFragments(generated, config),
-    createQueries(generated, config),
-    createMutations(generated, config),
-    createSubscriptions(generated, config),
+    createFragments(cwd, generated, config),
+    createQueries(cwd, generated, config),
+    createMutations(cwd, generated, config),
+    createSubscriptions(cwd, generated, config),
   ]);
 }
 
@@ -159,6 +159,7 @@ export const plugin: CliPlugin = {
             backend = true;
           }
 
+          const cwd = config.dirpath;
 
           const models = await loadSchemaUsingLoaders([
             new UrlLoader(),
@@ -167,7 +168,7 @@ export const plugin: CliPlugin = {
             new CodeFileLoader(),
             new GitLoader(),
             new GithubLoader(),
-          ], generateConfig.folders.model + '/**/*.graphql');
+          ], join(cwd, generateConfig.folders.model + '/**/*.graphql'));
 
           const backendCreator = new GraphQLBackendCreator(
             printSchemaWithDirectives(models),
@@ -179,10 +180,10 @@ export const plugin: CliPlugin = {
             jobs.push(createDatabase(backendCreator, generateConfig));
           }
           if (backend) {
-            jobs.push(createBackend(backendCreator, generateConfig));
+            jobs.push(createBackend(cwd, backendCreator, generateConfig));
           }
           if (client) {
-            jobs.push(createClient(backendCreator, generateConfig));
+            jobs.push(createClient(cwd, backendCreator, generateConfig));
           }
 
           await Promise.all(jobs);
