@@ -1,7 +1,6 @@
 import { Command } from 'commander';
 import { getPluginByName } from './get-plugin';
 import { LoadConfigOptions } from '@test-graphql-cli/common';
-import { loadConfig } from 'graphql-config';
 
 export async function cli(argv = process.argv): Promise<void> {
   try {
@@ -32,28 +31,30 @@ export async function cli(argv = process.argv): Promise<void> {
       program,
       reportError,
       loadConfig: (loadConfigOptions: LoadConfigOptions = {}) =>
-        loadConfig({
-          rootDir: process.cwd(),
-          throwOnEmpty: false,
-          throwOnMissing: false,
-          ...loadConfigOptions
-        }).then(c => {
-          const projectNames = Object.keys(c.projects);
-          if (projectName && !projectNames.includes(projectName)) {
-            throw new Error(`
+        import('graphql-config')
+          .then(graphqlConfig => graphqlConfig.loadConfig({
+            rootDir: process.cwd(),
+            throwOnEmpty: false,
+            throwOnMissing: false,
+            ...loadConfigOptions
+          }))
+          .then(c => {
+            const projectNames = Object.keys(c.projects);
+            if (projectName && !projectNames.includes(projectName)) {
+              throw new Error(`
             You don't have project ${projectName}.
             Available projects are ${projectNames.join(',')}.
           `);
-          }
-          if (!projectNames.includes('default') && projectNames.length > 0) {
-            throw new Error(`
+            }
+            if (!projectNames.includes('default') && projectNames.length > 0) {
+              throw new Error(`
             You don't have 'default' project so you need to specify a project name.
             Available projects are ${projectNames.join(',')}.
           `);
-          }
-          projectName = 'default';
-          return c.getProject(projectName);
-        })
+            }
+            projectName = 'default';
+            return c.getProject(projectName);
+          })
     });
 
     // Remove the root object before running, to allow develoeprs to write
