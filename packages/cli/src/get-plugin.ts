@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 import { CliPlugin, DetailedError } from '@test-graphql-cli/common';
-import resolveFrom from 'resolve-from';
+import * as resolveFrom from 'resolve-from';
 
 export async function getPluginByName<TConfig>(name: string): Promise<CliPlugin> {
   const possibleNames = [
