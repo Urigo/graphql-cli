@@ -256,15 +256,6 @@
     aggregate-error "3.0.1"
     lodash "4.17.15"
 
-"@graphql-toolkit/common@0.6.4":
-  version "0.6.4"
-  resolved "https://registry.yarnpkg.com/@graphql-toolkit/common/-/common-0.6.4.tgz#fc24e370b0e7b369f555cf8a11881819866810b6"
-  integrity sha512-nwJzmlgGu/CKAZTL7G2aTEEzrg1iiebQbTXs6yRPJAP0BX7Nw7nmiTA2xvcmEAg7Qa+5l+Z1vXE7eyXNEaNS6A==
-  dependencies:
-    "@kamilkisiela/graphql-tools" "4.0.6"
-    aggregate-error "3.0.1"
-    lodash "4.17.15"
-
 "@graphql-toolkit/common@0.6.5":
   version "0.6.5"
   resolved "https://registry.yarnpkg.com/@graphql-toolkit/common/-/common-0.6.5.tgz#12d64462ab05c3d88eea249408bf9ff7965c4331"
@@ -1210,10 +1201,10 @@
     "@types/node" "*"
     "@types/range-parser" "*"
 
-"@types/express@4.17.1":
-  version "4.17.1"
-  resolved "https://registry.yarnpkg.com/@types/express/-/express-4.17.1.tgz#4cf7849ae3b47125a567dfee18bfca4254b88c5c"
-  integrity sha512-VfH/XCP0QbQk5B5puLqTLEeFgR8lfCJHZJKkInZ9mkYd+u8byX0kztXEQxEk4wZXJs8HI+7km2ALXjn4YKcX9w==
+"@types/express@4.17.2":
+  version "4.17.2"
+  resolved "https://registry.yarnpkg.com/@types/express/-/express-4.17.2.tgz#a0fb7a23d8855bac31bc01d5a58cadd9b2173e6c"
+  integrity sha512-5mHFNyavtLoJmnusB8OKJ5bshSzw+qkMIBAobLrIM48HJvunFva9mOa6aBwh64lBFyNwBbs0xiEFuj4eU/NjCA==
   dependencies:
     "@types/body-parser" "*"
     "@types/express-serve-static-core" "*"
