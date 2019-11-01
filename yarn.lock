@@ -239,12 +239,12 @@
   dependencies:
     dependency-graph "0.8.0"
 
-"@graphql-toolkit/code-file-loader@0.6.4":
-  version "0.6.4"
-  resolved "https://registry.yarnpkg.com/@graphql-toolkit/code-file-loader/-/code-file-loader-0.6.4.tgz#99a0a8fd623c8183a910cc6b3cc7c931da6385a9"
-  integrity sha512-jilNwaO2ZhCJAphLcJ19KaHwcu2wfIWXONLBIO+84n/YGzw7ZU+mcKFebFmLbOkLimHbW63DgmmHElkEDKaxYw==
+"@graphql-toolkit/code-file-loader@0.6.5":
+  version "0.6.5"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/code-file-loader/-/code-file-loader-0.6.5.tgz#ecded6c68c57688f10fe29f11d4d986464e7325e"
+  integrity sha512-LbSPSa08XDTl0gkgq1L4Fc8R/wYbmgsu608fIkF/4Qe0BkfufH2Kq+0WLyrE1JE3DZDlNmtxXW5fMikZlAN9Bg==
   dependencies:
-    "@graphql-toolkit/common" "0.6.4"
+    "@graphql-toolkit/common" "0.6.5"
     graphql-tag-pluck "0.8.6"
 
 "@graphql-toolkit/common@0.6.2":
@@ -260,6 +260,15 @@
   version "0.6.4"
   resolved "https://registry.yarnpkg.com/@graphql-toolkit/common/-/common-0.6.4.tgz#fc24e370b0e7b369f555cf8a11881819866810b6"
   integrity sha512-nwJzmlgGu/CKAZTL7G2aTEEzrg1iiebQbTXs6yRPJAP0BX7Nw7nmiTA2xvcmEAg7Qa+5l+Z1vXE7eyXNEaNS6A==
+  dependencies:
+    "@kamilkisiela/graphql-tools" "4.0.6"
+    aggregate-error "3.0.1"
+    lodash "4.17.15"
+
+"@graphql-toolkit/common@0.6.5":
+  version "0.6.5"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/common/-/common-0.6.5.tgz#12d64462ab05c3d88eea249408bf9ff7965c4331"
+  integrity sha512-8jZJx+s+zrY/dWV2yaQrr0is3GvMsHZwzsy/HMKpgOKmd7BUW8i5psHvtGJ2/0a103MtluNtXTcgT7SzDn7x2g==
   dependencies:
     "@kamilkisiela/graphql-tools" "4.0.6"
     aggregate-error "3.0.1"
