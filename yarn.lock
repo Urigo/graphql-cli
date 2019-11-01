@@ -239,12 +239,12 @@
   dependencies:
     dependency-graph "0.8.0"
 
-"@graphql-toolkit/code-file-loader@0.6.5":
-  version "0.6.5"
-  resolved "https://registry.yarnpkg.com/@graphql-toolkit/code-file-loader/-/code-file-loader-0.6.5.tgz#ecded6c68c57688f10fe29f11d4d986464e7325e"
-  integrity sha512-LbSPSa08XDTl0gkgq1L4Fc8R/wYbmgsu608fIkF/4Qe0BkfufH2Kq+0WLyrE1JE3DZDlNmtxXW5fMikZlAN9Bg==
+"@graphql-toolkit/code-file-loader@0.6.6":
+  version "0.6.6"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/code-file-loader/-/code-file-loader-0.6.6.tgz#aee9c8f72a29f10b0ca902321a007ff6bc6d5b29"
+  integrity sha512-c+esssFwiREtRFi/sPkOyNiRWb2N+3N294RH73+JyDUzh2dNBpP4omM5N9AN2vmIxU+XYbS6fhQ85mAuZ3ANbw==
   dependencies:
-    "@graphql-toolkit/common" "0.6.5"
+    "@graphql-toolkit/common" "0.6.6"
     graphql-tag-pluck "0.8.6"
 
 "@graphql-toolkit/common@0.6.2":
