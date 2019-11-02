@@ -10,8 +10,9 @@ export async function getPluginByName<TConfig>(name: string): Promise<CliPlugin>
   ];
   const possibleModules = possibleNames.concat(
     resolve(process.cwd(), name)).concat(
-      ...possibleNames.map(name => resolveFrom(process.cwd(), name))
-      );
+      ...possibleNames.map(name => resolveFrom.silent(process.cwd(), name))
+      )
+   .filter(m => m);
 
   for (const moduleName of possibleModules) {
     try {
