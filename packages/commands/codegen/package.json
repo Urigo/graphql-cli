@@ -23,7 +23,7 @@
     "@test-graphql-cli/common": "4.0.0",
     "chalk": "2.4.2",
     "commander": "4.0.0",
-    "graphql-tag-pluck": "0.8.6",
+    "graphql-tag-pluck": "0.8.7",
     "log-symbols": "3.0.0"
   },
   "devDependencies": {
