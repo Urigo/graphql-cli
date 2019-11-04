@@ -3,11 +3,23 @@ import { prompt } from 'inquirer';
 import { join } from 'path';
 import simpleGit from 'simple-git/promise';
 import chalk from 'chalk';
-import { ensureFile, writeFileSync, readFileSync } from 'fs-extra';
+import { ensureFile, writeFileSync, readFileSync, existsSync } from 'fs-extra';
 import YAML from 'yamljs';
 import rimraf from 'rimraf';
 import fetch from 'cross-fetch';
 import ora from 'ora';
+
+const tryParseConfig = (graphqlConfigPath: string) => {
+    try {
+        if (existsSync(graphqlConfigPath)) {
+            return YAML.parse(readFileSync(graphqlConfigPath, 'utf8'));
+        } else {
+            return false;
+        }
+    } catch (e) {
+        return false;
+    }
+}
 
 export const plugin: CliPlugin = {
     init({ program, reportError }) {
@@ -71,13 +83,7 @@ export const plugin: CliPlugin = {
                                     {
                                         type: 'input',
                                         name: 'templateUrl',
-                                        message: 'Enter Git URL of the template. For example (http://github.com/ardatan/graphql-cli-example#master)',
-                                        validate: async (value: string) => {
-                                            if (value.startsWith('git:')) {
-                                                return true;
-                                            }
-                                            return 'Please enter a valid Git URL';
-                                        }
+                                        message: 'Enter Git URL of the template. For example (https://github.com/ardatan/graphql-cli-fullstack-template#master)'
                                     }
                                 ]);
                                 templateUrl = enteredTemplateUrl;
@@ -85,13 +91,14 @@ export const plugin: CliPlugin = {
                                 const selectedTemplate = templateMap[enteredTemplateName];
                                 templateUrl = selectedTemplate.repository;
                                 projectType = selectedTemplate.projectType;
-                                graphqlConfig = selectedTemplate.graphqlConfig;
                             }
                             const cloningSpinner = ora(`Cloning template repository from ${templateUrl}...`).start();
                             const git = simpleGit().silent(true);
                             await git.clone(templateUrl, projectPath);
                             rimraf.sync(join(projectPath, '.git'));
                             cloningSpinner.stop();
+                            const graphqlConfigPath = join(projectPath, '.graphqlrc.yml');
+                            graphqlConfig = tryParseConfig(graphqlConfigPath) || graphqlConfig;
                         }
                     }
 
