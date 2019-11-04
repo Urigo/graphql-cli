@@ -1,54 +1,5 @@
 {
-    "graphql-cli-backend-template": {
-        "repository": "https://github.com/ardatan/graphql-cli-backend-template.git",
-        "projectType": "Backend only",
-        "graphqlConfig": {
-            "schema": {
-                "./src/schema/index.ts": {
-                    "require": "ts-node/register"
-                }
-            },
-            "extensions": {
-                "generate": {
-                    "db": {
-                        "dbConfig": {
-                            "user": "postgresql",
-                            "password": "postgres",
-                            "database": "users",
-                            "host": "localhost",
-                            "port": 55432
-                        },
-                        "database": "pg"
-                    },
-                    "graphqlCRUD": {
-                        "create": true,
-                        "update": true,
-                        "findAll": true,
-                        "find": true,
-                        "delete": false,
-                        "subCreate": false,
-                        "subUpdate": false,
-                        "subDelete": false,
-                        "disableGen": false
-                    },
-                    "folders": {
-                        "model": "./model",
-                        "resolvers": "./src/resolvers",
-                        "schema": "./src/schema"
-                    }
-                },
-                "codegen": {
-                    "./src/generated-types.ts": {
-                        "plugins": [
-                            "typescript",
-                            "typescript-resolvers"
-                        ]
-                    }
-                }
-            }
-        }
-    },
-    "graphql-cli-fullstack-template": {
+    "Full Stack Template with React Hooks, Apollo, NodeJS and PostgreSQL": {
         "repository": "https://github.com/ardatan/graphql-cli-fullstack-template.git",
         "projectType": "Full Stack",
         "graphqlConfig": {
@@ -106,6 +57,56 @@
                             "withHOC": false,
                             "withHooks": true
                         }
+                    }
+                }
+            }
+        }
+    },
+    
+    "Backend Only Template with NodeJS and PostgreSQL": {
+        "repository": "https://github.com/ardatan/graphql-cli-backend-template.git",
+        "projectType": "Backend only",
+        "graphqlConfig": {
+            "schema": {
+                "./src/schema/index.ts": {
+                    "require": "ts-node/register"
+                }
+            },
+            "extensions": {
+                "generate": {
+                    "db": {
+                        "dbConfig": {
+                            "user": "postgresql",
+                            "password": "postgres",
+                            "database": "users",
+                            "host": "localhost",
+                            "port": 55432
+                        },
+                        "database": "pg"
+                    },
+                    "graphqlCRUD": {
+                        "create": true,
+                        "update": true,
+                        "findAll": true,
+                        "find": true,
+                        "delete": false,
+                        "subCreate": false,
+                        "subUpdate": false,
+                        "subDelete": false,
+                        "disableGen": false
+                    },
+                    "folders": {
+                        "model": "./model",
+                        "resolvers": "./src/resolvers",
+                        "schema": "./src/schema"
+                    }
+                },
+                "codegen": {
+                    "./src/generated-types.ts": {
+                        "plugins": [
+                            "typescript",
+                            "typescript-resolvers"
+                        ]
                     }
                 }
             }

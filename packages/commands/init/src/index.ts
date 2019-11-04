@@ -88,7 +88,7 @@ export const plugin: CliPlugin = {
                                 graphqlConfig = selectedTemplate.graphqlConfig;
                             }
                             const cloningSpinner = ora(`Cloning template repository from ${templateUrl}...`).start();
-                            const git = simpleGit();
+                            const git = simpleGit().silent(true);
                             await git.clone(templateUrl, projectPath);
                             rimraf.sync(join(projectPath, '.git'));
                             cloningSpinner.stop();
