@@ -61,7 +61,7 @@ export const plugin: CliPlugin = {
   
               const [ schema, mocks ] = await Promise.all([
                 config.getSchema(),
-                serveConfig && loadMocks(serveConfig.mocks)
+                serveConfig && serveConfig.mocks && loadMocks(serveConfig.mocks)
               ]);
   
               addMockFunctionsToSchema({

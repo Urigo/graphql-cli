@@ -12,6 +12,7 @@
     "release": "lerna publish --exact --force-publish=\"*\"",
     "release:canary": "lerna publish --exact --force-publish=\"*\" --preid \"alpha-`git rev-parse --short HEAD`\" --canary --exact",
     "ci:release:canary": "lerna publish --force-publish=\"*\" --preid \"alpha-`git rev-parse --short HEAD`\" --canary --exact --yes",
+    "ci:release:next": "lerna publish --exact --force-publish --preid \"alpha-`git rev-parse --short HEAD`\" --canary --exact --yes --dist-tag next",
     "test": "lerna run test",
     "build": "lerna run build"
   },
