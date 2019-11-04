@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@test-graphql-cli/common": "4.0.0",
+    "@types/rimraf": "2.0.3",
     "chalk": "2.4.2",
     "commander": "4.0.0",
     "fs-extra": "^8.1.0",
@@ -18,6 +19,7 @@
     "log-symbols": "3.0.0",
     "open": "7.0.0",
     "openapi-to-graphql": "1.6.2",
+    "rimraf": "3.0.0",
     "simple-git": "1.126.0",
     "yamljs": "0.3.0"
   },

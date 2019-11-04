@@ -5,6 +5,7 @@ import simpleGit from 'simple-git/promise';
 import chalk from 'chalk';
 import { ensureFile, writeFileSync, readFileSync } from 'fs-extra';
 import YAML from 'yamljs';
+import rimraf from 'rimraf';
 
 const templateMap = {
     'graphql-cli-backend-template': {
@@ -199,7 +200,7 @@ export const plugin: CliPlugin = {
                             }
                             const git = simpleGit();
                             await git.clone(templateUrl, projectPath);
-                            // unlinkSync(join(projectPath, '.git'));
+                            rimraf.sync(join(projectPath, '.git'));
                         }
                     }
 
