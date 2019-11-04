@@ -405,6 +405,9 @@ export const plugin: CliPlugin = {
                         const importedPackageJson = await import(join(projectPath, 'package.json'));
                         packageJson = importedPackageJson.default || {};
                     } catch (err) { }
+
+                    packageJson.name = projectName;
+
                     packageJson.devDependencies = packageJson.devDependencies || {};
                     for (const npmDependency of npmPackages) {
                         packageJson.devDependencies[npmDependency] = 'canary';
