@@ -6,122 +6,8 @@ import chalk from 'chalk';
 import { ensureFile, writeFileSync, readFileSync } from 'fs-extra';
 import YAML from 'yamljs';
 import rimraf from 'rimraf';
-
-const templateMap = {
-    'graphql-cli-backend-template': {
-        repository: 'git@github.com:ardatan/graphql-cli-backend-template.git',
-        projectType: 'Backend only',
-        graphqlConfig: {
-            schema: {
-                './src/schema/index.ts': {
-                    require: 'ts-node/register'
-                }
-            },
-            extensions: {
-                generate: {
-                    db: {
-                        dbConfig: {
-                            user: 'postgresql',
-                            password: 'postgres',
-                            database: 'users',
-                            host: 'localhost',
-                            port: 55432,
-                        },
-                        database: 'pg',
-                    },
-                    graphqlCRUD: {
-                        create: true,
-                        update: true,
-                        findAll: true,
-                        find: true,
-                        delete: false,
-                        subCreate: false,
-                        subUpdate: false,
-                        subDelete: false,
-                        disableGen: false,
-                    },
-                    folders: {
-                        model: './model',
-                        resolvers: './src/resolvers',
-                        schema: './src/schema'
-                    },
-                },
-                codegen: {
-                    './src/generated-types.ts': {
-                        plugins: [
-                            'typescript',
-                            'typescript-resolvers'
-                        ]
-                    }
-                }
-            }
-        }
-    },
-    'graphql-cli-fullstack-template': {
-        repository: 'git@github.com:ardatan/graphql-cli-fullstack-template.git',
-        projectType: 'Full Stack',
-        graphqlConfig: {
-            schema: {
-                './server/src/schema/index.ts': {
-                    require: 'ts-node/register'
-                }
-            },
-            documents: './client/src/graphql/**/*.ts',
-            extensions: {
-                generate: {
-                    db: {
-                        dbConfig: {
-                            user: 'postgresql',
-                            password: 'postgres',
-                            database: 'users',
-                            host: 'localhost',
-                            port: 55432,
-                        },
-                        database: 'pg',
-                    },
-                    graphqlCRUD: {
-                        create: true,
-                        update: true,
-                        findAll: true,
-                        find: true,
-                        delete: false,
-                        subCreate: false,
-                        subUpdate: false,
-                        subDelete: false,
-                        disableGen: false,
-                    },
-                    folders: {
-                        model: './model',
-                        resolvers: './server/src/resolvers',
-                        schema: './server/src/schema',
-                        client: './client/src/graphql'
-                    },
-                },
-                codegen: {
-                    './server/src/generated-types.ts': {
-                        plugins: [
-                            'typescript',
-                            'typescript-resolvers'
-                        ]
-                    },
-                    './client/src/generated-types.tsx': {
-                        plugins: [
-                            'typescript',
-                            'typescript-operations',
-                            'typescript-react-apollo'
-                        ],
-                        config: {
-                            withComponent: false,
-                            withHOC: false,
-                            withHooks: true,
-                        }
-                    },
-                }
-            }
-        }
-
-    }
-};
+import fetch from 'cross-fetch';
+import ora from 'ora';
 
 export const plugin: CliPlugin = {
     init({ program, reportError }) {
@@ -167,6 +53,9 @@ export const plugin: CliPlugin = {
                             projectPath = join(process.cwd(), projectName);
                         }
                         if (!templateName) {
+                            const downloadingTemplateList = ora('Loading template list...').start();
+                            const templateMap = await fetch('https://raw.githubusercontent.com/Urigo/graphql-cli/master/templates.json').then(res => res.json());
+                            downloadingTemplateList.stop();
                             const templateNames = Object.keys(templateMap);
                             type TemplateName = keyof typeof templateMap;
                             const { templateName: enteredTemplateName } = await prompt<{ templateName: TemplateName | 'Other Template' }>([
@@ -198,9 +87,11 @@ export const plugin: CliPlugin = {
                                 projectType = selectedTemplate.projectType;
                                 graphqlConfig = selectedTemplate.graphqlConfig;
                             }
+                            const cloningSpinner = ora(`Cloning template repository from ${templateUrl}...`).start();
                             const git = simpleGit();
                             await git.clone(templateUrl, projectPath);
                             rimraf.sync(join(projectPath, '.git'));
+                            cloningSpinner.stop();
                         }
                     }
 
@@ -261,7 +152,7 @@ export const plugin: CliPlugin = {
                             }
                         ]);
 
-                        console.info(`Processing OpenAPI definition: ${openApiPath}`);
+                        const processingOpenAPISpinner = ora(`Processing OpenAPI definition: ${openApiPath}`).start();
                         const schemaText: string = readFileSync(`${openApiPath}`, 'utf8');
                         let parsedObject;
                         if (openApiPath.endsWith('yaml') || openApiPath.endsWith('yml')) {
@@ -283,10 +174,12 @@ export const plugin: CliPlugin = {
 
                             await ensureFile(datamodelPath);
                             writeFileSync(datamodelPath, schemaString);
-                            console.info(`   Finished transforming OpenAPI definition: ${datamodelPath}`);
                         }
                         catch (err) {
                             console.info(`   Failed to process OpenAPI definition: ${datamodelPath}. Error: ${err}`);
+                        }
+                        finally {
+                            processingOpenAPISpinner.stop();
                         }
                     }
 

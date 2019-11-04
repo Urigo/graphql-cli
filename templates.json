@@ -1,0 +1,114 @@
+{
+    "graphql-cli-backend-template": {
+        "repository": "git@github.com:ardatan/graphql-cli-backend-template.git",
+        "projectType": "Backend only",
+        "graphqlConfig": {
+            "schema": {
+                "./src/schema/index.ts": {
+                    "require": "ts-node/register"
+                }
+            },
+            "extensions": {
+                "generate": {
+                    "db": {
+                        "dbConfig": {
+                            "user": "postgresql",
+                            "password": "postgres",
+                            "database": "users",
+                            "host": "localhost",
+                            "port": 55432
+                        },
+                        "database": "pg"
+                    },
+                    "graphqlCRUD": {
+                        "create": true,
+                        "update": true,
+                        "findAll": true,
+                        "find": true,
+                        "delete": false,
+                        "subCreate": false,
+                        "subUpdate": false,
+                        "subDelete": false,
+                        "disableGen": false
+                    },
+                    "folders": {
+                        "model": "./model",
+                        "resolvers": "./src/resolvers",
+                        "schema": "./src/schema"
+                    }
+                },
+                "codegen": {
+                    "./src/generated-types.ts": {
+                        "plugins": [
+                            "typescript",
+                            "typescript-resolvers"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "graphql-cli-fullstack-template": {
+        "repository": "git@github.com:ardatan/graphql-cli-fullstack-template.git",
+        "projectType": "Full Stack",
+        "graphqlConfig": {
+            "schema": {
+                "./server/src/schema/index.ts": {
+                    "require": "ts-node/register"
+                }
+            },
+            "documents": "./client/src/graphql/**/*.ts",
+            "extensions": {
+                "generate": {
+                    "db": {
+                        "dbConfig": {
+                            "user": "postgresql",
+                            "password": "postgres",
+                            "database": "users",
+                            "host": "localhost",
+                            "port": 55432
+                        },
+                        "database": "pg"
+                    },
+                    "graphqlCRUD": {
+                        "create": true,
+                        "update": true,
+                        "findAll": true,
+                        "find": true,
+                        "delete": false,
+                        "subCreate": false,
+                        "subUpdate": false,
+                        "subDelete": false,
+                        "disableGen": false
+                    },
+                    "folders": {
+                        "model": "./model",
+                        "resolvers": "./server/src/resolvers",
+                        "schema": "./server/src/schema",
+                        "client": "./client/src/graphql"
+                    }
+                },
+                "codegen": {
+                    "./server/src/generated-types.ts": {
+                        "plugins": [
+                            "typescript",
+                            "typescript-resolvers"
+                        ]
+                    },
+                    "./client/src/generated-types.tsx": {
+                        "plugins": [
+                            "typescript",
+                            "typescript-operations",
+                            "typescript-react-apollo"
+                        ],
+                        "config": {
+                            "withComponent": false,
+                            "withHOC": false,
+                            "withHooks": true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
