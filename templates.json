@@ -1,6 +1,6 @@
 {
     "graphql-cli-backend-template": {
-        "repository": "git@github.com:ardatan/graphql-cli-backend-template.git",
+        "repository": "https://github.com/ardatan/graphql-cli-backend-template.git",
         "projectType": "Backend only",
         "graphqlConfig": {
             "schema": {
@@ -49,7 +49,7 @@
         }
     },
     "graphql-cli-fullstack-template": {
-        "repository": "git@github.com:ardatan/graphql-cli-fullstack-template.git",
+        "repository": "https://github.com/ardatan/graphql-cli-fullstack-template.git",
         "projectType": "Full Stack",
         "graphqlConfig": {
             "schema": {

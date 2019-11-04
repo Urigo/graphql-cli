@@ -55,7 +55,7 @@ export const plugin: CliPlugin = {
                         if (!templateName) {
                             const downloadingTemplateList = ora('Loading template list...').start();
                             const templateMap = await fetch('https://raw.githubusercontent.com/Urigo/graphql-cli/master/templates.json').then(res => res.json());
-                            downloadingTemplateList.stop();
+                            downloadingTemplateList.succeed();
                             const templateNames = Object.keys(templateMap);
                             type TemplateName = keyof typeof templateMap;
                             const { templateName: enteredTemplateName } = await prompt<{ templateName: TemplateName | 'Other Template' }>([
@@ -174,12 +174,10 @@ export const plugin: CliPlugin = {
 
                             await ensureFile(datamodelPath);
                             writeFileSync(datamodelPath, schemaString);
+                            processingOpenAPISpinner.succeed();
                         }
                         catch (err) {
-                            console.info(`   Failed to process OpenAPI definition: ${datamodelPath}. Error: ${err}`);
-                        }
-                        finally {
-                            processingOpenAPISpinner.stop();
+                            processingOpenAPISpinner.fail(`Failed to process OpenAPI definition: ${datamodelPath}. Error: ${err}`);
                         }
                     }
 
