@@ -49,7 +49,7 @@ export const plugin: CliPlugin = {
                         extensions: {}
                     };
                     let projectPath = process.cwd();
-                    let projectType;
+                    let projectType: string;
 
                     if (initializationType === InitializationType.FromScratch) {
                         if (!projectName) {
@@ -64,6 +64,22 @@ export const plugin: CliPlugin = {
                             projectName = enteredName;
                             projectPath = join(process.cwd(), projectName);
                         }
+                        if (!projectType) {
+                            const { projectType: enteredProjectType } = await prompt([
+                                {
+                                    type: 'list',
+                                    name: 'projectType',
+                                    message: 'What is the type of your project?',
+                                    choices: [
+                                        'Full Stack',
+                                        'Backend only',
+                                        'Frontend only'
+                                    ],
+                                    default: 'Backend only',
+                                }
+                            ]);
+                            projectType = enteredProjectType;
+                        }    
                         if (!templateName) {
                             const downloadingTemplateList = ora('Loading template list...').start();
                             const templateMap = await fetch('https://raw.githubusercontent.com/Urigo/graphql-cli/master/templates.json').then(res => res.json());
@@ -74,8 +90,8 @@ export const plugin: CliPlugin = {
                                 {
                                     type: 'list',
                                     name: 'templateName',
-                                    message: 'Which template do you want to start with?',
-                                    choices: [...templateNames, 'Other Template'],
+                                    message: `Which template do you want to start with your new ${projectType} project?`,
+                                    choices: [...templateNames.filter(templateName => templateMap[templateName].projectType === projectType), 'Other Template'],
                                 }
                             ]);
                             if (enteredTemplateName === 'Other Template') {
@@ -207,22 +223,6 @@ export const plugin: CliPlugin = {
                         } else {
                             graphqlConfig.schema = schema;
                         }
-                    }
-                    if (!projectType) {
-                        const { projectType: enteredProjectType } = await prompt([
-                            {
-                                type: 'list',
-                                name: 'projectType',
-                                message: 'What is the type of your project?',
-                                choices: [
-                                    'Full Stack',
-                                    'Backend only',
-                                    'Frontend only'
-                                ],
-                                default: 'Backend only',
-                            }
-                        ]);
-                        projectType = enteredProjectType;
                     }
 
                     if (projectType === 'Full Stack' && graphqlConfig.extensions.generate && !graphqlConfig.extensions.generate.folders.client) {
