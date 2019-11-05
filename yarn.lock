@@ -344,6 +344,14 @@
     "@graphql-toolkit/common" "0.6.6"
     cross-fetch "3.0.4"
 
+"@graphql-toolkit/github-loader@0.6.7":
+  version "0.6.7"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/github-loader/-/github-loader-0.6.7.tgz#92eb33c761fe3ef3c75caf870211fcc6bbf6330f"
+  integrity sha512-COKTL6DxX70fAXWRfcuNO2xMwg3HhxdYgChl9RTN3lQ9jw8VJJKRQ5prylQeJWyPlkFsKwUMnwiwzmVJEmIEIA==
+  dependencies:
+    "@graphql-toolkit/common" "0.6.7"
+    cross-fetch "3.0.4"
+
 "@graphql-toolkit/graphql-file-loader@0.6.2":
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/@graphql-toolkit/graphql-file-loader/-/graphql-file-loader-0.6.2.tgz#d25ce29640c8ce6949e7bfb9976b57e3e1ec523d"
