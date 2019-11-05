@@ -387,6 +387,15 @@
     cross-fetch "3.0.4"
     valid-url "1.0.9"
 
+"@graphql-toolkit/url-loader@0.6.7":
+  version "0.6.7"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/url-loader/-/url-loader-0.6.7.tgz#5c950395ce80d7984dc4791b846ed10716179a40"
+  integrity sha512-Esv0yiIHufgonyZpPzVEQD0UQyiipMWl7dB/uwJzvvkN3NInSwnhYsWk92J27T2sbSob0lfPzQwxKsnbwbn7uw==
+  dependencies:
+    "@graphql-toolkit/common" "0.6.7"
+    cross-fetch "3.0.4"
+    valid-url "1.0.9"
+
 "@kamilkisiela/graphql-tools@4.0.6":
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/@kamilkisiela/graphql-tools/-/graphql-tools-4.0.6.tgz#6dcf4d18bedaf34f6ab1d5bad2414e530d0875d1"
