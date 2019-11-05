@@ -8,6 +8,8 @@ import { UrlLoader } from '@graphql-toolkit/url-loader';
 import { GitLoader } from '@graphql-toolkit/git-loader';
 import { GithubLoader } from '@graphql-toolkit/github-loader';
 import { GraphQLBackendCreator, GraphQLGeneratorConfig, Client, IGraphQLBackend, DatabaseSchemaManager } from 'graphback';
+import { ensureFile } from 'fs-extra';
+import { writeFile as fsWriteFile } from 'fs';
 import { join } from 'path';
 export interface GenerateConfig {
   folders: {
@@ -22,17 +24,6 @@ export interface GenerateConfig {
 
 export function writeFile(path: string, data: any) {
   return new Promise<void>(async (resolve, reject) => {
-    const [
-      {
-        writeFile: fsWriteFile
-      },
-      {
-        ensureFile
-      }
-    ] = await Promise.all([
-      import('fs'),
-      import('fs-extra')
-    ]);
     await ensureFile(path);
     fsWriteFile(path, data, err => {
       if (err) {
