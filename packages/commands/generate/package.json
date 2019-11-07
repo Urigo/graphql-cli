@@ -15,7 +15,7 @@
   "dependencies": {
     "@graphql-toolkit/code-file-loader": "0.6.8",
     "@graphql-toolkit/common": "0.6.8",
-    "@graphql-toolkit/core": "0.6.7",
+    "@graphql-toolkit/core": "0.6.8",
     "@graphql-toolkit/git-loader": "0.6.8",
     "@graphql-toolkit/github-loader": "0.6.7",
     "@graphql-toolkit/graphql-file-loader": "0.6.7",
