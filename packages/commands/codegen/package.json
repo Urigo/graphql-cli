@@ -18,7 +18,7 @@
     "@graphql-codegen/plugin-helpers": "1.8.3",
     "@graphql-toolkit/code-file-loader": "0.6.8",
     "@graphql-toolkit/git-loader": "0.6.8",
-    "@graphql-toolkit/github-loader": "0.6.7",
+    "@graphql-toolkit/github-loader": "0.6.8",
     "@graphql-toolkit/graphql-file-loader": "0.6.7",
     "@test-graphql-cli/common": "4.0.0",
     "chalk": "2.4.2",
