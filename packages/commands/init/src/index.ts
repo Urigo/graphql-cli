@@ -416,7 +416,7 @@ export const plugin: CliPlugin = {
                     let packageJson: any = {};
                     try {
                         const importedPackageJson = await import(join(projectPath, 'package.json'));
-                        packageJson = importedPackageJson.default || {};
+                        packageJson = importedPackageJson.default || importedPackageJson || {};
                     } catch (err) { }
 
                     packageJson.name = projectName;
@@ -434,11 +434,13 @@ export const plugin: CliPlugin = {
                         `${projectPath}\n` +  
                         `Next Steps:\n` +
                         `- Change directory into project folder - ${chalk.cyan(`cd ${projectPath}`)}\n` +
-                        initializationType !== InitializationType.ExistingGraphQL ?
-                        `- Edit the .graphql file inside your model folder.\n` +
-                        `- Run ${chalk.cyan(`yarn graphql generate`)} to generate schema and resolvers\n` +
-                        `- Run ${chalk.cyan(`yarn graphql codegen`)} to generate TypeScript typings\n`
-                        : '' +
+                        (
+                            initializationType !== InitializationType.ExistingGraphQL ?
+                            `- Edit the .graphql file inside your model folder.\n` +
+                            `- Run ${chalk.cyan(`yarn graphql generate`)} to generate schema and resolvers\n` +
+                            `- Run ${chalk.cyan(`yarn graphql codegen`)} to generate TypeScript typings\n`
+                            : ''
+                        ) +
                         `- Install ${chalk.cyan(`yarn install`)} to install dependencies`
                     );
 
