@@ -255,13 +255,15 @@
     "@graphql-toolkit/common" "0.6.6"
     graphql-tag-pluck "0.8.6"
 
-"@graphql-toolkit/code-file-loader@0.6.7":
-  version "0.6.7"
-  resolved "https://registry.yarnpkg.com/@graphql-toolkit/code-file-loader/-/code-file-loader-0.6.7.tgz#07b177d7e4c83741d283004468fd0bb441f9f45f"
-  integrity sha512-Hr0zjYx63DnAPiAoMwFZoZHDymqz5Ihvop7WCy9WdaDoJ2NURE2bmLznzWy7AQfnxCdn1IkzEjQAFlZiEhdjHQ==
+"@graphql-toolkit/code-file-loader@0.6.8":
+  version "0.6.8"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/code-file-loader/-/code-file-loader-0.6.8.tgz#0afb384cb3f663b590bfba7dcc34e01663f12073"
+  integrity sha512-a+HwoEltaX8ychbwk9xxF9AJZjp8GkyCiSGBJrcEER0XbS5F4jFvVxKJJarmxC43I3b4tZMGggCG4bryCMtiQw==
   dependencies:
-    "@graphql-toolkit/common" "0.6.7"
+    "@graphql-toolkit/common" "0.6.8"
     graphql-tag-pluck "0.8.7"
+    is-valid-path "0.1.1"
+    tslib "1.10.0"
 
 "@graphql-toolkit/common@0.6.2":
   version "0.6.2"
