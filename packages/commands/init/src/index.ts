@@ -142,7 +142,7 @@ export const plugin: CliPlugin = {
                                 type: 'input',
                                 name: 'model',
                                 message: 'Where are you going to store your data models?',
-                                default: './models'
+                                default: './model'
                             },
                             {
                                 type: 'input',
