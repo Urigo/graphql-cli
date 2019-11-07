@@ -9,9 +9,9 @@ export async function cli(argv = process.argv): Promise<void> {
 
     if (!rootCommand || rootCommand === '') {
       throw new Error(
-        `Usage: ${chalk.cyan(`graphql`)} requires a command to run successfully:
-         For example: ${chalk.cyan(`graphql init`)} 
-         Check out https://github.com/Urigo/graphql-cli for available commands and how to use them.`);
+        `Usage: ${chalk.cyan(`graphql`)} requires a command to run successfully:\n` +
+        `For example: ${chalk.cyan(`graphql init`)}\n` +
+        `Check out https://github.com/Urigo/graphql-cli for available commands and how to use them.`);
     }
 
     const plugin = await getPluginByName(rootCommand);
@@ -42,16 +42,16 @@ export async function cli(argv = process.argv): Promise<void> {
           .then(c => {
             const projectNames = Object.keys(c.projects);
             if (projectName && !projectNames.includes(projectName)) {
-              throw new Error(`
-            You don't have project ${projectName}.
-            Available projects are ${projectNames.join(',')}.
-          `);
+              throw new Error(
+                `You don't have project ${projectName}.\n` +
+                `Available projects are ${projectNames.join(',')}.`
+              );
             }
             if (!projectNames.includes('default') && projectNames.length > 0) {
-              throw new Error(`
-            You don't have 'default' project so you need to specify a project name.
-            Available projects are ${projectNames.join(',')}.
-          `);
+              throw new Error(
+                `You don't have 'default' project so you need to specify a project name.\n` +
+                `Available projects are ${projectNames.join(',')}.`
+              );
             }
             projectName = 'default';
             return c.getProject(projectName);
