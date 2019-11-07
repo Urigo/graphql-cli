@@ -1,5 +1,13 @@
 {
   "extends": [
-    "config:base"
+    "config:base",
+    ":pinVersions"
+  ],
+  "groupName":"all",
+  "packageRules": [
+    {
+      "packageNames": ["graphql"],
+      "versionStrategy": "widen"
+    }
   ]
 }
