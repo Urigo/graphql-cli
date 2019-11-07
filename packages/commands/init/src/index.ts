@@ -416,15 +416,17 @@ export const plugin: CliPlugin = {
                     await ensureFile(join(projectPath, 'package.json'));
                     writeFileSync(join(projectPath, 'package.json'), JSON.stringify(packageJson, null, 2));
 
-                    console.info(`🚀  GraphQL CLI project successfully initialized into the folder; ${projectPath}
-                  Next Steps:
-                  - Change directory into project folder - ${chalk.cyan(`cd ${projectPath}`)}
-                  - Install ${chalk.cyan(`yarn install`)} to install dependencies
-                  ${initializationType !== InitializationType.ExistingGraphQL ? `
-                  - Edit the .graphql file inside your model folder.
-                  - Run ${chalk.cyan(`yarn graphql generate`)} to generate schema and resolvers
-                  - Run ${chalk.cyan(`yarn graphql codegen`)} to generate TypeScript typings
-                  ` : ''}
+                    console.info(`🚀  GraphQL CLI project successfully initialized:  
+      ${projectPath}
+
+      Next Steps:
+      - Change directory into project folder - ${chalk.cyan(`cd ${projectPath}`)}
+      - Install ${chalk.cyan(`yarn install`)} to install dependencies
+      ${initializationType !== InitializationType.ExistingGraphQL ? `
+      - Edit the .graphql file inside your model folder.
+      - Run ${chalk.cyan(`yarn graphql generate`)} to generate schema and resolvers
+      - Run ${chalk.cyan(`yarn graphql codegen`)} to generate TypeScript typings
+      ` : ''}
                 `);
 
                 } catch (e) {
