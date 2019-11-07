@@ -35,6 +35,7 @@ export const plugin: CliPlugin = {
                         ExistingOpenAPI = 'I have an existing project using OpenAPI/Swagger Schema Definition.',
                         ExistingGraphQL = 'I have an existing project using GraphQL and want to add GraphQL CLI (run from project root).'
                     }
+
                     const { initializationType } = await prompt<{ initializationType: InitializationType }>([
                         {
                             type: 'list',
@@ -51,19 +52,27 @@ export const plugin: CliPlugin = {
                     let projectPath = process.cwd();
                     let projectType: string;
 
-                    if (initializationType === InitializationType.FromScratch) {
-                        if (!projectName) {
-                            const { projectName: enteredName } = await prompt([
-                                {
-                                    type: 'input',
-                                    name: 'projectName',
-                                    message: 'What is the name of the project?',
-                                    default: 'my-graphql-project'
-                                }
-                            ]);
-                            projectName = enteredName;
-                            projectPath = join(process.cwd(), projectName);
+                    if(initializationType === InitializationType.ExistingGraphQL) {
+                        if (existsSync(join(projectPath, 'package.json'))) {
+                            const { default: packageJson } = await import(join(projectPath, 'package.json'));
+                            projectName = packageJson.name;
                         }
+                    }
+
+                    if (!projectName) {
+                        const { projectName: enteredName } = await prompt([
+                            {
+                                type: 'input',
+                                name: 'projectName',
+                                message: 'What is the name of the project?',
+                                default: 'my-graphql-project'
+                            }
+                        ]);
+                        projectName = enteredName;
+                        projectPath = join(process.cwd(), projectName);
+                    }
+
+                    if (initializationType === InitializationType.FromScratch) {
                         if (!projectType) {
                             const { projectType: enteredProjectType } = await prompt([
                                 {
@@ -113,10 +122,11 @@ export const plugin: CliPlugin = {
                             await git.clone(templateUrl, projectPath);
                             rimraf.sync(join(projectPath, '.git'));
                             cloningSpinner.stop();
-                            const graphqlConfigPath = join(projectPath, '.graphqlrc.yml');
-                            graphqlConfig = tryParseConfig(graphqlConfigPath) || graphqlConfig;
                         }
                     }
+
+                    const graphqlConfigPath = join(projectPath, '.graphqlrc.yml');
+                    graphqlConfig = tryParseConfig(graphqlConfigPath) || graphqlConfig;
 
                     if (!graphqlConfig.extensions.generate) {
                         const { isBackendGenerationAsked } = await prompt([
@@ -301,7 +311,9 @@ export const plugin: CliPlugin = {
                                     }
                                 ]);
 
-                                graphqlConfig.extensions.codegen[backendGeneratedFile] = [...codegenPlugins];
+                                graphqlConfig.extensions.codegen[backendGeneratedFile] = {
+                                    plugins: [...codegenPlugins],
+                                };
                             }
                             if (projectType === 'Full Stack' || projectType === 'Frontend only') {
 
@@ -356,7 +368,9 @@ export const plugin: CliPlugin = {
                                     }
                                 ]);
 
-                                graphqlConfig.extensions.codegen[frontendGeneratedFile] = [...codegenPlugins];
+                                graphqlConfig.extensions.codegen[frontendGeneratedFile] = {
+                                    plugins: [...codegenPlugins],
+                                };
                             }
                             npmPackages.push(...[...codegenPlugins].map(plugin => '@graphql-codegen/' + plugin));
                         }
