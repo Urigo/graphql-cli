@@ -18,7 +18,7 @@
     "@graphql-toolkit/core": "0.6.8",
     "@graphql-toolkit/git-loader": "0.6.8",
     "@graphql-toolkit/github-loader": "0.6.8",
-    "@graphql-toolkit/graphql-file-loader": "0.6.7",
+    "@graphql-toolkit/graphql-file-loader": "0.6.8",
     "@graphql-toolkit/json-file-loader": "0.6.7",
     "@graphql-toolkit/url-loader": "0.6.7",
     "@test-graphql-cli/common": "4.0.0",
