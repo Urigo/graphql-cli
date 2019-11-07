@@ -25,7 +25,7 @@
     "chalk": "2.4.2",
     "commander": "4.0.0",
     "fs-extra": "^8.1.0",
-    "graphback": "0.9.4",
+    "graphback": "0.9.6",
     "log-symbols": "3.0.0"
   },
   "devDependencies": {

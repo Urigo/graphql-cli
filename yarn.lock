@@ -3579,10 +3579,10 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.3.tgz#4a12ff1b60376ef09862c2093edd908328be8423"
   integrity sha512-a30VEBm4PEdx1dRB7MFK7BejejvCvBronbLjht+sHuGYj8PHs7M/5Z+rt5lw551vZ7yfTCj4Vuyy3mSJytDWRQ==
 
-graphback@0.9.4:
-  version "0.9.4"
-  resolved "https://registry.yarnpkg.com/graphback/-/graphback-0.9.4.tgz#f71960c6ac7997bf439e2bd608211f53ed62e5dd"
-  integrity sha512-Ihg9iOH3+2v3bwyiGGZKA1AO15YBkqvVbC9BzAiHNQxhjpFBxZv1O8F+R7FUI+8YCn15uU5EKpwO8LC2cuD9iA==
+graphback@0.9.6:
+  version "0.9.6"
+  resolved "https://registry.yarnpkg.com/graphback/-/graphback-0.9.6.tgz#9399ef5a4332c69f62564a262196ed230f51fda6"
+  integrity sha512-DM6s0gTa0fSg21pq2uHDp47T+aCFaATe1q7jtfUoQQLYSSOO04rh6LpnlXfPR3maIuae+rDx79puRhD12nXEnA==
   dependencies:
     knex "0.19.4"
     pg "7.12.1"
