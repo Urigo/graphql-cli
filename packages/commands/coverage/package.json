@@ -1,5 +1,6 @@
 {
   "name": "@test-graphql-cli/coverage",
+  "description": "Schema coverage based on documents. Find out how many times types and fields are used in your application using GraphQL Inspector.",
   "version": "4.0.0",
   "license": "MIT",
   "main": "dist/index.js",

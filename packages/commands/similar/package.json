@@ -1,5 +1,6 @@
 {
   "name": "@test-graphql-cli/similar",
+  "description": "Get a list of similar types in order to find duplicates using GraphQL Inspector.",
   "version": "4.0.0",
   "license": "MIT",
   "main": "dist/index.js",

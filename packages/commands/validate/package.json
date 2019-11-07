@@ -1,5 +1,6 @@
 {
   "name": "@test-graphql-cli/validate",
+  "description": "Validates documents against a schema and looks for deprecated usage using GraphQL Inspector.",
   "version": "4.0.0",
   "license": "MIT",
   "main": "dist/index.js",

@@ -1,5 +1,6 @@
 {
   "name": "@test-graphql-cli/diff",
+  "description": "Compares schemas and finds breaking or dangerous changes using GraphQL Inspector.",
   "version": "4.0.0",
   "license": "MIT",
   "main": "dist/index.js",

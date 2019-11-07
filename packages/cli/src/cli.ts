@@ -2,16 +2,26 @@ import { Command } from 'commander';
 import { getPluginByName } from './get-plugin';
 import { LoadConfigOptions } from '@test-graphql-cli/common';
 import chalk from 'chalk';
+import * as globby from 'globby';
+import { join } from 'path';
 
 export async function cli(argv = process.argv): Promise<void> {
   try {
     const rootCommand = argv[2];
 
     if (!rootCommand || rootCommand === '') {
+      const foundPlugins = await globby(`node_modules/@test-graphql-cli/**`, { cwd: process.cwd(), onlyDirectories: true });
+      const availableCommands = await Promise.all(
+        foundPlugins.map(
+          pluginName => import(join(process.cwd(), pluginName + '/' + 'package.json')).then(m => m.default).then(packageJson => `${chalk.bold(pluginName)}: ${packageJson.description}`)
+        )
+      );
+
       throw new Error(
         `Usage: ${chalk.cyan(`graphql`)} requires a command to run successfully:\n` +
-        `For example: ${chalk.cyan(`graphql init`)}\n` +
-        `Check out https://github.com/Urigo/graphql-cli for available commands and how to use them.`);
+        `Check out https://github.com/Urigo/graphql-cli for all available commands and how to use them.\n` +
+        availableCommands.length ? `Detected available commands: \n` +
+        availableCommands.join('\n') : '');
     }
 
     const plugin = await getPluginByName(rootCommand);

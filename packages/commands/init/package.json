@@ -1,5 +1,6 @@
 {
   "name": "@test-graphql-cli/init",
+  "description": "Creates a GraphQL project using a template or GraphQL Config file for your existing project.",
   "version": "4.0.0",
   "license": "MIT",
   "main": "dist/index.js",
