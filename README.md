@@ -4,8 +4,7 @@
 
 [![npm version](http://img.shields.io/npm/v/graphql-cli.svg?style=flat)](https://npmjs.org/package/graphql-cli "View this project on npm") [![Discord Chat](https://img.shields.io/discord/625400653321076807)](https://discord.gg/xud7bH)
 
-The current version is `4.0.0-alpha-309afac.40`. Help us to improve new GraphQL CLI. Check out the new structure and commands below!
-
+Help us to improve new GraphQL CLI. Check out the new structure and commands below!
 Feel free to contact us in Discord channel. We would love to hear your feedback.
 
 ## Features
