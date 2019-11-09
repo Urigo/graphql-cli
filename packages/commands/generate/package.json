@@ -23,7 +23,7 @@
     "@graphql-toolkit/json-file-loader": "0.6.8",
     "@graphql-toolkit/url-loader": "0.6.8",
     "@test-graphql-cli/common": "4.0.0",
-    "chalk": "2.4.2",
+    "chalk": "3.0.0",
     "commander": "4.0.0",
     "fs-extra": "8.1.0",
     "graphback": "0.9.6",

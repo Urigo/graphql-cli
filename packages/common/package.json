@@ -10,7 +10,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "chalk": "2.4.2",
+    "chalk": "3.0.0",
     "commander": "4.0.0",
     "graphql-config": "3.0.0-alpha.14",
     "log-symbols": "3.0.0",

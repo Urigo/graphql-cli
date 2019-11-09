@@ -17,7 +17,7 @@
     "@test-graphql-cli/common": "4.0.0",
     "@test-graphql-cli/init": "4.0.0",
     "@types/resolve-from": "5.0.1",
-    "chalk": "2.4.2",
+    "chalk": "3.0.0",
     "commander": "4.0.0",
     "globby": "10.0.1",
     "graphql-config": "3.0.0-alpha.14",

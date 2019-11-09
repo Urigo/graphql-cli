@@ -22,7 +22,7 @@
     "@graphql-toolkit/github-loader": "0.6.8",
     "@graphql-toolkit/graphql-file-loader": "0.6.8",
     "@test-graphql-cli/common": "4.0.0",
-    "chalk": "2.4.2",
+    "chalk": "3.0.0",
     "commander": "4.0.0",
     "graphql-tag-pluck": "0.8.7",
     "log-symbols": "3.0.0"
