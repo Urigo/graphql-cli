@@ -2,7 +2,7 @@ import { Command } from 'commander';
 import { getPluginByName } from './get-plugin';
 import { LoadConfigOptions } from '@test-graphql-cli/common';
 import chalk from 'chalk';
-import * as globby from 'globby';
+import globby from 'globby';
 import { join } from 'path';
 
 export async function cli(argv = process.argv): Promise<void> {
