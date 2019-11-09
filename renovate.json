@@ -9,5 +9,9 @@
       "packageNames": ["graphql"],
       "versionStrategy": "widen"
     }
-  ]
+  ],
+  "automerge": true,
+  "major": {
+    "automerge": false
+  }
 }
