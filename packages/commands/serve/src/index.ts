@@ -5,7 +5,7 @@ import open from 'open';
 import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
 import { GitLoader } from '@graphql-toolkit/git-loader';
 import { GithubLoader } from '@graphql-toolkit/github-loader';
-import { GraphQLExtensionDeclaration } from 'graphql-config/extension';
+import { GraphQLExtensionDeclaration } from 'graphql-config';
 import { IMocks, addMockFunctionsToSchema } from '@kamilkisiela/graphql-tools';
 
 const ServeExtension: GraphQLExtensionDeclaration = api => {

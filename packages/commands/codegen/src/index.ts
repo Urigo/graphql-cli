@@ -6,7 +6,7 @@ import { codegen } from '@graphql-codegen/core';
 import { parse, GraphQLSchema } from 'graphql';
 import { writeFileSync } from 'fs';
 import { join } from 'path';
-import { GraphQLExtensionDeclaration } from 'graphql-config/extension';
+import { GraphQLExtensionDeclaration } from 'graphql-config';
 import { printSchemaWithDirectives } from '@graphql-toolkit/common';
 
 const CodegenExtension: GraphQLExtensionDeclaration = api => {

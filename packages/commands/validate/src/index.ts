@@ -4,7 +4,7 @@ import { Source, print } from 'graphql';
 import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
 import { GitLoader } from '@graphql-toolkit/git-loader';
 import { GithubLoader } from '@graphql-toolkit/github-loader';
-import { GraphQLExtensionDeclaration } from 'graphql-config/extension';
+import { GraphQLExtensionDeclaration } from 'graphql-config';
 import chalk from 'chalk';
 
 const ValidateExtension: GraphQLExtensionDeclaration = api => {
