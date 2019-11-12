@@ -5,6 +5,11 @@ import chalk from 'chalk';
 import globby from 'globby';
 import { join } from 'path';
 
+const reportError = (e: Error | string) => {
+  console.error(e instanceof Error ? e.message || e : e);
+  process.exit(1);
+};
+
 export async function cli(argv = process.argv): Promise<void> {
   try {
     const rootCommand = argv[2];
@@ -32,11 +37,6 @@ export async function cli(argv = process.argv): Promise<void> {
 
     const plugin = await getPluginByName(rootCommand);
     const program = new Command();
-
-    const reportError = (e: Error) => {
-      console.error(e);
-      process.exit(1);
-    };
 
     program.option('-p, --project <projectName>');
     program.option('-r, --require <moduleName>');
@@ -88,7 +88,6 @@ export async function cli(argv = process.argv): Promise<void> {
       await import(program.require);
     }
   } catch (e) {
-    console.error(e.message || e);
-    process.exit(1);
+    reportError(e);
   }
 }

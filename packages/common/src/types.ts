@@ -4,7 +4,7 @@ import { GraphQLExtensionDeclaration } from 'graphql-config';
 export interface InitOptions {
   cwd: string;
   program: Command;
-  reportError: (e: Error) => void;
+  reportError: (e: Error | string) => void;
   loadConfig: (loadConfigOptions?: LoadConfigOptions) => Promise<import('graphql-config').GraphQLProjectConfig>;
 }
 

@@ -79,7 +79,7 @@ export const plugin: CliPlugin = {
             if (hasBreaking(changes)) {
               const breakingCount = changes.filter(c => c.criticality.level === CriticalityLevel.Breaking).length;
 
-              console.error(logSymbols.error, `Detected ${breakingCount} breaking change${breakingCount > 1 ? 's' : ''}\n`);
+              reportError(`Detected ${breakingCount} breaking change${breakingCount > 1 ? 's' : ''}\n`);
               process.exit(1);
             } else {
               console.log(logSymbols.success, 'No breaking changes detected\n');
