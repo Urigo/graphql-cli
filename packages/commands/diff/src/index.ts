@@ -41,52 +41,46 @@ function getSymbol(level: CriticalityLevel): string {
 }
 
 export const plugin: CliPlugin = {
-  init({ program, reportError, loadConfig }: InitOptions) {
+  init({ program, loadConfig }: InitOptions) {
     program
       .command('diff [baseSchema]')
       .action(async (baseSchemaPtr: string) => {
-        try {
-          const config = await loadConfig({
-            extensions: [DiffExtension]
-          })
-          if (!baseSchemaPtr) {
-            const diffConfig = await config.extension('diff');
-            baseSchemaPtr = (diffConfig && diffConfig.baseSchema) || 'git:origin/master:schema.graphql';
-          }
-          const [baseSchema, currentSchema] = await Promise.all([
-            loadSchemaUsingLoaders([
-              new UrlLoader(), 
-              new GraphQLFileLoader(), 
-              new JsonFileLoader(), 
-              new CodeFileLoader(), 
-              new GitLoader(), 
-              new GithubLoader()
-            ], 
-              baseSchemaPtr),
-            config.getSchema(),
-          ]);
-          const changes = diff(baseSchema, currentSchema);
+        const config = await loadConfig({
+          extensions: [DiffExtension]
+        })
+        if (!baseSchemaPtr) {
+          const diffConfig = await config.extension('diff');
+          baseSchemaPtr = (diffConfig && diffConfig.baseSchema) || 'git:origin/master:schema.graphql';
+        }
+        const [baseSchema, currentSchema] = await Promise.all([
+          loadSchemaUsingLoaders([
+            new UrlLoader(),
+            new GraphQLFileLoader(),
+            new JsonFileLoader(),
+            new CodeFileLoader(),
+            new GitLoader(),
+            new GithubLoader()
+          ],
+            baseSchemaPtr),
+          config.getSchema(),
+        ]);
+        const changes = diff(baseSchema, currentSchema);
 
-          if (!changes.length) {
-            console.log(logSymbols.success, 'No changes detected');
+        if (!changes.length) {
+          console.log(logSymbols.success, 'No changes detected');
+        } else {
+          console.warn(logSymbols.warning, `Detected the following changes (${changes.length}) between schemas:\n`);
+
+          changes.forEach(change => {
+            console.log(...renderChange(change));
+          });
+
+          if (hasBreaking(changes)) {
+            const breakingCount = changes.filter(c => c.criticality.level === CriticalityLevel.Breaking).length;
+            throw `Detected ${breakingCount} breaking change${breakingCount > 1 ? 's' : ''}\n`;
           } else {
-            console.warn(logSymbols.warning, `Detected the following changes (${changes.length}) between schemas:\n`);
-
-            changes.forEach(change => {
-              console.log(...renderChange(change));
-            });
-
-            if (hasBreaking(changes)) {
-              const breakingCount = changes.filter(c => c.criticality.level === CriticalityLevel.Breaking).length;
-
-              reportError(`Detected ${breakingCount} breaking change${breakingCount > 1 ? 's' : ''}\n`);
-              process.exit(1);
-            } else {
-              console.log(logSymbols.success, 'No breaking changes detected\n');
-            }
+            console.log(logSymbols.success, 'No breaking changes detected\n');
           }
-        } catch (e) {
-          reportError(e);
         }
       });
   }

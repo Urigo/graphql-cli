@@ -4,9 +4,10 @@ import { LoadConfigOptions } from '@test-graphql-cli/common';
 import chalk from 'chalk';
 import globby from 'globby';
 import { join } from 'path';
+import logSymbols from 'log-symbols';
 
 const reportError = (e: Error | string) => {
-  console.error(e instanceof Error ? e.message || e : e);
+  console.error(logSymbols.error, e instanceof Error ? e.message || e : e);
   process.exit(1);
 };
 
