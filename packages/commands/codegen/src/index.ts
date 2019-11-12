@@ -52,10 +52,10 @@ export const plugin: CliPlugin = {
               const plugins: any = [];
               await Promise.all(pluginsDefinitions.map(async (pluginDef: any) => {
                 let pluginName: string;
-                if (pluginDef === 'string') {
-                  pluginName = 'string';
+                if (typeof pluginDef === 'string') {
+                  pluginName = pluginDef;
                   plugins.push({ [pluginName]: {} });
-                } else if (pluginDef === 'object') {
+                } else if (typeof pluginDef === 'object') {
                   pluginName = Object.keys(pluginDef)[0];
                   plugins.push(pluginDef);
                 }
