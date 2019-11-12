@@ -61,6 +61,8 @@ export const plugin: CliPlugin = {
                 }
                 if (results.length === 0) {
                     console.info(`Documents are valid against the schema!`);
+                } else {
+                    throw `Documents are not valid against the schema!`;
                 }
             })
     }
