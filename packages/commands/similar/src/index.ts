@@ -34,7 +34,7 @@ export const colorizePercentage = (percentage: number) => {
 }
 
 export const plugin: CliPlugin = {
-    init({ program, loadConfig }) {
+    init({ program, loadConfig, reportError }) {
         program
             .command('similar')
             .option('-n, --type <s>', 'Check only a single type (checks all types by default)')
@@ -45,22 +45,26 @@ export const plugin: CliPlugin = {
                 threshold: number;
                 write: string;
             }) => {
-                const config = await loadConfig({
-                    extensions: [SimilarExtension]
-                });
-                const schema = await config.getSchema();
-                const results = similar(schema, options.type, options.threshold);
-                for (const key in results) {
-                    const result = results[key];
-                    if (result.ratings.length > 0) {
-                        console.info(chalk.bold.underline(key) + ':');
-                        for (const rating of result.ratings) {
-                            console.info(`  ` + rating.target.typeId + ': ' + colorizePercentage(rating.rating * 100));
+                try {
+                    const config = await loadConfig({
+                        extensions: [SimilarExtension]
+                    });
+                    const schema = await config.getSchema();
+                    const results = similar(schema, options.type, options.threshold);
+                    for (const key in results) {
+                        const result = results[key];
+                        if (result.ratings.length > 0) {
+                            console.info(chalk.bold.underline(key) + ':');
+                            for (const rating of result.ratings) {
+                                console.info(`  ` + rating.target.typeId + ': ' + colorizePercentage(rating.rating * 100));
+                            }
                         }
                     }
-                }
-                if (options.write) {
-                    writeFileSync(join(process.cwd(), options.write), JSON.stringify(results, null, 2));
+                    if (options.write) {
+                        writeFileSync(join(process.cwd(), options.write), JSON.stringify(results, null, 2));
+                    }
+                } catch (e) {
+                    reportError(e);
                 }
             });
     }

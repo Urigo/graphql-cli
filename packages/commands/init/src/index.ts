@@ -443,7 +443,7 @@ export const plugin: CliPlugin = {
                         ) +
                         `- Install ${chalk.cyan(`yarn install`)} to install dependencies`
                     );
-
+                    process.exit(0);
                 } catch (e) {
                     reportError(e);
                 }

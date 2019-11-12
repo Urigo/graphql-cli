@@ -23,7 +23,7 @@ const ValidateExtension: GraphQLExtensionDeclaration = api => {
 };
 
 export const plugin: CliPlugin = {
-    init({ program, loadConfig }) {
+    init({ program, loadConfig, reportError }) {
         program
             .command('validate')
             .option('-d, --deprecated', 'Fail on deprecated usage (default: false)')
@@ -36,33 +36,39 @@ export const plugin: CliPlugin = {
                 apollo: boolean;
                 maxDepth: number;
             }) => {
-                const config = await loadConfig({
-                    extensions: [ValidateExtension]
-                });
-                const [schema, documents] = await Promise.all([
-                    config.getSchema(),
-                    config.getDocuments(),
-                ]);
+                try {
 
-                const results = validate(schema, documents.map(doc => new Source(print(doc.document), doc.location)), options);
-                for (const result of results) {
-                    for (const error of result.errors) {
-                        for (const location of error.locations) {
-                            console.error(chalk.bold.underline(`${result.source.name}:${location.line}:${location.column};`));
-                            console.error(` ` + chalk.red(`Error: ${error.message}`));
+                    const config = await loadConfig({
+                        extensions: [ValidateExtension]
+                    });
+                    const [schema, documents] = await Promise.all([
+                        config.getSchema(),
+                        config.getDocuments(),
+                    ]);
+    
+                    const results = validate(schema, documents.map(doc => new Source(print(doc.document), doc.location)), options);
+                    for (const result of results) {
+                        for (const error of result.errors) {
+                            for (const location of error.locations) {
+                                console.error(chalk.bold.underline(`${result.source.name}:${location.line}:${location.column};`));
+                                console.error(` ` + chalk.red(`Error: ${error.message}`));
+                            }
+                        }
+                        for (const error of result.deprecated) {
+                            for (const location of error.locations) {
+                                console.error(chalk.bold.underline(`${result.source.name}:${location.line}:${location.column};`));
+                                console.error(` ` + chalk.red(`Error: ${error.message}`));
+                            }
                         }
                     }
-                    for (const error of result.deprecated) {
-                        for (const location of error.locations) {
-                            console.error(chalk.bold.underline(`${result.source.name}:${location.line}:${location.column};`));
-                            console.error(` ` + chalk.red(`Error: ${error.message}`));
-                        }
+                    if (results.length === 0) {
+                        console.info(`Documents are valid against the schema!`);
+                    } else {
+                        throw `Documents are not valid against the schema!`;
                     }
-                }
-                if (results.length === 0) {
-                    console.info(`Documents are valid against the schema!`);
-                } else {
-                    throw `Documents are not valid against the schema!`;
+                    process.exit(0);
+                } catch (e) {
+                    reportError(e);
                 }
             })
     }

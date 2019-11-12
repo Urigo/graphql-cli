@@ -25,64 +25,68 @@ const CodegenExtension: GraphQLExtensionDeclaration = api => {
 };
 
 export const plugin: CliPlugin = {
-  init({ program, loadConfig }) {
+  init({ program, loadConfig, reportError }) {
     program
       .command('codegen')
       .action(async () => {
-        const config = await loadConfig({
-          extensions: [CodegenExtension],
-        });
-        const [schema, documents, codegenExtensionConfig] = await Promise.all([
-          config.getSchema(),
-          config.getDocuments(),
-          config.extension<{ [filename: string]: any }>('codegen'),
-        ]);
-        const cwd = config.dirpath;
-        let codegenConfig = codegenExtensionConfig.generates || codegenExtensionConfig;
-        await Promise.all(
-          Object.keys(codegenConfig).map(async filename => {
-            if (
-              filename !== 'schema' &&
-              filename !== 'documents' &&
-              filename !== 'include' &&
-              filename !== 'exclude' &&
-              filename !== 'config') {
-              const pluginsDefinitions = codegenConfig[filename].plugins || codegenConfig[filename];
-              const pluginMap: any = {};
-              const plugins: any = [];
-              await Promise.all(pluginsDefinitions.map(async (pluginDef: any) => {
-                let pluginName: string;
-                if (typeof pluginDef === 'string') {
-                  pluginName = pluginDef;
-                  plugins.push({ [pluginName]: {} });
-                } else if (typeof pluginDef === 'object') {
-                  pluginName = Object.keys(pluginDef)[0];
-                  plugins.push(pluginDef);
+        try {
+          const config = await loadConfig({
+            extensions: [CodegenExtension],
+          });
+          const [schema, documents, codegenExtensionConfig] = await Promise.all([
+            config.getSchema(),
+            config.getDocuments(),
+            config.extension<{ [filename: string]: any }>('codegen'),
+          ]);
+          const cwd = config.dirpath;
+          let codegenConfig = codegenExtensionConfig.generates || codegenExtensionConfig;
+          await Promise.all(
+            Object.keys(codegenConfig).map(async filename => {
+              if (
+                filename !== 'schema' &&
+                filename !== 'documents' &&
+                filename !== 'include' &&
+                filename !== 'exclude' &&
+                filename !== 'config') {
+                const pluginsDefinitions = codegenConfig[filename].plugins || codegenConfig[filename];
+                const pluginMap: any = {};
+                const plugins: any = [];
+                await Promise.all(pluginsDefinitions.map(async (pluginDef: any) => {
+                  let pluginName: string;
+                  if (typeof pluginDef === 'string') {
+                    pluginName = pluginDef;
+                    plugins.push({ [pluginName]: {} });
+                  } else if (typeof pluginDef === 'object') {
+                    pluginName = Object.keys(pluginDef)[0];
+                    plugins.push(pluginDef);
+                  }
+                  pluginMap[pluginName] = await import(`@graphql-codegen/` + pluginName).catch(() => import(pluginName));
+                }));
+                const result = await codegen({
+                  schema: schema instanceof GraphQLSchema ? parse(printSchemaWithDirectives(schema)) : schema,
+                  documents: documents.map(
+                    doc => ({ filePath: doc.location, content: doc.document })
+                  ),
+                  filename,
+                  config: { ...(codegenConfig[filename].config || {}), ...(codegenExtensionConfig.config || {}) },
+                  pluginMap,
+                  plugins,
+                });
+                const targetPath = join(cwd, filename);
+                if ('overwrite' in codegenExtensionConfig && !codegenExtensionConfig.overwrite) {
+                  if (existsSync(targetPath)) {
+                    console.info(`${targetPath} already exists! Skipping.`);
+                  }
+                  return;
                 }
-                pluginMap[pluginName] = await import(`@graphql-codegen/` + pluginName).catch(() => import(pluginName));
-              }));
-              const result = await codegen({
-                schema: schema instanceof GraphQLSchema ? parse(printSchemaWithDirectives(schema)) : schema,
-                documents: documents.map(
-                  doc => ({ filePath: doc.location, content: doc.document })
-                ),
-                filename,
-                config: { ...(codegenConfig[filename].config || {}), ...(codegenExtensionConfig.config || {}) },
-                pluginMap,
-                plugins,
-              });
-              const targetPath = join(cwd, filename);
-              if ('overwrite' in codegenExtensionConfig && !codegenExtensionConfig.overwrite) {
-                if (existsSync(targetPath)) {
-                  console.info(`${targetPath} already exists! Skipping.`);
-                }
-                return;
+                writeFileSync(targetPath, result);
+                console.info(`Generated: ${filename}`);
               }
-              writeFileSync(targetPath, result);
-              console.info(`Generated: ${filename}`);
-            }
-          })
-        )
+            })
+          )
+        } catch (e) {
+          reportError(e);
+        }
       });
   }
 };
