@@ -49,23 +49,27 @@ export const plugin: CliPlugin = {
               filename !== 'include' && 
               filename !== 'exclude' &&
               filename !== 'config') {
-              const pluginNames = codegenConfig[filename].plugins || codegenConfig[filename];
-              const pluginInstances: any = await Promise.all(pluginNames.map((m: string) => import('@graphql-codegen/' + m)));
-              const pluginMap:any = {};
-              const plugins:any = [];
-              for (const pluginNameIndex in pluginNames) {
-                const pluginName = pluginNames[pluginNameIndex];
-                pluginMap[pluginName] = pluginInstances[pluginNameIndex];
-                plugins.push({ [pluginName]: {}});
+              const pluginsDefinitions = codegenConfig[filename].plugins || codegenConfig[filename];
+              const pluginMap: any = {};
+              const plugins: any = [];
+              for (const pluginDef of pluginsDefinitions) {
+                let pluginName: string;
+                if (pluginDef === 'string') {
+                  pluginName = 'string';
+                  plugins.push({ [pluginName]: {}});
+                } else if (pluginDef === 'object') {
+                  pluginName = Object.keys(pluginDef)[0];
+                  plugins.push(pluginDef);
+                }
+                pluginMap[pluginName] = await import(`@graphql-codegen/` + pluginName).catch(() => import(pluginName));
               }
-              const pluginConfig = {...(codegenConfig[filename].config || {}), ...(codegenExtensionConfig.config || {})};
               jobs.push(codegen({
                   schema: schema instanceof GraphQLSchema ? parse(printSchemaWithDirectives(schema)) : schema,
                   documents: documents.map(
                     doc => ({ filePath: doc.location, content: doc.document })
                   ),
                   filename,
-                  config: pluginConfig,
+                  config: {...(codegenConfig[filename].config || {}), ...(codegenExtensionConfig.config || {})},
                   pluginMap,
                   plugins,
                 })
