@@ -29,7 +29,7 @@
   "devDependencies": {
     "@types/fs-extra": "8.0.1",
     "@types/inquirer": "6.5.0",
-    "@types/node": "12.12.8",
+    "@types/node": "12.12.9",
     "@types/rimraf": "2.0.3",
     "@types/yamljs": "0.2.30",
     "graphql": "14.5.8",
