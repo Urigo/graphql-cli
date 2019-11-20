@@ -1,11 +1,7 @@
 import { CliPlugin, InitOptions } from '@test-graphql-cli/common';
-import { loadSchemaUsingLoaders } from '@graphql-toolkit/core';
 import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
-import { GraphQLFileLoader } from '@graphql-toolkit/graphql-file-loader';
 import { GitLoader } from '@graphql-toolkit/git-loader';
 import { GithubLoader } from '@graphql-toolkit/github-loader';
-import { JsonFileLoader } from '@graphql-toolkit/json-file-loader';
-import { UrlLoader } from '@graphql-toolkit/url-loader';
 import { diff, CriticalityLevel, Change } from '@graphql-inspector/core';
 import chalk from 'chalk';
 import logSymbols from 'log-symbols';
@@ -52,18 +48,10 @@ export const plugin: CliPlugin = {
           })
           if (!baseSchemaPtr) {
             const diffConfig = await config.extension('diff');
-            baseSchemaPtr = (diffConfig && diffConfig.baseSchema) || 'git:origin/master:schema.graphql';
+            baseSchemaPtr = diffConfig.baseSchema || 'git:origin/master:schema.graphql';
           }
           const [baseSchema, currentSchema] = await Promise.all([
-            loadSchemaUsingLoaders([
-              new UrlLoader(),
-              new GraphQLFileLoader(),
-              new JsonFileLoader(),
-              new CodeFileLoader(),
-              new GitLoader(),
-              new GithubLoader()
-            ],
-              baseSchemaPtr),
+            config.loadSchema(baseSchemaPtr),
             config.getSchema(),
           ]);
           const changes = diff(baseSchema, currentSchema);
