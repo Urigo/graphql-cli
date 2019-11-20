@@ -4,7 +4,8 @@ import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
 import { GitLoader } from '@graphql-toolkit/git-loader';
 import { GithubLoader } from '@graphql-toolkit/github-loader';
 import { GraphQLExtensionDeclaration } from 'graphql-config';
-import { ApolloServer, PlaygroundConfig, addMockFunctionsToSchema, IMocks } from 'apollo-server';
+import { ApolloServer, PlaygroundConfig as GraphQLPlaygroundConfig, IMocks } from 'apollo-server';
+import { RenderPageOptions } from '@apollographql/graphql-playground-html';
 
 const ServeExtension: GraphQLExtensionDeclaration = api => {
   // Schema
@@ -16,6 +17,10 @@ const ServeExtension: GraphQLExtensionDeclaration = api => {
     name: 'serve',
   };
 };
+
+export type PlaygroundConfig = GraphQLPlaygroundConfig & {
+  tabs: { [name: string]: RenderPageOptions['tabs'][0] };
+}
 
 export type MockConfig = { [typeName: string]: string };
 export type ServeConfig = { mocks: MockConfig; playground: PlaygroundConfig; } ;
@@ -56,15 +61,26 @@ export const plugin: CliPlugin = {
             serveConfig.mocks && loadMocks(serveConfig.mocks)
           ]);
 
-          addMockFunctionsToSchema({
-            schema,
-            mocks,
-          });
+          let playground: GraphQLPlaygroundConfig = true;
+          if (serveConfig.playground && serveConfig.playground.tabs) {
+            const normalizedPlaygroundConfig: any = {};
+            if (typeof serveConfig.playground === 'object') {
+              Object.assign(normalizedPlaygroundConfig, serveConfig.playground);
+            }
+            const normalizedTabs = [];
+            for (const tabName in serveConfig.playground.tabs) {
+              normalizedTabs.push({
+                name: tabName,
+                ...serveConfig.playground.tabs[tabName]
+              });
+            }
+            normalizedPlaygroundConfig.tabs = normalizedTabs;
+          }
 
           const apolloServer = new ApolloServer({
-            ...serveConfig,
             schema,
-            mocks: false,
+            mocks,
+            playground,
           });
 
           await apolloServer.listen(port)
