@@ -75,6 +75,7 @@ export const plugin: CliPlugin = {
               });
             }
             normalizedPlaygroundConfig.tabs = normalizedTabs;
+            playground = normalizedPlaygroundConfig;
           }
 
           const apolloServer = new ApolloServer({
