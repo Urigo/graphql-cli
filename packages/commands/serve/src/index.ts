@@ -1,12 +1,10 @@
 import { CliPlugin } from '@test-graphql-cli/common';
-import express from 'express';
-import graphqlHTTP from 'express-graphql';
 import open from 'open';
 import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
 import { GitLoader } from '@graphql-toolkit/git-loader';
 import { GithubLoader } from '@graphql-toolkit/github-loader';
 import { GraphQLExtensionDeclaration } from 'graphql-config';
-import { IMocks, addMockFunctionsToSchema } from '@kamilkisiela/graphql-tools';
+import { ApolloServer, PlaygroundConfig, addMockFunctionsToSchema, IMocks } from 'apollo-server';
 
 const ServeExtension: GraphQLExtensionDeclaration = api => {
   // Schema
@@ -20,15 +18,13 @@ const ServeExtension: GraphQLExtensionDeclaration = api => {
 };
 
 export type MockConfig = { [typeName: string]: string };
-export type MockFn<T = any> = () => T;
-export type Mocks = { [typeName: string]: MockFn };
-export type ServeConfig = { mocks: MockConfig } ;
+export type ServeConfig = { mocks: MockConfig; playground: PlaygroundConfig; } ;
 
 export async function loadMocks(mockConfig?: MockConfig) {
   if(!mockConfig) {
-    return true;
+    return {};
   }
-  const mocks: Mocks = {};
+  const mocks: IMocks = {};
   const mocksLoad$: Promise<void>[] = [];
   for (const typeName in mockConfig) {
     const [ moduleName, importName ] = mockConfig[typeName];
@@ -49,43 +45,33 @@ export const plugin: CliPlugin = {
       .action(async (port: string | number = '4000') => {
         try {
 
-          const app = express();
-
-          app.use(graphqlHTTP(async () => {
-            try {
-              const config = await loadConfig({
-                extensions: [ServeExtension]
-              });
-
-              const serveConfig: ServeConfig = await config.extension('serve');
-  
-              const [ schema, mocks ] = await Promise.all([
-                config.getSchema(),
-                serveConfig.mocks && loadMocks(serveConfig.mocks)
-              ]);
-  
-              addMockFunctionsToSchema({
-                schema,
-                mocks: mocks as IMocks,
-              });
-  
-              return {
-                schema,
-                graphiql: true,
-              };
-            } catch (e) {
-              reportError(e);
-            }
-
-            return null;
-          }))
-          
-
-          app.listen(port, () => {
-            const url = `http://localhost:${port}/`;
-            console.log(`Serving the GraphQL API on ${url}`);
-            open(url);
+          const config = await loadConfig({
+            extensions: [ServeExtension]
           });
+
+          const serveConfig: ServeConfig = await config.extension('serve');
+
+          const [ schema, mocks ] = await Promise.all([
+            config.getSchema(),
+            serveConfig.mocks && loadMocks(serveConfig.mocks)
+          ]);
+
+          addMockFunctionsToSchema({
+            schema,
+            mocks,
+          });
+
+          const apolloServer = new ApolloServer({
+            ...serveConfig,
+            schema,
+            mocks: false,
+          });
+
+          await apolloServer.listen(port)
+          
+          const url = `http://localhost:${port}/graphql`;
+          console.log(`Serving the GraphQL API and Playground on ${url}`);
+          await open(url);
 
         } catch (e) {
           reportError(e);

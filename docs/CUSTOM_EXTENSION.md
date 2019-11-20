@@ -6,7 +6,7 @@ The current implementation of `graphql-cli` is using [Commander](https://github.
 
 Plugins and extension are treated as NodeJS module by the `graphql-cli`, so it means you can use JavaScript/TypeScript/Any other super-set of JavaScript to write your extension. It means that you plugin will be loaded by it's name under `node_modules` - for example `graphql-cli my-custom-plugin ...`.
 
-`graphql-cli` also support `graphql-config`, so it can help you easily load your GraphQL schema, operations and configuration from a unified config file.
+`graphql-cli` also supports `graphql-config`, so it can help you easily load your GraphQL schema, operations and configuration from a unified config file.
 
 > If you are wrapping an existing tool that has it's own CLI already, consider to expose a programtic API so it will be easier to consume.
 

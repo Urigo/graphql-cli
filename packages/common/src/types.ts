@@ -1,21 +1,15 @@
 import { Command } from 'commander';
-import { GraphQLExtensionDeclaration } from 'graphql-config';
+import { GraphQLProjectConfig, loadConfig } from 'graphql-config';
 
 export interface InitOptions {
   cwd: string;
   program: Command;
   reportError: (e: Error | string) => void;
-  loadConfig: (loadConfigOptions?: LoadConfigOptions) => Promise<import('graphql-config').GraphQLProjectConfig>;
+  loadConfig: (loadConfigOptions?: LoadConfigOptions) => Promise<GraphQLProjectConfig>;
 }
 
 export interface CliPlugin {
   init(options: InitOptions): void | Promise<void>;
 }
 
-export interface LoadConfigOptions {
-  filepath?: string;
-  rootDir?: string;
-  extensions?: GraphQLExtensionDeclaration[];
-  throwOnMissing?: boolean;
-  throwOnEmpty?: boolean;
-}
+export type LoadConfigOptions = Partial<Parameters<typeof loadConfig>[0]>;

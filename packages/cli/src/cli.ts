@@ -1,10 +1,10 @@
 import { Command } from 'commander';
 import { getPluginByName } from './get-plugin';
-import { LoadConfigOptions } from '@test-graphql-cli/common';
 import chalk from 'chalk';
 import globby from 'globby';
 import { join } from 'path';
 import logSymbols from 'log-symbols';
+import { LoadConfigOptions } from '@test-graphql-cli/common';
 
 const reportError = (e: Error | string) => {
   console.error(logSymbols.error, e instanceof Error ? e.message || e : e);
@@ -40,39 +40,32 @@ export async function cli(argv = process.argv): Promise<void> {
     const program = new Command();
 
     program.option('-p, --project <projectName>');
-    program.option('-r, --require <moduleName>');
 
-    let projectName = '';
+    let projectName = 'default';
+
+    const loadConfig = async (loadConfigOptions: LoadConfigOptions = {}) => {
+      const graphqlConfig = await import('graphql-config');
+      const loadedGraphQLConfig = await graphqlConfig.loadConfig({
+        rootDir: process.cwd(),
+        throwOnEmpty: false,
+        throwOnMissing: false,
+        ...loadConfigOptions
+      });
+      const projectNames = Object.keys(loadedGraphQLConfig.projects);
+      if (projectName && !projectNames.includes(projectName)) {
+        throw new Error(
+          `You don't have project ${projectName} so you need to specify an available project name.\n` +
+          `Available projects are; ${projectNames.join(',')}.`
+        );
+      }
+      return loadedGraphQLConfig.getProject(projectName);
+    };
 
     await plugin.init({
       cwd: process.cwd(),
       program,
       reportError,
-      loadConfig: (loadConfigOptions: LoadConfigOptions = {}) =>
-        import('graphql-config')
-          .then(graphqlConfig => graphqlConfig.loadConfig({
-            rootDir: process.cwd(),
-            throwOnEmpty: false,
-            throwOnMissing: false,
-            ...loadConfigOptions
-          }))
-          .then(c => {
-            const projectNames = Object.keys(c.projects);
-            if (projectName && !projectNames.includes(projectName)) {
-              throw new Error(
-                `You don't have project ${projectName}.\n` +
-                `Available projects are ${projectNames.join(',')}.`
-              );
-            }
-            if (!projectNames.includes('default') && projectNames.length > 0) {
-              throw new Error(
-                `You don't have 'default' project so you need to specify a project name.\n` +
-                `Available projects are ${projectNames.join(',')}.`
-              );
-            }
-            projectName = 'default';
-            return c.getProject(projectName);
-          })
+      loadConfig,
     });
 
     // Remove the root object before running, to allow develoeprs to write
@@ -85,9 +78,6 @@ export async function cli(argv = process.argv): Promise<void> {
       projectName = program.project;
     }
 
-    if (program.require) {
-      await import(program.require);
-    }
   } catch (e) {
     reportError(e);
   }
