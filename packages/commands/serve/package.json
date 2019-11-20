@@ -19,7 +19,7 @@
     "@graphql-toolkit/github-loader": "0.7.2",
     "@test-graphql-cli/common": "4.0.0",
     "@types/node-fetch": "2.5.3",
-    "apollo-server": "2.9.9",
+    "apollo-server": "2.9.11",
     "chalk": "3.0.0",
     "commander": "4.0.1",
     "log-symbols": "3.0.0",
