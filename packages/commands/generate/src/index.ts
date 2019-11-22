@@ -7,10 +7,14 @@ import { JsonFileLoader } from '@graphql-toolkit/json-file-loader';
 import { UrlLoader } from '@graphql-toolkit/url-loader';
 import { GitLoader } from '@graphql-toolkit/git-loader';
 import { GithubLoader } from '@graphql-toolkit/github-loader';
-import { GraphQLBackendCreator, GraphbackGeneratorConfig, IGraphQLBackend, DatabaseSchemaManager, ClientDocuments, UpdateDatabaseIfChanges, migrate } from 'graphback';
 import { ensureFile } from 'fs-extra';
 import { writeFile as fsWriteFile } from 'fs';
 import { join } from 'path';
+import { graphQLInputContext, InputModelTypeContext } from "@graphback/core"
+import { migrate, DropCreateDatabaseAlways, DatabaseSchemaManager } from "graphql-migrations"
+import { createClient } from "@graphback/codegen-client"
+import { createResolvers, GeneratedResolvers, ResolverGeneratorOptions } from "@graphback/codegen-resolvers"
+import { createSchema, SchemaGeneratorOptions } from "@graphback/codegen-schema"
 
 export interface GenerateConfig {
   folders: {
@@ -20,7 +24,11 @@ export interface GenerateConfig {
     client: string;
     migrations: string;
   };
-  graphqlCRUD: GraphbackGeneratorConfig;
+  graphqlCRUD: GraphbackCRUDGeneratorConfig;
+  generator: {
+    resolvers: ResolverGeneratorOptions
+    schema: SchemaGeneratorOptions
+  }
   db: { database: string; dbConfig: any; };
 }
 
@@ -48,32 +56,34 @@ export function globPromise(glob: string, options: import('glob').IOptions = {})
   })
 }
 
-export async function createSchema(cwd: string, generated: IGraphQLBackend, config: GenerateConfig) {
-  return writeFile(join(cwd, config.folders.schema, 'generated.ts'), generated.schema);
+export async function createSchemaFile(cwd: string, generatedSchema: string, config: GenerateConfig) {
+  return writeFile(join(cwd, config.folders.schema, 'generated.ts'), generatedSchema);
 }
 
-export async function createResolvers(cwd: string, generated: IGraphQLBackend, config: GenerateConfig) {
+export async function createResolversFiles(cwd: string, resolvers: GeneratedResolvers, config: GenerateConfig) {
   return Promise.all([
     Promise.all(
-      generated.resolvers.custom.map(customResolver =>
+      resolvers.custom.map(customResolver =>
         writeFile(join(cwd, config.folders.resolvers, 'custom', customResolver.name + '.ts'), customResolver.output)
       )
     ),
     Promise.all(
-      generated.resolvers.types.map(typeResolver =>
+      resolvers.types.map(typeResolver =>
         writeFile(join(cwd, config.folders.resolvers, 'generated', typeResolver.name + '.ts'), typeResolver.output)
       )
     ),
-    writeFile(join(cwd, config.folders.resolvers, 'index.ts'), generated.resolvers.index)
+    writeFile(join(cwd, config.folders.resolvers, 'index.ts'), resolvers.index)
   ]
   );
 }
 
-export async function createBackend(cwd: string, backend: GraphQLBackendCreator, config: GenerateConfig) {
-  const generated = await backend.createBackend(config.db.database);
+export async function createBackendFiles(cwd: string, inputContext: InputModelTypeContext[], config: GenerateConfig) {
+  const resolvers = createResolvers(inputContext, config.generator.resolvers);
+  const schema = createSchema(inputContext, config.generator.schema);
+
   await Promise.all([
-    createSchema(cwd, generated, config),
-    createResolvers(cwd, generated, config),
+    createSchemaFile(cwd, schema, config),
+    createResolversFiles(cwd, resolvers, config)
   ])
 }
 
@@ -105,8 +115,8 @@ export async function createSubscriptions(cwd: string, generated: ClientDocument
   )));
 }
 
-export async function createClient(cwd: string, backend: GraphQLBackendCreator, config: GenerateConfig) {
-  const generated = await backend.createClient();
+export async function createClientFiles(cwd: string, inputContext: InputModelTypeContext[], config: GenerateConfig) {
+  const generated = await createClient(inputContext, { output: 'ts' });
   await Promise.all([
     createFragments(cwd, generated, config),
     createQueries(cwd, generated, config),
@@ -115,10 +125,10 @@ export async function createClient(cwd: string, backend: GraphQLBackendCreator, 
   ]);
 }
 
-export async function createDatabase(schema: string, config: GenerateConfig) {
-
-  const manager = new DatabaseSchemaManager(config.db.database, config.db.dbConfig);
-  const dbInitialization = new UpdateDatabaseIfChanges(manager.getConnection(), config.folders.migrations);
+export async function createDatabaseMigration(schema: string, config: GenerateConfig) {
+  const db = new DatabaseSchemaManager(config.db.database, config.db.dbConfig);
+  // FIXME move to UpdateDatabaseIfChanges after adding relationships support
+  const dbInitialization = new DropCreateDatabaseAlways(config.db.database, db.getConnection());
 
   return await migrate(schema, dbInitialization);
 }
@@ -165,21 +175,17 @@ export const plugin: CliPlugin = {
           ], join(cwd, generateConfig.folders.model + '/**/*.graphql'));
 
           const schemaString = printSchemaWithDirectives(models);
-          const backendCreator = new GraphQLBackendCreator(
-            {
-              getSchemaText: () => { return schemaString }
-            },
-            generateConfig.graphqlCRUD
-          );
+          // Creates model context that is shared with all generators to provide results
+          const inputContext = graphQLInputContext.createModelContext(schemaString, generateConfig.graphqlCRUD)
 
           if (backend) {
-            await createBackend(cwd, backendCreator, generateConfig);
+            await createBackendFiles(cwd, inputContext, generateConfig);
           }
           if (client) {
-            await createClient(cwd, backendCreator, generateConfig);
+            await createClientFiles(cwd, inputContext, generateConfig);
           }
           if (db) {
-            await createDatabase(schemaString, generateConfig);
+            await createDatabaseMigration(schemaString, generateConfig);
           }
 
         } catch (e) {
