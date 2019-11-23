@@ -38,12 +38,15 @@ export const plugin: CliPlugin = {
             config.extension<any>('codegen'),
           ]);
           const cwd = config.dirpath;
-          let fileNameMap = codegenExtensionConfig.generates || codegenExtensionConfig.filter((key: string) => (
+          let fileNameMap = codegenExtensionConfig.generates || Object.keys(codegenExtensionConfig).filter((key: string) => (
             key !== 'schema' &&
             key !== 'documents' &&
             key !== 'include' &&
             key !== 'exclude' &&
-            key !== 'config'));
+            key !== 'config')).reduce((obj, key) => {
+              obj[key] = codegenExtensionConfig[key];
+              return obj
+            }, {});
           const globalConfig = codegenExtensionConfig.config || {};
           const tasks = new Listr(Object.keys(fileNameMap).map(filename => ({
             title: `Generate ${filename}`,
