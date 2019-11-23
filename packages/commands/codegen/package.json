@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@types/listr": "0.14.2",
-    "@types/node": "12.12.11",
+    "@types/node": "12.12.12",
     "@types/open": "6.2.1",
     "graphql": "14.5.8",
     "ts-node": "8.5.2",
