@@ -8,6 +8,7 @@ import YAML from 'yamljs';
 import rimraf from 'rimraf';
 import fetch from 'cross-fetch';
 import ora from 'ora';
+import { cosmiconfig } from 'cosmiconfig';
 
 type StandardEnum<T> = {
     [id: string]: T | string;
@@ -84,6 +85,30 @@ export const plugin: CliPlugin = {
                                 `There is no valid NodeJS project in the current path;\n` +
                                 `${projectPath}`
                             );
+                        }
+                        const codegenCosmiConfig = cosmiconfig('codegen');
+                        const { config: codegenConfig, filepath: codegenFilePath, isEmpty } = await codegenCosmiConfig.search(projectPath);
+                        if (!isEmpty) {
+                            const { willBeMerged } = await prompt([
+                                {
+                                    type: 'confirm',
+                                    name: 'willBeMerged',
+                                    message: `GraphQL Code Generator configuration has been detected in ${codegenFilePath}.\n Do you want to use the same configuration with GraphQL CLI?`,
+                                    default: true,
+                                }
+                            ]);
+                            if (willBeMerged){
+                                graphqlConfig.extensions.codegen = {};
+                                for (const key in codegenConfig) {
+                                    if (key === 'schema') {
+                                        graphqlConfig.schema = codegenConfig.schema;
+                                    } else if (key === 'documents') {
+                                        graphqlConfig.documents = codegenConfig.documents;
+                                    } else {
+                                        graphqlConfig.extensions.codegen[key] = codegenConfig[key];
+                                    }
+                                }
+                            }
                         }
                     }
 
