@@ -43,7 +43,7 @@ export const plugin: CliPlugin = {
             key !== 'documents' &&
             key !== 'include' &&
             key !== 'exclude' &&
-            key !== 'config')).reduce((obj, key) => {
+            key !== 'config')).reduce((obj: {[key: string]: any}, key: string) => {
               obj[key] = codegenExtensionConfig[key];
               return obj
             }, {});
