@@ -8,7 +8,7 @@ import YAML from 'yamljs';
 import rimraf from 'rimraf';
 import fetch from 'cross-fetch';
 import ora from 'ora';
-import { cosmiconfig } from 'cosmiconfig';
+import { searchCodegenConfig } from './search-codegen-config';
 
 type StandardEnum<T> = {
     [id: string]: T | string;
@@ -86,9 +86,9 @@ export const plugin: CliPlugin = {
                                 `${projectPath}`
                             );
                         }
-                        const codegenCosmiConfig = cosmiconfig('codegen');
-                        const { config: codegenConfig, filepath: codegenFilePath, isEmpty } = await codegenCosmiConfig.search(projectPath);
-                        if (!isEmpty) {
+                        const result = await searchCodegenConfig(projectPath);
+                        if (result && !result.isEmpty) {
+                            const codegenFilePath = result.filepath;
                             const { willBeMerged } = await prompt([
                                 {
                                     type: 'confirm',
@@ -98,6 +98,7 @@ export const plugin: CliPlugin = {
                                 }
                             ]);
                             if (willBeMerged){
+                                const codegenConfig = result.config;
                                 graphqlConfig.extensions.codegen = {};
                                 for (const key in codegenConfig) {
                                     if (key === 'schema') {
@@ -173,7 +174,7 @@ export const plugin: CliPlugin = {
 
                     try {
                         if (existsSync(graphqlConfigPath)) {
-                            graphqlConfig  = YAML.parse(readFileSync(graphqlConfigPath, 'utf8'));
+                            graphqlConfig = YAML.parse(readFileSync(graphqlConfigPath, 'utf8'));
                         }
                     } catch (e) {}
 
