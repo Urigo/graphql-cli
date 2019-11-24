@@ -76,6 +76,10 @@ export const plugin: CliPlugin = {
                     let projectPath = process.cwd();
                     let projectType: ProjectType;
 
+                    let npmPackages = [
+                        'graphql-cli'
+                    ];
+
                     if(initializationType === InitializationType.ExistingGraphQL) {
                         if (existsSync(join(projectPath, 'package.json'))) {
                             const { default: packageJson } = await import(join(projectPath, 'package.json'));
@@ -98,14 +102,17 @@ export const plugin: CliPlugin = {
                                 }
                             ]);
                             if (willBeMerged){
+                                npmPackages.push('@test-graphql-cli/codegen');
                                 const codegenConfig = result.config;
                                 graphqlConfig.extensions.codegen = {};
+                                if (graphqlConfig.schema) {
+                                    graphqlConfig.schema = codegenConfig.schema;
+                                }
+                                if (graphqlConfig.documents) {
+                                    graphqlConfig.documents = codegenConfig.documents;
+                                }
                                 for (const key in codegenConfig) {
-                                    if (key === 'schema') {
-                                        graphqlConfig.schema = codegenConfig.schema;
-                                    } else if (key === 'documents') {
-                                        graphqlConfig.documents = codegenConfig.documents;
-                                    } else {
+                                    if (key !== 'schema' && key !== 'documents') {
                                         graphqlConfig.extensions.codegen[key] = codegenConfig[key];
                                     }
                                 }
@@ -306,9 +313,6 @@ export const plugin: CliPlugin = {
                         ]);
                         graphqlConfig.documents = documents;
                     }
-                    let npmPackages = [
-                        'graphql-cli'
-                    ];
                     if (!graphqlConfig.extensions.codegen) {
 
                         const { isCodegenAsked } = await prompt([
