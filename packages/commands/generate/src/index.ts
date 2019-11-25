@@ -142,8 +142,6 @@ export async function createDatabaseMigration(schema: string, config: GenerateCo
   const dbInitialization = new DropCreateDatabaseAlways(config.db.database, db);
 
   await migrate(schema, dbInitialization);
-
-  process.exit(0);
 }
 
 export const plugin: CliPlugin = {
@@ -248,6 +246,8 @@ export const plugin: CliPlugin = {
           });
 
           await listr.run();
+
+          process.exit(0);
 
         } catch (e) {
           reportError(e);
