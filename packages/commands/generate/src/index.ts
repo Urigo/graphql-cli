@@ -73,19 +73,10 @@ export async function createSchemaFile(cwd: string, generatedSchema: string, con
 
 export async function createResolversFiles(cwd: string, resolvers: GeneratedResolvers, config: GenerateConfig) {
   const extension = FormatExtensionMap[config.generator.resolvers.format];
-  return Promise.all([
-    Promise.all(
-      resolvers.custom.map(customResolver =>
-        writeFile(join(cwd, config.folders.resolvers, 'custom', customResolver.name + '.' + extension), customResolver.output)
-      )
-    ),
-    Promise.all(
-      resolvers.types.map(typeResolver =>
-        writeFile(join(cwd, config.folders.resolvers, 'generated', typeResolver.name + '.' + extension), typeResolver.output)
-      )
-    ),
-    writeFile(join(cwd, config.folders.resolvers, 'index.' + extension), resolvers.index)
-  ]
+  return Promise.all(
+    resolvers.types.map(typeResolver =>
+      writeFile(join(cwd, config.folders.resolvers, 'generated', typeResolver.name + '.' + extension), typeResolver.output)
+    )
   );
 }
 
