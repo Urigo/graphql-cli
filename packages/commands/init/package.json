@@ -21,7 +21,7 @@
     "inquirer": "7.0.0",
     "log-symbols": "3.0.0",
     "open": "7.0.0",
-    "openapi-to-graphql": "1.6.2",
+    "openapi-to-graphql": "1.6.3",
     "ora": "4.0.3",
     "rimraf": "3.0.0",
     "simple-git": "1.126.0",
