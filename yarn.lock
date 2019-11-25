@@ -201,17 +201,17 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
-"@graphback/codegen-client@0.10.0-dev4":
-  version "0.10.0-dev4"
-  resolved "https://registry.yarnpkg.com/@graphback/codegen-client/-/codegen-client-0.10.0-dev4.tgz#0077885709051874656bad3f1b2ed2653b9ca7f4"
-  integrity sha512-diUpkzTmxJzOSBK9FetGhJb46O8wA6ZDA4xuP5dylVAq3ivjgfuNJsqxv4hc9MjST1PrT6Yt8cFbf6DKi1jv+A==
+"@graphback/codegen-client@0.10.0-dev5":
+  version "0.10.0-dev5"
+  resolved "https://registry.yarnpkg.com/@graphback/codegen-client/-/codegen-client-0.10.0-dev5.tgz#ce86b30dda28041b7d01e0a1960da696fe349227"
+  integrity sha512-zX62I8TyHnjHUnCb6h4f+xTiN1dSZYC7ttqeAr8RL7SnxHReEaYaMz5NNGeDXSkCG4HH9OZZ14NwfDSsLyOGnA==
   dependencies:
-    "@graphback/core" "^0.10.0-rc2"
+    "@graphback/core" "0.10.0-rc2"
 
-"@graphback/codegen-resolvers@0.10.0-rc2":
-  version "0.10.0-rc2"
-  resolved "https://registry.yarnpkg.com/@graphback/codegen-resolvers/-/codegen-resolvers-0.10.0-rc2.tgz#45b7bf90e065b18f4b60313c6a55c8baafd0e088"
-  integrity sha512-cGlkhaPuPr72z9SgqJVmTdo6N7vClQj3mJKQlU4SOee3jUUdhIebq2sindunGbwTC8ARddnXm9jZIPCLE29CgA==
+"@graphback/codegen-resolvers@0.10.0-dev3":
+  version "0.10.0-dev3"
+  resolved "https://registry.yarnpkg.com/@graphback/codegen-resolvers/-/codegen-resolvers-0.10.0-dev3.tgz#e60d02ac0ac0a02ed5827eefb400c3a9a68358c7"
+  integrity sha512-55yfeLkPAKzOq2WrHnKLwCVnJGRfZsFGzXq8Lds90IFrUuiz6oV+loy2Igu6x8s9p2HR6ha6pRqy4L3rB+pD2Q==
   dependencies:
     "@graphback/core" "^0.10.0-rc2"
     knex "0.20.2"
