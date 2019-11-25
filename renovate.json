@@ -13,5 +13,6 @@
   "automerge": true,
   "major": {
     "automerge": false
-  }
+  },
+  "ignoreUnstable": true
 }
