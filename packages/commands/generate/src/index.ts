@@ -172,6 +172,7 @@ export const plugin: CliPlugin = {
               {
                 type: 'checkbox',
                 name: 'selections',
+                message: 'What do you want to generate?',
                 choices: [
                   {
                     value: 'backend',
