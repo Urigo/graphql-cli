@@ -14,5 +14,7 @@
   "major": {
     "automerge": false
   },
-  "ignoreUnstable": true
+  "ignorePaths": [
+    "@graphback/*"
+  ]
 }
