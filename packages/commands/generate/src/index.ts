@@ -176,15 +176,19 @@ export const plugin: CliPlugin = {
           ], join(cwd, generateConfig.folders.model + '/**/*.graphql'));
 
           const schemaString = printSchemaWithDirectives(models);
-          // Creates model context that is shared with all generators to provide results
-          const inputContext = graphQLInputContext.createModelContext(schemaString, generateConfig.graphqlCRUD)
 
-          if (backend) {
-            await createBackendFiles(cwd, inputContext, generateConfig);
+          if (backend || client) {
+            // Creates model context that is shared with all generators to provide results
+            const inputContext = graphQLInputContext.createModelContext(schemaString, generateConfig.graphqlCRUD)
+  
+            if (backend) {
+              await createBackendFiles(cwd, inputContext, generateConfig);
+            }
+            if (client) {
+              await createClientFiles(cwd, inputContext, generateConfig);
+            }
           }
-          if (client) {
-            await createClientFiles(cwd, inputContext, generateConfig);
-          }
+          
           if (db) {
             await createDatabaseMigration(schemaString, generateConfig);
           }
