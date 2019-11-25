@@ -67,14 +67,18 @@ export const plugin: CliPlugin = {
             .action(async ({ projectName, templateName, templateUrl }: { projectName?: string, templateName?: string, templateUrl?: string }) => {
                 try {
 
-                    const initializationType = await askForEnum(InitializationType, 'Select the best option for you', InitializationType.FromScratch);
-
                     let graphqlConfig: any = {
                         extensions: {}
                     };
 
                     let projectPath = process.cwd();
                     let projectType: ProjectType;
+
+                    if (!projectType) {
+                        projectType = await askForEnum(ProjectType, 'What is the type of the project?', ProjectType.FullStack);
+                    }   
+
+                    const initializationType = await askForEnum(InitializationType, 'Select the best option for you', InitializationType.FromScratch);
 
                     let npmPackages = [
                         'graphql-cli'
@@ -133,11 +137,7 @@ export const plugin: CliPlugin = {
                             ]);
                             projectName = enteredName;
                             projectPath = join(process.cwd(), projectName);
-                        }
-
-                        if (!projectType) {
-                            projectType = await askForEnum(ProjectType, 'What is the type of the project?', ProjectType.FullStack);
-                        }    
+                        } 
 
                         if (!templateName) {
                             const downloadingTemplateList = ora('Loading template list...').start();
@@ -185,7 +185,7 @@ export const plugin: CliPlugin = {
                         }
                     } catch (e) {}
 
-                    if (!graphqlConfig.extensions.generate) {
+                    if (projectType !== ProjectType.FrontendOnly && !graphqlConfig.extensions.generate) {
                         const { isBackendGenerationAsked } = await prompt([
                             {
                                 type: 'confirm',
