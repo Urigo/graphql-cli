@@ -10,11 +10,12 @@ import { GithubLoader } from '@graphql-toolkit/github-loader';
 import { ensureFile } from 'fs-extra';
 import { writeFile as fsWriteFile } from 'fs';
 import { join } from 'path';
-import { graphQLInputContext, InputModelTypeContext } from "@graphback/core"
+import { graphQLInputContext, InputModelTypeContext, GraphbackCRUDGeneratorConfig } from "@graphback/core"
 import { migrate, DropCreateDatabaseAlways, DatabaseSchemaManager } from "graphql-migrations"
-import { createClient } from "@graphback/codegen-client"
-import { createResolvers, GeneratedResolvers, ResolverGeneratorOptions } from "@graphback/codegen-resolvers"
+import { createClient, ClientDocuments } from "@graphback/codegen-client"
+import { createResolvers, ResolverGeneratorOptions } from "@graphback/codegen-resolvers"
 import { createSchema, SchemaGeneratorOptions } from "@graphback/codegen-schema"
+import { GeneratedResolvers } from '@graphback/codegen-resolvers/types/api/resolverTypes';
 
 export interface GenerateConfig {
   folders: {
