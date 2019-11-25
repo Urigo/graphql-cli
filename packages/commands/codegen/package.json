@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@types/listr": "0.14.2",
-    "@types/node": "12.12.12",
+    "@types/node": "12.12.14",
     "@types/open": "6.2.1",
     "@types/resolve-from": "5.0.1",
     "graphql": "14.5.8",
