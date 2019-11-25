@@ -3,18 +3,14 @@
     "config:base",
     ":pinVersions"
   ],
-  "groupName":"all",
   "packageRules": [
     {
       "packageNames": ["graphql"],
       "versionStrategy": "widen"
     }
   ],
-  "automerge": true,
+  "automerge": false,
   "major": {
     "automerge": false
-  },
-  "ignorePaths": [
-    "@graphback/*"
-  ]
+  }
 }
