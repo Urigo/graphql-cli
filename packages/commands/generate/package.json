@@ -33,14 +33,15 @@
     "fs-extra": "8.1.0",
     "graphql-migrations": "0.10.0-rc2",
     "inquirer": "7.0.0",
+    "knex": "0.20.2",
     "listr": "0.14.3",
     "log-symbols": "3.0.0",
     "tslib": "1.10.0"
   },
   "devDependencies": {
+    "@types/fs-extra": "8.0.1",
     "@types/inquirer": "6.5.0",
     "@types/listr": "0.14.2",
-    "@types/fs-extra": "8.0.1",
     "@types/node": "12.12.12",
     "graphql": "14.5.8",
     "ts-node": "8.5.2",
