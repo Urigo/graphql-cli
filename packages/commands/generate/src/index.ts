@@ -31,9 +31,16 @@ export interface GenerateConfig {
   generator: {
     resolvers: ResolverGeneratorOptions
     schema: SchemaGeneratorOptions
+    client: { format: 'ts' | 'gql' }
   }
   db: { database: string; dbConfig: any; };
 }
+
+const FormatExtensionMap = {
+  'ts': 'ts',
+  'js': 'js',
+  'gql': 'graphql',
+};
 
 export function writeFile(path: string, data: any) {
   return new Promise<void>(async (resolve, reject) => {
@@ -60,22 +67,24 @@ export function globPromise(glob: string, options: import('glob').IOptions = {})
 }
 
 export async function createSchemaFile(cwd: string, generatedSchema: string, config: GenerateConfig) {
-  return writeFile(join(cwd, config.folders.schema, 'generated.ts'), generatedSchema);
+  const extension = FormatExtensionMap[config.generator.schema.format];
+  return writeFile(join(cwd, config.folders.schema, 'generated.' + extension), generatedSchema);
 }
 
 export async function createResolversFiles(cwd: string, resolvers: GeneratedResolvers, config: GenerateConfig) {
+  const extension = FormatExtensionMap[config.generator.resolvers.format];
   return Promise.all([
     Promise.all(
       resolvers.custom.map(customResolver =>
-        writeFile(join(cwd, config.folders.resolvers, 'custom', customResolver.name + '.ts'), customResolver.output)
+        writeFile(join(cwd, config.folders.resolvers, 'custom', customResolver.name + '.' + extension), customResolver.output)
       )
     ),
     Promise.all(
       resolvers.types.map(typeResolver =>
-        writeFile(join(cwd, config.folders.resolvers, 'generated', typeResolver.name + '.ts'), typeResolver.output)
+        writeFile(join(cwd, config.folders.resolvers, 'generated', typeResolver.name + '.' + extension), typeResolver.output)
       )
     ),
-    writeFile(join(cwd, config.folders.resolvers, 'index.ts'), resolvers.index)
+    writeFile(join(cwd, config.folders.resolvers, 'index.' + extension), resolvers.index)
   ]
   );
 }
@@ -91,35 +100,39 @@ export async function createBackendFiles(cwd: string, inputContext: InputModelTy
 }
 
 export async function createFragments(cwd: string, generated: ClientDocuments, config: GenerateConfig) {
+  const extension = FormatExtensionMap[config.generator.client.format];
   return Promise.all(generated.fragments.map((fragment: any) => writeFile(
-    join(cwd, config.folders.client, 'generated', 'fragments', fragment.name + '.ts'),
+    join(cwd, config.folders.client, 'generated', 'fragments', fragment.name + '.' + extension),
     fragment.implementation,
   )));
 }
 
 export async function createQueries(cwd: string, generated: ClientDocuments, config: GenerateConfig) {
+  const extension = FormatExtensionMap[config.generator.client.format];
   return Promise.all(generated.queries.map(query => writeFile(
-    join(cwd, config.folders.client, 'generated', 'queries', query.name + '.ts'),
+    join(cwd, config.folders.client, 'generated', 'queries', query.name + '.' + extension),
     query.implementation,
   )));
 }
 
 export async function createMutations(cwd: string, generated: ClientDocuments, config: GenerateConfig) {
+  const extension = FormatExtensionMap[config.generator.client.format];
   return Promise.all(generated.mutations.map(mutation => writeFile(
-    join(cwd, config.folders.client, 'generated', 'mutations', mutation.name + '.ts'),
+    join(cwd, config.folders.client, 'generated', 'mutations', mutation.name + '.' + extension),
     mutation.implementation,
   )));
 }
 
 export async function createSubscriptions(cwd: string, generated: ClientDocuments, config: GenerateConfig) {
+  const extension = FormatExtensionMap[config.generator.client.format];
   return Promise.all(generated.subscriptions.map(subscription => writeFile(
-    join(cwd, config.folders.client, 'generated', 'subscriptions', subscription.name + '.ts'),
+    join(cwd, config.folders.client, 'generated', 'subscriptions', subscription.name + '.' + extension),
     subscription.implementation,
   )));
 }
 
 export async function createClientFiles(cwd: string, inputContext: InputModelTypeContext[], config: GenerateConfig) {
-  const generated = await createClient(inputContext, { output: 'ts' });
+  const generated = await createClient(inputContext, { output: config.generator.client.format });
   await Promise.all([
     createFragments(cwd, generated, config),
     createQueries(cwd, generated, config),
