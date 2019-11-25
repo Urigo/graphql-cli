@@ -141,7 +141,9 @@ export async function createDatabaseMigration(schema: string, config: GenerateCo
   // FIXME move to UpdateDatabaseIfChanges after adding relationships support
   const dbInitialization = new DropCreateDatabaseAlways(config.db.database, db);
 
-  return await migrate(schema, dbInitialization);
+  await migrate(schema, dbInitialization);
+
+  process.exit(0);
 }
 
 export const plugin: CliPlugin = {
