@@ -201,17 +201,17 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
-"@graphback/codegen-client@0.10.0-dev5":
-  version "0.10.0-dev5"
-  resolved "https://registry.yarnpkg.com/@graphback/codegen-client/-/codegen-client-0.10.0-dev5.tgz#ce86b30dda28041b7d01e0a1960da696fe349227"
-  integrity sha512-zX62I8TyHnjHUnCb6h4f+xTiN1dSZYC7ttqeAr8RL7SnxHReEaYaMz5NNGeDXSkCG4HH9OZZ14NwfDSsLyOGnA==
+"@graphback/codegen-client@0.10.0-rc2":
+  version "0.10.0-rc2"
+  resolved "https://registry.yarnpkg.com/@graphback/codegen-client/-/codegen-client-0.10.0-rc2.tgz#bac8af4a75037c794294647dfb0e7e0b66436da4"
+  integrity sha512-s6nKXaWZ/hQZBw2be4gc1rTBewOYRPRpiN3ND74exsxg60G8AnaC7ycFOsKAVelLl/WWGWDvZxbTs4w5Ouz+dg==
   dependencies:
-    "@graphback/core" "0.10.0-rc2"
+    "@graphback/core" "^0.10.0-rc2"
 
-"@graphback/codegen-resolvers@0.10.0-dev4":
-  version "0.10.0-dev4"
-  resolved "https://registry.yarnpkg.com/@graphback/codegen-resolvers/-/codegen-resolvers-0.10.0-dev4.tgz#2c991055ace2cc79cfb65d5c7930946956174395"
-  integrity sha512-1RSGoFQ5u4IpvRGPdcwhyrrbUgQeLslKbF4tzl5G4tA3ZvGPXOXsPnAc11pqvwOgsYnwEXAkePLEb7WQLDqqsg==
+"@graphback/codegen-resolvers@0.10.0-rc2":
+  version "0.10.0-rc2"
+  resolved "https://registry.yarnpkg.com/@graphback/codegen-resolvers/-/codegen-resolvers-0.10.0-rc2.tgz#45b7bf90e065b18f4b60313c6a55c8baafd0e088"
+  integrity sha512-cGlkhaPuPr72z9SgqJVmTdo6N7vClQj3mJKQlU4SOee3jUUdhIebq2sindunGbwTC8ARddnXm9jZIPCLE29CgA==
   dependencies:
     "@graphback/core" "^0.10.0-rc2"
     knex "0.20.2"
@@ -1419,10 +1419,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.11.7.tgz#57682a9771a3f7b09c2497f28129a0462966524a"
   integrity sha512-JNbGaHFCLwgHn/iCckiGSOZ1XYHsKFwREtzPwSGCVld1SGhOlmZw2D4ZI94HQCrBHbADzW9m4LER/8olJTRGHA==
 
-"@types/node@12.12.12":
-  version "12.12.12"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.12.tgz#529bc3e73dbb35dd9e90b0a1c83606a9d3264bdb"
-  integrity sha512-MGuvYJrPU0HUwqF7LqvIj50RZUX23Z+m583KBygKYUZLlZ88n6w28XRNJRJgsHukLEnLz6w6SvxZoLgbr5wLqQ==
+"@types/node@12.12.13":
+  version "12.12.13"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.13.tgz#9790d9bbb99cda1ff077bcef37bee3d60281c175"
+  integrity sha512-fXr0NLUGMwrKj7Achj/jQfnZco024Lbmn5AT7uG846gb+mPL/zxh3mXTnadf4fLJM/tFWVauIadQ/uCa8LCzkg==
 
 "@types/node@^10.1.0":
   version "10.17.5"

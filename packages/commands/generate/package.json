@@ -15,8 +15,8 @@
     "graphql": "^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0"
   },
   "dependencies": {
-    "@graphback/codegen-client": "0.10.0-dev5",
-    "@graphback/codegen-resolvers": "0.10.0-dev4",
+    "@graphback/codegen-client": "0.10.0-rc2",
+    "@graphback/codegen-resolvers": "0.10.0-rc2",
     "@graphback/codegen-schema": "0.10.0-rc2",
     "@graphback/core": "0.10.0-rc2",
     "@graphql-toolkit/code-file-loader": "0.7.2",
@@ -42,7 +42,7 @@
     "@types/fs-extra": "8.0.1",
     "@types/inquirer": "6.5.0",
     "@types/listr": "0.14.2",
-    "@types/node": "12.12.12",
+    "@types/node": "12.12.13",
     "graphql": "14.5.8",
     "ts-node": "8.5.2",
     "typescript": "3.7.2"
