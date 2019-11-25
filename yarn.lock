@@ -208,10 +208,10 @@
   dependencies:
     "@graphback/core" "0.10.0-rc2"
 
-"@graphback/codegen-resolvers@0.10.0-dev4":
-  version "0.10.0-dev4"
-  resolved "https://registry.yarnpkg.com/@graphback/codegen-resolvers/-/codegen-resolvers-0.10.0-dev4.tgz#2c991055ace2cc79cfb65d5c7930946956174395"
-  integrity sha512-1RSGoFQ5u4IpvRGPdcwhyrrbUgQeLslKbF4tzl5G4tA3ZvGPXOXsPnAc11pqvwOgsYnwEXAkePLEb7WQLDqqsg==
+"@graphback/codegen-resolvers@0.10.0-rc2":
+  version "0.10.0-rc2"
+  resolved "https://registry.yarnpkg.com/@graphback/codegen-resolvers/-/codegen-resolvers-0.10.0-rc2.tgz#45b7bf90e065b18f4b60313c6a55c8baafd0e088"
+  integrity sha512-cGlkhaPuPr72z9SgqJVmTdo6N7vClQj3mJKQlU4SOee3jUUdhIebq2sindunGbwTC8ARddnXm9jZIPCLE29CgA==
   dependencies:
     "@graphback/core" "^0.10.0-rc2"
     knex "0.20.2"
