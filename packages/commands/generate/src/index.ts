@@ -16,6 +16,8 @@ import { createClient, ClientDocuments } from "@graphback/codegen-client"
 import { createResolvers, ResolverGeneratorOptions } from "@graphback/codegen-resolvers"
 import { createSchema, SchemaGeneratorOptions } from "@graphback/codegen-schema"
 import { GeneratedResolvers } from '@graphback/codegen-resolvers/types/api/resolverTypes';
+import Listr, { ListrTask } from 'listr';
+import { prompt } from 'inquirer';
 
 export interface GenerateConfig {
   folders: {
@@ -141,9 +143,10 @@ export const plugin: CliPlugin = {
       .option('--db')
       .option('--client')
       .option('--backend')
+      .option('--silent')
       .action(async ({
-        db, client, backend
-      }: { db: boolean, client: boolean, backend: boolean }) => {
+        db, client, backend, silent
+      }: { db: boolean, client: boolean, backend: boolean, silent: boolean }) => {
         try {
           const config = await loadConfig({
             extensions: [
@@ -160,8 +163,29 @@ export const plugin: CliPlugin = {
             throw new Error(`'generate' config missing 'folders' section that is required`);
           }
 
-          if (!db && !client) {
-            backend = true;
+          if (!db && !client && !backend) {
+            const { selections } = await prompt([
+              {
+                type: 'checkbox',
+                name: 'selections',
+                choices: [
+                  {
+                    value: 'backend',
+                    name: 'Backend Schema and Resolvers',
+                  },
+                  {
+                    value: 'client',
+                    name: 'Client-Side Operation',
+                  }, {
+                    value: 'db',
+                    name: 'Database Creation and Migration',
+                  }
+                ]
+              }
+            ]);
+            db = selections.includes('db');
+            client = selections.includes('client');
+            backend = selections.includes('backend');
           }
 
           const cwd = config.dirpath;
@@ -177,21 +201,42 @@ export const plugin: CliPlugin = {
 
           const schemaString = printSchemaWithDirectives(models);
 
+          const tasks: ListrTask[] = [];
+
           if (backend || client) {
             // Creates model context that is shared with all generators to provide results
             const inputContext = graphQLInputContext.createModelContext(schemaString, generateConfig.graphqlCRUD)
-  
+
             if (backend) {
-              await createBackendFiles(cwd, inputContext, generateConfig);
+              tasks.push({
+                title: 'Generating Backend Schema and Resolvers',
+                task: () => createBackendFiles(cwd, inputContext, generateConfig),
+              })
             }
             if (client) {
-              await createClientFiles(cwd, inputContext, generateConfig);
+              tasks.push({
+                title: 'Generating Client-side Operations',
+                task: () => createClientFiles(cwd, inputContext, generateConfig),
+              })
             }
           }
-          
+
           if (db) {
-            await createDatabaseMigration(schemaString, generateConfig);
+            tasks.push({
+              title: 'Running Database Migration',
+              task: () => createDatabaseMigration(schemaString, generateConfig),
+            })
           }
+
+          const listr = new Listr(tasks, {
+            renderer: silent ? 'silent' : 'default',
+            // it doesn't stop when one of tasks failed, to finish at least some of outputs
+            exitOnError: false,
+            // run 4 at once
+            concurrent: 4,
+          });
+
+          await listr.run();
 
         } catch (e) {
           reportError(e);
