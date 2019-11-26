@@ -3,12 +3,13 @@ import { prompt } from 'inquirer';
 import { join } from 'path';
 import simpleGit from 'simple-git/promise';
 import chalk from 'chalk';
-import { ensureFile, writeFileSync, readFileSync, existsSync, unlinkSync } from 'fs-extra';
-import YAML from 'yamljs';
+import { ensureFile, writeFileSync, readFileSync, existsSync } from 'fs-extra';
+import { safeLoad as YAMLParse, safeDump as YAMLStringify } from 'js-yaml';
 import rimraf from 'rimraf';
 import fetch from 'cross-fetch';
 import ora from 'ora';
 import { searchCodegenConfig } from './search-codegen-config';
+import fullName from 'fullname';
 
 type StandardEnum<T> = {
     [id: string]: T | string;
@@ -130,19 +131,17 @@ export const plugin: CliPlugin = {
                                 npmPackages.add('@test-graphql-cli/codegen');
                                 const codegenConfig = result.config;
                                 graphqlConfig.extensions.codegen = {};
-                                if (codegenConfig.schema) {
-                                    graphqlConfig.schema = codegenConfig.schema;
-                                }
-                                if (codegenConfig.documents) {
-                                    graphqlConfig.documents = codegenConfig.documents;
-                                }
                                 for (const key in codegenConfig) {
-                                    if (key !== 'schema' && key !== 'documents') {
+                                    if (key === 'schema') {
+                                        graphqlConfig.schema = codegenConfig.schema;
+                                    } else if (key === 'documents') {
+                                        graphqlConfig.documents = codegenConfig.documents;
+                                    } else {
                                         graphqlConfig.extensions.codegen[key] = codegenConfig[key];
                                     }
                                 }
                                 const removeOldCodegenConfigSpinner = ora('Removing old GraphQL Codegen configuration file').start();
-                                unlinkSync(result.filepath);
+                                rimraf.sync(result.filepath);
                                 removeOldCodegenConfigSpinner.succeed();
                             }
                         }
@@ -205,7 +204,7 @@ export const plugin: CliPlugin = {
 
                     try {
                         if (existsSync(graphqlConfigPath)) {
-                            graphqlConfig = YAML.parse(readFileSync(graphqlConfigPath, 'utf8'));
+                            graphqlConfig = YAMLParse(readFileSync(graphqlConfigPath, 'utf8'));
                         }
                     } catch (e) { }
 
@@ -270,8 +269,7 @@ export const plugin: CliPlugin = {
                         const schemaText: string = readFileSync(`${openApiPath}`, 'utf8');
                         let parsedObject;
                         if (openApiPath.endsWith('yaml') || openApiPath.endsWith('yml')) {
-                            const YAML = await import('yamljs');
-                            parsedObject = YAML.parse(schemaText);
+                            parsedObject = YAMLParse(schemaText);
                         } else {
                             parsedObject = JSON.parse(schemaText);
                         }
@@ -477,7 +475,25 @@ export const plugin: CliPlugin = {
                     await ensureFile(configPath);
                     writeFileSync(
                         configPath,
-                        YAML.stringify(graphqlConfig, Infinity),
+                        YAMLStringify(graphqlConfig, {
+                            sortKeys: (a, b) => {
+                                if (a === 'schema') {
+                                    return -1;
+                                } else if (b === 'schema') {
+                                    return 1;
+                                } else if (a === 'documents') {
+                                    return -1;
+                                } else if (b === 'documents') {
+                                    return 1;
+                                } else if (a === 'extensions') {
+                                    return 1;
+                                } else if (b === 'extensions') {
+                                    return -1;
+                                } else {
+                                    return a.localeCompare(b);
+                                }
+                            }
+                        }),
                     );
 
                     let packageJson: any = {};
@@ -486,7 +502,17 @@ export const plugin: CliPlugin = {
                         packageJson = importedPackageJson.default || importedPackageJson || {};
                     } catch (err) { }
 
-                    packageJson.name = projectName;
+
+                    if (InitializationType.FromScratch) {
+                        packageJson.private = true;
+                        packageJson.name = projectName;
+                        const name = await fullName();
+                        if (name) {
+                            packageJson.author = {
+                                name,
+                            }
+                        }
+                    }
 
                     packageJson.devDependencies = packageJson.devDependencies || {};
                     for (const npmDependency of npmPackages) {
