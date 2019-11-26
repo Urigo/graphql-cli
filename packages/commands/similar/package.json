@@ -1,5 +1,5 @@
 {
-  "name": "@graphql-cli/similar",
+  "name": "@test-graphql-cli/similar",
   "description": "Get a list of similar types in order to find duplicates using GraphQL Inspector.",
   "version": "4.0.0",
   "license": "MIT",
@@ -19,7 +19,7 @@
     "@graphql-toolkit/code-file-loader": "0.7.2",
     "@graphql-toolkit/git-loader": "0.7.2",
     "@graphql-toolkit/github-loader": "0.7.2",
-    "@graphql-cli/common": "4.0.0",
+    "@test-graphql-cli/common": "4.0.0",
     "chalk": "3.0.0",
     "commander": "4.0.1",
     "log-symbols": "3.0.0",

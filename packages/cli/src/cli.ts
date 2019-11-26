@@ -4,7 +4,7 @@ import chalk from 'chalk';
 import globby from 'globby';
 import { join } from 'path';
 import logSymbols from 'log-symbols';
-import { LoadConfigOptions } from '@graphql-cli/common';
+import { LoadConfigOptions } from '@test-graphql-cli/common';
 
 const reportError = (e: Error | string) => {
   console.error(logSymbols.error, e instanceof Error ? e.message || e : e);
@@ -16,10 +16,10 @@ export async function cli(argv = process.argv): Promise<void> {
     const rootCommand = argv[2];
 
     if (!rootCommand || rootCommand === '') {
-      const foundPlugins = await globby([`node_modules/@graphql-cli/**`, `!node_modules/@graphql-cli/common`], { cwd: process.cwd(), onlyDirectories: true, deep: 1 });
+      const foundPlugins = await globby([`node_modules/@test-graphql-cli/**`, `!node_modules/@test-graphql-cli/common`], { cwd: process.cwd(), onlyDirectories: true, deep: 1 });
       const availableCommands = await Promise.all(
         foundPlugins.map(
-          pluginPath => import(join(process.cwd(), pluginPath + '/' + 'package.json')).then(m => m.default || m).then(packageJson => `  - ${chalk.cyan(packageJson.name.replace('@graphql-cli/', ''))}: ${packageJson.description}\n`)
+          pluginPath => import(join(process.cwd(), pluginPath + '/' + 'package.json')).then(m => m.default || m).then(packageJson => `  - ${chalk.cyan(packageJson.name.replace('@test-graphql-cli/', ''))}: ${packageJson.description}\n`)
         )
       );
 

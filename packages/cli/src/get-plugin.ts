@@ -1,11 +1,11 @@
 import { resolve } from 'path';
-import { CliPlugin, DetailedError } from '@graphql-cli/common';
+import { CliPlugin, DetailedError } from '@test-graphql-cli/common';
 import * as resolveFrom from 'resolve-from';
 
 export async function getPluginByName(name: string): Promise<CliPlugin> {
   const possibleNames = [
-    `@graphql-cli/${name}`,
-    `@graphql-cli/${name}-plugin`,
+    `@test-graphql-cli/${name}`,
+    `@test-graphql-cli/${name}-plugin`,
     name
   ];
   const possibleModules = possibleNames.concat(

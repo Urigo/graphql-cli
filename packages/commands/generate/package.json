@@ -1,5 +1,5 @@
 {
-  "name": "@graphql-cli/generate",
+  "name": "@test-graphql-cli/generate",
   "description": "Generate DB, schema, document and resolvers for your GraphQL project by using GraphBack.",
   "version": "4.0.0",
   "license": "MIT",
@@ -27,7 +27,7 @@
     "@graphql-toolkit/graphql-file-loader": "0.7.2",
     "@graphql-toolkit/json-file-loader": "0.7.2",
     "@graphql-toolkit/url-loader": "0.7.2",
-    "@graphql-cli/common": "4.0.0",
+    "@test-graphql-cli/common": "4.0.0",
     "chalk": "3.0.0",
     "commander": "4.0.1",
     "fs-extra": "8.1.0",

@@ -1,5 +1,5 @@
 {
-  "name": "@graphql-cli/common",
+  "name": "@test-graphql-cli/common",
   "version": "4.0.0",
   "license": "MIT",
   "main": "dist/index.js",

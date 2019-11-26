@@ -1,4 +1,4 @@
-import { CliPlugin } from "@graphql-cli/common";
+import { CliPlugin } from "@test-graphql-cli/common";
 import { loadSchemaUsingLoaders } from "@graphql-toolkit/core";
 import { printSchemaWithDirectives } from "@graphql-toolkit/common";
 import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
