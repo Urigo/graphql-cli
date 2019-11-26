@@ -3,7 +3,7 @@ import { prompt } from 'inquirer';
 import { join } from 'path';
 import simpleGit from 'simple-git/promise';
 import chalk from 'chalk';
-import { ensureFile, writeFileSync, readFileSync, existsSync } from 'fs-extra';
+import { ensureFile, writeFileSync, readFileSync, existsSync, unlinkSync } from 'fs-extra';
 import YAML from 'yamljs';
 import rimraf from 'rimraf';
 import fetch from 'cross-fetch';
@@ -15,19 +15,34 @@ type StandardEnum<T> = {
     [nu: number]: string;
 }
 
-async function askForEnum<T, Enum extends StandardEnum<T>>(enumarator: Enum, message: string, defaultValue ?: T): Promise<T> {
+async function askForEnum<T, Enum extends StandardEnum<T>>(
+    options: {
+        enum: Enum,
+        message: string,
+        defaultValue?: T,
+        ignoreList?: (T | string)[]
+    }
+): Promise<T> {
+    let choices: (T | string)[];
+    const enumValues = Object.values(options.enum);
+    if (options.ignoreList) {
+        choices = enumValues.filter(enumValue => options.ignoreList.includes(enumValue))
+    } else {
+        choices = enumValues;
+    }
+
     const { answer } = await prompt<{ answer: T }>([
         {
             type: 'list',
             name: 'answer',
-            message,
-            choices: Object.values(enumarator),
-            default: defaultValue,
+            message: options.message,
+            choices: Object.values(options.enum),
+            default: options.defaultValue,
         }
     ]);
     return answer;
 }
-                    
+
 enum InitializationType {
     FromScratch = 'I want to create a new project from a GraphQL CLI Project Template.',
     ExistingOpenAPI = 'I have an existing project using OpenAPI/Swagger Schema Definition.',
@@ -75,24 +90,30 @@ export const plugin: CliPlugin = {
                     let projectType: ProjectType;
 
                     if (!projectType) {
-                        projectType = await askForEnum(ProjectType, 'What is the type of the project?', ProjectType.FullStack);
-                    }   
+                        projectType = await askForEnum({
+                            enum: ProjectType,
+                            message: 'What is the type of the project?',
+                            defaultValue: ProjectType.FullStack
+                        });
+                    }
 
-                    const initializationType = await askForEnum(InitializationType, 'Select the best option for you', InitializationType.FromScratch);
+                    const initializationType = await askForEnum(
+                        {
+                            enum: InitializationType,
+                            message: 'Select the best option for you',
+                            defaultValue: InitializationType.FromScratch,
+                            ignoreList: projectType === ProjectType.FrontendOnly ? [InitializationType.ExistingOpenAPI] : [],
+                        }
+                    );
 
-                    let npmPackages = [
-                        'graphql-cli'
-                    ];
+                    let npmPackages = new Set<string>();
 
-                    if(initializationType === InitializationType.ExistingGraphQL) {
+                    npmPackages.add('graphql-cli');
+
+                    if (initializationType === InitializationType.ExistingGraphQL) {
                         if (existsSync(join(projectPath, 'package.json'))) {
                             const { default: packageJson } = await import(join(projectPath, 'package.json'));
                             projectName = packageJson.name;
-                        } else {
-                            throw new Error(
-                                `There is no valid NodeJS project in the current path;\n` +
-                                `${projectPath}`
-                            );
                         }
                         const result = await searchCodegenConfig(projectPath);
                         if (result && !result.isEmpty) {
@@ -105,14 +126,14 @@ export const plugin: CliPlugin = {
                                     default: true,
                                 }
                             ]);
-                            if (willBeMerged){
-                                npmPackages.push('@test-graphql-cli/codegen');
+                            if (willBeMerged) {
+                                npmPackages.add('@test-graphql-cli/codegen');
                                 const codegenConfig = result.config;
                                 graphqlConfig.extensions.codegen = {};
-                                if (graphqlConfig.schema) {
+                                if (codegenConfig.schema) {
                                     graphqlConfig.schema = codegenConfig.schema;
                                 }
-                                if (graphqlConfig.documents) {
+                                if (codegenConfig.documents) {
                                     graphqlConfig.documents = codegenConfig.documents;
                                 }
                                 for (const key in codegenConfig) {
@@ -120,6 +141,9 @@ export const plugin: CliPlugin = {
                                         graphqlConfig.extensions.codegen[key] = codegenConfig[key];
                                     }
                                 }
+                                const removeOldCodegenConfigSpinner = ora('Removing old GraphQL Codegen configuration file').start();
+                                unlinkSync(result.filepath);
+                                removeOldCodegenConfigSpinner.succeed();
                             }
                         }
                     }
@@ -137,7 +161,7 @@ export const plugin: CliPlugin = {
                             ]);
                             projectName = enteredName;
                             projectPath = join(process.cwd(), projectName);
-                        } 
+                        }
 
                         if (!templateName) {
                             const downloadingTemplateList = ora('Loading template list...').start();
@@ -150,7 +174,7 @@ export const plugin: CliPlugin = {
                                     name: 'templateName',
                                     message: `Which template do you want to start with your new ${projectType} project?`,
                                     choices: [
-                                        ...templateNames, 
+                                        ...templateNames,
                                         'Other Template'
                                     ],
                                 }
@@ -183,7 +207,7 @@ export const plugin: CliPlugin = {
                         if (existsSync(graphqlConfigPath)) {
                             graphqlConfig = YAML.parse(readFileSync(graphqlConfigPath, 'utf8'));
                         }
-                    } catch (e) {}
+                    } catch (e) { }
 
                     if (projectType !== ProjectType.FrontendOnly && !graphqlConfig.extensions.generate) {
                         const { isBackendGenerationAsked } = await prompt([
@@ -324,12 +348,16 @@ export const plugin: CliPlugin = {
                             }
                         ]);
                         if (isCodegenAsked) {
-                            npmPackages.push('@test-graphql-cli/codegen');
+                            npmPackages.add('@test-graphql-cli/codegen');
                             graphqlConfig.extensions.codegen = {};
                             let codegenPlugins = new Set<string>();
                             if (projectType === ProjectType.FullStack || projectType === ProjectType.BackendOnly) {
 
-                                const backendType = await askForEnum(BackendType, 'What type of backend do you use?', BackendType.TS);
+                                const backendType = await askForEnum({
+                                    enum: BackendType,
+                                    message: 'What type of backend do you use?',
+                                    defaultValue: BackendType.TS
+                                });
 
                                 switch (backendType) {
                                     case BackendType.TS:
@@ -361,7 +389,11 @@ export const plugin: CliPlugin = {
                             }
                             if (projectType === ProjectType.FullStack || projectType === ProjectType.FrontendOnly) {
 
-                                const frontendType = await askForEnum(FrontendType, 'What type of frontend do you use?', FrontendType.TSReactApollo);
+                                const frontendType = await askForEnum({
+                                    enum: FrontendType,
+                                    message: 'What type of frontend do you use?',
+                                    defaultValue: FrontendType.TSReactApollo
+                                });
 
                                 switch (frontendType) {
                                     case FrontendType.TSReactApollo:
@@ -402,7 +434,9 @@ export const plugin: CliPlugin = {
                                     plugins: [...codegenPlugins],
                                 };
                             }
-                            npmPackages.push(...[...codegenPlugins].map(plugin => '@graphql-codegen/' + plugin));
+                            for (const codegenPlugin of codegenPlugins){
+                                npmPackages.add('@graphql-codegen/' + codegenPlugin);
+                            }
                         }
                     }
 
@@ -417,7 +451,8 @@ export const plugin: CliPlugin = {
                         ]);
 
                         if (isFrontendInspectorAsked) {
-                            npmPackages.push('@test-graphql-cli/coverage', '@test-graphql-cli/validate');
+                            npmPackages.add('@test-graphql-cli/coverage');
+                            npmPackages.add('@test-graphql-cli/validate');
                         }
                     }
 
@@ -432,7 +467,9 @@ export const plugin: CliPlugin = {
                         ]);
 
                         if (isBackendInspectorAsked) {
-                            npmPackages.push('@test-graphql-cli/diff', '@test-graphql-cli/serve', '@test-graphql-cli/similar');
+                            npmPackages.add('@test-graphql-cli/diff');
+                            npmPackages.add('@test-graphql-cli/serve'); 
+                            npmPackages.add('@test-graphql-cli/similar');
                         }
                     }
 
@@ -460,16 +497,16 @@ export const plugin: CliPlugin = {
                     writeFileSync(join(projectPath, 'package.json'), JSON.stringify(packageJson, null, 2));
 
                     console.info(
-                        `🚀  GraphQL CLI project successfully initialized:\n` + 
-                        `${projectPath}\n` +  
+                        `🚀  GraphQL CLI project successfully initialized:\n` +
+                        `${projectPath}\n` +
                         `Next Steps:\n` +
                         `- Change directory into project folder - ${chalk.cyan(`cd ${projectPath}`)}\n` +
                         (
                             initializationType !== InitializationType.ExistingGraphQL ?
-                            `- Edit the .graphql file inside your model folder.\n` +
-                            `- Run ${chalk.cyan(`yarn graphql generate`)} to generate schema and resolvers\n` +
-                            `- Run ${chalk.cyan(`yarn graphql codegen`)} to generate TypeScript typings\n`
-                            : ''
+                                `- Edit the .graphql file inside your model folder.\n` +
+                                `- Run ${chalk.cyan(`yarn graphql generate`)} to generate schema and resolvers\n` +
+                                `- Run ${chalk.cyan(`yarn graphql codegen`)} to generate TypeScript typings\n`
+                                : ''
                         ) +
                         `- Install ${chalk.cyan(`yarn install`)} to install dependencies`
                     );
