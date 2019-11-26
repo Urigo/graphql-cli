@@ -26,7 +26,7 @@ async function askForEnum<T, Enum extends StandardEnum<T>>(
     let choices: (T | string)[];
     const enumValues = Object.values(options.enum);
     if (options.ignoreList) {
-        choices = enumValues.filter(enumValue => options.ignoreList.includes(enumValue))
+        choices = enumValues.filter(enumValue => !options.ignoreList.includes(enumValue))
     } else {
         choices = enumValues;
     }
