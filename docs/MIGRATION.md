@@ -44,7 +44,7 @@ schema: http://localhost:4000/graphql #This is the schema path
 If you want to download the schema from this URL to your local file system, you will also need to install `codegen` plugin and its `schema-ast` plugin using the following command or its npm equivalent:
 
 ```bash
-yarn add @test-graphql-cli/codegen@@canary @graphql-codegen/schema-ast --dev
+yarn add @graphql-cli/codegen@@canary @graphql-codegen/schema-ast --dev
 ```
 
 After that, you can specify the output path of the local schema file:
@@ -107,7 +107,7 @@ extensions:
 For instance, consider a hypothetical case where you need to generate TypeScript resolvers signatures for your GraphQL project. To do this, you would install the `codegen` plugin and the additional plugins and templates for GraphQL Code Generator. For this case, you would need `typescript` and `typescript-resolvers` plugins:
 
 ```bash
-yarn add @test-graphql-cli/codegen@canary @graphql-codegen/typescript @graphql-codegen/typescript-resolvers --dev
+yarn add @graphql-cli/codegen@canary @graphql-codegen/typescript @graphql-codegen/typescript-resolvers --dev
 ```
 
 Now, using a single command, you can run GraphQL Code Generator using GraphQL CLI:
@@ -151,9 +151,9 @@ projects:
                 - schema-ast
 ```
 
-Before running the GraphQL CLI command to use this new configuration, make sure you have installed the `@test-graphql-cli/codegen` and `@graphql-codegen/schema-ast` plugins using:
+Before running the GraphQL CLI command to use this new configuration, make sure you have installed the `@graphql-cli/codegen` and `@graphql-codegen/schema-ast` plugins using:
 ```sh
-yarn add @test-graphql-cli/codegen@canary @graphql-codegen/schema-ast --dev
+yarn add @graphql-cli/codegen@canary @graphql-codegen/schema-ast --dev
 ```
 
 Now you can run `graphql codegen --project database` for generating your `prisma.graphql` file.

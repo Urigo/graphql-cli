@@ -52,7 +52,7 @@ Finally, one of the options with `graphql init` is to access schema using an Ope
 
 ## Plugin System
 
-Each command in GraphQL CLI is a seperate package, so you can have your own plugins or use the ones we maintain. You can have those commands by installing them like `@test-graphql-cli/[COMMAND-NAME]@canary`.
+Each command in GraphQL CLI is a seperate package, so you can have your own plugins or use the ones we maintain. You can have those commands by installing them like `@graphql-cli/[COMMAND-NAME]@canary`.
 
 To configure a command/plugin, you need to update the `extensions` field in your GraphQL Config file (`.graphqlrc.yml`). See `extensions:` in the example below.
 

@@ -1,4 +1,4 @@
-import { CliPlugin } from "@test-graphql-cli/common";
+import { CliPlugin } from "@graphql-cli/common";
 import { prompt } from 'inquirer';
 import { join } from 'path';
 import simpleGit from 'simple-git/promise';
@@ -128,7 +128,7 @@ export const plugin: CliPlugin = {
                                 }
                             ]);
                             if (willBeMerged) {
-                                npmPackages.add('@test-graphql-cli/codegen');
+                                npmPackages.add('@graphql-cli/codegen');
                                 const codegenConfig = result.config;
                                 graphqlConfig.extensions.codegen = {};
                                 for (const key in codegenConfig) {
@@ -346,7 +346,7 @@ export const plugin: CliPlugin = {
                             }
                         ]);
                         if (isCodegenAsked) {
-                            npmPackages.add('@test-graphql-cli/codegen');
+                            npmPackages.add('@graphql-cli/codegen');
                             graphqlConfig.extensions.codegen = {};
                             let codegenPlugins = new Set<string>();
                             if (projectType === ProjectType.FullStack || projectType === ProjectType.BackendOnly) {
@@ -449,8 +449,8 @@ export const plugin: CliPlugin = {
                         ]);
 
                         if (isFrontendInspectorAsked) {
-                            npmPackages.add('@test-graphql-cli/coverage');
-                            npmPackages.add('@test-graphql-cli/validate');
+                            npmPackages.add('@graphql-cli/coverage');
+                            npmPackages.add('@graphql-cli/validate');
                         }
                     }
 
@@ -465,9 +465,9 @@ export const plugin: CliPlugin = {
                         ]);
 
                         if (isBackendInspectorAsked) {
-                            npmPackages.add('@test-graphql-cli/diff');
-                            npmPackages.add('@test-graphql-cli/serve'); 
-                            npmPackages.add('@test-graphql-cli/similar');
+                            npmPackages.add('@graphql-cli/diff');
+                            npmPackages.add('@graphql-cli/serve'); 
+                            npmPackages.add('@graphql-cli/similar');
                         }
                     }
 
