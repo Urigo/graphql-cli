@@ -36,7 +36,7 @@ async function askForEnum<T, Enum extends StandardEnum<T>>(
             type: 'list',
             name: 'answer',
             message: options.message,
-            choices: Object.values(options.enum),
+            choices,
             default: options.defaultValue,
         }
     ]);
