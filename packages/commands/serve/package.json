@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@graphql-toolkit/code-file-loader": "0.7.2",
-    "@graphql-toolkit/git-loader": "0.7.2",
+    "@graphql-toolkit/git-loader": "0.7.4",
     "@graphql-toolkit/github-loader": "0.7.2",
     "@test-graphql-cli/common": "4.0.0",
     "@types/node-fetch": "2.5.4",
