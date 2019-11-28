@@ -18,7 +18,7 @@
     "@graphql-inspector/core": "1.26.0",
     "@graphql-toolkit/code-file-loader": "0.7.2",
     "@graphql-toolkit/git-loader": "0.7.4",
-    "@graphql-toolkit/github-loader": "0.7.2",
+    "@graphql-toolkit/github-loader": "0.7.4",
     "@test-graphql-cli/common": "4.0.0",
     "chalk": "3.0.0",
     "commander": "4.0.1",
