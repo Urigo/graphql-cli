@@ -16,17 +16,21 @@
   },
   "dependencies": {
     "@test-graphql-cli/common": "4.0.0",
-    "@test-graphql-cli/init": "4.0.0",
     "chalk": "3.0.0",
     "commander": "4.0.1",
     "globby": "10.0.1",
     "graphql-config": "3.0.0-alpha.14",
+    "inquirer": "7.0.0",
+    "latest-version": "5.1.0",
     "log-symbols": "3.0.0",
-    "resolve-from": "5.0.0"
+    "npm-programmatic": "0.0.12",
+    "resolve-from": "5.0.0",
+    "yarn-programmatic": "0.0.2"
   },
   "devDependencies": {
-    "@types/resolve-from": "5.0.1",
+    "@types/inquirer": "6.5.0",
     "@types/node": "12.12.14",
+    "@types/resolve-from": "5.0.1",
     "graphql": "14.5.8",
     "ts-node": "8.5.2",
     "typescript": "3.7.2"

@@ -19,6 +19,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": false
   },
-  "files": ["src/index.ts"],
+  "files": ["src/index.ts", "src/types.d.ts"],
   "exclude": ["node_modules"]
 }

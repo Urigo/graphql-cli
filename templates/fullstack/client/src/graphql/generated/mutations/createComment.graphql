@@ -1,0 +1,5 @@
+mutation createComment($title: String!, $description: String!) {
+    createComment(input: {title: $title, description: $description}) {
+      ...CommentFields
+    }
+  }

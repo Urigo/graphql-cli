@@ -3,13 +3,15 @@ import { prompt } from 'inquirer';
 import { join } from 'path';
 import simpleGit from 'simple-git/promise';
 import chalk from 'chalk';
-import { ensureFile, writeFileSync, readFileSync, existsSync } from 'fs-extra';
+import { ensureFile, writeFileSync, readFileSync, existsSync, moveSync } from 'fs-extra';
 import { safeLoad as YAMLParse, safeDump as YAMLStringify } from 'js-yaml';
 import rimraf from 'rimraf';
 import fetch from 'cross-fetch';
 import ora from 'ora';
 import { searchCodegenConfig } from './search-codegen-config';
 import fullName from 'fullname';
+import latestVersion from 'latest-version';
+import tmp from 'tmp';
 
 type StandardEnum<T> = {
     [id: string]: T | string;
@@ -130,7 +132,9 @@ export const plugin: CliPlugin = {
                             if (willBeMerged) {
                                 npmPackages.add('@test-graphql-cli/codegen');
                                 const codegenConfig = result.config;
-                                graphqlConfig.extensions.codegen = {};
+                                graphqlConfig.extensions.codegen = {
+                                    generates:{}
+                                };
                                 for (const key in codegenConfig) {
                                     if (key === 'schema') {
                                         graphqlConfig.schema = codegenConfig.schema;
@@ -178,6 +182,7 @@ export const plugin: CliPlugin = {
                                     ],
                                 }
                             ]);
+                            let subDirPath = '/';
                             if (enteredTemplateName === 'Other Template') {
                                 const { templateUrl: enteredTemplateUrl } = await prompt([
                                     {
@@ -191,11 +196,17 @@ export const plugin: CliPlugin = {
                                 const selectedTemplate = templateMap[enteredTemplateName];
                                 templateUrl = selectedTemplate.repository;
                                 projectType = selectedTemplate.projectType;
+                                if (selectedTemplate.path) {
+                                    subDirPath = selectedTemplate.path;
+                                }
                             }
                             const cloningSpinner = ora(`Cloning template repository from ${templateUrl}...`).start();
                             const git = simpleGit().silent(true);
-                            await git.clone(templateUrl, projectPath);
-                            rimraf.sync(join(projectPath, '.git'));
+                            const { name: tmpDir, removeCallback } = tmp.dirSync();
+                            await git.clone(templateUrl, tmpDir);
+                            rimraf.sync(join(tmpDir, '.git'));
+                            moveSync(join(tmpDir, subDirPath), projectPath);
+                            removeCallback();
                             cloningSpinner.stop();
                         }
                     }
@@ -206,7 +217,9 @@ export const plugin: CliPlugin = {
                         if (existsSync(graphqlConfigPath)) {
                             graphqlConfig = YAMLParse(readFileSync(graphqlConfigPath, 'utf8'));
                         }
-                    } catch (e) { }
+                    } catch (e) {
+                        console.warn(`Existing GraphQL Config file looks broken! Skipping...`);
+                    }
 
                     if (projectType !== ProjectType.FrontendOnly && !graphqlConfig.extensions.generate) {
                         const { isBackendGenerationAsked } = await prompt([
@@ -381,7 +394,7 @@ export const plugin: CliPlugin = {
                                     }
                                 ]);
 
-                                graphqlConfig.extensions.codegen[backendGeneratedFile] = {
+                                graphqlConfig.extensions.codegen.generates[backendGeneratedFile] = {
                                     plugins: [...codegenPlugins],
                                 };
                             }
@@ -428,7 +441,7 @@ export const plugin: CliPlugin = {
                                     }
                                 ]);
 
-                                graphqlConfig.extensions.codegen[frontendGeneratedFile] = {
+                                graphqlConfig.extensions.codegen.generates[frontendGeneratedFile] = {
                                     plugins: [...codegenPlugins],
                                 };
                             }
@@ -515,8 +528,18 @@ export const plugin: CliPlugin = {
                     }
 
                     packageJson.devDependencies = packageJson.devDependencies || {};
+                    const graphqlCliPackageJsonModule = require('graphql-cli/package.json');
+                    const graphqlCliPackageJson = graphqlCliPackageJsonModule.default || graphqlCliPackageJsonModule;
                     for (const npmDependency of npmPackages) {
-                        packageJson.devDependencies[npmDependency] = 'canary';
+                        if (!(npmDependency in packageJson.devDependencies)) {
+                            packageJson.devDependencies[npmDependency] = await latestVersion(npmDependency);
+                        }
+                    }
+
+                    for (const devDependency in packageJson.devDependencies) {
+                        if (devDependency.startsWith('@test-graphql-cli') || devDependency === 'graphql-cli') {
+                            packageJson.devDependencies[devDependency] = graphqlCliPackageJson.version;
+                        }
                     }
 
                     await ensureFile(join(projectPath, 'package.json'));

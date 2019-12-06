@@ -1,0 +1,5 @@
+mutation createNote($title: String!, $description: String!) {
+    createNote(input: {title: $title, description: $description}) {
+      ...NoteFields
+    }
+  }

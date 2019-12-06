@@ -1,0 +1,4 @@
+{
+    "conn": "postgres://postgresql:postgres@localhost:55432/users",
+    "output": "server/src/generated-db-types.ts"
+}

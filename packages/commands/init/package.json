@@ -21,10 +21,12 @@
     "fullname": "4.0.1",
     "inquirer": "7.0.0",
     "js-yaml": "3.13.1",
+    "latest-version": "5.1.0",
     "openapi-to-graphql": "1.6.3",
     "ora": "4.0.3",
     "rimraf": "3.0.0",
     "simple-git": "1.126.0",
+    "tmp": "0.1.0",
     "tslib": "1.10.0"
   },
   "devDependencies": {
@@ -32,8 +34,10 @@
     "@types/fullname": "2.1.29",
     "@types/inquirer": "6.5.0",
     "@types/js-yaml": "3.12.1",
+    "@types/latest-version": "4.0.1",
     "@types/node": "12.12.14",
     "@types/rimraf": "2.0.3",
+    "@types/tmp": "0.1.0",
     "graphql": "14.5.8",
     "ts-node": "8.5.2",
     "typescript": "3.7.2"
