@@ -140,16 +140,14 @@ projects:
   app:
     schema: src/schema.graphql
   database:
-    schema:
-        http://localhost:4466/myservice/dev: # This is the URL endpoint of your Prisma instance
-            headers:
-                # You have to replace [TOKEN] after obtaining a valid token by running `prisma token`.
-                Authorization: Bearer [TOKEN]
+    schema: prisma/prisma.yml
     extensions:
         codegen:
             src/generated/prisma-client/prisma.graphql:
                 - schema-ast
 ```
+
+You can directly point to your `prisma.yml` file instead of the URL endpoint.
 
 Before running the GraphQL CLI command to use this new configuration, make sure you have installed the `@test-graphql-cli/codegen` and `@graphql-codegen/schema-ast` plugins using:
 ```sh
