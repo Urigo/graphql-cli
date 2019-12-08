@@ -1,0 +1,60 @@
+schema: ./server/src/schema/**/*.graphql
+documents: ./client/src/graphql/**/*.graphql
+extensions:
+  codegen:
+    generates:
+      ./client/src/generated-types.tsx:
+        config:
+          withComponent: false
+          withHOC: false
+          withHooks: true
+        plugins:
+          - add: '/* tslint:disable */'
+          - typescript
+          - typescript-operations
+          - typescript-react-apollo
+      ./server/src/generated-types.ts:
+        config:
+          contextType: '@graphback/runtime#GraphbackRuntimeContext'
+          mappers:
+            Comment: './generated-db-types#comment'
+            Note: './generated-db-types#note'
+          useIndexSignature: true
+        plugins:
+          - add: '/* tslint:disable */'
+          - typescript
+          - typescript-resolvers
+  generate:
+    db:
+      database: pg
+      dbConfig:
+        database: users
+        host: localhost
+        password: postgres
+        port: 55432
+        user: postgresql
+    folders:
+      schema: ./server/src/schema
+      client: ./client/src/graphql
+      model: ./model
+      resolvers: ./server/src/resolvers
+    generator:
+      schema:
+        format: gql
+      client:
+        format: gql
+      resolvers:
+        format: ts
+        types:
+          resolverRootLocation: ../../generated-types
+          resolverRootType: Resolvers
+    graphqlCRUD:
+      create: true
+      delete: false
+      disableGen: false
+      find: true
+      findAll: true
+      subCreate: false
+      subDelete: false
+      subUpdate: false
+      update: true

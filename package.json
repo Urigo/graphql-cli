@@ -5,16 +5,16 @@
   "workspaces": {
     "packages": [
       "packages/*",
-      "packages/commands/*"
+      "packages/commands/*",
+      "templates/*"
     ]
   },
   "scripts": {
-    "release": "lerna publish --exact --force-publish=\"*\"",
-    "release:canary": "lerna publish --exact --force-publish=\"*\" --preid \"alpha-`git rev-parse --short HEAD`\" --canary --exact",
-    "ci:release:canary": "lerna publish --force-publish=\"*\" --preid \"alpha-`git rev-parse --short HEAD`\" --canary --exact --yes",
-    "ci:release:next": "lerna publish --exact --force-publish --preid \"alpha-`git rev-parse --short HEAD`\" --canary --exact --yes --dist-tag next",
-    "test": "lerna run test",
-    "build": "lerna run build"
+    "release": "lerna publish --exact --force-publish=\"*\" --ignore=\"templates/*\"",
+    "release:canary": "lerna publish --exact --force-publish=\"*\" --preid \"alpha-`git rev-parse --short HEAD`\" --canary --exact --ignore=\"templates/*\"",
+    "ci:release:canary": "lerna publish --force-publish=\"*\" --preid \"alpha-`git rev-parse --short HEAD`\" --canary --exact --yes --ignore=\"templates/*\"",
+    "test": "lerna run test --ignore=\"templates/*\"",
+    "build": "lerna run build --ignore=\"templates/*\""
   },
   "devDependencies": {
     "graphql": "14.5.8",

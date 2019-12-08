@@ -17,7 +17,8 @@
     "alwaysStrict": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": false
+    "noUnusedParameters": false,
+    "resolveJsonModule": true
   },
   "files": ["src/index.ts"],
   "exclude": ["node_modules"]

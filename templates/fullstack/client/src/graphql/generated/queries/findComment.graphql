@@ -1,0 +1,5 @@
+query findComments($id: ID!, $title: String!, $description: String!) {
+    findComments(fields: {id: $id, title: $title, description: $description}) {
+      ...CommentFields
+    }
+  }

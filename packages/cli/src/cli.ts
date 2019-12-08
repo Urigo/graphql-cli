@@ -47,8 +47,8 @@ export async function cli(argv = process.argv): Promise<void> {
       const graphqlConfig = await import('graphql-config');
       const loadedGraphQLConfig = await graphqlConfig.loadConfig({
         rootDir: process.cwd(),
-        throwOnEmpty: false,
-        throwOnMissing: false,
+        throwOnEmpty: true,
+        throwOnMissing: true,
         ...loadConfigOptions
       });
       const projectNames = Object.keys(loadedGraphQLConfig.projects);

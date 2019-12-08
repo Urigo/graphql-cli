@@ -1,0 +1,5 @@
+query findAllNotes {
+    findAllNotes {
+      ...NoteFields
+    }
+  }

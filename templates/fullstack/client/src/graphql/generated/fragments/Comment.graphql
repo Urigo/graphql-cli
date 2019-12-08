@@ -1,0 +1,5 @@
+fragment CommentFields on Comment {
+    id
+    title
+    description
+  }

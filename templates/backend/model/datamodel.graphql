@@ -1,0 +1,13 @@
+type Note {
+  id: ID!
+  title: String!
+  description: String!
+  ## Relationship
+  comment: [Comment]!
+}
+
+type Comment {
+  id: ID!
+  title: String!
+  description: String!
+}

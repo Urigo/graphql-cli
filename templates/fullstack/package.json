@@ -1,0 +1,37 @@
+{
+  "name": "fullstack",
+  "version": "4.0.0",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "start:server": "cd server/ && yarn start",
+    "start:client": "cd client/ && yarn start"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@graphql-codegen/add": "1.9.1",
+    "@graphql-codegen/typescript": "1.9.1",
+    "@graphql-codegen/typescript-operations": "1.9.1",
+    "@graphql-codegen/typescript-react-apollo": "1.9.1",
+    "@graphql-codegen/typescript-resolvers": "1.9.1",
+    "@test-graphql-cli/codegen": "4.0.0",
+    "@test-graphql-cli/coverage": "4.0.0",
+    "@test-graphql-cli/diff": "4.0.0",
+    "@test-graphql-cli/generate": "4.0.0",
+    "@test-graphql-cli/init": "4.0.0",
+    "@test-graphql-cli/serve": "4.0.0",
+    "@test-graphql-cli/similar": "4.0.0",
+    "@test-graphql-cli/validate": "4.0.0",
+    "graphql": "14.5.8",
+    "graphql-cli": "4.0.0",
+    "schemats": "3.0.3",
+    "tslint": "5.20.1",
+    "typescript": "3.7.2"
+  },
+  "author": {
+    "name": "Arda TANRIKULU"
+  }
+}

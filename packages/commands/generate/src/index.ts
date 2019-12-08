@@ -19,6 +19,8 @@ import { createSchema, SchemaGeneratorOptions } from "@graphback/codegen-schema"
 import { GeneratedResolvers } from '@graphback/codegen-resolvers/types/api/resolverTypes';
 import Listr, { ListrTask } from 'listr';
 import { prompt } from 'inquirer';
+import chokidar from 'chokidar';
+import debounce from 'debounce';
 
 export interface GenerateConfig {
   folders: {
@@ -142,6 +144,62 @@ export async function createDatabaseMigration(schema: string, config: GenerateCo
   const dbInitialization = new DropCreateDatabaseAlways(config.db.database, db);
 
   await migrate(schema, dbInitialization);
+  return new Promise(resolve => db.destroy(resolve));
+}
+
+interface CliFlags {
+  db: boolean, client: boolean, backend: boolean, silent: boolean, watch: boolean
+}
+
+export const runGeneration = async ({db, client, backend, silent }: CliFlags, cwd: string, generateConfig: GenerateConfig) => {
+
+  const models = await loadSchemaUsingLoaders([
+    new UrlLoader(),
+    new GraphQLFileLoader(),
+    new JsonFileLoader(),
+    new CodeFileLoader(),
+    new GitLoader(),
+    new GithubLoader(),
+  ], join(cwd, generateConfig.folders.model + '/**/*.graphql'));
+
+  const schemaString = printSchemaWithDirectives(models);
+
+  const tasks: ListrTask[] = [];
+
+  if (backend || client) {
+    // Creates model context that is shared with all generators to provide results
+    const inputContext = graphQLInputContext.createModelContext(schemaString, generateConfig.graphqlCRUD)
+
+    if (backend) {
+      tasks.push({
+        title: 'Generating Backend Schema and Resolvers',
+        task: () => createBackendFiles(cwd, inputContext, generateConfig),
+      })
+    }
+    if (client) {
+      tasks.push({
+        title: 'Generating Client-side Operations',
+        task: () => createClientFiles(cwd, inputContext, generateConfig),
+      })
+    }
+  }
+
+  if (db) {
+    tasks.push({
+      title: 'Running Database Migration',
+      task: () => createDatabaseMigration(schemaString, generateConfig),
+    })
+  }
+
+  const listr = new Listr(tasks, {
+    renderer: silent ? 'silent' : 'default',
+    // it doesn't stop when one of tasks failed, to finish at least some of outputs
+    exitOnError: false,
+    // run 4 at once
+    concurrent: 4,
+  });
+
+  await listr.run();
 }
 
 export const plugin: CliPlugin = {
@@ -152,9 +210,8 @@ export const plugin: CliPlugin = {
       .option('--client')
       .option('--backend')
       .option('--silent')
-      .action(async ({
-        db, client, backend, silent
-      }: { db: boolean, client: boolean, backend: boolean, silent: boolean }) => {
+      .option('-w, --watch', 'Watch for changes and execute generation automatically')
+      .action(async (cliFlags: CliFlags) => {
         try {
           const config = await loadConfig({
             extensions: [
@@ -171,7 +228,7 @@ export const plugin: CliPlugin = {
             throw new Error(`'generate' config missing 'folders' section that is required`);
           }
 
-          if (!db && !client && !backend) {
+          if (!cliFlags.db && !cliFlags.client && !cliFlags.backend) {
             const { selections } = await prompt([
               {
                 type: 'checkbox',
@@ -192,62 +249,29 @@ export const plugin: CliPlugin = {
                 ]
               }
             ]);
-            db = selections.includes('db');
-            client = selections.includes('client');
-            backend = selections.includes('backend');
+            cliFlags.db = selections.includes('db');
+            cliFlags.client = selections.includes('client');
+            cliFlags.backend = selections.includes('backend');
+            
           }
 
-          const cwd = config.dirpath;
-
-          const models = await loadSchemaUsingLoaders([
-            new UrlLoader(),
-            new GraphQLFileLoader(),
-            new JsonFileLoader(),
-            new CodeFileLoader(),
-            new GitLoader(),
-            new GithubLoader(),
-          ], join(cwd, generateConfig.folders.model + '/**/*.graphql'));
-
-          const schemaString = printSchemaWithDirectives(models);
-
-          const tasks: ListrTask[] = [];
-
-          if (backend || client) {
-            // Creates model context that is shared with all generators to provide results
-            const inputContext = graphQLInputContext.createModelContext(schemaString, generateConfig.graphqlCRUD)
-
-            if (backend) {
-              tasks.push({
-                title: 'Generating Backend Schema and Resolvers',
-                task: () => createBackendFiles(cwd, inputContext, generateConfig),
-              })
+          const debouncedExec = debounce(async () => {
+            try {
+              await runGeneration(cliFlags, config.dirpath, generateConfig);
+            } catch(e) {
+              reportError(e);
             }
-            if (client) {
-              tasks.push({
-                title: 'Generating Client-side Operations',
-                task: () => createClientFiles(cwd, inputContext, generateConfig),
-              })
-            }
+            console.info('Watching for changes...');
+          }, 100);
+
+          if (cliFlags.watch) {
+            chokidar.watch(generateConfig.folders.model, {
+              persistent: true,
+            }).on('all', debouncedExec);
+          } else {
+            await runGeneration(cliFlags, config.dirpath, generateConfig);
+            process.exit(0);
           }
-
-          if (db) {
-            tasks.push({
-              title: 'Running Database Migration',
-              task: () => createDatabaseMigration(schemaString, generateConfig),
-            })
-          }
-
-          const listr = new Listr(tasks, {
-            renderer: silent ? 'silent' : 'default',
-            // it doesn't stop when one of tasks failed, to finish at least some of outputs
-            exitOnError: false,
-            // run 4 at once
-            concurrent: 4,
-          });
-
-          await listr.run();
-
-          process.exit(0);
 
         } catch (e) {
           reportError(e);

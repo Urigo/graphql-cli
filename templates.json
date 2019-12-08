@@ -1,10 +1,12 @@
 {
     "Full Stack Template with React Hooks, Apollo, NodeJS and PostgreSQL": {
-        "repository": "https://github.com/ardatan/graphql-cli-fullstack-template.git",
+        "repository": "https://github.com/Urigo/graphql-cli.git",
+        "path": "templates/fullstack",
         "projectType": "Full Stack"
     },
     "Backend Only Template with NodeJS and PostgreSQL": {
-        "repository": "https://github.com/ardatan/graphql-cli-backend-template.git",
+        "repository": "https://github.com/Urigo/graphql-cli.git",
+        "path": "templates/backend",
         "projectType": "Backend only"
     }
 }
