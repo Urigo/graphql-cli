@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@test-graphql-cli/common": "4.0.0",
+    "@test-graphql-cli/init": "4.0.0",
     "chalk": "3.0.0",
     "commander": "4.0.1",
     "globby": "10.0.1",
