@@ -26,7 +26,7 @@
     "@test-graphql-cli/similar": "4.0.0",
     "@test-graphql-cli/validate": "4.0.0",
     "graphql": "14.5.8",
-    "graphql-cli": "4.0.0",
+    "graphql-cli": "4.0.0-experimental.12",
     "schemats": "3.0.3",
     "tslint": "5.20.1",
     "typescript": "3.7.2"
