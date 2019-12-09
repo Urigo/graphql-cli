@@ -1250,10 +1250,10 @@
     glob "7.1.6"
     pino "5.14.0"
 
-"@graphback/runtime@0.10.0-dev3":
-  version "0.10.0-dev3"
-  resolved "https://registry.yarnpkg.com/@graphback/runtime/-/runtime-0.10.0-dev3.tgz#87e30c04cc0f172dedac034f24d3782311cf068a"
-  integrity sha512-yx2wjedEUN7tueOCjA4Zbhl/iSi37UTZ8+Y5h4ln96e9GiO962nzZro/gtXk36Qw1zJafKeN1BILrnCH0QkTvA==
+"@graphback/runtime@0.10.0-rc2":
+  version "0.10.0-rc2"
+  resolved "https://registry.yarnpkg.com/@graphback/runtime/-/runtime-0.10.0-rc2.tgz#0b4909f63d3de981330a1df92966489c0ad94118"
+  integrity sha512-rfMPE48H8vNoTRK7VKQSkQwDdPed14sqFdMauhufNa/q7fe14x4l9yf8EPpN6pVl6UisEF5IDAE4yrGPcU+D6A==
   dependencies:
     "@graphback/core" "^0.10.0-rc2"
     dataloader "2.0.0"
