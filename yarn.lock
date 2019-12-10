@@ -1333,6 +1333,13 @@
   resolved "https://registry.yarnpkg.com/@types/caseless/-/caseless-0.12.2.tgz#f65d3d6389e01eeb458bd54dc8f52b95a9463bc8"
   integrity sha512-6ckxMjBBD8URvjB6J3NcnuAn5Pkl7t3TizAg+xdlzzQGSPSmBcXf8KoIH0ua/i+tio+ZRUHEXp0HEmvaR4kt0w==
 
+"@types/child-process-promise@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@types/child-process-promise/-/child-process-promise-2.2.1.tgz#049033bef102f77a1719b38672cc86a2c4710ab1"
+  integrity sha512-xZ4kkF82YkmqPCERqV9Tj0bVQj3Tk36BqGlNgxv5XhifgDRhwAqp+of+sccksdpZRbbPsNwMOkmUqOnLgxKtGw==
+  dependencies:
+    "@types/node" "*"
+
 "@types/connect@*":
   version "3.4.32"
   resolved "https://registry.yarnpkg.com/@types/connect/-/connect-3.4.32.tgz#aa0e9616b9435ccad02bc52b5b454ffc2c70ba28"
@@ -2647,11 +2654,6 @@ colorette@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.1.0.tgz#1f943e5a357fac10b4e0f5aaef3b14cdc1af6ec7"
   integrity sha512-6S062WDQUXi6hOfkO/sBPVwE5ASXY4G2+b4atvhJfSsuUUhIaUKlkjLe9692Ipyt5/a+IPF5aVTu3V5gvXq5cg==
-
-colors@^1.1.2:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/colors/-/colors-1.4.0.tgz#c50491479d4c1bdaed2c9ced32cf7c7dc2360f78"
-  integrity sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA==
 
 columnify@^1.5.4:
   version "1.5.4"
@@ -8649,13 +8651,13 @@ yargs@^14.2.2:
     y18n "^4.0.0"
     yargs-parser "^15.0.0"
 
-yarn-programmatic@0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/yarn-programmatic/-/yarn-programmatic-0.0.2.tgz#9e8f25a56cfa6e4c12eed78601fb0df0df5c033d"
-  integrity sha512-nPhcyRSLq80YRQCWNTYCAvWD8oGM5y9YbDHcH/FcTq7onxHSQAM2mWjqlJ5X5lfamjRU6cqYVXZEAJxXG8UJDw==
+yarn-programmatic@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/yarn-programmatic/-/yarn-programmatic-0.1.1.tgz#4cf4cb4a8aae646b701f45d1906814e0e5c8aee9"
+  integrity sha512-4EgT+/pygjukkb3gzmUQm9jaUEa5XFWgF1/Lva+GQQo99pVpb+YotfeRY/RnQbZM4nxZW/TmWDOpBffX/Yk1Ow==
   dependencies:
+    "@types/child-process-promise" "^2.2.1"
     child-process-promise "^2.2.1"
-    colors "^1.1.2"
 
 yn@^3.0.0:
   version "3.1.1"
