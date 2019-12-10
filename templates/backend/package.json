@@ -18,7 +18,7 @@
     "graphql-tools": "4.0.6",
     "knex": "0.20.0",
     "pg": "7.12.1",
-    "sqlite3": "4.1.0",
+    "sqlite3": "4.1.1",
     "subscriptions-transport-ws": "0.9.16"
   },
   "devDependencies": {
