@@ -22,7 +22,7 @@
     "inquirer": "7.0.0",
     "js-yaml": "3.13.1",
     "latest-version": "5.1.0",
-    "openapi-to-graphql": "1.6.3",
+    "openapi-to-graphql": "1.7.0",
     "ora": "4.0.3",
     "rimraf": "3.0.0",
     "simple-git": "1.126.0",
