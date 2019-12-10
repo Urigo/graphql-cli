@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "skipLibCheck": true,
     "esModuleInterop": true,
     "importHelpers": true,
     "experimentalDecorators": true,
@@ -17,8 +18,7 @@
     "alwaysStrict": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": false,
-    "skipLibCheck": true
+    "noUnusedParameters": false
   },
   "files": ["src/index.ts"],
   "exclude": ["node_modules"]

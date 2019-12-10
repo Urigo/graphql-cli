@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "skipLibCheck": true,
     "importHelpers": true,
     "experimentalDecorators": true,
     "module": "commonjs",
