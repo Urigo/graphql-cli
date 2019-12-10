@@ -30,6 +30,6 @@
     "@types/open": "6.2.1",
     "graphql": "14.5.8",
     "ts-node": "8.5.4",
-    "typescript": "3.7.2"
+    "typescript": "3.7.3"
   }
 }
