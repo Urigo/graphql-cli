@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "server",
+  "name": "@test-graphql-cli/full-stack-template-server",
   "version": "4.0.0",
   "scripts": {
     "develop": "ts-node-dev src/index.ts",

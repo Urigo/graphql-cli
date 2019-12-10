@@ -1,5 +1,5 @@
 {
-  "name": "graphql-cli-backend-template",
+  "name": "@test-graphql-cli/backend-template",
   "version": "4.0.0",
   "private": true,
   "main": "src/index.ts",
