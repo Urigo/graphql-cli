@@ -3,6 +3,8 @@ import open from 'open';
 import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
 import { GitLoader } from '@graphql-toolkit/git-loader';
 import { GithubLoader } from '@graphql-toolkit/github-loader';
+import { ApolloEngineLoader } from '@graphql-toolkit/apollo-engine-loader';
+import { PrismaLoader } from '@graphql-toolkit/prisma-loader';
 import { GraphQLExtensionDeclaration } from 'graphql-config';
 import { ApolloServer, PlaygroundConfig as GraphQLPlaygroundConfig, IMocks } from 'apollo-server';
 import { RenderPageOptions } from '@apollographql/graphql-playground-html';
@@ -12,6 +14,8 @@ const ServeExtension: GraphQLExtensionDeclaration = api => {
   api.loaders.schema.register(new CodeFileLoader());
   api.loaders.schema.register(new GitLoader());
   api.loaders.schema.register(new GithubLoader());
+  api.loaders.schema.register(new ApolloEngineLoader());
+  api.loaders.schema.register(new PrismaLoader());
 
   return {
     name: 'serve',

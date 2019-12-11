@@ -2,6 +2,8 @@ import { CliPlugin, InitOptions } from '@test-graphql-cli/common';
 import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
 import { GitLoader } from '@graphql-toolkit/git-loader';
 import { GithubLoader } from '@graphql-toolkit/github-loader';
+import { ApolloEngineLoader } from '@graphql-toolkit/apollo-engine-loader';
+import { PrismaLoader } from '@graphql-toolkit/prisma-loader';
 import { diff, CriticalityLevel, Change } from '@graphql-inspector/core';
 import chalk from 'chalk';
 import logSymbols from 'log-symbols';
@@ -12,6 +14,8 @@ const DiffExtension: GraphQLExtensionDeclaration = api => {
   api.loaders.schema.register(new CodeFileLoader());
   api.loaders.schema.register(new GitLoader());
   api.loaders.schema.register(new GithubLoader());
+  api.loaders.schema.register(new ApolloEngineLoader());
+  api.loaders.schema.register(new PrismaLoader());
 
   return {
     name: 'diff'

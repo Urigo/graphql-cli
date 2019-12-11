@@ -2,6 +2,8 @@ import { CliPlugin, DetailedError, InitOptions } from '@test-graphql-cli/common'
 import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
 import { GitLoader } from '@graphql-toolkit/git-loader';
 import { GithubLoader } from '@graphql-toolkit/github-loader';
+import { ApolloEngineLoader } from '@graphql-toolkit/apollo-engine-loader';
+import { PrismaLoader } from '@graphql-toolkit/prisma-loader';
 import { codegen } from '@graphql-codegen/core';
 import { writeFileSync, existsSync } from 'fs';
 import { join, resolve } from 'path';
@@ -17,8 +19,10 @@ import debounce from 'debounce';
 const CodegenExtension: GraphQLExtensionDeclaration = api => {
   // Schema
   api.loaders.schema.register(new CodeFileLoader());
-  api.loaders.documents.register(new GitLoader());
-  api.loaders.documents.register(new GithubLoader());
+  api.loaders.schema.register(new GitLoader());
+  api.loaders.schema.register(new GithubLoader());
+  api.loaders.schema.register(new ApolloEngineLoader());
+  api.loaders.schema.register(new PrismaLoader());
   // Documents
   api.loaders.documents.register(new CodeFileLoader());
   api.loaders.documents.register(new GitLoader());
