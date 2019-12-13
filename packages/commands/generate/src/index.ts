@@ -267,6 +267,7 @@ export const plugin: CliPlugin = {
           if (cliFlags.watch) {
             chokidar.watch(generateConfig.folders.model, {
               persistent: true,
+              cwd: config.dirpath,
             }).on('all', debouncedExec);
           } else {
             await runGeneration(cliFlags, config.dirpath, generateConfig);

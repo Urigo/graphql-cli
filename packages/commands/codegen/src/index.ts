@@ -221,6 +221,7 @@ export const plugin: CliPlugin = {
             ], {
               ignored: context.fileNames,
               persistent: true,
+              cwd: context.graphqlConfig.dirpath,
             }).on('all', debouncedExec);
           } else {
             await runCodegen(context);
