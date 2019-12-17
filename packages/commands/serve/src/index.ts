@@ -48,13 +48,13 @@ export async function loadMocks(mockConfig?: MockConfig) {
 }
 
 export const plugin: CliPlugin = {
-  init({ program, reportError, loadConfig }) {
+  init({ program, loadProjectConfig, reportError }) {
     program
       .command('serve [port]')
       .action(async (port: string | number = '4000') => {
         try {
 
-          const config = await loadConfig({
+          const config = await loadProjectConfig({
             extensions: [ServeExtension]
           });
 
@@ -88,10 +88,11 @@ export const plugin: CliPlugin = {
             playground,
           });
 
-          await apolloServer.listen(port)
+          const serverInfo = await apolloServer.listen(port)
           
           const url = `http://localhost:${port}/graphql`;
-          console.log(`Serving the GraphQL API and Playground on ${url}`);
+          console.info(`Serving the GraphQL API and Playground on ${url}`);
+          console.info(JSON.stringify(serverInfo, null, 2));
           await open(url);
 
         } catch (e) {

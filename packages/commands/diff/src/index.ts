@@ -41,13 +41,13 @@ function getSymbol(level: CriticalityLevel): string {
 }
 
 export const plugin: CliPlugin = {
-  init({ program, loadConfig, reportError }: InitOptions) {
+  init({ program, loadProjectConfig, reportError }: InitOptions) {
     program
       .command('diff [baseSchema]')
       .action(async (baseSchemaPtr: string) => {
         try {
 
-          const config = await loadConfig({
+          const config = await loadProjectConfig({
             extensions: [DiffExtension]
           })
           if (!baseSchemaPtr) {

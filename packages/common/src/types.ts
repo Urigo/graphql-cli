@@ -1,11 +1,12 @@
 import { Command } from 'commander';
-import { GraphQLProjectConfig, loadConfig } from 'graphql-config';
+import { GraphQLProjectConfig, loadConfig, GraphQLConfig } from 'graphql-config';
 
 export interface InitOptions {
   cwd: string;
   program: Command;
   reportError: (e: Error | string) => void;
-  loadConfig: (loadConfigOptions?: LoadConfigOptions) => Promise<GraphQLProjectConfig>;
+  loadGraphQLConfig: (loadConfigOptions?: LoadConfigOptions) => Promise<GraphQLConfig>;
+  loadProjectConfig: (loadConfigOptions?: LoadConfigOptions) => Promise<GraphQLProjectConfig>;
 }
 
 export interface CliPlugin {

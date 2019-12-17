@@ -29,7 +29,7 @@ const CoverageExtension: GraphQLExtensionDeclaration = api => {
 };
 
 export const plugin: CliPlugin = {
-    init({ program, loadConfig, reportError }) {
+    init({ program, loadProjectConfig, reportError }) {
         program
             .command('coverage')
             .option('-s, --silent', 'Do not render any stats in the terminal (default: false)')
@@ -40,7 +40,7 @@ export const plugin: CliPlugin = {
                 deprecated: boolean;
             }) => {
                 try {
-                    const config = await loadConfig({
+                    const config = await loadProjectConfig({
                         extensions: [CoverageExtension]
                     });
                     const [schema, documents] = await Promise.all([

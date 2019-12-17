@@ -8,6 +8,7 @@ extensions:
           withComponent: false
           withHOC: false
           withHooks: true
+          skipDocumentsValidation: true
         plugins:
           - add: '/* tslint:disable */'
           - typescript
@@ -20,6 +21,7 @@ extensions:
             Comment: './generated-db-types#comment'
             Note: './generated-db-types#note'
           useIndexSignature: true
+          skipDocumentsValidation: true
         plugins:
           - add: '/* tslint:disable */'
           - typescript

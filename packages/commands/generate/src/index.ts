@@ -1,12 +1,9 @@
 import { CliPlugin } from "@test-graphql-cli/common";
-import { loadSchemaUsingLoaders } from "@graphql-toolkit/core";
-import { printSchemaWithDirectives } from "@graphql-toolkit/common";
 import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
-import { GraphQLFileLoader } from '@graphql-toolkit/graphql-file-loader';
-import { JsonFileLoader } from '@graphql-toolkit/json-file-loader';
-import { UrlLoader } from '@graphql-toolkit/url-loader';
 import { GitLoader } from '@graphql-toolkit/git-loader';
 import { GithubLoader } from '@graphql-toolkit/github-loader';
+import { ApolloEngineLoader } from '@graphql-toolkit/apollo-engine-loader';
+import { PrismaLoader } from '@graphql-toolkit/prisma-loader';
 import { ensureFile } from 'fs-extra';
 import { writeFile as fsWriteFile } from 'fs';
 import { join } from 'path';
@@ -21,6 +18,8 @@ import Listr, { ListrTask } from 'listr';
 import { prompt } from 'inquirer';
 import chokidar from 'chokidar';
 import debounce from 'debounce';
+import { GraphQLExtensionDeclaration } from 'graphql-config';
+import { print } from 'graphql';
 
 export interface GenerateConfig {
   folders: {
@@ -151,18 +150,7 @@ interface CliFlags {
   db: boolean, client: boolean, backend: boolean, silent: boolean, watch: boolean
 }
 
-export const runGeneration = async ({db, client, backend, silent }: CliFlags, cwd: string, generateConfig: GenerateConfig) => {
-
-  const models = await loadSchemaUsingLoaders([
-    new UrlLoader(),
-    new GraphQLFileLoader(),
-    new JsonFileLoader(),
-    new CodeFileLoader(),
-    new GitLoader(),
-    new GithubLoader(),
-  ], join(cwd, generateConfig.folders.model + '/**/*.graphql'));
-
-  const schemaString = printSchemaWithDirectives(models);
+export const runGeneration = async ({db, client, backend, silent }: CliFlags, cwd: string, generateConfig: GenerateConfig, schemaString: string) => {
 
   const tasks: ListrTask[] = [];
 
@@ -202,8 +190,21 @@ export const runGeneration = async ({db, client, backend, silent }: CliFlags, cw
   await listr.run();
 }
 
+const GenerateExtension: GraphQLExtensionDeclaration = api => {
+  // Schema
+  api.loaders.schema.register(new CodeFileLoader());
+  api.loaders.schema.register(new GitLoader());
+  api.loaders.schema.register(new GithubLoader());
+  api.loaders.schema.register(new ApolloEngineLoader());
+  api.loaders.schema.register(new PrismaLoader());
+
+  return {
+    name: 'generate'
+  };
+};
+
 export const plugin: CliPlugin = {
-  init({ program, loadConfig, reportError }) {
+  init({ program, loadProjectConfig, reportError }) {
     program
       .command('generate')
       .option('--db')
@@ -213,10 +214,8 @@ export const plugin: CliPlugin = {
       .option('-w, --watch', 'Watch for changes and execute generation automatically')
       .action(async (cliFlags: CliFlags) => {
         try {
-          const config = await loadConfig({
-            extensions: [
-              () => ({ name: 'generate' }),
-            ]
+          const config = await loadProjectConfig({
+            extensions: [GenerateExtension]
           });
           const generateConfig: GenerateConfig = await config.extension('generate');
 
@@ -257,7 +256,9 @@ export const plugin: CliPlugin = {
 
           const debouncedExec = debounce(async () => {
             try {
-              await runGeneration(cliFlags, config.dirpath, generateConfig);
+              const schemaDocument = await config.loadSchema(join(config.dirpath, generateConfig.folders.model + '/**/*.graphql'), 'DocumentNode');
+              const schemaString = print(schemaDocument);
+              await runGeneration(cliFlags, config.dirpath, generateConfig, schemaString);
             } catch(e) {
               reportError(e);
             }
@@ -270,7 +271,9 @@ export const plugin: CliPlugin = {
               cwd: config.dirpath,
             }).on('all', debouncedExec);
           } else {
-            await runGeneration(cliFlags, config.dirpath, generateConfig);
+            const schemaDocument = await config.loadSchema(join(config.dirpath, generateConfig.folders.model + '/**/*.graphql'), 'DocumentNode');
+            const schemaString = print(schemaDocument);
+            await runGeneration(cliFlags, config.dirpath, generateConfig, schemaString);
             process.exit(0);
           }
 

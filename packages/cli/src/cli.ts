@@ -43,14 +43,18 @@ export async function cli(argv = process.argv): Promise<void> {
 
     let projectName = 'default';
 
-    const loadConfig = async (loadConfigOptions: LoadConfigOptions = {}) => {
+    const loadGraphQLConfig = async (loadConfigOptions: LoadConfigOptions = {}) => {
       const graphqlConfig = await import('graphql-config');
-      const loadedGraphQLConfig = await graphqlConfig.loadConfig({
+      return graphqlConfig.loadConfig({
         rootDir: process.cwd(),
         throwOnEmpty: true,
         throwOnMissing: true,
         ...loadConfigOptions
       });
+    }
+
+    const loadProjectConfig = async (loadConfigOptions: LoadConfigOptions = {}) => {
+      const loadedGraphQLConfig = await loadGraphQLConfig(loadConfigOptions);
       const projectNames = Object.keys(loadedGraphQLConfig.projects);
       if (projectName && !projectNames.includes(projectName)) {
         throw new Error(
@@ -65,7 +69,8 @@ export async function cli(argv = process.argv): Promise<void> {
       cwd: process.cwd(),
       program,
       reportError,
-      loadConfig,
+      loadGraphQLConfig,
+      loadProjectConfig,
     });
 
     // Remove the root object before running, to allow develoeprs to write

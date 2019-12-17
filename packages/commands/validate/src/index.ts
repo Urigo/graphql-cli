@@ -27,7 +27,7 @@ const ValidateExtension: GraphQLExtensionDeclaration = api => {
 };
 
 export const plugin: CliPlugin = {
-    init({ program, loadConfig, reportError }) {
+    init({ program, loadProjectConfig, reportError }) {
         program
             .command('validate')
             .option('-d, --deprecated', 'Fail on deprecated usage (default: false)')
@@ -42,7 +42,7 @@ export const plugin: CliPlugin = {
             }) => {
                 try {
 
-                    const config = await loadConfig({
+                    const config = await loadProjectConfig({
                         extensions: [ValidateExtension]
                     });
                     const [schema, documents] = await Promise.all([

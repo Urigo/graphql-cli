@@ -24,7 +24,7 @@ The `init` method will get trigged by the CLI host, and will pass the following 
 
 - `cwd` - The current directory.
 - `program` - A `commander` instance you can use to register your CLI commands.
-- `loadConfig` - A method you can use to load a GraphQL schema or documents, based on `graphql-config`.
+- `loadProjectConfig` - A method you can use to load a GraphQL schema or documents, based on `graphql-config`.
 - `reportError` - Helper method that allow you to report errors back to the GraphQL CLI, and effect the exit code of the CLI host. It's useful if you are dealing with async code in your extension.
 
 It should be similar to this if you are using plain JavaScript:
@@ -32,7 +32,7 @@ It should be similar to this if you are using plain JavaScript:
 ```js
 module.exports = {
   plugin: {
-    init: ({ cwd, program, loadConfig, reportError }) => {
+    init: ({ cwd, program, loadProjectConfig, reportError }) => {
       // Your plugin code here, you can use "program" to register sub-commands.
     }
   }
@@ -45,7 +45,7 @@ Or, with TypeScript:
 import { plugin } from '@test-graphql-cli/common';
 
 export const plugin: CliPlugin = {
-  init({ cwd, program, loadConfig, reportError }) {
+  init({ cwd, program, loadProjectConfig, reportError }) {
     // Your plugin code here
   }
 };
@@ -83,20 +83,20 @@ graphql ./src/index.js do-something
 
 ## Loading GraphQL Schema
 
-To easily load GraphQL schema, you can use `loadConfig` to get it from a `graphql-config` file:
+To easily load GraphQL schema, you can use `loadProjectConfig` to get it from a `graphql-config` file:
 
 ```ts
 import { plugin } from '@test-graphql-cli/common';
 
 export const plugin: CliPlugin = {
-  async init({ cwd, program, loadConfig, reportError }) {
-    const config = await loadConfig();
+  async init({ cwd, program, loadProjectConfig, reportError }) {
+    const config = await loadProjectConfig();
     const schema = await config.getSchema();
   }
 };
 ```
 
-> You can also extend the `loadConfig` behavior by specifying custom loaders and extensions.
+> You can also extend the `loadProjectConfig` behavior by specifying custom loaders and extensions.
 
 If you are using `graphql-config` to define your configuration, and you wish to load your extenion config from it, do:
 
@@ -114,7 +114,7 @@ If you wish to fail the execution of your plugin and report it back to GraphQL C
 import { plugin } from '@test-graphql-cli/common';
 
 export const plugin: CliPlugin = {
-  async init({ cwd, program, loadConfig, reportError }) {
+  async init({ cwd, program, loadProjectConfig, reportError }) {
     try {
       // do something risky
       // or, throw:

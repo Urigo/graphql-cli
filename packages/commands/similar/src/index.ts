@@ -38,7 +38,7 @@ export const colorizePercentage = (percentage: number) => {
 }
 
 export const plugin: CliPlugin = {
-    init({ program, loadConfig, reportError }) {
+    init({ program, loadProjectConfig, reportError }) {
         program
             .command('similar')
             .option('-n, --type <s>', 'Check only a single type (checks all types by default)')
@@ -50,7 +50,7 @@ export const plugin: CliPlugin = {
                 write: string;
             }) => {
                 try {
-                    const config = await loadConfig({
+                    const config = await loadProjectConfig({
                         extensions: [SimilarExtension]
                     });
                     const schema = await config.getSchema();
