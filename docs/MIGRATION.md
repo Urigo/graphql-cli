@@ -44,7 +44,7 @@ schema: http://localhost:4000/graphql #This is the schema path
 If you want to download the schema from this URL to your local file system, you will also need to install `codegen` plugin and its `schema-ast` plugin using the following command or its npm equivalent:
 
 ```bash
-yarn add @test-graphql-cli/codegen@@canary @graphql-codegen/schema-ast --dev
+yarn add @test-graphql-cli/codegen@canary @graphql-codegen/schema-ast --dev
 ```
 
 After that, you can specify the output path of the local schema file:
