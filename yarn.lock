@@ -1580,6 +1580,16 @@
     prisma-yml "1.34.10"
     tslib "1.10.0"
 
+"@graphql-toolkit/prisma-loader@0.7.5":
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/prisma-loader/-/prisma-loader-0.7.5.tgz#056fa860a13a5ffcdee79e0ee9a19cb257717a00"
+  integrity sha512-6Q6CJM2dNBubUIBr+8/KmGNQXvjbsrCBs6UUs8JyQsBcCuDqtVdPVAeIrWvH7+wvd2jnRTV9BdmvpV128C+udw==
+  dependencies:
+    "@graphql-toolkit/common" "0.7.5"
+    "@graphql-toolkit/url-loader" "0.7.5"
+    prisma-yml "1.34.10"
+    tslib "1.10.0"
+
 "@graphql-toolkit/schema-merging@0.6.2":
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/@graphql-toolkit/schema-merging/-/schema-merging-0.6.2.tgz#c2e2442cd3db885361791757679750c6bb8179a6"
@@ -1614,6 +1624,16 @@
   integrity sha512-utFzkKFR98C5G3imj3+pKg28JqePgP5oKBFN/s7GiIoYYhhV9rnwb778E04F1PvlBHyh5LiOiTjC5bxGg1Gt9g==
   dependencies:
     "@graphql-toolkit/common" "0.7.4"
+    cross-fetch "3.0.4"
+    tslib "1.10.0"
+    valid-url "1.0.9"
+
+"@graphql-toolkit/url-loader@0.7.5":
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/url-loader/-/url-loader-0.7.5.tgz#8057519d7053dbde52701a65d9a4751739de4a0a"
+  integrity sha512-Fc+BsTPhnQXe8CGI2hyUnhTu7EKsZ2q6GuKadUe1Ft3FSb4Rm8dJd0JdFgPWw6M5f1CNxaT5dR06P3yNyeO9MA==
+  dependencies:
+    "@graphql-toolkit/common" "0.7.5"
     cross-fetch "3.0.4"
     tslib "1.10.0"
     valid-url "1.0.9"
