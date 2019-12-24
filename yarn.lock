@@ -1517,6 +1517,20 @@
     tslib "^1.9.3"
     valid-url "1.0.9"
 
+"@graphql-toolkit/core@0.7.5":
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/core/-/core-0.7.5.tgz#caa0578c35e35964e41477c074e7877171b2dd7a"
+  integrity sha512-KKiWCZuFeuVHs3lvmVhx1savsov9J1PHXKebMl2DsK1+Yg/IuA7KjS2vWXQzRwBl6u/JeLDDK628hsfj8V2zKg==
+  dependencies:
+    "@graphql-toolkit/common" "0.7.5"
+    "@graphql-toolkit/schema-merging" "0.7.5"
+    aggregate-error "3.0.1"
+    globby "10.0.1"
+    graphql-import "0.7.1"
+    is-glob "4.0.1"
+    tslib "^1.9.3"
+    valid-url "1.0.9"
+
 "@graphql-toolkit/file-loading@0.7.5":
   version "0.7.5"
   resolved "https://registry.yarnpkg.com/@graphql-toolkit/file-loading/-/file-loading-0.7.5.tgz#3ae3dc28b791064f0a56dfb99aeac0905b2e349d"
@@ -1639,6 +1653,16 @@
   integrity sha512-kIdjADMwmUPaZ3mf0eacT7AJwit1B1bVY6vsPMVOPeD6xrpQHqaFdCaFCEq6FUyFgSpbGpBdYdvNroyn9QjwSw==
   dependencies:
     "@graphql-toolkit/common" "0.7.4"
+    "@kamilkisiela/graphql-tools" "4.0.6"
+    deepmerge "4.2.2"
+    tslib "1.10.0"
+
+"@graphql-toolkit/schema-merging@0.7.5":
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/schema-merging/-/schema-merging-0.7.5.tgz#dfcd4a3e4084a3648f0ce7369b6607d7797da537"
+  integrity sha512-6HJb0bFqkJn45MMWLpt1K0kPJlbyGUaXFuBMY+yQ6fr70U01VjWc/RpXm9JO9FzlpzmtaMGd2HcsWC+7mAddtg==
+  dependencies:
+    "@graphql-toolkit/common" "0.7.5"
     "@kamilkisiela/graphql-tools" "4.0.6"
     deepmerge "4.2.2"
     tslib "1.10.0"
