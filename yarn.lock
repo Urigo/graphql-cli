@@ -2821,6 +2821,32 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
+"@test-graphql-cli/common@4.0.0-experimental.13+f1311f0":
+  version "4.0.0-experimental.13"
+  resolved "https://registry.yarnpkg.com/@test-graphql-cli/common/-/common-4.0.0-experimental.13.tgz#1b7b74fd157bd67845b099e226c2337e691fffff"
+  integrity sha512-OpZuKUgAiCqYSiNyJ2FISwSO081aKHLgBUjPCuDNiffeMpUsnV7gjHZblSWKkmcZ68TQuu0yEl5eU0hKdVqa2Q==
+  dependencies:
+    chalk "2.4.2"
+    commander "3.0.0"
+    graphql-config "3.0.0-alpha.14"
+    log-symbols "3.0.0"
+
+"@test-graphql-cli/init@4.0.0-experimental.13":
+  version "4.0.0-experimental.13"
+  resolved "https://registry.yarnpkg.com/@test-graphql-cli/init/-/init-4.0.0-experimental.13.tgz#141ae2a1ddabd087749cfc8a120c49ebd9ca5318"
+  integrity sha512-E2rLOEyN8xIe7HZR5AFULYwODlg4CU9aXk9jHBmIAGwtCpdh+ATWFX7PIKqffQHEgVY2Z39tjyeLVJHXwt/+Sw==
+  dependencies:
+    "@test-graphql-cli/common" "4.0.0-experimental.13+f1311f0"
+    chalk "2.4.2"
+    commander "3.0.0"
+    fs-extra "^8.1.0"
+    inquirer "7.0.0"
+    log-symbols "3.0.0"
+    open "7.0.0"
+    openapi-to-graphql "1.6.1"
+    simple-git "1.126.0"
+    yamljs "0.3.0"
+
 "@types/accepts@*", "@types/accepts@^1.3.5":
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/@types/accepts/-/accepts-1.3.5.tgz#c34bec115cfc746e04fe5a059df4ce7e7b391575"
@@ -5463,6 +5489,11 @@ commander@2.17.x:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
   integrity sha512-wPMUt6FnH2yzG95SA6mzjQOEKUU3aLaDEmzs1ti+1E9h+CsrZghRlqEM/EJ4KscsQVG8uNN4uVreUeT8+drlgg==
 
+commander@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-3.0.0.tgz#0641ea00838c7a964627f04cddc336a2deddd60a"
+  integrity sha512-pl3QrGOBa9RZaslQiqnnKX2J068wcQw7j9AIaBQ9/JEp5RY6je4jKTImg0Bd+rpoONSe7GUFSgkxLeo17m3Pow==
+
 commander@4.0.1, commander@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-4.0.1.tgz#b67622721785993182e807f4883633e6401ba53c"
@@ -8056,7 +8087,7 @@ glob-to-regexp@^0.3.0:
   resolved "https://registry.yarnpkg.com/glob-to-regexp/-/glob-to-regexp-0.3.0.tgz#8c5a1494d2066c570cc3bfe4496175acc4d502ab"
   integrity sha1-jFoUlNIGbFcMw7/kSWF1rMTVAqs=
 
-glob@7.1.6, glob@^7.1.2, glob@^7.1.6:
+glob@7.1.6, glob@^7.0.5, glob@^7.1.2, glob@^7.1.6:
   version "7.1.6"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.6.tgz#141f33b81a7c2492e125594307480c46679278a6"
   integrity sha512-LwaxwyZ72Lk7vZINtNNrywX0ZuLyStrdDtabefZKAY5ZGJhVtgdznluResxNmPitE0SAO+O26sWTHeKSI2wMBA==
@@ -8900,6 +8931,25 @@ inquirer@6.5.0:
     run-async "^2.2.0"
     rxjs "^6.4.0"
     string-width "^2.1.0"
+    strip-ansi "^5.1.0"
+    through "^2.3.6"
+
+inquirer@7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-7.0.0.tgz#9e2b032dde77da1db5db804758b8fea3a970519a"
+  integrity sha512-rSdC7zelHdRQFkWnhsMu2+2SO41mpv2oF2zy4tMhmiLWkcKbOAs87fWAJhVXttKVwhdZvymvnuM95EyEXg2/tQ==
+  dependencies:
+    ansi-escapes "^4.2.1"
+    chalk "^2.4.2"
+    cli-cursor "^3.1.0"
+    cli-width "^2.0.0"
+    external-editor "^3.0.3"
+    figures "^3.0.0"
+    lodash "^4.17.15"
+    mute-stream "0.0.8"
+    run-async "^2.2.0"
+    rxjs "^6.4.0"
+    string-width "^4.1.0"
     strip-ansi "^5.1.0"
     through "^2.3.6"
 
@@ -11846,6 +11896,20 @@ open@*, open@7.0.0, open@^7.0.0:
   integrity sha512-K6EKzYqnwQzk+/dzJAQSBORub3xlBTxMz+ntpZpH/LyCa1o6KjXhuN+2npAaI9jaSmU3R1Q8NWf4KUWcyytGsQ==
   dependencies:
     is-wsl "^2.1.0"
+
+openapi-to-graphql@1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/openapi-to-graphql/-/openapi-to-graphql-1.6.1.tgz#bdbb6a2418a8152b61eedb8e9ba86d86db94fb4b"
+  integrity sha512-iFvp9BHcprRc9T5O0gJTOjrFBRcti+UvWJFMJu0A6LSxBxaya3qFkaf7QjWAOWW/I+LBls5+0DgNXolmu2898g==
+  dependencies:
+    "@types/request" "^2.48.1"
+    debug "^4.1.0"
+    deep-equal "^1.0.1"
+    graphql-type-json "^0.2.1"
+    jsonpath-plus "^0.18.0"
+    oas-validator "^3.1.0"
+    request "^2.88.0"
+    swagger2openapi "^5.1.0"
 
 openapi-to-graphql@1.7.0:
   version "1.7.0"
@@ -16903,6 +16967,14 @@ yaml@^1.3.1, yaml@^1.7.2:
   integrity sha512-qXROVp90sb83XtAoqE8bP9RwAkTTZbugRUTm5YeFCBfNRPEp2YzTeqWiz7m5OORHzEvrA/qcGS8hp/E+MMROYw==
   dependencies:
     "@babel/runtime" "^7.6.3"
+
+yamljs@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/yamljs/-/yamljs-0.3.0.tgz#dc060bf267447b39f7304e9b2bfbe8b5a7ddb03b"
+  integrity sha512-C/FsVVhht4iPQYXOInoxUM/1ELSf9EsgKH34FofQOp6hwCPrW4vG4w5++TED3xRUo8gD7l0P1J1dLlDYzODsTQ==
+  dependencies:
+    argparse "^1.0.7"
+    glob "^7.0.5"
 
 yargs-parser@^11.1.1:
   version "11.1.1"
