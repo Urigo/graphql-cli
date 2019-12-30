@@ -125,6 +125,10 @@ extensions:
 
 More plugins are definitely welcome! Please check the existing ones to see how to use GraphQL Config and GraphQL CLI API.
 
+## Contributing
+
+Please read through the [contributing guidelines](./CONTRIBUTING.md)
+
 ## Writing your own plugin
 
 GraphQL CLI supports custom plugins, [you can find a tutorial and example here](./docs/CUSTOM_EXTENSION.md)
