@@ -1456,6 +1456,14 @@
     apollo-language-server "1.17.2"
     tslib "1.10.0"
 
+"@graphql-toolkit/code-file-loader@0.6.2":
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/code-file-loader/-/code-file-loader-0.6.2.tgz#483233ca5a429fd4bca7fcbed7bdf513e251d66f"
+  integrity sha512-OyEwqoyTaNyR0MZR9JGXOE1gmvt+SqjWFvQrikmeLxFMpwQ/HG8wS8ZfjdeafB9VjpFeE3CupvALLBZ+ACEZ8w==
+  dependencies:
+    "@graphql-toolkit/common" "0.6.2"
+    graphql-tag-pluck "0.8.6"
+
 "@graphql-toolkit/code-file-loader@0.7.4":
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/@graphql-toolkit/code-file-loader/-/code-file-loader-0.7.4.tgz#17f508473ca97fcbd7b530d7606529b94af9cc28"
@@ -1502,6 +1510,21 @@
     aggregate-error "3.0.1"
     is-glob "4.0.1"
     lodash "4.17.15"
+
+"@graphql-toolkit/core@0.6.2":
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/core/-/core-0.6.2.tgz#844e9a3537957a987137d87faa66e18c8c7ba6c7"
+  integrity sha512-98A6ssjzTRru+2194+KtaGXUVdvzRDmguzJ3PJ5alh9eHui3UoBzN0p0fJn7W3U771INtZtiByy21BJOGq0REQ==
+  dependencies:
+    "@graphql-toolkit/common" "0.6.2"
+    "@graphql-toolkit/schema-merging" "0.6.2"
+    aggregate-error "3.0.1"
+    globby "10.0.1"
+    graphql-import "0.7.1"
+    is-glob "4.0.1"
+    is-valid-path "0.1.1"
+    tslib "^1.9.3"
+    valid-url "1.0.9"
 
 "@graphql-toolkit/core@0.7.4":
   version "0.7.4"
@@ -2820,6 +2843,34 @@
   integrity sha512-XIB2XbzHTN6ieIjfIMV9hlVcfPU26s2vafYWQcZHWXHOxiaRZYEDKEwdl129Zyg50+foYV2jCgtrqSA6qNuNSA==
   dependencies:
     defer-to-connect "^1.0.1"
+
+"@test-graphql-cli/common@4.0.0-experimental.13+f1311f0":
+  version "4.0.0-experimental.13"
+  resolved "https://registry.yarnpkg.com/@test-graphql-cli/common/-/common-4.0.0-experimental.13.tgz#1b7b74fd157bd67845b099e226c2337e691fffff"
+  integrity sha512-OpZuKUgAiCqYSiNyJ2FISwSO081aKHLgBUjPCuDNiffeMpUsnV7gjHZblSWKkmcZ68TQuu0yEl5eU0hKdVqa2Q==
+  dependencies:
+    chalk "2.4.2"
+    commander "3.0.0"
+    graphql-config "3.0.0-alpha.14"
+    log-symbols "3.0.0"
+
+"@test-graphql-cli/generate@4.0.0-experimental.13":
+  version "4.0.0-experimental.13"
+  resolved "https://registry.yarnpkg.com/@test-graphql-cli/generate/-/generate-4.0.0-experimental.13.tgz#78be383f0668bfc7bbc093b1dbf5f6742c619d4d"
+  integrity sha512-K9e7iNP5H7vdHQAWQqtIlS3Z9kzLcaYELX6Ddi3dq1OT6eVR+mWg9mNZDrPzg/weM9W7CL0fs8InhS5Sa9rzDw==
+  dependencies:
+    "@graphql-toolkit/code-file-loader" "0.6.2"
+    "@graphql-toolkit/common" "0.6.2"
+    "@graphql-toolkit/core" "0.6.2"
+    "@graphql-toolkit/graphql-file-loader" "0.6.2"
+    "@graphql-toolkit/json-file-loader" "0.6.2"
+    "@graphql-toolkit/url-loader" "0.6.2"
+    "@test-graphql-cli/common" "4.0.0-experimental.13+f1311f0"
+    chalk "2.4.2"
+    commander "3.0.0"
+    fs-extra "^8.1.0"
+    graphback "0.9.2"
+    log-symbols "3.0.0"
 
 "@types/accepts@*", "@types/accepts@^1.3.5":
   version "1.3.5"
@@ -5463,6 +5514,11 @@ commander@2.17.x:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
   integrity sha512-wPMUt6FnH2yzG95SA6mzjQOEKUU3aLaDEmzs1ti+1E9h+CsrZghRlqEM/EJ4KscsQVG8uNN4uVreUeT8+drlgg==
 
+commander@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-3.0.0.tgz#0641ea00838c7a964627f04cddc336a2deddd60a"
+  integrity sha512-pl3QrGOBa9RZaslQiqnnKX2J068wcQw7j9AIaBQ9/JEp5RY6je4jKTImg0Bd+rpoONSe7GUFSgkxLeo17m3Pow==
+
 commander@4.0.1, commander@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-4.0.1.tgz#b67622721785993182e807f4883633e6401ba53c"
@@ -5473,7 +5529,7 @@ commander@^2.11.0, commander@^2.12.1, commander@^2.19.0, commander@^2.20.0, comm
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
 
-commander@^3.0.2:
+commander@^3.0.1, commander@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/commander/-/commander-3.0.2.tgz#6837c3fb677ad9933d1cfba42dd14d5117d6b39e"
   integrity sha512-Gar0ASD4BDyKC4hl4DwHqDrmvjoxWKZigVnAbn5H1owvm4CxCPdb0HQDehwNYMJpla5+M2tPmPARzhtYuwpHow==
@@ -7436,6 +7492,11 @@ fast-levenshtein@~2.0.6:
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
 
+fast-redact@^1.4.4:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/fast-redact/-/fast-redact-1.5.0.tgz#302892f566750c4f5eec7b830bfc9bc473484034"
+  integrity sha512-Afo61CgUjkzdvOKDHn08qnZ0kwck38AOGcMlvSGzvJbIab6soAP5rdoQayecGCDsD69AiF9vJBXyq31eoEO2tQ==
+
 fast-redact@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/fast-redact/-/fast-redact-2.0.0.tgz#17bb8f5e1f56ecf4a38c8455985e5eab4c478431"
@@ -7679,7 +7740,7 @@ flat-cache@^2.0.1:
     rimraf "2.6.3"
     write "1.0.3"
 
-flatstr@^1.0.12:
+flatstr@^1.0.12, flatstr@^1.0.9:
   version "1.0.12"
   resolved "https://registry.yarnpkg.com/flatstr/-/flatstr-1.0.12.tgz#c2ba6a08173edbb6c9640e3055b95e287ceb5931"
   integrity sha512-4zPxDyhCyiN2wIAtSLI6gc82/EjqZc1onI4Mz/l0pWrAlsSfYH/2ZIcU+e3oA2wDwbzIWNKwa23F8rh6+DRWkw==
@@ -8202,6 +8263,17 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.3.tgz#4a12ff1b60376ef09862c2093edd908328be8423"
   integrity sha512-a30VEBm4PEdx1dRB7MFK7BejejvCvBronbLjht+sHuGYj8PHs7M/5Z+rt5lw551vZ7yfTCj4Vuyy3mSJytDWRQ==
 
+graphback@0.9.2:
+  version "0.9.2"
+  resolved "https://registry.yarnpkg.com/graphback/-/graphback-0.9.2.tgz#f85fb0c049ddecc1cdbe8706752185a6e62747a0"
+  integrity sha512-9Mz86DMLtIeJkSfy+ikqWDRDd0HfZ2paL+tSMDF0E+qbxSpS88F22HTWaUTRLL4xO8fS8X6pjKMlW/ZbWOMNzg==
+  dependencies:
+    knex "0.19.4"
+    pg "7.12.1"
+    pino "5.13.3"
+    sqlite3 "4.1.0"
+    tslib "1.10.0"
+
 grapheme-splitter@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz#9cf3a665c6247479896834af35cf1dbb4400767e"
@@ -8265,6 +8337,16 @@ graphql-subscriptions@1.1.0, graphql-subscriptions@^1.0.0:
   integrity sha512-6WzlBFC0lWmXJbIVE8OgFgXIP4RJi3OQgTPa0DVMsDXdpRDjTsM1K9wfl5HSYX7R87QAGlvcv2Y4BIZa/ItonA==
   dependencies:
     iterall "^1.2.1"
+
+graphql-tag-pluck@0.8.6:
+  version "0.8.6"
+  resolved "https://registry.yarnpkg.com/graphql-tag-pluck/-/graphql-tag-pluck-0.8.6.tgz#631652183059d5a1c92af9fc878ea7fca5183fae"
+  integrity sha512-j5ftGv++G5cccwsQ1M6G907c7RffBWiWu0OVkxWVc2I+8BR2LuWziEUMTcT2K9/lWl43NeM0SDIsW+RUO6W2qQ==
+  dependencies:
+    "@babel/parser" "^7.4.4"
+    "@babel/traverse" "^7.4.4"
+    "@babel/types" "^7.4.4"
+    source-map-support "^0.5.12"
 
 graphql-tag-pluck@0.8.7:
   version "0.8.7"
@@ -10179,6 +10261,27 @@ kleur@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
+
+knex@0.19.4:
+  version "0.19.4"
+  resolved "https://registry.yarnpkg.com/knex/-/knex-0.19.4.tgz#cf62f8824392387152a0a188a6585d5dea6832bb"
+  integrity sha512-FRnR2iWEAoKkrVo3KyiEYeGwUjZOZT2WDko/tn3nCKzQdn6m8+5qSUeYLGa9zM8SwFGJriYKQSSMiDJKLILcMQ==
+  dependencies:
+    bluebird "^3.5.5"
+    colorette "1.1.0"
+    commander "^3.0.1"
+    debug "4.1.1"
+    getopts "2.2.5"
+    inherits "~2.0.4"
+    interpret "^1.2.0"
+    liftoff "3.1.0"
+    lodash "^4.17.15"
+    mkdirp "^0.5.1"
+    pg-connection-string "2.1.0"
+    tarn "^2.0.0"
+    tildify "2.0.0"
+    uuid "^3.3.3"
+    v8flags "^3.1.3"
 
 knex@0.20.0:
   version "0.20.0"
@@ -12424,6 +12527,11 @@ pg-minify@~0.5.3:
   resolved "https://registry.yarnpkg.com/pg-minify/-/pg-minify-0.5.5.tgz#6c961a61aa19f469d8edfe5a3c0da58760f3c339"
   integrity sha512-7Pf9h6nV1RFqED1hkRosePqvpPwNUUtW06TT4+lHwzesxa5gffxkShTjYH6JXV5sSSfh5+2yHOTTWEkCyCQ0Eg==
 
+pg-pool@^2.0.4:
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/pg-pool/-/pg-pool-2.0.9.tgz#7ed69a27e204f99e9804a851404db6aa908a6dea"
+  integrity sha512-gNiuIEKNCT3OnudQM2kvgSnXsLkSpd6mS/fRnqs6ANtrke6j8OY5l9mnAryf1kgwJMWLg0C1N1cYTZG1xmEYHQ==
+
 pg-pool@^2.0.7, pg-pool@~2.0.3:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/pg-pool/-/pg-pool-2.0.7.tgz#f14ecab83507941062c313df23f6adcd9fd0ce54"
@@ -12459,6 +12567,19 @@ pg-types@~1.12.1:
     postgres-bytea "~1.0.0"
     postgres-date "~1.0.0"
     postgres-interval "^1.1.0"
+
+pg@7.12.1:
+  version "7.12.1"
+  resolved "https://registry.yarnpkg.com/pg/-/pg-7.12.1.tgz#880636d46d2efbe0968e64e9fe0eeece8ef72a7e"
+  integrity sha512-l1UuyfEvoswYfcUe6k+JaxiN+5vkOgYcVSbSuw3FvdLqDbaoa2RJo1zfJKfPsSYPFVERd4GHvX3s2PjG1asSDA==
+  dependencies:
+    buffer-writer "2.0.0"
+    packet-reader "1.0.0"
+    pg-connection-string "0.1.3"
+    pg-pool "^2.0.4"
+    pg-types "^2.1.0"
+    pgpass "1.x"
+    semver "4.3.2"
 
 pg@7.14.0:
   version "7.14.0"
@@ -12544,10 +12665,22 @@ pinkie@^2.0.0:
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
   integrity sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
 
-pino-std-serializers@^2.4.2:
+pino-std-serializers@^2.3.0, pino-std-serializers@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/pino-std-serializers/-/pino-std-serializers-2.4.2.tgz#cb5e3e58c358b26f88969d7e619ae54bdfcc1ae1"
   integrity sha512-WaL504dO8eGs+vrK+j4BuQQq6GLKeCCcHaMB2ItygzVURcL1CycwNEUHTD/lHFHs/NL5qAz2UKrjYWXKSf4aMQ==
+
+pino@5.13.3:
+  version "5.13.3"
+  resolved "https://registry.yarnpkg.com/pino/-/pino-5.13.3.tgz#26cd6f69b4bd03d6408af28eddcd9313687f143d"
+  integrity sha512-FL12DKlPwBlbhztlUz6kseR03PRR8nD+wvLdN/Sji9UiBYYfSjX+k8ocU7/NwW55JdFRONTn3iACoelXnMFVVQ==
+  dependencies:
+    fast-redact "^1.4.4"
+    fast-safe-stringify "^2.0.7"
+    flatstr "^1.0.9"
+    pino-std-serializers "^2.3.0"
+    quick-format-unescaped "^3.0.2"
+    sonic-boom "^0.7.5"
 
 pino@5.14.0:
   version "5.14.0"
@@ -13608,7 +13741,7 @@ querystringify@^2.1.1:
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.1.1.tgz#60e5a5fd64a7f8bfa4d2ab2ed6fdf4c85bad154e"
   integrity sha512-w7fLxIRCRT7U8Qu53jQnJyPkYZIaR4n5151KMfcJlO/A9397Wxb1amJvROTK6TOnp7PfoAmg/qXiNHI+08jRfA==
 
-quick-format-unescaped@^3.0.3:
+quick-format-unescaped@^3.0.2, quick-format-unescaped@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/quick-format-unescaped/-/quick-format-unescaped-3.0.3.tgz#fb3e468ac64c01d22305806c39f121ddac0d1fb9"
   integrity sha512-dy1yjycmn9blucmJLXOfZDx1ikZJUi6E8bBZLnhPG5gBrVhHXx2xVyqqgKBubVNEXmx51dBACMHpoMQK/N/AXQ==
