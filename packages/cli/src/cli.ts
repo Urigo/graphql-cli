@@ -73,7 +73,7 @@ export async function cli(argv = process.argv): Promise<void> {
       loadProjectConfig,
     });
 
-    // Remove the root object before running, to allow develoeprs to write
+    // Remove the root object before running, to allow developers to write
     // their own sub-commands.
     // argv.splice(2, 1);
 
