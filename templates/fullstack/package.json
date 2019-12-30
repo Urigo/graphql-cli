@@ -23,7 +23,7 @@
     "@test-graphql-cli/generate": "4.0.0",
     "@test-graphql-cli/init": "4.0.0",
     "@test-graphql-cli/serve": "4.0.0",
-    "@test-graphql-cli/similar": "4.0.0",
+    "@test-graphql-cli/similar": "4.0.0-experimental.13",
     "@test-graphql-cli/validate": "4.0.0",
     "graphql": "14.5.8",
     "graphql-cli": "4.0.0",

@@ -1456,6 +1456,14 @@
     apollo-language-server "1.17.2"
     tslib "1.10.0"
 
+"@graphql-toolkit/code-file-loader@0.6.2":
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/code-file-loader/-/code-file-loader-0.6.2.tgz#483233ca5a429fd4bca7fcbed7bdf513e251d66f"
+  integrity sha512-OyEwqoyTaNyR0MZR9JGXOE1gmvt+SqjWFvQrikmeLxFMpwQ/HG8wS8ZfjdeafB9VjpFeE3CupvALLBZ+ACEZ8w==
+  dependencies:
+    "@graphql-toolkit/common" "0.6.2"
+    graphql-tag-pluck "0.8.6"
+
 "@graphql-toolkit/code-file-loader@0.7.4":
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/@graphql-toolkit/code-file-loader/-/code-file-loader-0.7.4.tgz#17f508473ca97fcbd7b530d7606529b94af9cc28"
@@ -2820,6 +2828,28 @@
   integrity sha512-XIB2XbzHTN6ieIjfIMV9hlVcfPU26s2vafYWQcZHWXHOxiaRZYEDKEwdl129Zyg50+foYV2jCgtrqSA6qNuNSA==
   dependencies:
     defer-to-connect "^1.0.1"
+
+"@test-graphql-cli/common@4.0.0-experimental.13+f1311f0":
+  version "4.0.0-experimental.13"
+  resolved "https://registry.yarnpkg.com/@test-graphql-cli/common/-/common-4.0.0-experimental.13.tgz#1b7b74fd157bd67845b099e226c2337e691fffff"
+  integrity sha512-OpZuKUgAiCqYSiNyJ2FISwSO081aKHLgBUjPCuDNiffeMpUsnV7gjHZblSWKkmcZ68TQuu0yEl5eU0hKdVqa2Q==
+  dependencies:
+    chalk "2.4.2"
+    commander "3.0.0"
+    graphql-config "3.0.0-alpha.14"
+    log-symbols "3.0.0"
+
+"@test-graphql-cli/similar@4.0.0-experimental.13":
+  version "4.0.0-experimental.13"
+  resolved "https://registry.yarnpkg.com/@test-graphql-cli/similar/-/similar-4.0.0-experimental.13.tgz#fc66377a2663ee8425785e0f7de99e0c2f4cd35b"
+  integrity sha512-7CmJEQ4uXIgl/6/e9nhvYXDwfOlXa9+JkzJyjJ5RtCV69n1R4zpd8y965L7ixfb1E74tf4GmgWmCxTnD5zJE/g==
+  dependencies:
+    "@graphql-inspector/core" "1.26.0"
+    "@graphql-toolkit/code-file-loader" "0.6.2"
+    "@test-graphql-cli/common" "4.0.0-experimental.13+f1311f0"
+    chalk "2.4.2"
+    commander "3.0.0"
+    log-symbols "3.0.0"
 
 "@types/accepts@*", "@types/accepts@^1.3.5":
   version "1.3.5"
@@ -5462,6 +5492,11 @@ commander@2.17.x:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
   integrity sha512-wPMUt6FnH2yzG95SA6mzjQOEKUU3aLaDEmzs1ti+1E9h+CsrZghRlqEM/EJ4KscsQVG8uNN4uVreUeT8+drlgg==
+
+commander@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-3.0.0.tgz#0641ea00838c7a964627f04cddc336a2deddd60a"
+  integrity sha512-pl3QrGOBa9RZaslQiqnnKX2J068wcQw7j9AIaBQ9/JEp5RY6je4jKTImg0Bd+rpoONSe7GUFSgkxLeo17m3Pow==
 
 commander@4.0.1, commander@^4.0.1:
   version "4.0.1"
@@ -8265,6 +8300,16 @@ graphql-subscriptions@1.1.0, graphql-subscriptions@^1.0.0:
   integrity sha512-6WzlBFC0lWmXJbIVE8OgFgXIP4RJi3OQgTPa0DVMsDXdpRDjTsM1K9wfl5HSYX7R87QAGlvcv2Y4BIZa/ItonA==
   dependencies:
     iterall "^1.2.1"
+
+graphql-tag-pluck@0.8.6:
+  version "0.8.6"
+  resolved "https://registry.yarnpkg.com/graphql-tag-pluck/-/graphql-tag-pluck-0.8.6.tgz#631652183059d5a1c92af9fc878ea7fca5183fae"
+  integrity sha512-j5ftGv++G5cccwsQ1M6G907c7RffBWiWu0OVkxWVc2I+8BR2LuWziEUMTcT2K9/lWl43NeM0SDIsW+RUO6W2qQ==
+  dependencies:
+    "@babel/parser" "^7.4.4"
+    "@babel/traverse" "^7.4.4"
+    "@babel/types" "^7.4.4"
+    source-map-support "^0.5.12"
 
 graphql-tag-pluck@0.8.7:
   version "0.8.7"
