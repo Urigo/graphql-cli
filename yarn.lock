@@ -1253,15 +1253,15 @@
   dependencies:
     "@graphback/core" "0.10.0-rc2"
 
-"@graphback/codegen-resolvers@0.10.0-dev4":
-  version "0.10.0-dev4"
-  resolved "https://registry.yarnpkg.com/@graphback/codegen-resolvers/-/codegen-resolvers-0.10.0-dev4.tgz#2c991055ace2cc79cfb65d5c7930946956174395"
-  integrity sha512-1RSGoFQ5u4IpvRGPdcwhyrrbUgQeLslKbF4tzl5G4tA3ZvGPXOXsPnAc11pqvwOgsYnwEXAkePLEb7WQLDqqsg==
+"@graphback/codegen-resolvers@0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@graphback/codegen-resolvers/-/codegen-resolvers-0.10.0.tgz#b3f27af7d1b303aa2043d74099ffd0ccccfd15d7"
+  integrity sha512-u4l7msuEdKvjKnxqCXcnHuiT+s/4C3XrfVeRSgNloTM8jGm9lWG4gpcqtzDjQqAKLKWoOV+bPKD1fVs1Ylstdw==
   dependencies:
-    "@graphback/core" "^0.10.0-rc2"
-    knex "0.20.2"
-    pg "7.14.0"
-    sqlite3 "4.1.0"
+    "@graphback/core" "0.10.0"
+    knex "0.20.6"
+    pg "7.17.0"
+    sqlite3 "4.1.1"
 
 "@graphback/codegen-schema@0.10.0-rc2":
   version "0.10.0-rc2"
@@ -1269,6 +1269,15 @@
   integrity sha512-bgt35fWDoiRE6jKVCPWecEVBHJasbkrDq3dTFYQpgRZWA1+ImC7WY5GGHkG+h32rNQlYQv2qu9b1G6AL3DrSeA==
   dependencies:
     "@graphback/core" "^0.10.0-rc2"
+
+"@graphback/core@0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@graphback/core/-/core-0.10.0.tgz#713db36ff383b2038db1869aefc3ed5cc6c72df1"
+  integrity sha512-I0Ym8+7D4I2hW71x3CxGZv1MdWtK+4qtj1UaNvxHBL2s8dA6Xi7hlfblDoYPhNfquv9/VPzmV1ZTE6Ybxi2Jig==
+  dependencies:
+    glob "7.1.6"
+    graphql-annotations "0.0.3"
+    pino "5.15.0"
 
 "@graphback/core@0.10.0-rc2", "@graphback/core@^0.10.0-rc2":
   version "0.10.0-rc2"
@@ -4649,7 +4658,7 @@ bindings@^1.5.0:
   dependencies:
     file-uri-to-path "1.0.0"
 
-bluebird@^3.4.1, bluebird@^3.5.0:
+bluebird@^3.4.1, bluebird@^3.5.0, bluebird@^3.7.2:
   version "3.7.2"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
@@ -8207,6 +8216,13 @@ grapheme-splitter@^1.0.4:
   resolved "https://registry.yarnpkg.com/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz#9cf3a665c6247479896834af35cf1dbb4400767e"
   integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
 
+graphql-annotations@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/graphql-annotations/-/graphql-annotations-0.0.3.tgz#e257b07dceaa7e6fbb7fd73cca191693bd16bf98"
+  integrity sha512-PoBix+oEl4xNAmpJro40DqW9YnKDwFG6saffV7Fj95fffkXJeBIp21xjFTBtUnsJD7lNhL++j2Go8nq5DVzm4w==
+  dependencies:
+    safe-eval "^0.4.1"
+
 graphql-config@3.0.0-alpha.14:
   version "3.0.0-alpha.14"
   resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-3.0.0-alpha.14.tgz#42e1616c6974797c370a53025f99cf2a5a3c4110"
@@ -10207,6 +10223,27 @@ knex@0.20.2:
   integrity sha512-nw7/RsaZrIGdzbsb1evcEaZv8sL/Ji2W7o5OoF0NIKei4ySU01D4G5mRNVNtneoLoPjUMgqSFRanabhGacJUIA==
   dependencies:
     bluebird "^3.7.1"
+    colorette "1.1.0"
+    commander "^4.0.1"
+    debug "4.1.1"
+    getopts "2.2.5"
+    inherits "~2.0.4"
+    interpret "^2.0.0"
+    liftoff "3.1.0"
+    lodash "^4.17.15"
+    mkdirp "^0.5.1"
+    pg-connection-string "2.1.0"
+    tarn "^2.0.0"
+    tildify "2.0.0"
+    uuid "^3.3.3"
+    v8flags "^3.1.3"
+
+knex@0.20.6:
+  version "0.20.6"
+  resolved "https://registry.yarnpkg.com/knex/-/knex-0.20.6.tgz#81eda6ec6580c05164a6317d3d4818ba20fca7bb"
+  integrity sha512-yuqAwRShmUOXqFiQMyQz+iBTJYiUcPAiE3Vy7Biuo64LLBDu7afwJeGhrr5/qwIgJ9idC/2kORGIwU9YrnLXEw==
+  dependencies:
+    bluebird "^3.7.2"
     colorette "1.1.0"
     commander "^4.0.1"
     debug "4.1.1"
@@ -12424,10 +12461,20 @@ pg-minify@~0.5.3:
   resolved "https://registry.yarnpkg.com/pg-minify/-/pg-minify-0.5.5.tgz#6c961a61aa19f469d8edfe5a3c0da58760f3c339"
   integrity sha512-7Pf9h6nV1RFqED1hkRosePqvpPwNUUtW06TT4+lHwzesxa5gffxkShTjYH6JXV5sSSfh5+2yHOTTWEkCyCQ0Eg==
 
+pg-packet-stream@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/pg-packet-stream/-/pg-packet-stream-1.1.0.tgz#e45c3ae678b901a2873af1e17b92d787962ef914"
+  integrity sha512-kRBH0tDIW/8lfnnOyTwKD23ygJ/kexQVXZs7gEyBljw4FYqimZFxnMMx50ndZ8In77QgfGuItS5LLclC2TtjYg==
+
 pg-pool@^2.0.7, pg-pool@~2.0.3:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/pg-pool/-/pg-pool-2.0.7.tgz#f14ecab83507941062c313df23f6adcd9fd0ce54"
   integrity sha512-UiJyO5B9zZpu32GSlP0tXy8J2NsJ9EFGFfz5v6PSbdz/1hBLX1rNiiy5+mAm5iJJYwfCv4A0EBcQLGWwjbpzZw==
+
+pg-pool@^2.0.9:
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/pg-pool/-/pg-pool-2.0.9.tgz#7ed69a27e204f99e9804a851404db6aa908a6dea"
+  integrity sha512-gNiuIEKNCT3OnudQM2kvgSnXsLkSpd6mS/fRnqs6ANtrke6j8OY5l9mnAryf1kgwJMWLg0C1N1cYTZG1xmEYHQ==
 
 pg-promise@^6.3.6:
   version "6.10.3"
@@ -12482,6 +12529,20 @@ pg@7.15.1:
     packet-reader "1.0.0"
     pg-connection-string "0.1.3"
     pg-pool "^2.0.7"
+    pg-types "^2.1.0"
+    pgpass "1.x"
+    semver "4.3.2"
+
+pg@7.17.0:
+  version "7.17.0"
+  resolved "https://registry.yarnpkg.com/pg/-/pg-7.17.0.tgz#1fcf82238dcbebea63e192c944345c25c86992fc"
+  integrity sha512-70Q4ZzIdPgwMPb3zUIzAUwigNJ4v5vsWdMED6OzXMfOECeYTvTm7iSC3FpKizu/R1BHL8Do3bLs6ltGfOTAnqg==
+  dependencies:
+    buffer-writer "2.0.0"
+    packet-reader "1.0.0"
+    pg-connection-string "0.1.3"
+    pg-packet-stream "^1.1.0"
+    pg-pool "^2.0.9"
     pg-types "^2.1.0"
     pgpass "1.x"
     semver "4.3.2"
@@ -12553,6 +12614,18 @@ pino@5.14.0:
   version "5.14.0"
   resolved "https://registry.yarnpkg.com/pino/-/pino-5.14.0.tgz#eec56c6388797528e526f969ee022592cc538d4e"
   integrity sha512-Vj1f2wAojTGesogT0hsA/ua8ALltCOBCcA1nkEoDfnTsVWpgBu5UVSY7OdjiGmrMOKHBm24nd3nKXzyPUYJ3ig==
+  dependencies:
+    fast-redact "^2.0.0"
+    fast-safe-stringify "^2.0.7"
+    flatstr "^1.0.12"
+    pino-std-serializers "^2.4.2"
+    quick-format-unescaped "^3.0.3"
+    sonic-boom "^0.7.5"
+
+pino@5.15.0:
+  version "5.15.0"
+  resolved "https://registry.yarnpkg.com/pino/-/pino-5.15.0.tgz#6703164ce74dd4786d44887cd33268e13fd463d8"
+  integrity sha512-7+FXMTA3H3sNP5+2miY2K9JKnAAW5GKuhHfNWsukFCsPprGQY3ctqpwbV74wAHW3Nl93cEEQ1G82MgOLM8P7TQ==
   dependencies:
     fast-redact "^2.0.0"
     fast-safe-stringify "^2.0.7"
@@ -14467,6 +14540,11 @@ safe-buffer@>=5.1.0, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1,
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.2.0.tgz#b74daec49b1148f88c64b68d49b1e815c1f2f519"
   integrity sha512-fZEwUGbVl7kouZs1jCdMLdt95hdIv0ZeHg6L7qPeciMZhZ+/gdesW4wgTARkrFWEpspjEATAzUGPG8N2jJiwbg==
+
+safe-eval@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/safe-eval/-/safe-eval-0.4.1.tgz#e54ba5a1bbdec795d488f6c8765e0c2a78b4cdc0"
+  integrity sha512-wmiu4RSYVZ690RP1+cv/LxfPK1dIlEN35aW7iv4SMYdqDrHbkll4+NJcHmKm7PbCuI1df1otOcPwgcc2iFR85g==
 
 safe-json-stringify@^1.2.0:
   version "1.2.0"

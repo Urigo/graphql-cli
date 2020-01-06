@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@graphback/codegen-client": "0.10.0-dev5",
-    "@graphback/codegen-resolvers": "0.10.0-dev4",
+    "@graphback/codegen-resolvers": "0.10.0",
     "@graphback/codegen-schema": "0.10.0-rc2",
     "@graphback/core": "0.10.0-rc2",
     "@graphql-toolkit/common": "0.7.5",
