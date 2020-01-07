@@ -1487,24 +1487,6 @@
   dependencies:
     dependency-graph "0.8.1"
 
-"@graphql-toolkit/apollo-engine-loader@0.7.4":
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/@graphql-toolkit/apollo-engine-loader/-/apollo-engine-loader-0.7.4.tgz#b1c00497b1f7b0503757a622d5e64fa34ff5f385"
-  integrity sha512-zNyLOG+Qx8THJrLzfZdJl1MoEZG3uKuSfktGDAtLOp6aMpKVA3ZuwjoElhM/voqNTKel4wVFVbctejiD7WUgzA==
-  dependencies:
-    "@graphql-toolkit/common" "0.7.4"
-    apollo-language-server "1.17.1"
-    tslib "1.10.0"
-
-"@graphql-toolkit/apollo-engine-loader@0.7.5":
-  version "0.7.5"
-  resolved "https://registry.yarnpkg.com/@graphql-toolkit/apollo-engine-loader/-/apollo-engine-loader-0.7.5.tgz#c2505d84614d385839ee648f4977d22e7948ac3e"
-  integrity sha512-ojbOr+gk64kUPDe6QfFUbn2JhmTHQ32P+ThrNzAucwn81Di4JhovWtK3NDa7WpiH7ZK3Pip51PbaQWOzvGCRrA==
-  dependencies:
-    "@graphql-toolkit/common" "0.7.5"
-    apollo-language-server "1.17.2"
-    tslib "1.10.0"
-
 "@graphql-toolkit/apollo-engine-loader@0.9.0":
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/@graphql-toolkit/apollo-engine-loader/-/apollo-engine-loader-0.9.0.tgz#422895fc73412b7cf0fcec15249b2e306a1a84cb"
