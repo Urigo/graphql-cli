@@ -1270,6 +1270,15 @@
   dependencies:
     "@graphback/core" "^0.10.0-rc2"
 
+"@graphback/core@0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@graphback/core/-/core-0.10.0.tgz#713db36ff383b2038db1869aefc3ed5cc6c72df1"
+  integrity sha512-I0Ym8+7D4I2hW71x3CxGZv1MdWtK+4qtj1UaNvxHBL2s8dA6Xi7hlfblDoYPhNfquv9/VPzmV1ZTE6Ybxi2Jig==
+  dependencies:
+    glob "7.1.6"
+    graphql-annotations "0.0.3"
+    pino "5.15.0"
+
 "@graphback/core@0.10.0-rc2", "@graphback/core@^0.10.0-rc2":
   version "0.10.0-rc2"
   resolved "https://registry.yarnpkg.com/@graphback/core/-/core-0.10.0-rc2.tgz#127a4388fe95e16868cb4e4f1e32eb1a8c4782b3"
@@ -1437,6 +1446,13 @@
   integrity sha512-j9jz2+RhJnJjbYNm9TyqoqTDIpuPZJBXmha6kjZSS363gJiRlEyIjoSYp6MbAsrxysdfm3QVEurlWTdfGY6Ssw==
   dependencies:
     dependency-graph "0.8.0"
+
+"@graphql-inspector/core@1.27.0":
+  version "1.27.0"
+  resolved "https://registry.yarnpkg.com/@graphql-inspector/core/-/core-1.27.0.tgz#87993675e9a1fd1e2f6cc1e1ea42afa098ae58b4"
+  integrity sha512-A5VnmNXj/5w8aoBLI3oEHWCYZAiRyMmmM0cJefKv/HYyBe6TYMzSRJLPvNp9mq3bKXU2szYp5NM5b1Bud2t5rQ==
+  dependencies:
+    dependency-graph "0.8.1"
 
 "@graphql-toolkit/apollo-engine-loader@0.7.4":
   version "0.7.4"
@@ -4686,7 +4702,7 @@ bindings@^1.5.0:
   dependencies:
     file-uri-to-path "1.0.0"
 
-bluebird@^3.4.1, bluebird@^3.5.0:
+bluebird@^3.4.1, bluebird@^3.5.0, bluebird@^3.7.2:
   version "3.7.2"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
@@ -5144,6 +5160,11 @@ case-sensitive-paths-webpack-plugin@2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/case-sensitive-paths-webpack-plugin/-/case-sensitive-paths-webpack-plugin-2.2.0.tgz#3371ef6365ef9c25fa4b81c16ace0e9c7dc58c3e"
   integrity sha512-u5ElzokS8A1pm9vM3/iDgTcI3xqHxuCao94Oz8etI3cf0Tio0p8izkDYbTIn09uP3yUUr6+veaE6IkjnTYS46g==
+
+case@1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/case/-/case-1.6.2.tgz#2ea68af6956752cd69c349c8b3e6bc860d1cba95"
+  integrity sha512-ll380ZRoraT7mUK2G92UbH+FJVD5AwdVIAYk9xhV1tauh0carDgYByUD1HhjCWsWgxrfQvCeHvtfj7IYR6TKeg==
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -6447,6 +6468,11 @@ dependency-graph@0.8.0:
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/dependency-graph/-/dependency-graph-0.8.0.tgz#2da2d35ed852ecc24a5d6c17788ba57c3708755b"
   integrity sha512-DCvzSq2UiMsuLnj/9AL484ummEgLtZIcRS7YvtO38QnpX3vqh9nJ8P+zhu8Ja+SmLrBHO2iDbva20jq38qvBkQ==
+
+dependency-graph@0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/dependency-graph/-/dependency-graph-0.8.1.tgz#9b8cae3aa2c7bd95ccb3347a09a2d1047a6c3c5a"
+  integrity sha512-g213uqF8fyk40W8SBjm079n3CZB4qSpCrA2ye1fLGzH/4HEgB6tzuW2CbLE7leb4t45/6h44Ud59Su1/ROTfqw==
 
 deprecated-decorator@^0.1.6:
   version "0.1.6"
@@ -8249,6 +8275,13 @@ grapheme-splitter@^1.0.4:
   resolved "https://registry.yarnpkg.com/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz#9cf3a665c6247479896834af35cf1dbb4400767e"
   integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
 
+graphql-annotations@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/graphql-annotations/-/graphql-annotations-0.0.3.tgz#e257b07dceaa7e6fbb7fd73cca191693bd16bf98"
+  integrity sha512-PoBix+oEl4xNAmpJro40DqW9YnKDwFG6saffV7Fj95fffkXJeBIp21xjFTBtUnsJD7lNhL++j2Go8nq5DVzm4w==
+  dependencies:
+    safe-eval "^0.4.1"
+
 graphql-config@3.0.0-alpha.14:
   version "3.0.0-alpha.14"
   resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-3.0.0-alpha.14.tgz#42e1616c6974797c370a53025f99cf2a5a3c4110"
@@ -8279,20 +8312,21 @@ graphql-import@0.7.1:
     lodash "^4.17.4"
     resolve-from "^4.0.0"
 
-graphql-migrations@0.10.0-rc2:
-  version "0.10.0-rc2"
-  resolved "https://registry.yarnpkg.com/graphql-migrations/-/graphql-migrations-0.10.0-rc2.tgz#0fddc3ae06d60689d929e54540b77b790e1e1155"
-  integrity sha512-tsOOq2baJ8mZeqUMo1G14deYInkyFA6hl0q2+fDsKCpuTb+GowH4u+UVVo5diWwu2VuYTZa62BPTd/kFZRcTQg==
+graphql-migrations@0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/graphql-migrations/-/graphql-migrations-0.10.0.tgz#b89034e493f9e8a11d08991fafea0b095f916559"
+  integrity sha512-gzyM6U5HtlqIfbj+3OFQSbtd0gT4pdFd80LCrpJtQao4XO22zk6sP7GBL27GxdkdpNiAQiGcH4OIlfbJ8aBUrQ==
   dependencies:
-    "@graphback/core" "^0.10.0-rc2"
-    "@graphql-inspector/core" "1.26.0"
-    chalk "2.4.2"
+    "@graphback/core" "0.10.0"
+    "@graphql-inspector/core" "1.27.0"
+    case "1.6.2"
     glob "7.1.6"
-    knex "0.20.2"
+    graphql-annotations "0.0.3"
+    knex "0.20.6"
+    lodash "4.17.15"
+    lodash-es "4.17.15"
     node-emoji "1.10.0"
-    pg "7.14.0"
-    pino "5.14.0"
-    sqlite3 "4.1.0"
+    pino "5.15.0"
 
 graphql-request@^1.5.0:
   version "1.8.2"
@@ -10264,6 +10298,27 @@ knex@0.20.2:
     uuid "^3.3.3"
     v8flags "^3.1.3"
 
+knex@0.20.6:
+  version "0.20.6"
+  resolved "https://registry.yarnpkg.com/knex/-/knex-0.20.6.tgz#81eda6ec6580c05164a6317d3d4818ba20fca7bb"
+  integrity sha512-yuqAwRShmUOXqFiQMyQz+iBTJYiUcPAiE3Vy7Biuo64LLBDu7afwJeGhrr5/qwIgJ9idC/2kORGIwU9YrnLXEw==
+  dependencies:
+    bluebird "^3.7.2"
+    colorette "1.1.0"
+    commander "^4.0.1"
+    debug "4.1.1"
+    getopts "2.2.5"
+    inherits "~2.0.4"
+    interpret "^2.0.0"
+    liftoff "3.1.0"
+    lodash "^4.17.15"
+    mkdirp "^0.5.1"
+    pg-connection-string "2.1.0"
+    tarn "^2.0.0"
+    tildify "2.0.0"
+    uuid "^3.3.3"
+    v8flags "^3.1.3"
+
 last-call-webpack-plugin@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/last-call-webpack-plugin/-/last-call-webpack-plugin-3.0.0.tgz#9742df0e10e3cf46e5c0381c2de90d3a7a2d7555"
@@ -10519,6 +10574,11 @@ locate-path@^5.0.0:
   integrity sha512-t7hw9pI+WvuwNJXwk5zVHpyhIqzg2qTlklJOf0mVxGSbe3Fp2VieZcduNYjaLDoy6p9uGpQEGWG87WpMKlNq8g==
   dependencies:
     p-locate "^4.1.0"
+
+lodash-es@4.17.15:
+  version "4.17.15"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.15.tgz#21bd96839354412f23d7a10340e5eac6ee455d78"
+  integrity sha512-rlrc3yU3+JNOpZ9zj5pQtxnx2THmvRykwL4Xlxoa8I9lHBlVbbyPhgyPMioxVZ4NqyxaVVtaJnzsyOidQIhyyQ==
 
 lodash._reinterpolate@^3.0.0:
   version "3.0.0"
@@ -12615,6 +12675,18 @@ pino@5.14.0:
     quick-format-unescaped "^3.0.3"
     sonic-boom "^0.7.5"
 
+pino@5.15.0:
+  version "5.15.0"
+  resolved "https://registry.yarnpkg.com/pino/-/pino-5.15.0.tgz#6703164ce74dd4786d44887cd33268e13fd463d8"
+  integrity sha512-7+FXMTA3H3sNP5+2miY2K9JKnAAW5GKuhHfNWsukFCsPprGQY3ctqpwbV74wAHW3Nl93cEEQ1G82MgOLM8P7TQ==
+  dependencies:
+    fast-redact "^2.0.0"
+    fast-safe-stringify "^2.0.7"
+    flatstr "^1.0.12"
+    pino-std-serializers "^2.4.2"
+    quick-format-unescaped "^3.0.3"
+    sonic-boom "^0.7.5"
+
 pirates@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/pirates/-/pirates-4.0.1.tgz#643a92caf894566f91b2b986d2c66950a8e2fb87"
@@ -14521,6 +14593,11 @@ safe-buffer@>=5.1.0, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1,
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.2.0.tgz#b74daec49b1148f88c64b68d49b1e815c1f2f519"
   integrity sha512-fZEwUGbVl7kouZs1jCdMLdt95hdIv0ZeHg6L7qPeciMZhZ+/gdesW4wgTARkrFWEpspjEATAzUGPG8N2jJiwbg==
+
+safe-eval@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/safe-eval/-/safe-eval-0.4.1.tgz#e54ba5a1bbdec795d488f6c8765e0c2a78b4cdc0"
+  integrity sha512-wmiu4RSYVZ690RP1+cv/LxfPK1dIlEN35aW7iv4SMYdqDrHbkll4+NJcHmKm7PbCuI1df1otOcPwgcc2iFR85g==
 
 safe-json-stringify@^1.2.0:
   version "1.2.0"
