@@ -1487,15 +1487,6 @@
   dependencies:
     dependency-graph "0.8.1"
 
-"@graphql-toolkit/apollo-engine-loader@0.7.4":
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/@graphql-toolkit/apollo-engine-loader/-/apollo-engine-loader-0.7.4.tgz#b1c00497b1f7b0503757a622d5e64fa34ff5f385"
-  integrity sha512-zNyLOG+Qx8THJrLzfZdJl1MoEZG3uKuSfktGDAtLOp6aMpKVA3ZuwjoElhM/voqNTKel4wVFVbctejiD7WUgzA==
-  dependencies:
-    "@graphql-toolkit/common" "0.7.4"
-    apollo-language-server "1.17.1"
-    tslib "1.10.0"
-
 "@graphql-toolkit/apollo-engine-loader@0.7.5":
   version "0.7.5"
   resolved "https://registry.yarnpkg.com/@graphql-toolkit/apollo-engine-loader/-/apollo-engine-loader-0.7.5.tgz#c2505d84614d385839ee648f4977d22e7948ac3e"
@@ -1606,14 +1597,6 @@
     "@graphql-toolkit/common" "0.7.5"
     "@kamilkisiela/graphql-tools" "4.0.6"
     globby "10.0.1"
-
-"@graphql-toolkit/git-loader@0.7.4":
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/@graphql-toolkit/git-loader/-/git-loader-0.7.4.tgz#24b109a9c2f2729aa3560f7fd044e3fcc02814e2"
-  integrity sha512-x3L8WxChVi4oWI02OQQrm7TGi6imzDne/kxek2q0ZR2+xPKteEDHK3YfmWlKPhXWS/2MnVbnC2NIBhxgu4JX6g==
-  dependencies:
-    "@graphql-toolkit/common" "0.7.4"
-    simple-git "1.126.0"
 
 "@graphql-toolkit/git-loader@0.9.0":
   version "0.9.0"
@@ -15021,13 +15004,6 @@ signedsource@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/signedsource/-/signedsource-1.0.0.tgz#1ddace4981798f93bd833973803d80d52e93ad6a"
   integrity sha1-HdrOSYF5j5O9gzlzgD2A1S6TrWo=
-
-simple-git@1.126.0:
-  version "1.126.0"
-  resolved "https://registry.yarnpkg.com/simple-git/-/simple-git-1.126.0.tgz#0c345372275139c8433b8277f4b3e155092aa434"
-  integrity sha512-47mqHxgZnN8XRa9HbpWprzUv3Ooqz9RY/LSZgvA7jCkW8jcwLahMz7LKugY91KZehfG0sCVPtgXiU72hd6b1Bw==
-  dependencies:
-    debug "^4.0.1"
 
 simple-git@1.129.0:
   version "1.129.0"
