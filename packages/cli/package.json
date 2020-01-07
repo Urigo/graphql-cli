@@ -19,7 +19,7 @@
     "@test-graphql-cli/init": "4.0.1-beta.0",
     "chalk": "3.0.0",
     "commander": "4.1.0",
-    "globby": "10.0.2",
+    "globby": "11.0.0",
     "graphql-config": "3.0.0-alpha.15",
     "inquirer": "7.0.3",
     "latest-version": "5.1.0",
