@@ -33,7 +33,7 @@
     "@types/cors": "2.8.6",
     "@types/express": "4.17.2",
     "@types/express-graphql": "0.9.0",
-    "@types/node": "12.12.22",
+    "@types/node": "12.12.24",
     "graphql-cli": "4.0.0",
     "ts-node": "8.4.1",
     "ts-node-dev": "1.0.0-pre.44",
