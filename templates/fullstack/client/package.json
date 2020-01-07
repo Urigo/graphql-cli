@@ -1,6 +1,6 @@
 {
-  "name": "@graphql-cli/full-stack-template-client",
-  "version": "0.1.0",
+  "name": "@test-graphql-cli/full-stack-template-client",
+  "version": "4.0.1-beta.0",
   "private": true,
   "dependencies": {
     "@apollo/react-common": "3.1.3",

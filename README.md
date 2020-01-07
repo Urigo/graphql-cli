@@ -18,7 +18,7 @@ Feel free to contact us in Discord channel. We would love to hear your feedback.
 You can install the CLI using `yarn` by running the following command. This will add the `graphql` binary to your path.
 
 ```sh
-yarn global add graphql-cli
+yarn global add graphql-cli@next
 ```
 
 The equivalent npm global install will also work.
@@ -34,7 +34,7 @@ At the heart of a project created using GraphQL CLI is the GraphQL Config config
 The most straightforward way to launch a GraphQL CLI-capable project with a working GraphQL Config setup is to use the `init` command from your desired workspace:
 
 ```sh
-npx graphql-cli init
+npx graphql-cli@next init
 ```
 
 After a series of questions from the command-prompt, the system will use the inputs and selected project templates to generate a working project complete with a GraphQL Config setup. The GraphQL Config file is generated referencing the necessary files and ecosystem plugins.
@@ -52,7 +52,7 @@ Finally, one of the options with `graphql init` is to access schema using an Ope
 
 ## Plugin System
 
-Each command in GraphQL CLI is a seperate package, so you can have your own plugins or use the ones we maintain. You can have those commands by installing them like `@graphql-cli/[COMMAND-NAME]`.
+Each command in GraphQL CLI is a seperate package, so you can have your own plugins or use the ones we maintain. You can have those commands by installing them like `@test-graphql-cli/[COMMAND-NAME]@next`.
 
 To configure a command/plugin, you need to update the `extensions` field in your GraphQL Config file (`.graphqlrc.yml`). See `extensions:` in the example below.
 

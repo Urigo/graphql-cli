@@ -1,4 +1,4 @@
-import { CliPlugin } from '@graphql-cli/common';
+import { CliPlugin } from '@test-graphql-cli/common';
 import { CodegenExtension, CodegenContext, generate, updateContextWithCliFlags, setCommandOptions } from '@graphql-codegen/cli';
 
 export const plugin: CliPlugin = {
@@ -14,7 +14,7 @@ export const plugin: CliPlugin = {
           });
           // Create Codegen Context with our loaded GraphQL Config
           const codegenContext = new CodegenContext({
-            graphqlConfig,
+            graphqlConfig: graphqlConfig as any,
           });
           // This will update Codegen Context with the options provided in CLI arguments
           updateContextWithCliFlags(codegenContext, cliFlags);

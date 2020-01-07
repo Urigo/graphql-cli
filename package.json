@@ -10,11 +10,11 @@
     ]
   },
   "scripts": {
-    "release": "lerna publish --exact --force-publish=\"*\" --ignore=\"@graphql-cli/*-template-*\"",
-    "release:canary": "lerna publish --exact --force-publish=\"*\" --preid \"alpha-`git rev-parse --short HEAD`\" --canary --exact --ignore=\"@graphql-cli/*-template-*\"",
-    "ci:release:canary": "lerna publish --force-publish=\"*\" --preid \"alpha-`git rev-parse --short HEAD`\" --canary --exact --yes --ignore=\"@graphql-cli/*-template-*\"",
-    "test": "lerna run test --ignore=\"@graphql-cli/*-template-*\"",
-    "build": "lerna run build --ignore=\"@graphql-cli/*-template-*\""
+    "release": "lerna publish --exact --force-publish=\"*\" --ignore=\"@test-graphql-cli/*-template-*\"",
+    "release:canary": "lerna publish --exact --force-publish=\"*\" --preid \"alpha-`git rev-parse --short HEAD`\" --canary --exact --ignore=\"@test-graphql-cli/*-template-*\"",
+    "ci:release:canary": "lerna publish --force-publish=\"*\" --preid \"alpha-`git rev-parse --short HEAD`\" --canary --exact --yes --ignore=\"@test-graphql-cli/*-template-*\"",
+    "test": "lerna run test --ignore=\"@test-graphql-cli/*-template-*\"",
+    "build": "lerna run build --ignore=\"@test-graphql-cli/*-template-*\""
   },
   "devDependencies": {
     "graphql": "14.5.8",

@@ -1,7 +1,7 @@
 {
-  "name": "@graphql-cli/serve",
+  "name": "@test-graphql-cli/serve",
   "description": "Serves a faked GraphQL server",
-  "version": "4.0.0",
+  "version": "4.0.1-beta.0",
   "license": "MIT",
   "main": "dist/index.js",
   "publishConfig": {
@@ -15,12 +15,12 @@
     "graphql": "^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0"
   },
   "dependencies": {
-    "@graphql-toolkit/apollo-engine-loader": "0.7.5",
-    "@graphql-toolkit/code-file-loader": "0.7.5",
-    "@graphql-toolkit/git-loader": "0.7.4",
-    "@graphql-toolkit/github-loader": "0.7.5",
-    "@graphql-toolkit/prisma-loader": "0.7.5",
-    "@graphql-cli/common": "4.0.0",
+    "@graphql-toolkit/apollo-engine-loader": "0.9.0",
+    "@graphql-toolkit/code-file-loader": "0.9.0",
+    "@graphql-toolkit/git-loader": "0.9.0",
+    "@graphql-toolkit/github-loader": "0.9.0",
+    "@graphql-toolkit/prisma-loader": "0.9.0",
+    "@test-graphql-cli/common": "4.0.1-beta.0",
     "@types/node-fetch": "2.5.4",
     "apollo-server": "2.9.15",
     "chalk": "3.0.0",
@@ -31,7 +31,6 @@
   },
   "devDependencies": {
     "@types/node": "12.12.24",
-    "@types/open": "6.2.1",
     "graphql": "14.5.8",
     "ts-node": "8.5.4",
     "typescript": "3.7.4"
