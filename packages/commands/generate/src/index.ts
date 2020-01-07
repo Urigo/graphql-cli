@@ -8,8 +8,7 @@ import { ensureFile } from 'fs-extra';
 import { writeFile as fsWriteFile } from 'fs';
 import { join } from 'path';
 import { graphQLInputContext, InputModelTypeContext, GraphbackCRUDGeneratorConfig } from "@graphback/core"
-import { migrate, DropCreateDatabaseAlways } from "graphql-migrations"
-import knex from 'knex';
+import { migrateDB } from "graphql-migrations"
 import { createClient, ClientDocuments } from "@graphback/codegen-client"
 import { createResolvers, ResolverGeneratorOptions } from "@graphback/codegen-resolvers"
 import { createSchema, SchemaGeneratorOptions } from "@graphback/codegen-schema"
@@ -135,15 +134,12 @@ export async function createClientFiles(cwd: string, inputContext: InputModelTyp
 }
 
 export async function createDatabaseMigration(schema: string, config: GenerateConfig) {
-  const db = knex({
+  const dbConfig = {
     client: config.db.database,
     connection: config.db.dbConfig,
-  });
-  // FIXME move to UpdateDatabaseIfChanges after adding relationships support
-  const dbInitialization = new DropCreateDatabaseAlways(config.db.database, db);
+  };
 
-  await migrate(schema, dbInitialization);
-  return new Promise(resolve => db.destroy(resolve));
+  await migrateDB(dbConfig, schema);
 }
 
 interface CliFlags {
