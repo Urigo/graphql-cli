@@ -21,7 +21,7 @@
     "commander": "4.1.0",
     "globby": "10.0.2",
     "graphql-config": "3.0.0-alpha.15",
-    "inquirer": "7.0.1",
+    "inquirer": "7.0.3",
     "latest-version": "5.1.0",
     "log-symbols": "3.0.0",
     "npm-programmatic": "0.0.12",
