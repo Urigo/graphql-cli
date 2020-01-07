@@ -7,7 +7,7 @@
       "dom"
     ],
     "resolveJsonModule": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "preserveConstEnums": true,
     "strict": true,
     "strictNullChecks": true,
