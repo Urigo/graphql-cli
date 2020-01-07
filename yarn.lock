@@ -1438,6 +1438,13 @@
   dependencies:
     dependency-graph "0.8.0"
 
+"@graphql-inspector/core@1.27.0":
+  version "1.27.0"
+  resolved "https://registry.yarnpkg.com/@graphql-inspector/core/-/core-1.27.0.tgz#87993675e9a1fd1e2f6cc1e1ea42afa098ae58b4"
+  integrity sha512-A5VnmNXj/5w8aoBLI3oEHWCYZAiRyMmmM0cJefKv/HYyBe6TYMzSRJLPvNp9mq3bKXU2szYp5NM5b1Bud2t5rQ==
+  dependencies:
+    dependency-graph "0.8.1"
+
 "@graphql-toolkit/apollo-engine-loader@0.7.4":
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/@graphql-toolkit/apollo-engine-loader/-/apollo-engine-loader-0.7.4.tgz#b1c00497b1f7b0503757a622d5e64fa34ff5f385"
@@ -6447,6 +6454,11 @@ dependency-graph@0.8.0:
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/dependency-graph/-/dependency-graph-0.8.0.tgz#2da2d35ed852ecc24a5d6c17788ba57c3708755b"
   integrity sha512-DCvzSq2UiMsuLnj/9AL484ummEgLtZIcRS7YvtO38QnpX3vqh9nJ8P+zhu8Ja+SmLrBHO2iDbva20jq38qvBkQ==
+
+dependency-graph@0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/dependency-graph/-/dependency-graph-0.8.1.tgz#9b8cae3aa2c7bd95ccb3347a09a2d1047a6c3c5a"
+  integrity sha512-g213uqF8fyk40W8SBjm079n3CZB4qSpCrA2ye1fLGzH/4HEgB6tzuW2CbLE7leb4t45/6h44Ud59Su1/ROTfqw==
 
 deprecated-decorator@^0.1.6:
   version "0.1.6"
