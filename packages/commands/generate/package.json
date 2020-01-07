@@ -1,5 +1,5 @@
 {
-  "name": "@test-graphql-cli/generate",
+  "name": "@graphql-cli/generate",
   "description": "Generate DB, schema, document and resolvers for your GraphQL project by using GraphBack.",
   "version": "4.0.0",
   "license": "MIT",
@@ -26,7 +26,7 @@
     "@graphql-toolkit/git-loader": "0.7.4",
     "@graphql-toolkit/github-loader": "0.7.5",
     "@graphql-toolkit/prisma-loader": "0.7.5",
-    "@test-graphql-cli/common": "4.0.0",
+    "@graphql-cli/common": "4.0.0",
     "chalk": "3.0.0",
     "chokidar": "3.3.1",
     "commander": "4.1.0",

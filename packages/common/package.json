@@ -1,5 +1,5 @@
 {
-  "name": "@test-graphql-cli/common",
+  "name": "@graphql-cli/common",
   "version": "4.0.0",
   "license": "MIT",
   "main": "dist/index.js",
@@ -13,7 +13,7 @@
   "dependencies": {
     "chalk": "3.0.0",
     "commander": "4.1.0",
-    "graphql-config": "3.0.0-alpha.14",
+    "graphql-config": "3.0.0-alpha.15",
     "log-symbols": "3.0.0",
     "tslib": "1.10.0"
   },

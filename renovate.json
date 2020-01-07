@@ -3,13 +3,7 @@
     "config:base",
     ":pinVersions"
   ],
-  "packageRules": [
-    {
-      "packageNames": ["graphql"],
-      "versionStrategy": "widen"
-    }
-  ],
-  "automerge": false,
+  "automerge": true,
   "major": {
     "automerge": false
   }

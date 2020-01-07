@@ -15,12 +15,12 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@test-graphql-cli/common": "4.0.0",
-    "@test-graphql-cli/init": "4.0.0",
+    "@graphql-cli/common": "4.0.0",
+    "@graphql-cli/init": "4.0.0",
     "chalk": "3.0.0",
     "commander": "4.1.0",
     "globby": "10.0.1",
-    "graphql-config": "3.0.0-alpha.14",
+    "graphql-config": "3.0.0-alpha.15",
     "inquirer": "7.0.1",
     "latest-version": "5.1.0",
     "log-symbols": "3.0.0",
