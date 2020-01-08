@@ -2610,6 +2610,39 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
+"@test-graphql-cli/common@4.0.1-beta.0":
+  version "4.0.1-beta.0"
+  resolved "https://registry.yarnpkg.com/@test-graphql-cli/common/-/common-4.0.1-beta.0.tgz#71ef41af46ad2f145943dbef61a5aa8bc1676b5e"
+  integrity sha512-7Oun+ntyyEJwKVJRzMCQ3cZZnmAEJ3x2AiyKpROdkRH8FGUHwQ/ZohIDJu1k7NSmQCLvLAhNvf57FwLqvUDl5Q==
+  dependencies:
+    chalk "3.0.0"
+    commander "4.1.0"
+    graphql-config "3.0.0-alpha.15"
+    log-symbols "3.0.0"
+    tslib "1.10.0"
+
+"@test-graphql-cli/init@4.0.1-beta.0":
+  version "4.0.1-beta.0"
+  resolved "https://registry.yarnpkg.com/@test-graphql-cli/init/-/init-4.0.1-beta.0.tgz#eb08f241596e36f80be6eefa45fb7eddf389598f"
+  integrity sha512-nrRLoDU9yBhFPWNRBi/psveUhOXk0ECFvD03QekYdrMfeNVX9I/cGDVnZRs4sZx4vbpWEjpb0WI3wDAZQ/BxZw==
+  dependencies:
+    "@test-graphql-cli/common" "4.0.1-beta.0"
+    chalk "3.0.0"
+    commander "4.1.0"
+    cosmiconfig "6.0.0"
+    cross-fetch "3.0.4"
+    fs-extra "8.1.0"
+    fullname "4.0.1"
+    inquirer "7.0.1"
+    js-yaml "3.13.1"
+    latest-version "5.1.0"
+    openapi-to-graphql "1.7.0"
+    ora "4.0.3"
+    rimraf "3.0.0"
+    simple-git "1.129.0"
+    tmp "0.1.0"
+    tslib "1.10.0"
+
 "@types/accepts@*", "@types/accepts@^1.3.5":
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/@types/accepts/-/accepts-1.3.5.tgz#c34bec115cfc746e04fe5a059df4ce7e7b391575"
@@ -7819,6 +7852,38 @@ graphql-annotations@0.0.3:
   dependencies:
     safe-eval "^0.4.1"
 
+graphql-cli@4.0.1-beta.0:
+  version "4.0.1-beta.0"
+  resolved "https://registry.yarnpkg.com/graphql-cli/-/graphql-cli-4.0.1-beta.0.tgz#0e5a2666764a3d461af78739e1f695744f4c04ee"
+  integrity sha512-LPLusfMGeJjyh8Orl6uK0SfTvBx4HeOcVvH45neYLloakeiho84WzDpJbIwTyMlZUAikMOGPE4amV4/ZWvXXlA==
+  dependencies:
+    "@test-graphql-cli/common" "4.0.1-beta.0"
+    "@test-graphql-cli/init" "4.0.1-beta.0"
+    chalk "3.0.0"
+    commander "4.1.0"
+    globby "10.0.1"
+    graphql-config "3.0.0-alpha.15"
+    inquirer "7.0.1"
+    latest-version "5.1.0"
+    log-symbols "3.0.0"
+    npm-programmatic "0.0.12"
+    resolve-from "5.0.0"
+    yarn-programmatic "0.1.1"
+
+graphql-config@3.0.0-alpha.15:
+  version "3.0.0-alpha.15"
+  resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-3.0.0-alpha.15.tgz#95941dc1b69322cab415bf20f4f2bfcdc21d956f"
+  integrity sha512-4ip4Ys9Q9NGdNsSHRVqURFNy8jz/IfCO6EY2uOu+EXbWY6rDMXjkovvKsfHmPH1+QuxMXEhE3MtUHS6vkfRZ+g==
+  dependencies:
+    "@graphql-toolkit/common" "0.9.0"
+    "@graphql-toolkit/graphql-file-loader" "0.9.0"
+    "@graphql-toolkit/json-file-loader" "0.9.0"
+    "@graphql-toolkit/schema-merging" "0.9.0"
+    "@graphql-toolkit/url-loader" "0.9.0"
+    cosmiconfig "5.2.1"
+    globby "10.0.1"
+    minimatch "3.0.4"
+
 graphql-config@3.0.0-alpha.16:
   version "3.0.0-alpha.16"
   resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-3.0.0-alpha.16.tgz#a9805425c4e16ab0bb7d2722a1cd451de165cef1"
@@ -8488,6 +8553,25 @@ inquirer@6.5.0:
     run-async "^2.2.0"
     rxjs "^6.4.0"
     string-width "^2.1.0"
+    strip-ansi "^5.1.0"
+    through "^2.3.6"
+
+inquirer@7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-7.0.1.tgz#13f7980eedc73c689feff3994b109c4e799c6ebb"
+  integrity sha512-V1FFQ3TIO15det8PijPLFR9M9baSlnRs9nL7zWu1MNVA2T9YVl9ZbrHJhYs7e9X8jeMZ3lr2JH/rdHFgNCBdYw==
+  dependencies:
+    ansi-escapes "^4.2.1"
+    chalk "^2.4.2"
+    cli-cursor "^3.1.0"
+    cli-width "^2.0.0"
+    external-editor "^3.0.3"
+    figures "^3.0.0"
+    lodash "^4.17.15"
+    mute-stream "0.0.8"
+    run-async "^2.2.0"
+    rxjs "^6.5.3"
+    string-width "^4.1.0"
     strip-ansi "^5.1.0"
     through "^2.3.6"
 
