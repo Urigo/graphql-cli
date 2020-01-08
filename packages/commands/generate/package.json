@@ -44,7 +44,7 @@
     "@types/fs-extra": "8.0.1",
     "@types/inquirer": "6.5.0",
     "@types/listr": "0.14.2",
-    "@types/node": "12.12.24",
+    "@types/node": "13.1.4",
     "graphql": "14.5.8",
     "ts-node": "8.5.4",
     "typescript": "3.7.4"
