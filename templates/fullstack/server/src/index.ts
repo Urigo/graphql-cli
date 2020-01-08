@@ -34,7 +34,7 @@ async function start() {
   const apolloServer = new ApolloServer({
     typeDefs: loadSchemaFiles(join(__dirname, '/schema/')),
     resolvers: loadResolversFiles(join(__dirname, '/resolvers/')),
-    context: createKnexRuntimeContext(db, pubSub),
+    context: createKnexRuntimeContext(db as any, pubSub),
     playground: true,
   })
 
