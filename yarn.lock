@@ -15342,28 +15342,6 @@ ts-node@*, ts-node@8.5.4, ts-node@^8:
     source-map-support "^0.5.6"
     yn "^3.0.0"
 
-ts-node@8.4.1:
-  version "8.4.1"
-  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.4.1.tgz#270b0dba16e8723c9fa4f9b4775d3810fd994b4f"
-  integrity sha512-5LpRN+mTiCs7lI5EtbXmF/HfMeCjzt7DH9CZwtkr6SywStrNQC723wG+aOWFiLNn7zT3kD/RnFqi3ZUfr4l5Qw==
-  dependencies:
-    arg "^4.1.0"
-    diff "^4.0.1"
-    make-error "^1.1.1"
-    source-map-support "^0.5.6"
-    yn "^3.0.0"
-
-ts-node@8.5.3:
-  version "8.5.3"
-  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.5.3.tgz#f0bcacbfda8a70188f3a5c561b2dab546cb0abbb"
-  integrity sha512-B4dYs62o9ioIilzh7Npby5grYvw3lLwttTSIzf7QObf1FWUCzt+ELtyZJd+xYgxJ/n3A5nQJ2oG6VaZgwMMcjA==
-  dependencies:
-    arg "^4.1.0"
-    diff "^4.0.1"
-    make-error "^1.1.1"
-    source-map-support "^0.5.6"
-    yn "^3.0.0"
-
 ts-pnp@1.1.5, ts-pnp@^1.1.2:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.1.5.tgz#840e0739c89fce5f3abd9037bb091dbff16d9dec"
