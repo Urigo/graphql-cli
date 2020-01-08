@@ -35,7 +35,7 @@ yarn graphql codegen
 - Start the server
 
 ```sh
-cd server/ && yarn start
+yarn start:server
 ```
 
 - Generate queries, mutations and subscriptions for client-side project
@@ -53,5 +53,5 @@ yarn graphql codegen
 - Start React App
 
 ```sh
-cd client/ && yarn start
+start:client
 ```
