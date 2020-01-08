@@ -20,7 +20,7 @@
     "chalk": "3.0.0",
     "commander": "4.1.0",
     "globby": "11.0.0",
-    "graphql-config": "3.0.0-alpha.15",
+    "graphql-config": "3.0.0-alpha.16",
     "inquirer": "7.0.3",
     "latest-version": "5.1.0",
     "log-symbols": "3.0.0",
