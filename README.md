@@ -92,7 +92,7 @@ extensions:
 Some of the available Plugins are:
 
 - [`init`](https://github.com/Urigo/graphql-cli/tree/focs/packages/commands/init) - Creates a GraphQL project using a template or GraphQL Config file for your existing project.
-- [`codegen`](https://github.com/Urigo/graphql-cli/tree/focs/packages/commands/codegen) - GraphQL Code Generator's GraphQL CLI plugin. GraphQL Code Generator is a tool that generates code from your GraphQL schema and documents for your backend or frontend with flexible support for custom plugins and templates. [Learn More](https://graphql-code-generator.com)
+- [`codegen`](https://github.com/Urigo/graphql-cli/tree/master/packages/commands/codegen) - GraphQL Code Generator's GraphQL CLI plugin. GraphQL Code Generator is a tool that generates code from your GraphQL schema and documents for your backend or frontend with flexible support for custom plugins and templates. [Learn More](https://graphql-code-generator.com)
 - [`generate`](https://github.com/Urigo/graphql-cli/tree/master/packages/commands/generate) - Generate DB, schema, document and resolvers for your GraphQL project by using [GraphBack](https://graphback.dev).
 - [`coverage`](https://github.com/Urigo/graphql-cli/tree/master/packages/commands/coverage) - Schema coverage based on documents. Find out how many times types and fields are used in your application using [GraphQL Inspector](https://graphql-inspector.com/docs/essentials/coverage).
 - [`diff`](https://github.com/Urigo/graphql-cli/tree/master/packages/commands/diff) - Compares schemas and finds breaking or dangerous changes using [GraphQL Inspector](https://graphql-inspector.com/docs/essentials/diff).
