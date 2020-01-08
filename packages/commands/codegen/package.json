@@ -15,7 +15,7 @@
     "graphql": "14.5.8"
   },
   "dependencies": {
-    "@graphql-codegen/cli": "1.11.1",
+    "@graphql-codegen/cli": "1.11.2",
     "@test-graphql-cli/common": "4.0.1-beta.0",
     "chalk": "3.0.0",
     "chokidar": "3.3.1",
