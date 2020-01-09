@@ -1166,12 +1166,12 @@
     pg "7.17.0"
     sqlite3 "4.1.1"
 
-"@graphback/codegen-schema@0.10.0":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@graphback/codegen-schema/-/codegen-schema-0.10.0.tgz#273a9ead5f8f7417cd8feb87f9262a2628d95935"
-  integrity sha512-3IAkU+V7nNFYRv3u6aJcUbNnocqFpcSdvoM0qQQPbBWtCz7htPKEoh53w3CIQdgvn1zkCeVu1LkBb9WTeolqZQ==
+"@graphback/codegen-schema@0.10.1":
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/@graphback/codegen-schema/-/codegen-schema-0.10.1.tgz#17ff1ff621e46907aef21627331b69d50ba1ad62"
+  integrity sha512-ckqp2tHwMnxgX/IXLVFyObXclNJGn76gsBxqwvWdD36VqHu3qb1R9w5oZfcCPKwxHIWSXvgJfZFky+eY3jQx9A==
   dependencies:
-    "@graphback/core" "0.10.0"
+    "@graphback/core" "^0.10.1"
 
 "@graphback/core@0.10.0":
   version "0.10.0"
