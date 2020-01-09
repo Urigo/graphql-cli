@@ -1182,7 +1182,7 @@
     graphql-annotations "0.0.3"
     pino "5.15.0"
 
-"@graphback/core@^0.10.1":
+"@graphback/core@0.10.1", "@graphback/core@^0.10.1":
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/@graphback/core/-/core-0.10.1.tgz#078bf05617fcf3139013ac630997c0972856811a"
   integrity sha512-wJcZuF7rHUXhFp47M5/cmKgUrc5U2kLFsumzygVHEtrs+ncYNq9nCt18KqyK1FQhtoPS1ob22iIALMWfyKwU2g==
