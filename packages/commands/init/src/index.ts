@@ -554,7 +554,7 @@ export const plugin: CliPlugin = {
                         (
                             initializationType !== InitializationType.ExistingGraphQL ?
                                 `- ${chalk.cyan(`(Optional)`)} Initialize your git repo. ${chalk.cyan(`git init`)}.\n` +    
-                                `- Follow the instructions in Readme.md to continue...\n`
+                                `- Follow the instructions in README.md to continue...\n`
                                 : ''
                         )
                     );
