@@ -53,5 +53,5 @@ yarn graphql codegen
 - Start React App
 
 ```sh
-start:client
+yarn start:client
 ```
