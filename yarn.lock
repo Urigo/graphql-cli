@@ -1180,19 +1180,19 @@
   dependencies:
     "@graphback/core" "0.10.2"
 
-"@graphback/core@0.10.1", "@graphback/core@^0.10.1":
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/@graphback/core/-/core-0.10.1.tgz#078bf05617fcf3139013ac630997c0972856811a"
-  integrity sha512-wJcZuF7rHUXhFp47M5/cmKgUrc5U2kLFsumzygVHEtrs+ncYNq9nCt18KqyK1FQhtoPS1ob22iIALMWfyKwU2g==
+"@graphback/core@0.10.2":
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/@graphback/core/-/core-0.10.2.tgz#dcd9380e4e77a55d5b0d0f9821af5f32bfdb9dab"
+  integrity sha512-P5dku088LF3O9+kCr6ciicMPTQpibVBtez4RNphMQEq0/rYZJWO5h7l2InlBsJ51PyUb8KBzYj1EXfnMLvkd/g==
   dependencies:
     glob "7.1.6"
     graphql-annotations "0.0.3"
     pino "5.15.0"
 
-"@graphback/core@0.10.2":
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/@graphback/core/-/core-0.10.2.tgz#dcd9380e4e77a55d5b0d0f9821af5f32bfdb9dab"
-  integrity sha512-P5dku088LF3O9+kCr6ciicMPTQpibVBtez4RNphMQEq0/rYZJWO5h7l2InlBsJ51PyUb8KBzYj1EXfnMLvkd/g==
+"@graphback/core@^0.10.1":
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/@graphback/core/-/core-0.10.1.tgz#078bf05617fcf3139013ac630997c0972856811a"
+  integrity sha512-wJcZuF7rHUXhFp47M5/cmKgUrc5U2kLFsumzygVHEtrs+ncYNq9nCt18KqyK1FQhtoPS1ob22iIALMWfyKwU2g==
   dependencies:
     glob "7.1.6"
     graphql-annotations "0.0.3"
