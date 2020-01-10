@@ -1189,15 +1189,6 @@
     graphql-annotations "0.0.3"
     pino "5.15.0"
 
-"@graphback/core@^0.10.1":
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/@graphback/core/-/core-0.10.1.tgz#078bf05617fcf3139013ac630997c0972856811a"
-  integrity sha512-wJcZuF7rHUXhFp47M5/cmKgUrc5U2kLFsumzygVHEtrs+ncYNq9nCt18KqyK1FQhtoPS1ob22iIALMWfyKwU2g==
-  dependencies:
-    glob "7.1.6"
-    graphql-annotations "0.0.3"
-    pino "5.15.0"
-
 "@graphback/runtime@0.10.2":
   version "0.10.2"
   resolved "https://registry.yarnpkg.com/@graphback/runtime/-/runtime-0.10.2.tgz#8fcb4008fa4139bc0c10d115e4edf9ac2c3df69e"
@@ -5145,7 +5136,7 @@ commander@2.17.x:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
   integrity sha512-wPMUt6FnH2yzG95SA6mzjQOEKUU3aLaDEmzs1ti+1E9h+CsrZghRlqEM/EJ4KscsQVG8uNN4uVreUeT8+drlgg==
 
-commander@4.1.0, commander@^4.0.1, commander@^4.1.0:
+commander@4.1.0, commander@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-4.1.0.tgz#545983a0603fe425bc672d66c9e3c89c42121a83"
   integrity sha512-NIQrwvv9V39FHgGFm36+U9SMQzbiHvU79k+iADraJTpmrFFfx7Ds0IvDoAdZsDrknlkRk14OYoWXb57uTh7/sw==
@@ -7876,17 +7867,17 @@ graphql-import@0.7.1:
     lodash "^4.17.4"
     resolve-from "^4.0.0"
 
-graphql-migrations@0.10.1:
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/graphql-migrations/-/graphql-migrations-0.10.1.tgz#6ec4d5aa8444a9a92fe2ae3206d29d92aa6cd5c7"
-  integrity sha512-UNLFRbqH06i5/EenJ5Q1963VFaeQZXjnu3qBSk3KdpDS2TLCQIgJeZWu4Ra48ivKhlNGQEnwsph5xI0qldUv/A==
+graphql-migrations@0.10.2:
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/graphql-migrations/-/graphql-migrations-0.10.2.tgz#0ec02970890812da2ed01873677ac86b97a29443"
+  integrity sha512-X8jINgnxTELZd6GeAZKtY6Qj67zOH/VGCscOeHo2QBU2bX9otYwtKSX6lrkLK0onuKqYSP17E+a3lu8G127sng==
   dependencies:
-    "@graphback/core" "^0.10.1"
+    "@graphback/core" "0.10.2"
     "@graphql-inspector/core" "1.27.0"
     case "1.6.2"
     glob "7.1.6"
     graphql-annotations "0.0.3"
-    knex "0.20.6"
+    knex "0.20.7"
     lodash "4.17.15"
     lodash-es "4.17.15"
     node-emoji "1.10.0"
@@ -9778,27 +9769,6 @@ kleur@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
-
-knex@0.20.6:
-  version "0.20.6"
-  resolved "https://registry.npmjs.org/knex/-/knex-0.20.6.tgz#81eda6ec6580c05164a6317d3d4818ba20fca7bb"
-  integrity sha512-yuqAwRShmUOXqFiQMyQz+iBTJYiUcPAiE3Vy7Biuo64LLBDu7afwJeGhrr5/qwIgJ9idC/2kORGIwU9YrnLXEw==
-  dependencies:
-    bluebird "^3.7.2"
-    colorette "1.1.0"
-    commander "^4.0.1"
-    debug "4.1.1"
-    getopts "2.2.5"
-    inherits "~2.0.4"
-    interpret "^2.0.0"
-    liftoff "3.1.0"
-    lodash "^4.17.15"
-    mkdirp "^0.5.1"
-    pg-connection-string "2.1.0"
-    tarn "^2.0.0"
-    tildify "2.0.0"
-    uuid "^3.3.3"
-    v8flags "^3.1.3"
 
 knex@0.20.7:
   version "0.20.7"
