@@ -1163,13 +1163,13 @@
   dependencies:
     "@graphback/core" "0.10.2"
 
-"@graphback/codegen-resolvers@0.10.1":
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/@graphback/codegen-resolvers/-/codegen-resolvers-0.10.1.tgz#3ef0a103b981bf84274831f2918ad3bedaea78e6"
-  integrity sha512-zZMmVh1blxeMpoFLWL8OvfguWwg0MPq2T7WKMba2scIj4cY+OwH1IWyxaGVWlERpMCVYQz9HefnLXKskZQX/8A==
+"@graphback/codegen-resolvers@0.10.2":
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/@graphback/codegen-resolvers/-/codegen-resolvers-0.10.2.tgz#652e97d61348bdecac54a8c97337f209dc587457"
+  integrity sha512-N1D1q3dGghF0Er87kkb76uphsjOsn5j+6EgApBloY0ZHTZKKFdhvPio0RnRlGP4ca5o7UN8gx/tWkOMuIwg5eQ==
   dependencies:
-    "@graphback/core" "^0.10.1"
-    knex "0.20.6"
+    "@graphback/core" "0.10.2"
+    knex "0.20.7"
     pg "7.17.0"
     sqlite3 "4.1.1"
 
