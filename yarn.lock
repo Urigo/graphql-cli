@@ -1198,15 +1198,15 @@
     graphql-annotations "0.0.3"
     pino "5.15.0"
 
-"@graphback/runtime@0.10.1":
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/@graphback/runtime/-/runtime-0.10.1.tgz#9218ba008dbd919eb24dda91cb030092a3690f46"
-  integrity sha512-Ndrrb9c6Rn0Kz2/oqo3Q8ObR9zXv71iUMrI6gVuPEQo6RYZJ29hFN2r+SSqH3G4SDpjvWk5ti0gh6c48bI6+FA==
+"@graphback/runtime@0.10.2":
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/@graphback/runtime/-/runtime-0.10.2.tgz#8fcb4008fa4139bc0c10d115e4edf9ac2c3df69e"
+  integrity sha512-QuGrnMYo/Rdnc63utofKC3TppaXIhpFXB35YQG36kpWq2KOVvWLNSgq0GXsoBGZlucMUL5Wqtv2xIO8JJqcPyg==
   dependencies:
-    "@graphback/core" "^0.10.1"
+    "@graphback/core" "0.10.2"
     dataloader "2.0.0"
     graphql-subscriptions "1.1.0"
-    knex "0.20.6"
+    knex "0.20.7"
 
 "@graphql-codegen/add@1.11.2":
   version "1.11.2"
