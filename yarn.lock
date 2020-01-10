@@ -1156,12 +1156,12 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
-"@graphback/codegen-client@0.10.1":
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/@graphback/codegen-client/-/codegen-client-0.10.1.tgz#c4fae40356a759b149e0bf74ae9a23d99feb691a"
-  integrity sha512-CFK9xScVA/ChtxzYG3xCZNHQ+7xA5euR4DxgCDFIIrgISUttCgJYVRNFNhXTXVpIA1kMTqxcaBZWvo052XlgYA==
+"@graphback/codegen-client@0.10.2":
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/@graphback/codegen-client/-/codegen-client-0.10.2.tgz#e59fb27b3b9a3c3215fbc99fc0133c885e44c247"
+  integrity sha512-HP4h7gOBjwg/d5oz5M4r80UcDgE0HuCV2sWpd+g2zJ1DdRHyvD1cKio2OB7p+TWbPqI5w/3j1XqSps6I4vrjhw==
   dependencies:
-    "@graphback/core" "^0.10.1"
+    "@graphback/core" "0.10.2"
 
 "@graphback/codegen-resolvers@0.10.1":
   version "0.10.1"
@@ -1184,6 +1184,15 @@
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/@graphback/core/-/core-0.10.1.tgz#078bf05617fcf3139013ac630997c0972856811a"
   integrity sha512-wJcZuF7rHUXhFp47M5/cmKgUrc5U2kLFsumzygVHEtrs+ncYNq9nCt18KqyK1FQhtoPS1ob22iIALMWfyKwU2g==
+  dependencies:
+    glob "7.1.6"
+    graphql-annotations "0.0.3"
+    pino "5.15.0"
+
+"@graphback/core@0.10.2":
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/@graphback/core/-/core-0.10.2.tgz#dcd9380e4e77a55d5b0d0f9821af5f32bfdb9dab"
+  integrity sha512-P5dku088LF3O9+kCr6ciicMPTQpibVBtez4RNphMQEq0/rYZJWO5h7l2InlBsJ51PyUb8KBzYj1EXfnMLvkd/g==
   dependencies:
     glob "7.1.6"
     graphql-annotations "0.0.3"
