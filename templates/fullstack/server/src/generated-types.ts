@@ -19,20 +19,17 @@ export type Comment = {
   id: Scalars['ID'],
   title: Scalars['String'],
   description: Scalars['String'],
-  note: Note,
 };
 
 export type CommentFilter = {
   id?: Maybe<Scalars['ID']>,
   title?: Maybe<Scalars['String']>,
   description?: Maybe<Scalars['String']>,
-  noteId?: Maybe<Scalars['ID']>,
 };
 
 export type CommentInput = {
   title: Scalars['String'],
   description: Scalars['String'],
-  noteId: Scalars['ID'],
 };
 
 export type Mutation = {
@@ -206,7 +203,6 @@ export type CommentResolvers<ContextType = GraphbackRuntimeContext, ParentType e
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   description?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
-  note?: Resolver<ResolversTypes['Note'], ParentType, ContextType>,
 }>;
 
 export type MutationResolvers<ContextType = GraphbackRuntimeContext, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
