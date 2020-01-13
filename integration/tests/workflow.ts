@@ -10,13 +10,11 @@ ava('Test cli workflow', (t: ExecutionContext) => {
   try {
     let generate = execSync('yarn graphql generate --backend', { encoding: 'utf8', cwd: basePath });
     generate += execSync('yarn graphql generate --client', { encoding: 'utf8', cwd: basePath });
-    const codegen = execSync('yarn graphql codegen', { encoding: 'utf8', cwd: basePath });
-    const schemats = execSync('yarn schemats generate', { encoding: 'utf8', cwd: basePath });
+    const codegen = 'disabled' // execSync('yarn graphql codegen', { encoding: 'utf8', cwd: basePath });
 
     console.log(`
     Generate: ${generate}\n
     Codegen: ${codegen}\n
-    Schemats: ${schemats}
    `)
   } catch (error) {
     t.fail(`build failed with ${error}`);
