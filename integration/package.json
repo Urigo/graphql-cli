@@ -1,0 +1,37 @@
+{
+  "name": "graphql-cli-integration-testse",
+  "version": "4.0.0",
+  "license": "MIT",
+  "private": true,
+  "main": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc tests/**",
+    "test": "ava"
+  },
+  "dependencies": {
+    "log-symbols": "3.0.0",
+    "tslib": "1.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "12.12.9",
+    "ava": "^2.4.0",
+    "execa": "^4.0.0",
+    "graphql": "14.5.8",
+    "typescript": "3.7.2"
+  },
+  "ava": {
+    "files": [
+      "tests/**/*"
+    ],
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  }
+}
