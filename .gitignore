@@ -58,4 +58,3 @@ typings/
 .next
 
 package-lock.json
-integration/tests/**.js

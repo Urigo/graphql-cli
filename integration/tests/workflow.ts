@@ -1,16 +1,23 @@
 // tslint:disable-next-line: match-default-export-name no-implicit-dependencies
 import ava, { ExecutionContext } from 'ava';
 import { resolve } from 'path';
-const execa = require('execa');
+import { execSync } from 'child_process';
 
-ava('Test cli workflow', async (t: ExecutionContext) => {
+
+ava('Test cli workflow', (t: ExecutionContext) => {
   const basePath = resolve(`${__dirname}/../../templates/fullstack`);
-  process.chdir(basePath)
-    
+  console.log(`Running commands in ${basePath}`)
   try {
-    console.log(await execa('yarn', ['graphql', 'generate']));
-    console.log(await execa('yarn', ['graphql', 'codegen']));
-    console.log(await execa('yarn', ['schemats', 'generate']));
+    let generate = execSync('yarn graphql generate --backend', { encoding: 'utf8', cwd: basePath });
+    generate += execSync('yarn graphql generate --client', { encoding: 'utf8', cwd: basePath });
+    const codegen = execSync('yarn graphql codegen', { encoding: 'utf8', cwd: basePath });
+    const schemats = execSync('yarn schemats generate', { encoding: 'utf8', cwd: basePath });
+
+    console.log(`
+    Generate: ${generate}\n
+    Codegen: ${codegen}\n
+    Schemats: ${schemats}
+   `)
   } catch (error) {
     t.fail(`build failed with ${error}`);
   }
