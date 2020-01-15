@@ -7,11 +7,13 @@ import { execSync } from 'child_process';
 ava('Test cli workflow', (t: ExecutionContext) => {
   const basePath = resolve(`${__dirname}/../../templates/fullstack`);
   process.chdir(basePath)
+  // Workaround for github actions symlinking issue
+  const graphQLCmd = 'node ../../packages/cli/dist/index.js'
   console.log(`Running commands in ${basePath}`)
   try {
-    let generate = execSync('yarn graphql generate --backend', { encoding: 'utf8', cwd: basePath });
-    generate += execSync('yarn graphql generate --client', { encoding: 'utf8', cwd: basePath });
-    const codegen = execSync('yarn graphql codegen', { encoding: 'utf8', cwd: basePath });
+    let generate = execSync(`${graphQLCmd} generate --backend`, { encoding: 'utf8', cwd: basePath });
+    generate += execSync(`${graphQLCmd} generate --client`, { encoding: 'utf8', cwd: basePath });
+    const codegen = execSync(`${graphQLCmd} codegen`, { encoding: 'utf8', cwd: basePath });
 
     console.log(`
     Generate: ${generate}\n
