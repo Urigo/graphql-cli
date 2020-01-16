@@ -11,6 +11,7 @@ type Comment {
   id: ID!
   title: String!
   description: String!
+  note: Note!
 }
 
 input NoteInput {
@@ -21,6 +22,7 @@ input NoteInput {
 input CommentInput {
   title: String!
   description: String!
+  noteId: ID!
 }
 
 input NoteFilter {
@@ -33,6 +35,7 @@ input CommentFilter {
     id: ID
     title: String
     description: String
+    noteId: ID
 }
 
 type Query {
