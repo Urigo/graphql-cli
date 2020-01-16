@@ -8,7 +8,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc tests/**",
+
     "test": "ava"
   },
   "dependencies": {
@@ -34,4 +34,4 @@
       "ts-node/register"
     ]
   }
-}
+
