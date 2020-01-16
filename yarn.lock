@@ -1523,6 +1523,23 @@
     unixify "1.0.0"
     valid-url "1.0.9"
 
+"@graphql-toolkit/core@0.9.1":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/core/-/core-0.9.1.tgz#0219648fe127b81558828f8a6ddac2ba42ed44d0"
+  integrity sha512-Vc1te4v7fCqjDzEFPpW8m3cyDafoRK+BvvvisU/8VDflrsZFMJzQXHHCpK/Cv+7wLaE+t9m5D87b2m5Mqj0yPw==
+  dependencies:
+    "@graphql-toolkit/common" "0.9.1"
+    "@graphql-toolkit/file-loading" "0.9.1"
+    "@graphql-toolkit/schema-merging" "0.9.1"
+    aggregate-error "3.0.1"
+    globby "11.0.0"
+    import-from "^3.0.0"
+    is-glob "4.0.1"
+    resolve-from "5.0.0"
+    tslib "1.10.0"
+    unixify "1.0.0"
+    valid-url "1.0.9"
+
 "@graphql-toolkit/core@0.9.1-alpha-b002745.19+b002745":
   version "0.9.1-alpha-b002745.19"
   resolved "https://registry.yarnpkg.com/@graphql-toolkit/core/-/core-0.9.1-alpha-b002745.19.tgz#3711b214f0c79c731270a9c821d813dc3263b110"
@@ -1544,6 +1561,14 @@
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/@graphql-toolkit/file-loading/-/file-loading-0.9.0.tgz#745cfe22adb0d710d09f43bdd67a2d9b54e0257a"
   integrity sha512-Vs7n8VsZm1Oyw/1kKy/Y7fE8CznFA4SK4SEnWll9gpCmVE2vbATUYUlqSqm/W2npDdYB3FODEzhr5HIsQrjg6g==
+  dependencies:
+    globby "11.0.0"
+    unixify "1.0.0"
+
+"@graphql-toolkit/file-loading@0.9.1":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/file-loading/-/file-loading-0.9.1.tgz#109da14c5a19afca46c4d27dc4dca562f6c7745d"
+  integrity sha512-jiN2cvWjBR4ubwesU+IlpSCyXBZ1E7Xl5rakq63mFT9zVR5w0kEbO7Bs1nmIGlVbSvjbCzmn4d/kzrpgfwL7UQ==
   dependencies:
     globby "11.0.0"
     unixify "1.0.0"
@@ -1642,6 +1667,16 @@
     "@graphql-toolkit/common" "0.9.0"
     "@kamilkisiela/graphql-tools" "4.0.6"
     deepmerge "4.2.2"
+    tslib "1.10.0"
+
+"@graphql-toolkit/schema-merging@0.9.1":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/schema-merging/-/schema-merging-0.9.1.tgz#14a4eb7bdd9b48cba71f8750780e5f9c7cf465cc"
+  integrity sha512-QtptfP4wQDqR45MbLUnCQVNggKNmAzPReMZdHfIriIkUptpQgcFwZdZzNhoSf76q291sOjnBhZPN8f0gmI/bSg==
+  dependencies:
+    "@graphql-toolkit/common" "0.9.1"
+    deepmerge "4.2.2"
+    graphql-tools "4.0.6"
     tslib "1.10.0"
 
 "@graphql-toolkit/schema-merging@0.9.1-alpha-b002745.19+b002745":
