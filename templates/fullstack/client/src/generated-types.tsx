@@ -18,20 +18,17 @@ export type Comment = {
   id: Scalars['ID'],
   title: Scalars['String'],
   description: Scalars['String'],
-  note: Note,
 };
 
 export type CommentFilter = {
   id?: Maybe<Scalars['ID']>,
   title?: Maybe<Scalars['String']>,
   description?: Maybe<Scalars['String']>,
-  noteId?: Maybe<Scalars['ID']>,
 };
 
 export type CommentInput = {
   title: Scalars['String'],
   description: Scalars['String'],
-  noteId: Scalars['ID'],
 };
 
 export type Mutation = {
@@ -111,58 +108,6 @@ export type NoteFieldsFragment = (
   & Pick<Note, 'id' | 'title' | 'description'>
 );
 
-export type FindAllCommentsQueryVariables = {};
-
-
-export type FindAllCommentsQuery = (
-  { __typename?: 'Query' }
-  & { findAllComments: Array<(
-    { __typename?: 'Comment' }
-    & CommentFieldsFragment
-  )> }
-);
-
-export type FindAllNotesQueryVariables = {};
-
-
-export type FindAllNotesQuery = (
-  { __typename?: 'Query' }
-  & { findAllNotes: Array<(
-    { __typename?: 'Note' }
-    & NoteFieldsFragment
-  )> }
-);
-
-export type FindCommentsQueryVariables = {
-  id: Scalars['ID'],
-  title: Scalars['String'],
-  description: Scalars['String']
-};
-
-
-export type FindCommentsQuery = (
-  { __typename?: 'Query' }
-  & { findComments: Array<(
-    { __typename?: 'Comment' }
-    & CommentFieldsFragment
-  )> }
-);
-
-export type FindNotesQueryVariables = {
-  id: Scalars['ID'],
-  title: Scalars['String'],
-  description: Scalars['String']
-};
-
-
-export type FindNotesQuery = (
-  { __typename?: 'Query' }
-  & { findNotes: Array<(
-    { __typename?: 'Note' }
-    & NoteFieldsFragment
-  )> }
-);
-
 export type CreateCommentMutationVariables = {
   title: Scalars['String'],
   description: Scalars['String']
@@ -221,6 +166,58 @@ export type UpdateNoteMutation = (
   ) }
 );
 
+export type FindAllCommentsQueryVariables = {};
+
+
+export type FindAllCommentsQuery = (
+  { __typename?: 'Query' }
+  & { findAllComments: Array<(
+    { __typename?: 'Comment' }
+    & CommentFieldsFragment
+  )> }
+);
+
+export type FindAllNotesQueryVariables = {};
+
+
+export type FindAllNotesQuery = (
+  { __typename?: 'Query' }
+  & { findAllNotes: Array<(
+    { __typename?: 'Note' }
+    & NoteFieldsFragment
+  )> }
+);
+
+export type FindCommentsQueryVariables = {
+  id: Scalars['ID'],
+  title: Scalars['String'],
+  description: Scalars['String']
+};
+
+
+export type FindCommentsQuery = (
+  { __typename?: 'Query' }
+  & { findComments: Array<(
+    { __typename?: 'Comment' }
+    & CommentFieldsFragment
+  )> }
+);
+
+export type FindNotesQueryVariables = {
+  id: Scalars['ID'],
+  title: Scalars['String'],
+  description: Scalars['String']
+};
+
+
+export type FindNotesQuery = (
+  { __typename?: 'Query' }
+  & { findNotes: Array<(
+    { __typename?: 'Note' }
+    & NoteFieldsFragment
+  )> }
+);
+
 export const CommentFieldsFragmentDoc = gql`
     fragment CommentFields on Comment {
   id
@@ -235,140 +232,6 @@ export const NoteFieldsFragmentDoc = gql`
   description
 }
     `;
-export const FindAllCommentsDocument = gql`
-    query findAllComments {
-  findAllComments {
-    ...CommentFields
-  }
-}
-    ${CommentFieldsFragmentDoc}`;
-
-/**
- * __useFindAllCommentsQuery__
- *
- * To run a query within a React component, call `useFindAllCommentsQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindAllCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useFindAllCommentsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useFindAllCommentsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindAllCommentsQuery, FindAllCommentsQueryVariables>) {
-        return ApolloReactHooks.useQuery<FindAllCommentsQuery, FindAllCommentsQueryVariables>(FindAllCommentsDocument, baseOptions);
-      }
-export function useFindAllCommentsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindAllCommentsQuery, FindAllCommentsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<FindAllCommentsQuery, FindAllCommentsQueryVariables>(FindAllCommentsDocument, baseOptions);
-        }
-export type FindAllCommentsQueryHookResult = ReturnType<typeof useFindAllCommentsQuery>;
-export type FindAllCommentsLazyQueryHookResult = ReturnType<typeof useFindAllCommentsLazyQuery>;
-export type FindAllCommentsQueryResult = ApolloReactCommon.QueryResult<FindAllCommentsQuery, FindAllCommentsQueryVariables>;
-export const FindAllNotesDocument = gql`
-    query findAllNotes {
-  findAllNotes {
-    ...NoteFields
-  }
-}
-    ${NoteFieldsFragmentDoc}`;
-
-/**
- * __useFindAllNotesQuery__
- *
- * To run a query within a React component, call `useFindAllNotesQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindAllNotesQuery` returns an object from Apollo Client that contains loading, error, and data properties 
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useFindAllNotesQuery({
- *   variables: {
- *   },
- * });
- */
-export function useFindAllNotesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindAllNotesQuery, FindAllNotesQueryVariables>) {
-        return ApolloReactHooks.useQuery<FindAllNotesQuery, FindAllNotesQueryVariables>(FindAllNotesDocument, baseOptions);
-      }
-export function useFindAllNotesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindAllNotesQuery, FindAllNotesQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<FindAllNotesQuery, FindAllNotesQueryVariables>(FindAllNotesDocument, baseOptions);
-        }
-export type FindAllNotesQueryHookResult = ReturnType<typeof useFindAllNotesQuery>;
-export type FindAllNotesLazyQueryHookResult = ReturnType<typeof useFindAllNotesLazyQuery>;
-export type FindAllNotesQueryResult = ApolloReactCommon.QueryResult<FindAllNotesQuery, FindAllNotesQueryVariables>;
-export const FindCommentsDocument = gql`
-    query findComments($id: ID!, $title: String!, $description: String!) {
-  findComments(fields: {id: $id, title: $title, description: $description}) {
-    ...CommentFields
-  }
-}
-    ${CommentFieldsFragmentDoc}`;
-
-/**
- * __useFindCommentsQuery__
- *
- * To run a query within a React component, call `useFindCommentsQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useFindCommentsQuery({
- *   variables: {
- *      id: // value for 'id'
- *      title: // value for 'title'
- *      description: // value for 'description'
- *   },
- * });
- */
-export function useFindCommentsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindCommentsQuery, FindCommentsQueryVariables>) {
-        return ApolloReactHooks.useQuery<FindCommentsQuery, FindCommentsQueryVariables>(FindCommentsDocument, baseOptions);
-      }
-export function useFindCommentsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindCommentsQuery, FindCommentsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<FindCommentsQuery, FindCommentsQueryVariables>(FindCommentsDocument, baseOptions);
-        }
-export type FindCommentsQueryHookResult = ReturnType<typeof useFindCommentsQuery>;
-export type FindCommentsLazyQueryHookResult = ReturnType<typeof useFindCommentsLazyQuery>;
-export type FindCommentsQueryResult = ApolloReactCommon.QueryResult<FindCommentsQuery, FindCommentsQueryVariables>;
-export const FindNotesDocument = gql`
-    query findNotes($id: ID!, $title: String!, $description: String!) {
-  findNotes(fields: {id: $id, title: $title, description: $description}) {
-    ...NoteFields
-  }
-}
-    ${NoteFieldsFragmentDoc}`;
-
-/**
- * __useFindNotesQuery__
- *
- * To run a query within a React component, call `useFindNotesQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindNotesQuery` returns an object from Apollo Client that contains loading, error, and data properties 
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useFindNotesQuery({
- *   variables: {
- *      id: // value for 'id'
- *      title: // value for 'title'
- *      description: // value for 'description'
- *   },
- * });
- */
-export function useFindNotesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindNotesQuery, FindNotesQueryVariables>) {
-        return ApolloReactHooks.useQuery<FindNotesQuery, FindNotesQueryVariables>(FindNotesDocument, baseOptions);
-      }
-export function useFindNotesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindNotesQuery, FindNotesQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<FindNotesQuery, FindNotesQueryVariables>(FindNotesDocument, baseOptions);
-        }
-export type FindNotesQueryHookResult = ReturnType<typeof useFindNotesQuery>;
-export type FindNotesLazyQueryHookResult = ReturnType<typeof useFindNotesLazyQuery>;
-export type FindNotesQueryResult = ApolloReactCommon.QueryResult<FindNotesQuery, FindNotesQueryVariables>;
 export const CreateCommentDocument = gql`
     mutation createComment($title: String!, $description: String!) {
   createComment(input: {title: $title, description: $description}) {
@@ -503,3 +366,137 @@ export function useUpdateNoteMutation(baseOptions?: ApolloReactHooks.MutationHoo
 export type UpdateNoteMutationHookResult = ReturnType<typeof useUpdateNoteMutation>;
 export type UpdateNoteMutationResult = ApolloReactCommon.MutationResult<UpdateNoteMutation>;
 export type UpdateNoteMutationOptions = ApolloReactCommon.BaseMutationOptions<UpdateNoteMutation, UpdateNoteMutationVariables>;
+export const FindAllCommentsDocument = gql`
+    query findAllComments {
+  findAllComments {
+    ...CommentFields
+  }
+}
+    ${CommentFieldsFragmentDoc}`;
+
+/**
+ * __useFindAllCommentsQuery__
+ *
+ * To run a query within a React component, call `useFindAllCommentsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFindAllCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFindAllCommentsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useFindAllCommentsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindAllCommentsQuery, FindAllCommentsQueryVariables>) {
+        return ApolloReactHooks.useQuery<FindAllCommentsQuery, FindAllCommentsQueryVariables>(FindAllCommentsDocument, baseOptions);
+      }
+export function useFindAllCommentsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindAllCommentsQuery, FindAllCommentsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FindAllCommentsQuery, FindAllCommentsQueryVariables>(FindAllCommentsDocument, baseOptions);
+        }
+export type FindAllCommentsQueryHookResult = ReturnType<typeof useFindAllCommentsQuery>;
+export type FindAllCommentsLazyQueryHookResult = ReturnType<typeof useFindAllCommentsLazyQuery>;
+export type FindAllCommentsQueryResult = ApolloReactCommon.QueryResult<FindAllCommentsQuery, FindAllCommentsQueryVariables>;
+export const FindAllNotesDocument = gql`
+    query findAllNotes {
+  findAllNotes {
+    ...NoteFields
+  }
+}
+    ${NoteFieldsFragmentDoc}`;
+
+/**
+ * __useFindAllNotesQuery__
+ *
+ * To run a query within a React component, call `useFindAllNotesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFindAllNotesQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFindAllNotesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useFindAllNotesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindAllNotesQuery, FindAllNotesQueryVariables>) {
+        return ApolloReactHooks.useQuery<FindAllNotesQuery, FindAllNotesQueryVariables>(FindAllNotesDocument, baseOptions);
+      }
+export function useFindAllNotesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindAllNotesQuery, FindAllNotesQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FindAllNotesQuery, FindAllNotesQueryVariables>(FindAllNotesDocument, baseOptions);
+        }
+export type FindAllNotesQueryHookResult = ReturnType<typeof useFindAllNotesQuery>;
+export type FindAllNotesLazyQueryHookResult = ReturnType<typeof useFindAllNotesLazyQuery>;
+export type FindAllNotesQueryResult = ApolloReactCommon.QueryResult<FindAllNotesQuery, FindAllNotesQueryVariables>;
+export const FindCommentsDocument = gql`
+    query findComments($id: ID!, $title: String!, $description: String!) {
+  findComments(fields: {id: $id, title: $title, description: $description}) {
+    ...CommentFields
+  }
+}
+    ${CommentFieldsFragmentDoc}`;
+
+/**
+ * __useFindCommentsQuery__
+ *
+ * To run a query within a React component, call `useFindCommentsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFindCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFindCommentsQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      title: // value for 'title'
+ *      description: // value for 'description'
+ *   },
+ * });
+ */
+export function useFindCommentsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindCommentsQuery, FindCommentsQueryVariables>) {
+        return ApolloReactHooks.useQuery<FindCommentsQuery, FindCommentsQueryVariables>(FindCommentsDocument, baseOptions);
+      }
+export function useFindCommentsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindCommentsQuery, FindCommentsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FindCommentsQuery, FindCommentsQueryVariables>(FindCommentsDocument, baseOptions);
+        }
+export type FindCommentsQueryHookResult = ReturnType<typeof useFindCommentsQuery>;
+export type FindCommentsLazyQueryHookResult = ReturnType<typeof useFindCommentsLazyQuery>;
+export type FindCommentsQueryResult = ApolloReactCommon.QueryResult<FindCommentsQuery, FindCommentsQueryVariables>;
+export const FindNotesDocument = gql`
+    query findNotes($id: ID!, $title: String!, $description: String!) {
+  findNotes(fields: {id: $id, title: $title, description: $description}) {
+    ...NoteFields
+  }
+}
+    ${NoteFieldsFragmentDoc}`;
+
+/**
+ * __useFindNotesQuery__
+ *
+ * To run a query within a React component, call `useFindNotesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFindNotesQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFindNotesQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      title: // value for 'title'
+ *      description: // value for 'description'
+ *   },
+ * });
+ */
+export function useFindNotesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindNotesQuery, FindNotesQueryVariables>) {
+        return ApolloReactHooks.useQuery<FindNotesQuery, FindNotesQueryVariables>(FindNotesDocument, baseOptions);
+      }
+export function useFindNotesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindNotesQuery, FindNotesQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FindNotesQuery, FindNotesQueryVariables>(FindNotesDocument, baseOptions);
+        }
+export type FindNotesQueryHookResult = ReturnType<typeof useFindNotesQuery>;
+export type FindNotesLazyQueryHookResult = ReturnType<typeof useFindNotesLazyQuery>;
+export type FindNotesQueryResult = ApolloReactCommon.QueryResult<FindNotesQuery, FindNotesQueryVariables>;

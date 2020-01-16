@@ -6,6 +6,7 @@
     "packages": [
       "packages/*",
       "packages/commands/*",
+      "integration",
       "templates/**/*"
     ]
   },
