@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "graphql": "14.5.8",
-    "husky": "4.2.0",
+    "husky": "4.2.1",
     "lerna": "3.20.2",
     "lint-staged": "10.0.2",
     "prettier": "1.19.1",
