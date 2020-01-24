@@ -1654,12 +1654,12 @@
     apollo-language-server "1.17.2"
     tslib "1.10.0"
 
-"@graphql-toolkit/apollo-engine-loader@0.9.2":
-  version "0.9.2"
-  resolved "https://registry.yarnpkg.com/@graphql-toolkit/apollo-engine-loader/-/apollo-engine-loader-0.9.2.tgz#bbc34e5532650cd2a1d5f1420ffed83bbc5e8d0f"
-  integrity sha512-kkECAWP1F9x1Q60brdI4+Mzxg0dXpnqMYIEAz/YNTNcn6Ou8yGdu8lZNd2pXW0YMDW/cDKbULr20bFikOvZ/ig==
+"@graphql-toolkit/apollo-engine-loader@0.9.4":
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/apollo-engine-loader/-/apollo-engine-loader-0.9.4.tgz#8366e8d7cfb97bb6fb9a015166a3b537fcb31ae9"
+  integrity sha512-39QxqoUCPQ64mwFU2b2mJfxT+uYP6LnZKNBQxf0YQJZ+ScVCT1E4w5oxYiZHdKfACPBBVh/yOjI+S+9HZDFLog==
   dependencies:
-    "@graphql-toolkit/common" "0.9.2"
+    "@graphql-toolkit/common" "0.9.4"
     apollo-language-server "1.18.0"
     tslib "1.10.0"
 
@@ -1712,6 +1712,15 @@
   version "0.9.3"
   resolved "https://registry.yarnpkg.com/@graphql-toolkit/common/-/common-0.9.3.tgz#02449d36e291f335f8bf936d2837060838023477"
   integrity sha512-WJX/ZG0CKdC5Tu2U4dRXhb6P+LSit5m6j8BKevhoxsLUELNQFYL/g+W1X+v61z3yvuJe14Uj3kVNgT4BA/XGOw==
+  dependencies:
+    "@ardatan/graphql-tools" "4.1.0"
+    aggregate-error "3.0.1"
+    lodash "4.17.15"
+
+"@graphql-toolkit/common@0.9.4":
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/common/-/common-0.9.4.tgz#71bf4f6633faf025558e5f1448730dd58f04b1d9"
+  integrity sha512-dChN//1/kiUAUvmVaaZcdJuHemrVY/30jXDCNrA6j4CDvrg7252DbFLX5v0rG0inc5QDvCNQ0T3X1ckOTlnR6A==
   dependencies:
     "@ardatan/graphql-tools" "4.1.0"
     aggregate-error "3.0.1"
