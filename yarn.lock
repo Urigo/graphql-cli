@@ -1773,10 +1773,10 @@
     globby "11.0.0"
     unixify "1.0.0"
 
-"@graphql-toolkit/file-loading@0.9.4":
-  version "0.9.4"
-  resolved "https://registry.yarnpkg.com/@graphql-toolkit/file-loading/-/file-loading-0.9.4.tgz#4d946df3010a6010109afa0947d53605a2c1e0f9"
-  integrity sha512-MiPdXnhwdtC7igYL0lPnDidVjwcZeaqu4j1Une/FTSS8ybDWLkjc2JzfBX7QZjQTTFiaVaMAExnosZT9Z5qcQQ==
+"@graphql-toolkit/file-loading@0.9.5":
+  version "0.9.5"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/file-loading/-/file-loading-0.9.5.tgz#81499b581468027ed433fc74d2d7a748655cb2d9"
+  integrity sha512-8S3Xa4S7UhrvHKHAtD8uCgayFW0mAyz9NRwiBwF91OfyVVZj/t31nF8AiwTq7liSb4KaEVi6f3ljpV64pkrSUw==
   dependencies:
     globby "11.0.0"
     unixify "1.0.0"
