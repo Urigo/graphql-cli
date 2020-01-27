@@ -1672,13 +1672,13 @@
     "@graphql-toolkit/graphql-tag-pluck" "0.9.0"
     tslib "1.10.0"
 
-"@graphql-toolkit/code-file-loader@0.9.4":
-  version "0.9.4"
-  resolved "https://registry.yarnpkg.com/@graphql-toolkit/code-file-loader/-/code-file-loader-0.9.4.tgz#5ae7546ebd2f16280e6b748368deb58011218eaa"
-  integrity sha512-qekbJ6X/uVCM0FCAhrSKa8t9KMKURXCN4/M7y9BA2sQWlDs7M9i1a6kqemaNCVIELW3Lgbjr99r2xxZBr6zX3w==
+"@graphql-toolkit/code-file-loader@0.9.5":
+  version "0.9.5"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/code-file-loader/-/code-file-loader-0.9.5.tgz#236db3c2660514cd56d48b211182f4705e13ee1e"
+  integrity sha512-ZsDrLFuggzDON12i5+HtSJ5NCv71k+XrMpr9bYWbBuS7QzE98r4klp7fXrPu5FfheFvTrDEyTi6LQTe9GOjwNQ==
   dependencies:
-    "@graphql-toolkit/common" "0.9.4"
-    "@graphql-toolkit/graphql-tag-pluck" "0.9.4"
+    "@graphql-toolkit/common" "0.9.5"
+    "@graphql-toolkit/graphql-tag-pluck" "0.9.5"
     tslib "1.10.0"
 
 "@graphql-toolkit/common@0.9.0":
@@ -1851,6 +1851,18 @@
     "@babel/traverse" "7.8.3"
     "@babel/types" "7.8.3"
     "@graphql-toolkit/common" "0.9.4"
+
+"@graphql-toolkit/graphql-tag-pluck@0.9.5":
+  version "0.9.5"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/graphql-tag-pluck/-/graphql-tag-pluck-0.9.5.tgz#5b0289acc30edb4c8a09322e2958197775e709ab"
+  integrity sha512-loZdRTDx3Cm8UPZyRhwWgZ2rQbcTHgkXiggQ06AnMFvHK+8uk25bss0htNipx80RD2MBsqkTfUkjtqXtWbaDZA==
+  dependencies:
+    "@babel/parser" "7.8.3"
+    "@babel/traverse" "7.8.3"
+    "@babel/types" "7.8.3"
+    "@graphql-toolkit/common" "0.9.5"
+  optionalDependencies:
+    vue-template-compiler "^2.6.11"
 
 "@graphql-toolkit/json-file-loader@0.9.0":
   version "0.9.0"
@@ -17063,7 +17075,7 @@ vscode-uri@^1.0.6:
   resolved "https://registry.yarnpkg.com/vscode-uri/-/vscode-uri-1.0.8.tgz#9769aaececae4026fb6e22359cb38946580ded59"
   integrity sha512-obtSWTlbJ+a+TFRYGaUumtVwb+InIUVI0Lu0VBUAPmj2cU5JutEXg3xUE0c2J5Tcy7h2DEKVJBFi+Y9ZSFzzPQ==
 
-vue-template-compiler@^2.6.10:
+vue-template-compiler@^2.6.10, vue-template-compiler@^2.6.11:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.6.11.tgz#c04704ef8f498b153130018993e56309d4698080"
   integrity sha512-KIq15bvQDrcCjpGjrAhx4mUlyyHfdmTaoNfeoATHLAiWB+MU3cx4lOzMwrnUh9cCxy0Lt1T11hAFY6TQgroUAA==
