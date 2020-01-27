@@ -1699,15 +1699,6 @@
     aggregate-error "3.0.1"
     lodash "4.17.15"
 
-"@graphql-toolkit/common@0.9.4":
-  version "0.9.4"
-  resolved "https://registry.yarnpkg.com/@graphql-toolkit/common/-/common-0.9.4.tgz#71bf4f6633faf025558e5f1448730dd58f04b1d9"
-  integrity sha512-dChN//1/kiUAUvmVaaZcdJuHemrVY/30jXDCNrA6j4CDvrg7252DbFLX5v0rG0inc5QDvCNQ0T3X1ckOTlnR6A==
-  dependencies:
-    "@ardatan/graphql-tools" "4.1.0"
-    aggregate-error "3.0.1"
-    lodash "4.17.15"
-
 "@graphql-toolkit/common@0.9.5":
   version "0.9.5"
   resolved "https://registry.yarnpkg.com/@graphql-toolkit/common/-/common-0.9.5.tgz#6eec9804627eaf2b686b47330037a20fa5020873"
@@ -1807,13 +1798,13 @@
     "@graphql-toolkit/common" "0.9.0"
     cross-fetch "3.0.4"
 
-"@graphql-toolkit/github-loader@0.9.4":
-  version "0.9.4"
-  resolved "https://registry.yarnpkg.com/@graphql-toolkit/github-loader/-/github-loader-0.9.4.tgz#412794bbf4c8464aacf912e0ba4b09d570ae3894"
-  integrity sha512-P1ACuWgOywN+uQArWCUFCcV72A++vlCm0NanY/huuLrhg/Ky5nw3H2AFcdHRRGbWAHwIMeBwxPmhfGYegWzicg==
+"@graphql-toolkit/github-loader@0.9.5":
+  version "0.9.5"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/github-loader/-/github-loader-0.9.5.tgz#399dd786c7a344fed33d9e9bb0befad2c4d445d4"
+  integrity sha512-no3WD7Ai38BxvTSsAFFwGIcBfHTKC9IiOmJoDRVd78DviC8vMFzKAJNo9yc78HLCu/8GoXSgaE2nldTaZy91SA==
   dependencies:
-    "@graphql-toolkit/common" "0.9.4"
-    "@graphql-toolkit/graphql-tag-pluck" "0.9.4"
+    "@graphql-toolkit/common" "0.9.5"
+    "@graphql-toolkit/graphql-tag-pluck" "0.9.5"
     cross-fetch "3.0.4"
 
 "@graphql-toolkit/graphql-file-loader@0.9.0":
@@ -1842,16 +1833,6 @@
     "@babel/types" "7.7.4"
   optionalDependencies:
     vue-template-compiler "^2.6.10"
-
-"@graphql-toolkit/graphql-tag-pluck@0.9.4":
-  version "0.9.4"
-  resolved "https://registry.yarnpkg.com/@graphql-toolkit/graphql-tag-pluck/-/graphql-tag-pluck-0.9.4.tgz#f21cd6eba4a106c3f373d8d7e3428abbcdcbd033"
-  integrity sha512-oNugYqToq72xWT5wCZ/uyljo95eBDYKodZBudkb/+dBPNZN5fuxG5Ls59MPw3jPoKc33xCZWUpAhMXhW9G3ZbQ==
-  dependencies:
-    "@babel/parser" "7.8.3"
-    "@babel/traverse" "7.8.3"
-    "@babel/types" "7.8.3"
-    "@graphql-toolkit/common" "0.9.4"
 
 "@graphql-toolkit/graphql-tag-pluck@0.9.5":
   version "0.9.5"
