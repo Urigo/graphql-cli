@@ -17,7 +17,7 @@
   "dependencies": {
     "@graphql-toolkit/apollo-engine-loader": "0.9.7",
     "@graphql-toolkit/code-file-loader": "0.9.6",
-    "@graphql-toolkit/git-loader": "0.9.6",
+    "@graphql-toolkit/git-loader": "0.9.7",
     "@graphql-toolkit/github-loader": "0.9.6",
     "@graphql-toolkit/prisma-loader": "0.9.6",
     "@test-graphql-cli/common": "4.0.1-beta.1",
