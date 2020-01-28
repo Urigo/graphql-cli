@@ -288,8 +288,8 @@ export const plugin: CliPlugin = {
                         }
                         const datamodelPath = `${graphqlConfig.extensions.generate.model}/datamodel.graphql`;
                         try {
-                            const { createGraphQlSchema } = await import('openapi-to-graphql');
-                            let { schema } = await createGraphQlSchema(parsedObject, {
+                            const { createGraphQLSchema } = await import('openapi-to-graphql');
+                            let { schema } = await createGraphQLSchema(parsedObject, {
                                 strict: true,
                                 fillEmptyResponses: true,
                                 equivalentToMessages: false,
