@@ -1699,15 +1699,6 @@
     aggregate-error "3.0.1"
     lodash "4.17.15"
 
-"@graphql-toolkit/common@0.9.5":
-  version "0.9.5"
-  resolved "https://registry.yarnpkg.com/@graphql-toolkit/common/-/common-0.9.5.tgz#6eec9804627eaf2b686b47330037a20fa5020873"
-  integrity sha512-yot36v0ytePfHuG9o0R19VHxGykz3GlmzxWCMqbhvXMf/4N5exIw81iwBReB95fuEv0mu/EqmT29NEu50Ve/zg==
-  dependencies:
-    "@ardatan/graphql-tools" "4.1.0"
-    aggregate-error "3.0.1"
-    lodash "4.17.15"
-
 "@graphql-toolkit/common@0.9.6":
   version "0.9.6"
   resolved "https://registry.yarnpkg.com/@graphql-toolkit/common/-/common-0.9.6.tgz#8335cdcbfbc6b593098bd9ab47de2c8b661f22a6"
@@ -1881,13 +1872,13 @@
     prisma-yml "1.34.10"
     tslib "1.10.0"
 
-"@graphql-toolkit/prisma-loader@0.9.5":
-  version "0.9.5"
-  resolved "https://registry.yarnpkg.com/@graphql-toolkit/prisma-loader/-/prisma-loader-0.9.5.tgz#a0c4faa0f1975dadbc5815f2912da5b3654a2567"
-  integrity sha512-5SwKPXTWuSuSWgb2Vz1vzWM/CL6VRSO9qzN95hFv1H3JGnUBMo/Unh6czS/DEJUHGNcqvm8s82iJ+TqS+qH7Wg==
+"@graphql-toolkit/prisma-loader@0.9.6":
+  version "0.9.6"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/prisma-loader/-/prisma-loader-0.9.6.tgz#27110c6b7ac91cda7df46e79eb34db4365337b05"
+  integrity sha512-l/kSWlvtVJQzH6/KASnwneP9u8vu7jFz0Wuu2CO0sFjVCaKLMQDMvteyoLB0M0AmkJuEEOfXmcav+DNyRi4yvg==
   dependencies:
-    "@graphql-toolkit/common" "0.9.5"
-    "@graphql-toolkit/url-loader" "0.9.5"
+    "@graphql-toolkit/common" "0.9.6"
+    "@graphql-toolkit/url-loader" "0.9.6"
     prisma-yml "1.34.10"
     tslib "1.10.0"
 
@@ -1941,13 +1932,13 @@
     tslib "1.10.0"
     valid-url "1.0.9"
 
-"@graphql-toolkit/url-loader@0.9.5":
-  version "0.9.5"
-  resolved "https://registry.yarnpkg.com/@graphql-toolkit/url-loader/-/url-loader-0.9.5.tgz#3e7161bc5adea1b07f31381bfc8f8b18ba801664"
-  integrity sha512-cPs5tN8j7jB1AAjgePFJ23YN7K35peSi39CpPQd79H4XlP75KuzgFdCgJ7xdYwOYOEtXfPvVMAYfsD7NcoenmQ==
+"@graphql-toolkit/url-loader@0.9.6":
+  version "0.9.6"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/url-loader/-/url-loader-0.9.6.tgz#f5d71f703ebdb3f353bcb7a7bd011b2794360101"
+  integrity sha512-jvwNARD4xe7tTkby80W2nGJ8J0itgOyZ0THG2evnSzYhXmrQhRVGuIA6jDwhnV0YI2a4uWK/hnbCVMAPorO6tw==
   dependencies:
     "@ardatan/graphql-tools" "4.1.0"
-    "@graphql-toolkit/common" "0.9.5"
+    "@graphql-toolkit/common" "0.9.6"
     cross-fetch "3.0.4"
     tslib "1.10.0"
     valid-url "1.0.9"
