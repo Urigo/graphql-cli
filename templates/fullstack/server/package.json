@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@graphback/runtime": "0.10.2",
-    "@graphql-toolkit/file-loading": "0.9.6",
+    "@graphql-toolkit/file-loading": "0.9.7",
     "@types/cors": "2.8.6",
     "@types/express": "4.17.2",
     "@types/node": "13.5.1",
