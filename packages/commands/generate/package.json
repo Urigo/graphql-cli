@@ -21,7 +21,7 @@
     "@graphback/core": "0.10.2",
     "@graphql-toolkit/apollo-engine-loader": "0.9.6",
     "@graphql-toolkit/code-file-loader": "0.9.5",
-    "@graphql-toolkit/common": "0.9.5",
+    "@graphql-toolkit/common": "0.9.6",
     "@graphql-toolkit/core": "0.9.5",
     "@graphql-toolkit/git-loader": "0.9.5",
     "@graphql-toolkit/github-loader": "0.9.5",
