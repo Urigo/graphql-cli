@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@types/inquirer": "6.5.0",
-    "@types/node": "13.5.1",
+    "@types/node": "13.5.2",
     "graphql": "14.6.0",
     "ts-node": "8.6.2",
     "typescript": "3.7.5"
