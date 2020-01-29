@@ -24,7 +24,7 @@
     "@graphql-toolkit/common": "0.9.7",
     "@graphql-toolkit/core": "0.9.7",
     "@graphql-toolkit/git-loader": "0.9.7",
-    "@graphql-toolkit/github-loader": "0.9.6",
+    "@graphql-toolkit/github-loader": "0.9.7",
     "@graphql-toolkit/prisma-loader": "0.9.6",
     "@test-graphql-cli/common": "4.0.1-beta.1",
     "chalk": "3.0.0",
