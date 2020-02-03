@@ -24,7 +24,7 @@
     "@types/node-fetch": "2.5.4",
     "apollo-server": "2.9.16",
     "chalk": "3.0.0",
-    "commander": "4.1.0",
+    "commander": "4.1.1",
     "log-symbols": "3.0.0",
     "open": "7.0.2",
     "tslib": "1.10.0"
