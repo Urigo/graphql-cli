@@ -14,7 +14,7 @@
     "express-graphql": "0.9.0",
     "graphql": "14.6.0",
     "graphql-subscriptions": "1.1.0",
-    "graphql-tag": "2.10.2",
+    "graphql-tag": "2.10.3",
     "graphql-tools": "4.0.6",
     "knex": "0.20.8",
     "pg": "7.18.1",
