@@ -16,7 +16,7 @@
     "cors": "2.8.5",
     "express": "4.17.1",
     "graphql": "14.6.0",
-    "graphql-tag": "2.10.2",
+    "graphql-tag": "2.10.3",
     "knex": "0.20.8",
     "pg": "7.18.1",
     "ts-node": "8.6.2",
