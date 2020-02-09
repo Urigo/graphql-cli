@@ -23,7 +23,7 @@
     "lerna": "3.20.2",
     "lint-staged": "10.0.7",
     "prettier": "1.19.1",
-    "rimraf": "3.0.1"
+    "rimraf": "3.0.2"
   },
   "publishConfig": {
     "access": "public"
