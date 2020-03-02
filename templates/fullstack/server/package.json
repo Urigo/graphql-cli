@@ -7,7 +7,7 @@
     "start": "ts-node src/index.ts"
   },
   "dependencies": {
-    "@graphback/runtime": "0.11.1",
+   "@graphback/runtime-knex": "0.11.1",
     "@graphql-toolkit/file-loading": "0.9.7",
     "@types/cors": "2.8.6",
     "@types/express": "4.17.3",
@@ -16,6 +16,7 @@
     "cors": "2.8.5",
     "express": "4.17.1",
     "graphql": "14.6.0",
+    "graphql-config": "3.0.0-alpha.18",
     "graphql-tag": "2.10.3",
     "knex": "0.20.11",
     "pg": "7.18.2",
