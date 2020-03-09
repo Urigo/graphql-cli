@@ -9211,21 +9211,22 @@ graphql-metadata@0.5.0:
   dependencies:
     safe-eval "^0.4.1"
 
-graphql-migrations@0.10.2:
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/graphql-migrations/-/graphql-migrations-0.10.2.tgz#0ec02970890812da2ed01873677ac86b97a29443"
-  integrity sha512-X8jINgnxTELZd6GeAZKtY6Qj67zOH/VGCscOeHo2QBU2bX9otYwtKSX6lrkLK0onuKqYSP17E+a3lu8G127sng==
+graphql-migrations@0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/graphql-migrations/-/graphql-migrations-0.11.0.tgz#83dcb6f47a5e7e473d8c535de2b0804bc2283d3c"
+  integrity sha512-y+cd8KNKixIEWoTLaAMncGtQKF7BAffUpdRcVmDs5vR9BSlGFMIO8SuHit8VHnwBXoL90hiJVGCmZITSIr9y/w==
   dependencies:
-    "@graphback/core" "0.10.2"
+    "@graphback/core" "0.11.0"
     "@graphql-inspector/core" "1.27.0"
     case "1.6.2"
+    chalk "3.0.0"
     glob "7.1.6"
-    graphql-annotations "0.0.3"
-    knex "0.20.7"
+    graphql-metadata "0.5.0"
+    knex "0.20.11"
     lodash "4.17.15"
     lodash-es "4.17.15"
     node-emoji "1.10.0"
-    pino "5.15.0"
+    pino "5.17.0"
 
 graphql-request@^1.5.0:
   version "1.8.2"
