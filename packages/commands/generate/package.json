@@ -37,7 +37,7 @@
     "knex": "0.20.11",
     "listr": "0.14.3",
     "log-symbols": "3.0.0",
-    "tslib": "1.10.0"
+    "tslib": "1.11.1"
   },
   "devDependencies": {
     "@types/debounce": "1.2.0",
