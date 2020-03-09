@@ -11,7 +11,7 @@
     "@graphql-toolkit/file-loading": "0.9.7",
     "@types/cors": "2.8.6",
     "@types/express": "4.17.3",
-    "@types/node": "13.7.0",
+    "@types/node": "13.9.0",
     "apollo-server-express": "2.11.0",
     "cors": "2.8.5",
     "express": "4.17.1",
