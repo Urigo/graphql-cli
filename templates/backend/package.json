@@ -17,7 +17,7 @@
     "graphql-tag": "2.10.3",
     "graphql-tools": "4.0.7",
     "knex": "0.20.11",
-    "pg": "7.18.1",
+    "pg": "7.18.2",
     "sqlite3": "4.1.1",
     "subscriptions-transport-ws": "0.9.16"
   },
