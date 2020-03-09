@@ -18393,10 +18393,10 @@ yargs@^8.0.1:
     y18n "^3.2.1"
     yargs-parser "^7.0.0"
 
-yarn-programmatic@0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/yarn-programmatic/-/yarn-programmatic-0.1.1.tgz#4cf4cb4a8aae646b701f45d1906814e0e5c8aee9"
-  integrity sha512-4EgT+/pygjukkb3gzmUQm9jaUEa5XFWgF1/Lva+GQQo99pVpb+YotfeRY/RnQbZM4nxZW/TmWDOpBffX/Yk1Ow==
+yarn-programmatic@0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/yarn-programmatic/-/yarn-programmatic-0.1.2.tgz#6d656c59d16816deec701b7cb32f25558c1070f7"
+  integrity sha512-pnunUzmOpsZR+G8GbqX+FBNaKsu+lXrtcPGC8UOn1tw8NgPVx1GHHlosQCu1dlGNppjb6MF7WzBPONiAaEvp4Q==
   dependencies:
     "@types/child-process-promise" "^2.2.1"
     child-process-promise "^2.2.1"
