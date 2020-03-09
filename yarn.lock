@@ -13629,10 +13629,10 @@ pg@7.17.0:
     pgpass "1.x"
     semver "4.3.2"
 
-pg@7.18.1:
-  version "7.18.1"
-  resolved "https://registry.yarnpkg.com/pg/-/pg-7.18.1.tgz#67f59c47a99456fcb34f9fe53662b79d4a992f6d"
-  integrity sha512-1KtKBKg/zWrjEEv//klBbVOPGucuc7HHeJf6OEMueVcUeyF3yueHf+DvhVwBjIAe9/97RAydO/lWjkcMwssuEw==
+pg@7.18.2:
+  version "7.18.2"
+  resolved "https://registry.yarnpkg.com/pg/-/pg-7.18.2.tgz#4e219f05a00aff4db6aab1ba02f28ffa4513b0bb"
+  integrity sha512-Mvt0dGYMwvEADNKy5PMQGlzPudKcKKzJds/VbOeZJpb6f/pI3mmoXX0JksPgI3l3JPP/2Apq7F36O63J7mgveA==
   dependencies:
     buffer-writer "2.0.0"
     packet-reader "1.0.0"

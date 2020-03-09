@@ -18,7 +18,7 @@
     "graphql": "14.6.0",
     "graphql-tag": "2.10.3",
     "knex": "0.20.11",
-    "pg": "7.18.1",
+    "pg": "7.18.2",
     "ts-node": "8.6.2",
     "ts-node-dev": "1.0.0-pre.44",
     "typescript": "3.7.5"
