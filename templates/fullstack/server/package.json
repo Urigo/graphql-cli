@@ -10,7 +10,7 @@
     "@graphback/runtime": "0.10.2",
     "@graphql-toolkit/file-loading": "0.9.7",
     "@types/cors": "2.8.6",
-    "@types/express": "4.17.2",
+    "@types/express": "4.17.3",
     "@types/node": "13.7.0",
     "apollo-server-express": "2.10.0",
     "cors": "2.8.5",
