@@ -19,7 +19,7 @@
     "ava": "2.4.0",
     "execa": "4.0.0",
     "graphql": "14.6.0",
-    "typescript": "3.7.5"
+    "typescript": "3.8.3"
   },
   "ava": {
     "files": [
