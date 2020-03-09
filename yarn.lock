@@ -1968,15 +1968,25 @@
     graphql-annotations "0.0.3"
     pino "5.15.0"
 
-"@graphback/runtime@0.10.2":
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/@graphback/runtime/-/runtime-0.10.2.tgz#8fcb4008fa4139bc0c10d115e4edf9ac2c3df69e"
-  integrity sha512-QuGrnMYo/Rdnc63utofKC3TppaXIhpFXB35YQG36kpWq2KOVvWLNSgq0GXsoBGZlucMUL5Wqtv2xIO8JJqcPyg==
+"@graphback/core@0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@graphback/core/-/core-0.11.0.tgz#cf2737932515128fb76d75149ef611ee5201c0f7"
+  integrity sha512-XqWRVhQKLyirddiyhasx0MqneZ731PYxqWf8EQehjBnMTcWfqvMzMZM5ms1vC9B/eMEnWBkuD8YVyxiDKWV8SA==
   dependencies:
-    "@graphback/core" "0.10.2"
+    glob "7.1.6"
+    graphql-metadata "0.5.0"
+    pino "5.17.0"
+    pluralize "8.0.0"
+
+"@graphback/runtime@0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@graphback/runtime/-/runtime-0.11.0.tgz#dbf1b148c9a65bd40bbc64d338b442430fb8c26c"
+  integrity sha512-fqh08ZzTtD9ZaAVYkmagOVb9tqUpfltV+e7OhJlrPSlvQZefZmREcFtor43+ottbonLCX1eLzFOosEwkRxVmjQ==
+  dependencies:
+    "@graphback/core" "0.11.0"
     dataloader "2.0.0"
     graphql-subscriptions "1.1.0"
-    knex "0.20.7"
+    node-fetch "2.6.0"
 
 "@graphql-codegen/add@1.12.2":
   version "1.12.2"
@@ -9177,6 +9187,13 @@ graphql-import@0.7.1:
     lodash "^4.17.4"
     resolve-from "^4.0.0"
 
+graphql-metadata@0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/graphql-metadata/-/graphql-metadata-0.5.0.tgz#0fc327bfbd5786b5c363d42daeac95351ee720bf"
+  integrity sha512-Y5yLUcvrrlBV+65RuiEagxviPK+rX0jAR3HwiphGM5rOIbcxOUd8/HL/f01uSoFK7ttkTj/1x6qCW16DigvNmQ==
+  dependencies:
+    safe-eval "^0.4.1"
+
 graphql-migrations@0.10.2:
   version "0.10.2"
   resolved "https://registry.yarnpkg.com/graphql-migrations/-/graphql-migrations-0.10.2.tgz#0ec02970890812da2ed01873677ac86b97a29443"
@@ -13775,6 +13792,18 @@ pino@5.15.0:
     quick-format-unescaped "^3.0.3"
     sonic-boom "^0.7.5"
 
+pino@5.17.0:
+  version "5.17.0"
+  resolved "https://registry.yarnpkg.com/pino/-/pino-5.17.0.tgz#b9def314e82402154f89a25d76a31f20ca84b4c8"
+  integrity sha512-LqrqmRcJz8etUjyV0ddqB6OTUutCgQULPFg2b4dtijRHUsucaAdBgSUW58vY6RFSX+NT8963F+q0tM6lNwGShA==
+  dependencies:
+    fast-redact "^2.0.0"
+    fast-safe-stringify "^2.0.7"
+    flatstr "^1.0.12"
+    pino-std-serializers "^2.4.2"
+    quick-format-unescaped "^3.0.3"
+    sonic-boom "^0.7.5"
+
 pirates@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/pirates/-/pirates-4.0.1.tgz#643a92caf894566f91b2b986d2c66950a8e2fb87"
@@ -13839,7 +13868,7 @@ plur@^3.1.1:
   dependencies:
     irregular-plurals "^2.0.0"
 
-pluralize@^8.0.0:
+pluralize@8.0.0, pluralize@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
   integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
