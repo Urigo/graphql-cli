@@ -1983,12 +1983,22 @@
     pino "5.17.0"
     pluralize "8.0.0"
 
-"@graphback/runtime@0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@graphback/runtime/-/runtime-0.11.0.tgz#dbf1b148c9a65bd40bbc64d338b442430fb8c26c"
-  integrity sha512-fqh08ZzTtD9ZaAVYkmagOVb9tqUpfltV+e7OhJlrPSlvQZefZmREcFtor43+ottbonLCX1eLzFOosEwkRxVmjQ==
+"@graphback/core@0.11.1":
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/@graphback/core/-/core-0.11.1.tgz#d1bd6937f324a4ac12bd106036cbfe2fae211b8f"
+  integrity sha512-rO83zR9Fse+ZvkXwuq1c5muHm3IxN8d5bm4j9IKZGsMjoBGwvRoa0e3zBom/BWAiEa4emBlH54i/grkIfvdOOA==
   dependencies:
-    "@graphback/core" "0.11.0"
+    glob "7.1.6"
+    graphql-metadata "0.5.0"
+    pino "5.17.0"
+    pluralize "8.0.0"
+
+"@graphback/runtime@0.11.1":
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/@graphback/runtime/-/runtime-0.11.1.tgz#586d9ab8d1c548579ea06ce55965c043ae74f250"
+  integrity sha512-IJjFMX2ghUWyU6d91TGaj+UZ1mSAZVhpaPppGiXYlV1oDrzXPDv9oUNxOSgtAaRkipCBi3PPRsArsj7ryXWMwQ==
+  dependencies:
+    "@graphback/core" "0.11.1"
     dataloader "2.0.0"
     graphql-subscriptions "1.1.0"
     node-fetch "2.6.0"
