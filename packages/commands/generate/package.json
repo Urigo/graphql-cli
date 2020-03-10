@@ -33,7 +33,7 @@
     "debounce": "1.2.0",
     "fs-extra": "8.1.0",
     "graphql-migrations": "0.11.0",
-    "inquirer": "7.0.7",
+    "inquirer": "7.1.0",
     "knex": "0.20.11",
     "listr": "0.14.3",
     "log-symbols": "3.0.0",
