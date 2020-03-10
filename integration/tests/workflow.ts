@@ -12,7 +12,6 @@ ava('Test cli workflow', (t: ExecutionContext) => {
   console.log(`Running commands in ${basePath}`)
   try {
     let generate = execSync(`${graphQLCmd} generate --backend`, { encoding: 'utf8', cwd: basePath });
-    generate += execSync(`${graphQLCmd} generate --client`, { encoding: 'utf8', cwd: basePath });
     const codegen = execSync(`${graphQLCmd} codegen`, { encoding: 'utf8', cwd: basePath });
 
     console.log(`
