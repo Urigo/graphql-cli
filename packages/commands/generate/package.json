@@ -15,8 +15,8 @@
     "graphql": "14.6.0"
   },
   "dependencies": {
-    "graphback-cli": "0.11.0-rc4",
-    "graphql-migrations": "0.11.0-rc4",
+    "graphback-cli": "0.11.2",
+    "graphql-migrations": "0.11.2",
     "@graphback/core": "0.10.2",
     "@graphql-toolkit/apollo-engine-loader": "0.9.7",
     "@graphql-toolkit/code-file-loader": "0.9.7",
@@ -31,7 +31,6 @@
     "commander": "4.1.1",
     "debounce": "1.2.0",
     "fs-extra": "8.1.0",
-    "graphql-migrations": "0.11.2",
     "inquirer": "7.1.0",
     "knex": "0.20.11",
     "listr": "0.14.3",
@@ -48,6 +47,4 @@
     "ts-node": "8.6.2",
     "typescript": "3.8.3"
   }
-}
-
 }
