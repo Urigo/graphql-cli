@@ -25,7 +25,6 @@
     "files": [
       "tests/**/*"
     ],
-    "compileEnhancements": false,
     "extensions": [
       "ts"
     ],
