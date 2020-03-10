@@ -36,7 +36,7 @@ async function start() {
     resolvers: loadResolversFiles(join(__dirname, '/resolvers/')),
     context: createKnexRuntimeContext(db as any, pubSub),
     playground: true,
-  })
+  } as any)
 
   apolloServer.applyMiddleware({ app })
 
