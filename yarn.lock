@@ -1893,14 +1893,15 @@
   dependencies:
     "@graphback/core" "0.10.2"
 
-"@graphback/codegen-resolvers@0.10.2":
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/@graphback/codegen-resolvers/-/codegen-resolvers-0.10.2.tgz#652e97d61348bdecac54a8c97337f209dc587457"
-  integrity sha512-N1D1q3dGghF0Er87kkb76uphsjOsn5j+6EgApBloY0ZHTZKKFdhvPio0RnRlGP4ca5o7UN8gx/tWkOMuIwg5eQ==
+"@graphback/codegen-resolvers@0.11.2":
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/@graphback/codegen-resolvers/-/codegen-resolvers-0.11.2.tgz#38ab06773b7e184ad128075e11d6c49dd821e877"
+  integrity sha512-f/9QDdq1Qd/PcM/rUE91gNJEUIdIrPZcR0FhYYYs6ha3SyFr5sTlAy6pWZJ/72hSf9HzkZJoPZ47BcYvBk2BNQ==
   dependencies:
-    "@graphback/core" "0.10.2"
-    knex "0.20.7"
-    pg "7.17.0"
+    "@graphback/core" "0.11.2"
+    pg "7.18.2"
+    pluralize "8.0.0"
+    prettier "1.19.1"
     sqlite3 "4.1.1"
 
 "@graphback/codegen-schema@0.10.2":
@@ -1923,6 +1924,16 @@
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/@graphback/core/-/core-0.11.1.tgz#d1bd6937f324a4ac12bd106036cbfe2fae211b8f"
   integrity sha512-rO83zR9Fse+ZvkXwuq1c5muHm3IxN8d5bm4j9IKZGsMjoBGwvRoa0e3zBom/BWAiEa4emBlH54i/grkIfvdOOA==
+  dependencies:
+    glob "7.1.6"
+    graphql-metadata "0.5.0"
+    pino "5.17.0"
+    pluralize "8.0.0"
+
+"@graphback/core@0.11.2":
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/@graphback/core/-/core-0.11.2.tgz#1c2d55b2147085f6bb0b881305de486fe9587943"
+  integrity sha512-q+/xIj0Nz1Z8hjcq5mzHg/1rsbUs9fk3XMCJum3klsOuxz5xupV5o85qXJLrjBtZjef34x0iQ/wWmDzxH72D0w==
   dependencies:
     glob "7.1.6"
     graphql-metadata "0.5.0"
@@ -5336,7 +5347,7 @@ bindings@^1.5.0:
   dependencies:
     file-uri-to-path "1.0.0"
 
-bluebird@^3.4.1, bluebird@^3.5.0, bluebird@^3.5.1, bluebird@^3.5.3, bluebird@^3.5.5, bluebird@^3.7.2:
+bluebird@^3.4.1, bluebird@^3.5.0, bluebird@^3.5.1, bluebird@^3.5.3, bluebird@^3.5.5:
   version "3.7.2"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
@@ -6173,7 +6184,7 @@ commander@^2.11.0, commander@^2.12.1, commander@^2.19.0, commander@^2.20.0, comm
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
 
-commander@^4.0.0, commander@^4.0.1, commander@^4.1.0:
+commander@^4.0.0, commander@^4.0.1:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-4.1.0.tgz#545983a0603fe425bc672d66c9e3c89c42121a83"
   integrity sha512-NIQrwvv9V39FHgGFm36+U9SMQzbiHvU79k+iADraJTpmrFFfx7Ds0IvDoAdZsDrknlkRk14OYoWXb57uTh7/sw==
@@ -11213,27 +11224,6 @@ knex@0.20.11:
     uuid "^7.0.1"
     v8flags "^3.1.3"
 
-knex@0.20.7:
-  version "0.20.7"
-  resolved "https://registry.yarnpkg.com/knex/-/knex-0.20.7.tgz#659ef45a395add4a40412bba6c749fe290f01cd5"
-  integrity sha512-Yu5WfQqK9JSkxMAWnCdeWbsjTKTzsjMYjqmUowOQnyLMs4RspVehqXCVjg+aTtcVrTtIZ3WvoeE00OzFsZKJow==
-  dependencies:
-    bluebird "^3.7.2"
-    colorette "1.1.0"
-    commander "^4.1.0"
-    debug "4.1.1"
-    getopts "2.2.5"
-    inherits "~2.0.4"
-    interpret "^2.0.0"
-    liftoff "3.1.0"
-    lodash "^4.17.15"
-    mkdirp "^0.5.1"
-    pg-connection-string "2.1.0"
-    tarn "^2.0.0"
-    tildify "2.0.0"
-    uuid "^3.3.3"
-    v8flags "^3.1.3"
-
 last-call-webpack-plugin@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/last-call-webpack-plugin/-/last-call-webpack-plugin-3.0.0.tgz#9742df0e10e3cf46e5c0381c2de90d3a7a2d7555"
@@ -13509,11 +13499,6 @@ pg-pool@^2.0.10:
   resolved "https://registry.yarnpkg.com/pg-pool/-/pg-pool-2.0.10.tgz#842ee23b04e86824ce9d786430f8365082d81c4a"
   integrity sha512-qdwzY92bHf3nwzIUcj+zJ0Qo5lpG/YxchahxIN8+ZVmXqkahKXsnl2aiJPHLYN9o5mB/leG+Xh6XKxtP7e0sjg==
 
-pg-pool@^2.0.9:
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/pg-pool/-/pg-pool-2.0.9.tgz#7ed69a27e204f99e9804a851404db6aa908a6dea"
-  integrity sha512-gNiuIEKNCT3OnudQM2kvgSnXsLkSpd6mS/fRnqs6ANtrke6j8OY5l9mnAryf1kgwJMWLg0C1N1cYTZG1xmEYHQ==
-
 pg-pool@~2.0.3:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/pg-pool/-/pg-pool-2.0.7.tgz#f14ecab83507941062c313df23f6adcd9fd0ce54"
@@ -13549,20 +13534,6 @@ pg-types@~1.12.1:
     postgres-bytea "~1.0.0"
     postgres-date "~1.0.0"
     postgres-interval "^1.1.0"
-
-pg@7.17.0:
-  version "7.17.0"
-  resolved "https://registry.yarnpkg.com/pg/-/pg-7.17.0.tgz#1fcf82238dcbebea63e192c944345c25c86992fc"
-  integrity sha512-70Q4ZzIdPgwMPb3zUIzAUwigNJ4v5vsWdMED6OzXMfOECeYTvTm7iSC3FpKizu/R1BHL8Do3bLs6ltGfOTAnqg==
-  dependencies:
-    buffer-writer "2.0.0"
-    packet-reader "1.0.0"
-    pg-connection-string "0.1.3"
-    pg-packet-stream "^1.1.0"
-    pg-pool "^2.0.9"
-    pg-types "^2.1.0"
-    pgpass "1.x"
-    semver "4.3.2"
 
 pg@7.18.2:
   version "7.18.2"
@@ -17487,7 +17458,7 @@ utils-merge@1.0.1:
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
 
-uuid@^3.0.1, uuid@^3.1.0, uuid@^3.3.2, uuid@^3.3.3:
+uuid@^3.0.1, uuid@^3.1.0, uuid@^3.3.2:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.3.tgz#4568f0216e78760ee1dbf3a4d2cf53e224112866"
   integrity sha512-pW0No1RGHgzlpHJO1nsVrHKpOEIxkGg1xB+v0ZmdNH5OAeAwzAVrCnI2/6Mtx+Uys6iaylxa+D3g4j63IKKjSQ==
