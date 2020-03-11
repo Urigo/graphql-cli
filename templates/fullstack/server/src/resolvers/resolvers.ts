@@ -6,6 +6,20 @@
  */
 
 export default {
+  Note: {
+    comments: (parent, args, context) => {
+      return context.Comment.batchLoadData("noteId", parent.id, context)
+    }
+  },
+
+  Comment: {
+    note: (parent, args, context) => {
+      return context.Note.findBy({ id: parent.noteId }).then(
+        results => results[0]
+      )
+    }
+  },
+
   Query: {
     findNotes: (parent, args, context) => {
       const { fields, ...page } = args
