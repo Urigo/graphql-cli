@@ -1919,16 +1919,6 @@
     graphql-annotations "0.0.3"
     pino "5.15.0"
 
-"@graphback/core@0.11.1":
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/@graphback/core/-/core-0.11.1.tgz#d1bd6937f324a4ac12bd106036cbfe2fae211b8f"
-  integrity sha512-rO83zR9Fse+ZvkXwuq1c5muHm3IxN8d5bm4j9IKZGsMjoBGwvRoa0e3zBom/BWAiEa4emBlH54i/grkIfvdOOA==
-  dependencies:
-    glob "7.1.6"
-    graphql-metadata "0.5.0"
-    pino "5.17.0"
-    pluralize "8.0.0"
-
 "@graphback/core@0.11.2":
   version "0.11.2"
   resolved "https://registry.yarnpkg.com/@graphback/core/-/core-0.11.2.tgz#1c2d55b2147085f6bb0b881305de486fe9587943"
@@ -9138,12 +9128,12 @@ graphql-metadata@0.5.0:
   dependencies:
     safe-eval "^0.4.1"
 
-graphql-migrations@0.11.1:
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/graphql-migrations/-/graphql-migrations-0.11.1.tgz#54a5c6cb144c8597b10725ca115364294060048a"
-  integrity sha512-YRFz+IHbVtmLehnSvsZuShleHwdBAWj9rt/QIFFN+ofIiQstHGQ+gX3iEQ68JNRxKm4sWK4qKgvOZ/8VOI68Fg==
+graphql-migrations@0.11.2:
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/graphql-migrations/-/graphql-migrations-0.11.2.tgz#2b9c7f05ff7a32bc096d298479fcfd48dc07dad1"
+  integrity sha512-Sd9NmiZuSrAZDRCZLZatnR5xXSK83Q/ncl/8esmSHUvDGkMuXiMWcd9E9n3Rr0JGtKwoVYR9tkZJBNAHRVp5og==
   dependencies:
-    "@graphback/core" "0.11.1"
+    "@graphback/core" "0.11.2"
     "@graphql-inspector/core" "1.27.0"
     case "1.6.2"
     chalk "3.0.0"
