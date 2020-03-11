@@ -7,9 +7,9 @@
       "dom"
     ],
     "resolveJsonModule": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "preserveConstEnums": true,
-    "strict": true,
+    "strict": false,
     "strictNullChecks": true,
     "esModuleInterop": true,
     "target": "esnext",
