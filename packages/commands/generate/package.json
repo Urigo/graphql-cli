@@ -17,7 +17,6 @@
   "dependencies": {
     "graphback-cli": "0.11.2",
     "graphql-migrations": "0.11.2",
-    "@graphback/core": "0.10.2",
     "@graphql-toolkit/apollo-engine-loader": "0.9.7",
     "@graphql-toolkit/code-file-loader": "0.9.7",
     "@graphql-toolkit/common": "0.9.7",
