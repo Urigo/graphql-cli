@@ -9099,6 +9099,21 @@ graphql-config@3.0.0-alpha.18:
     globby "10.0.1"
     minimatch "3.0.4"
 
+graphql-config@3.0.0-alpha.19:
+  version "3.0.0-alpha.19"
+  resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-3.0.0-alpha.19.tgz#4b13f4a9adb0d10438acd11db215c01fd38eaa7e"
+  integrity sha512-Na21JPIjssdKaRxvMYANhRLKeePDMnSaCaiChHA1BXFtx8GLoyNj+uljrp7EssYByrsqh4PtkJMItLDtbmiCBA==
+  dependencies:
+    "@graphql-toolkit/common" "0.9.7"
+    "@graphql-toolkit/core" "0.9.7"
+    "@graphql-toolkit/graphql-file-loader" "0.9.7"
+    "@graphql-toolkit/json-file-loader" "0.9.7"
+    "@graphql-toolkit/schema-merging" "0.9.7"
+    "@graphql-toolkit/url-loader" "0.9.7"
+    cosmiconfig "6.0.0"
+    globby "11.0.0"
+    minimatch "3.0.4"
+
 graphql-extensions@^0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/graphql-extensions/-/graphql-extensions-0.11.0.tgz#2923b06f7452dad186d835327974b6c3ebb9c58f"
