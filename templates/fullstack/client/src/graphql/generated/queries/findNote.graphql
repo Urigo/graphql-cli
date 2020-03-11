@@ -1,5 +1,0 @@
-query findNotes($id: ID!, $title: String!, $description: String!) {
-    findNotes(fields: {id: $id, title: $title, description: $description}) {
-      ...NoteFields
-    }
-  }
