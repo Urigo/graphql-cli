@@ -1903,12 +1903,18 @@
     pg "7.17.0"
     sqlite3 "4.1.1"
 
-"@graphback/codegen-schema@0.10.2":
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/@graphback/codegen-schema/-/codegen-schema-0.10.2.tgz#67f4d02f3bbd86108f242960b721437d71eaf928"
-  integrity sha512-bjRv1Q2OyIrb6Om8yMJfNYYk89vowunz3Pr7bjVIoxdyYZmi+86s/mYGSS4xPIwErpEDsisYT2pt26PVa0qWkA==
+"@graphback/codegen-schema@0.11.2":
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/@graphback/codegen-schema/-/codegen-schema-0.11.2.tgz#27373e452f2eaa1d3f49629c034560d2a22ed2a2"
+  integrity sha512-pMbqDUudMxtFLaqMfWsacUbf5JA4989HQWuEOgXGlfWktUKhp8INDxfylFt7pJ4mdlNQtLTNFsCrQpnBqR4Ztg==
   dependencies:
-    "@graphback/core" "0.10.2"
+    "@graphback/core" "0.11.2"
+    "@graphql-toolkit/common" "0.9.7"
+    "@graphql-toolkit/core" "0.9.7"
+    "@graphql-toolkit/schema-merging" "0.9.7"
+    graphql-compose "7.14.0"
+    graphql-metadata "0.5.0"
+    pluralize "8.0.0"
 
 "@graphback/core@0.10.2":
   version "0.10.2"
@@ -1923,6 +1929,16 @@
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/@graphback/core/-/core-0.11.1.tgz#d1bd6937f324a4ac12bd106036cbfe2fae211b8f"
   integrity sha512-rO83zR9Fse+ZvkXwuq1c5muHm3IxN8d5bm4j9IKZGsMjoBGwvRoa0e3zBom/BWAiEa4emBlH54i/grkIfvdOOA==
+  dependencies:
+    glob "7.1.6"
+    graphql-metadata "0.5.0"
+    pino "5.17.0"
+    pluralize "8.0.0"
+
+"@graphback/core@0.11.2":
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/@graphback/core/-/core-0.11.2.tgz#1c2d55b2147085f6bb0b881305de486fe9587943"
+  integrity sha512-q+/xIj0Nz1Z8hjcq5mzHg/1rsbUs9fk3XMCJum3klsOuxz5xupV5o85qXJLrjBtZjef34x0iQ/wWmDzxH72D0w==
   dependencies:
     glob "7.1.6"
     graphql-metadata "0.5.0"
@@ -9074,6 +9090,14 @@ graphql-annotations@0.0.3:
   dependencies:
     safe-eval "^0.4.1"
 
+graphql-compose@7.14.0:
+  version "7.14.0"
+  resolved "https://registry.yarnpkg.com/graphql-compose/-/graphql-compose-7.14.0.tgz#b811f3b5ea73014eeac2239eba4949869d9166e9"
+  integrity sha512-DFcz6FIbsgg0t9mhtRwCgJwWIcCc/ZzWsCAkwXNURTMsxjPNJkR5V2l7qja1/BAAUzCgynWlDoYhZ4L3UpXefw==
+  dependencies:
+    graphql-type-json "^0.3.1"
+    object-path "^0.11.4"
+
 graphql-config@3.0.0-alpha.18:
   version "3.0.0-alpha.18"
   resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-3.0.0-alpha.18.tgz#c7beee1533aedbd477d3442acd0a88657c731699"
@@ -9190,6 +9214,11 @@ graphql-type-json@^0.2.1:
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/graphql-type-json/-/graphql-type-json-0.2.4.tgz#545af27903e40c061edd30840a272ea0a49992f9"
   integrity sha512-/tq02ayMQjrG4oDFDRLLrPk0KvJXue0nVXoItBe7uAdbNXjQUu+HYCBdAmPLQoseVzUKKMzrhq2P/sfI76ON6w==
+
+graphql-type-json@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/graphql-type-json/-/graphql-type-json-0.3.1.tgz#47fca2b1fa7adc0758d165b33580d7be7a6cf548"
+  integrity sha512-1lPkUXQ2L8o+ERLzVAuc3rzc/E6pGF+6HnjihCVTK0VzR0jCuUd92FqNxoHdfILXqOn2L6b4y47TBxiPyieUVA==
 
 graphql-upload@^8.0.2:
   version "8.1.0"
