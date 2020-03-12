@@ -221,53 +221,6 @@ export const plugin: CliPlugin = {
                         console.warn(`Existing GraphQL Config file looks broken! Skipping...`);
                     }
 
-                    if (projectType !== ProjectType.FrontendOnly && !graphqlConfig.extensions.generate) {
-                        const { isBackendGenerationAsked } = await prompt([
-                            {
-                                type: 'confirm',
-                                name: 'isBackendGenerationAsked',
-                                default: false,
-                                message: 'Do you want to generate the backend code using a data model?',
-                            }
-                        ])
-                        if (isBackendGenerationAsked) {
-                            graphqlConfig.extensions.generate = {};
-                        }
-                    }
-
-                    if (graphqlConfig.extensions.generate && !graphqlConfig.extensions.generate.folders) {
-                        const {
-                            model,
-                            resolvers,
-                            schema,
-                        } = await prompt([
-                            {
-                                type: 'input',
-                                name: 'model',
-                                message: 'Where are you going to store your data models?',
-                                default: './model'
-                            },
-                            {
-                                type: 'input',
-                                name: 'resolvers',
-                                message: 'Where are you going to store your resolvers?',
-                                default: './server/src/resolvers'
-                            },
-                            {
-                                type: 'input',
-                                name: 'schema',
-                                message: 'Where are you going to store your schema files?',
-                                default: './server/src/schema'
-                            }
-                        ]);
-                        graphqlConfig.extensions.generate.folders = {
-                            model,
-                            resolvers,
-                            schema,
-                        }
-                    };
-
-
                     if (initializationType === InitializationType.ExistingOpenAPI) {
                         const { openApiPath } = await prompt<{ openApiPath: string }>([
                             {
@@ -286,7 +239,7 @@ export const plugin: CliPlugin = {
                         } else {
                             parsedObject = JSON.parse(schemaText);
                         }
-                        const datamodelPath = `${graphqlConfig.extensions.generate.model}/datamodel.graphql`;
+                        const datamodelPath = `${graphqlConfig.extensions.graphback.model}/datamodel.graphql`;
                         try {
                             const { createGraphQLSchema } = await import('openapi-to-graphql');
                             let { schema } = await createGraphQLSchema(parsedObject, {
@@ -327,17 +280,6 @@ export const plugin: CliPlugin = {
                         }
                     }
 
-                    if (projectType === ProjectType.FullStack && graphqlConfig.extensions.generate && !graphqlConfig.extensions.generate.folders.client) {
-                        const { client } = await prompt([
-                            {
-                                type: 'input',
-                                name: 'client',
-                                message: 'Where do you want to store your GraphQL operation documents?',
-                                default: './client/graphql'
-                            }
-                        ])
-                        graphqlConfig.extensions.generate.folders.client = client;
-                    }
                     if (!graphqlConfig.documents && (projectType === ProjectType.FullStack || projectType === ProjectType.FrontendOnly)) {
                         const { documents } = await prompt([
                             {
