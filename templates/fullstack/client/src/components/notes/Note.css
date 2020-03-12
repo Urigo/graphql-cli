@@ -1,0 +1,13 @@
+.inputForm{
+    display:grid;
+    margin: 15%;
+    width: 70%;
+}
+
+.inputCard{
+    width: 50%;
+    margin-left: 25%;
+}
+.OneNote{
+    margin:5%;
+}
