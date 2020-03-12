@@ -53,9 +53,9 @@ enum InitializationType {
 }
 
 enum ProjectType {
-    FrontendOnly = 'Frontend only',
-    BackendOnly = 'Backend only',
     FullStack = 'Full Stack',
+    FrontendOnly = 'Frontend only',
+    BackendOnly = 'Backend only'
 }
 
 enum FrontendType {
