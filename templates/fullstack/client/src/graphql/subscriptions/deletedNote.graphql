@@ -1,0 +1,5 @@
+subscription deletedNote {
+  deletedNote {
+      ...NoteFields
+  }
+} 
