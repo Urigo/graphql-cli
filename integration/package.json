@@ -15,7 +15,7 @@
     "tslib": "1.11.1"
   },
   "devDependencies": {
-    "@types/node": "12.12.29",
+    "@types/node": "12.12.30",
     "ava": "3.5.0",
     "execa": "4.0.0",
     "graphql": "14.6.0",
