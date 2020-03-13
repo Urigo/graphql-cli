@@ -28,7 +28,7 @@
     "log-symbols": "3.0.0"
   },
   "devDependencies": {
-    "@types/node": "13.9.0",
+    "@types/node": "13.9.1",
     "graphql": "14.6.0",
     "ts-node": "8.6.2",
     "typescript": "3.8.3"
