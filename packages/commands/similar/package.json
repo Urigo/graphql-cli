@@ -23,7 +23,7 @@
     "@graphql-toolkit/prisma-loader": "0.9.9",
     "@test-graphql-cli/common": "4.0.1-beta.2",
     "chalk": "3.0.0",
-    "commander": "4.1.1",
+    "commander": "5.0.0",
     "log-symbols": "3.0.0",
     "tslib": "1.11.1"
   },
