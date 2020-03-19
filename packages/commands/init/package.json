@@ -17,7 +17,7 @@
     "commander": "4.1.1",
     "cosmiconfig": "6.0.0",
     "cross-fetch": "3.0.4",
-    "fs-extra": "8.1.0",
+    "fs-extra": "9.0.0",
     "fullname": "4.0.1",
     "inquirer": "7.1.0",
     "js-yaml": "3.13.1",
