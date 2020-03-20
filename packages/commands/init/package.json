@@ -35,7 +35,7 @@
     "@types/inquirer": "6.5.0",
     "@types/js-yaml": "3.12.2",
     "@types/node": "13.9.2",
-    "@types/rimraf": "2.0.3",
+    "@types/rimraf": "2.0.4",
     "@types/tmp": "0.1.0",
     "graphql": "14.6.0",
     "ts-node": "8.7.0",
