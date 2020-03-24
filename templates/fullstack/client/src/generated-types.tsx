@@ -168,7 +168,7 @@ export type CommentFieldsFragment = (
 export type CommentExpandedFieldsFragment = (
   { __typename?: 'Comment' }
   & Pick<Comment, 'id' | 'text' | 'description'>
-  & { note: Maybe<(
+  & { note?: Maybe<(
     { __typename?: 'Note' }
     & Pick<Note, 'id' | 'title' | 'description'>
   )> }

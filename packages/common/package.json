@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "chalk": "3.0.0",
-    "commander": "4.1.1",
+    "commander": "5.0.0",
     "graphql-config": "3.0.0-alpha.23",
     "log-symbols": "3.0.0",
     "tslib": "1.11.1"

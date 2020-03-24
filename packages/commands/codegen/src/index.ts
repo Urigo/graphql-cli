@@ -1,12 +1,15 @@
 import { CliPlugin } from '@test-graphql-cli/common';
 import { CodegenExtension, CodegenContext, generate, updateContextWithCliFlags, setCommandOptions } from '@graphql-codegen/cli';
+import { Command } from 'commander';
 
 export const plugin: CliPlugin = {
   async init({ program, loadGraphQLConfig, reportError }) {
-    const commandInstance = program.command('codegen');
     // Let codegen manage our command instance with its own options
-    setCommandOptions(commandInstance)
-      .action(async cliFlags => {
+    setCommandOptions(
+      program
+        .command('codegen') as Command
+    )
+      .action(async (cliFlags: any) => {
         try {
           // Load root GraphQL Config not Project Config because Codegen will update it by looking at `project` param
           const graphqlConfig = await loadGraphQLConfig({

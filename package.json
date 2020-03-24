@@ -28,8 +28,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "resolutions": {
-  },
   "lint-staged": {
     "*.{ts,tsx}": [
       "tslint --fix",
