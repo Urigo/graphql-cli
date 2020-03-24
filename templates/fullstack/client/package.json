@@ -1,6 +1,6 @@
 {
   "name": "@test-graphql-cli/full-stack-template-client",
-  "version": "4.0.1-beta.2",
+  "version": "4.0.1-beta.3",
   "private": true,
   "devDependencies": {
     "@types/jest": "25.1.4",
