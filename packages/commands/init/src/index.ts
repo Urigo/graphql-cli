@@ -81,7 +81,7 @@ export const plugin: CliPlugin = {
             command('init')
             .option('--projectName', 'Project name')
             .option('--templateName', 'Name of the predefined template')
-            .option('--templateUrl', 'GitHub URL of the template. For example (http://github.com/ardatan/graphql-cli-example)')
+            .option('--templateUrl', 'GitHub URL of the template. For example (http://github.com/example/graphql-cli-example-template)')
             .action(async ({ projectName, templateName, templateUrl }: { projectName?: string, templateName?: string, templateUrl?: string }) => {
                 try {
 
