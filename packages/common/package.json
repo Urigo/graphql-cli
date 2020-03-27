@@ -18,7 +18,7 @@
     "tslib": "1.11.1"
   },
   "devDependencies": {
-    "@types/node": "13.9.4",
+    "@types/node": "13.9.5",
     "graphql": "14.6.0",
     "typescript": "3.8.3"
   }
