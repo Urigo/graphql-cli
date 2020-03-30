@@ -30,7 +30,7 @@
     "tslib": "1.11.1"
   },
   "devDependencies": {
-    "@types/node": "13.9.5",
+    "@types/node": "13.9.6",
     "@types/open": "6.2.1",
     "graphql": "14.6.0",
     "ts-node": "8.8.1",

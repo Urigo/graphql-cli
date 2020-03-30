@@ -33,7 +33,7 @@
     "@types/is-glob": "4.0.1",
     "@types/is-valid-path": "0.1.0",
     "@types/listr": "0.14.2",
-    "@types/node": "13.9.5",
+    "@types/node": "13.9.6",
     "@types/resolve-from": "5.0.1",
     "graphql": "14.6.0",
     "ts-node": "8.8.1",
