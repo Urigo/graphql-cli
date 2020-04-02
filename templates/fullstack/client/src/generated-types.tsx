@@ -13,6 +13,50 @@ export type Scalars = {
   Float: number;
 };
 
+export type Query = {
+   __typename?: 'Query';
+  findAllNotes: Array<Maybe<Note>>;
+  findNotes: Array<Maybe<Note>>;
+  findAllComments: Array<Maybe<Comment>>;
+  findComments: Array<Maybe<Comment>>;
+};
+
+
+export type QueryFindAllNotesArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryFindNotesArgs = {
+  fields?: Maybe<NoteInput>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryFindAllCommentsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryFindCommentsArgs = {
+  fields?: Maybe<CommentInput>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+/**  @model  */
+export type Note = {
+   __typename?: 'Note';
+  id: Scalars['ID'];
+  title: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  /** @oneToMany field: 'note', key: 'noteId' */
+  comments: Array<Maybe<Comment>>;
+};
+
 /**  @model  */
 export type Comment = {
    __typename?: 'Comment';
@@ -21,6 +65,12 @@ export type Comment = {
   description?: Maybe<Scalars['String']>;
   /** @manyToOne field: 'comments', key: 'noteId' */
   note?: Maybe<Note>;
+};
+
+export type NoteInput = {
+  id?: Maybe<Scalars['ID']>;
+  title?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
 };
 
 export type CommentInput = {
@@ -68,56 +118,6 @@ export type MutationUpdateCommentArgs = {
 
 export type MutationDeleteCommentArgs = {
   input?: Maybe<CommentInput>;
-};
-
-/**  @model  */
-export type Note = {
-   __typename?: 'Note';
-  id: Scalars['ID'];
-  title: Scalars['String'];
-  description?: Maybe<Scalars['String']>;
-  /** @oneToMany field: 'note', key: 'noteId' */
-  comments: Array<Maybe<Comment>>;
-};
-
-export type NoteInput = {
-  id?: Maybe<Scalars['ID']>;
-  title?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
-};
-
-export type Query = {
-   __typename?: 'Query';
-  findAllNotes: Array<Maybe<Note>>;
-  findNotes: Array<Maybe<Note>>;
-  findAllComments: Array<Maybe<Comment>>;
-  findComments: Array<Maybe<Comment>>;
-};
-
-
-export type QueryFindAllNotesArgs = {
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryFindNotesArgs = {
-  fields?: Maybe<NoteInput>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryFindAllCommentsArgs = {
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryFindCommentsArgs = {
-  fields?: Maybe<CommentInput>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
 };
 
 export type Subscription = {

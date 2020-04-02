@@ -4,15 +4,15 @@ export const models = [
     pubSub: {
       publishCreate: true,
       publishUpdate: true,
-      publishDelete: true
-    }
+      publishDelete: true,
+    },
   },
   {
     name: "Comment",
     pubSub: {
       publishCreate: true,
       publishUpdate: true,
-      publishDelete: true
-    }
-  }
+      publishDelete: true,
+    },
+  },
 ]

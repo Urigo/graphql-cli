@@ -14,6 +14,50 @@ export type Scalars = {
   Float: number;
 };
 
+export type Query = {
+   __typename?: 'Query';
+  findAllNotes: Array<Maybe<Note>>;
+  findNotes: Array<Maybe<Note>>;
+  findAllComments: Array<Maybe<Comment>>;
+  findComments: Array<Maybe<Comment>>;
+};
+
+
+export type QueryFindAllNotesArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryFindNotesArgs = {
+  fields?: Maybe<NoteInput>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryFindAllCommentsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryFindCommentsArgs = {
+  fields?: Maybe<CommentInput>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+/**  @model  */
+export type Note = {
+   __typename?: 'Note';
+  id: Scalars['ID'];
+  title: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  /** @oneToMany field: 'note', key: 'noteId' */
+  comments: Array<Maybe<Comment>>;
+};
+
 /**  @model  */
 export type Comment = {
    __typename?: 'Comment';
@@ -22,6 +66,12 @@ export type Comment = {
   description?: Maybe<Scalars['String']>;
   /** @manyToOne field: 'comments', key: 'noteId' */
   note?: Maybe<Note>;
+};
+
+export type NoteInput = {
+  id?: Maybe<Scalars['ID']>;
+  title?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
 };
 
 export type CommentInput = {
@@ -69,56 +119,6 @@ export type MutationUpdateCommentArgs = {
 
 export type MutationDeleteCommentArgs = {
   input?: Maybe<CommentInput>;
-};
-
-/**  @model  */
-export type Note = {
-   __typename?: 'Note';
-  id: Scalars['ID'];
-  title: Scalars['String'];
-  description?: Maybe<Scalars['String']>;
-  /** @oneToMany field: 'note', key: 'noteId' */
-  comments: Array<Maybe<Comment>>;
-};
-
-export type NoteInput = {
-  id?: Maybe<Scalars['ID']>;
-  title?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
-};
-
-export type Query = {
-   __typename?: 'Query';
-  findAllNotes: Array<Maybe<Note>>;
-  findNotes: Array<Maybe<Note>>;
-  findAllComments: Array<Maybe<Comment>>;
-  findComments: Array<Maybe<Comment>>;
-};
-
-
-export type QueryFindAllNotesArgs = {
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryFindNotesArgs = {
-  fields?: Maybe<NoteInput>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryFindAllCommentsArgs = {
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryFindCommentsArgs = {
-  fields?: Maybe<CommentInput>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
 };
 
 export type Subscription = {
@@ -235,32 +235,47 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = ResolversObject<{
+  String: ResolverTypeWrapper<Scalars['String']>,
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
   Query: ResolverTypeWrapper<{}>,
   Int: ResolverTypeWrapper<Scalars['Int']>,
   Note: ResolverTypeWrapper<note>,
   ID: ResolverTypeWrapper<Scalars['ID']>,
-  String: ResolverTypeWrapper<Scalars['String']>,
   Comment: ResolverTypeWrapper<comment>,
   NoteInput: NoteInput,
   CommentInput: CommentInput,
   Mutation: ResolverTypeWrapper<{}>,
   Subscription: ResolverTypeWrapper<{}>,
-  Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
 }>;
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = ResolversObject<{
+  String: Scalars['String'],
+  Boolean: Scalars['Boolean'],
   Query: {},
   Int: Scalars['Int'],
   Note: note,
   ID: Scalars['ID'],
-  String: Scalars['String'],
   Comment: comment,
   NoteInput: NoteInput,
   CommentInput: CommentInput,
   Mutation: {},
   Subscription: {},
-  Boolean: Scalars['Boolean'],
+}>;
+
+export type QueryResolvers<ContextType = GraphbackRuntimeContext, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
+  findAllNotes?: Resolver<Array<Maybe<ResolversTypes['Note']>>, ParentType, ContextType, RequireFields<QueryFindAllNotesArgs, never>>,
+  findNotes?: Resolver<Array<Maybe<ResolversTypes['Note']>>, ParentType, ContextType, RequireFields<QueryFindNotesArgs, never>>,
+  findAllComments?: Resolver<Array<Maybe<ResolversTypes['Comment']>>, ParentType, ContextType, RequireFields<QueryFindAllCommentsArgs, never>>,
+  findComments?: Resolver<Array<Maybe<ResolversTypes['Comment']>>, ParentType, ContextType, RequireFields<QueryFindCommentsArgs, never>>,
+}>;
+
+export type NoteResolvers<ContextType = GraphbackRuntimeContext, ParentType extends ResolversParentTypes['Note'] = ResolversParentTypes['Note']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  comments?: Resolver<Array<Maybe<ResolversTypes['Comment']>>, ParentType, ContextType>,
+  __isTypeOf?: isTypeOfResolverFn<ParentType>,
 }>;
 
 export type CommentResolvers<ContextType = GraphbackRuntimeContext, ParentType extends ResolversParentTypes['Comment'] = ResolversParentTypes['Comment']> = ResolversObject<{
@@ -280,21 +295,6 @@ export type MutationResolvers<ContextType = GraphbackRuntimeContext, ParentType 
   deleteComment?: Resolver<ResolversTypes['Comment'], ParentType, ContextType, RequireFields<MutationDeleteCommentArgs, never>>,
 }>;
 
-export type NoteResolvers<ContextType = GraphbackRuntimeContext, ParentType extends ResolversParentTypes['Note'] = ResolversParentTypes['Note']> = ResolversObject<{
-  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
-  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
-  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
-  comments?: Resolver<Array<Maybe<ResolversTypes['Comment']>>, ParentType, ContextType>,
-  __isTypeOf?: isTypeOfResolverFn<ParentType>,
-}>;
-
-export type QueryResolvers<ContextType = GraphbackRuntimeContext, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
-  findAllNotes?: Resolver<Array<Maybe<ResolversTypes['Note']>>, ParentType, ContextType, RequireFields<QueryFindAllNotesArgs, never>>,
-  findNotes?: Resolver<Array<Maybe<ResolversTypes['Note']>>, ParentType, ContextType, RequireFields<QueryFindNotesArgs, never>>,
-  findAllComments?: Resolver<Array<Maybe<ResolversTypes['Comment']>>, ParentType, ContextType, RequireFields<QueryFindAllCommentsArgs, never>>,
-  findComments?: Resolver<Array<Maybe<ResolversTypes['Comment']>>, ParentType, ContextType, RequireFields<QueryFindCommentsArgs, never>>,
-}>;
-
 export type SubscriptionResolvers<ContextType = GraphbackRuntimeContext, ParentType extends ResolversParentTypes['Subscription'] = ResolversParentTypes['Subscription']> = ResolversObject<{
   newNote?: SubscriptionResolver<ResolversTypes['Note'], "newNote", ParentType, ContextType, RequireFields<SubscriptionNewNoteArgs, never>>,
   updatedNote?: SubscriptionResolver<ResolversTypes['Note'], "updatedNote", ParentType, ContextType, RequireFields<SubscriptionUpdatedNoteArgs, never>>,
@@ -305,10 +305,10 @@ export type SubscriptionResolvers<ContextType = GraphbackRuntimeContext, ParentT
 }>;
 
 export type Resolvers<ContextType = GraphbackRuntimeContext> = ResolversObject<{
+  Query?: QueryResolvers<ContextType>,
+  Note?: NoteResolvers<ContextType>,
   Comment?: CommentResolvers<ContextType>,
   Mutation?: MutationResolvers<ContextType>,
-  Note?: NoteResolvers<ContextType>,
-  Query?: QueryResolvers<ContextType>,
   Subscription?: SubscriptionResolvers<ContextType>,
 }>;
 

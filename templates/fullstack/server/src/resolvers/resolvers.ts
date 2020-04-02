@@ -9,15 +9,15 @@ export default {
   Note: {
     comments: (parent, args, context) => {
       return context.Comment.batchLoadData("noteId", parent.id, context)
-    }
+    },
   },
 
   Comment: {
     note: (parent, args, context) => {
       return context.Note.findBy({ id: parent.noteId }).then(
-        results => results[0]
+        (results) => results[0]
       )
-    }
+    },
   },
 
   Query: {
@@ -34,7 +34,7 @@ export default {
     },
     findAllComments: (parent, args, context) => {
       return context.Comment.findAll(args)
-    }
+    },
   },
 
   Mutation: {
@@ -55,39 +55,39 @@ export default {
     },
     deleteComment: (parent, args, context) => {
       return context.Comment.delete(args.input, context)
-    }
+    },
   },
 
   Subscription: {
     newNote: {
       subscribe: (parent, args, context) => {
         return context.Note.subscribeToCreate(args, context)
-      }
+      },
     },
     updatedNote: {
       subscribe: (parent, args, context) => {
         return context.Note.subscribeToUpdate(args, context)
-      }
+      },
     },
     deletedNote: {
       subscribe: (parent, args, context) => {
         return context.Note.subscribeToDelete(args, context)
-      }
+      },
     },
     newComment: {
       subscribe: (parent, args, context) => {
         return context.Comment.subscribeToCreate(args, context)
-      }
+      },
     },
     updatedComment: {
       subscribe: (parent, args, context) => {
         return context.Comment.subscribeToUpdate(args, context)
-      }
+      },
     },
     deletedComment: {
       subscribe: (parent, args, context) => {
         return context.Comment.subscribeToDelete(args, context)
-      }
-    }
-  }
+      },
+    },
+  },
 }

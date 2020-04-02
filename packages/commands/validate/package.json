@@ -12,7 +12,7 @@
     "build": "tsc"
   },
   "peerDependencies": {
-    "graphql": "14.6.0"
+    "graphql": "15.0.0"
   },
   "dependencies": {
     "@graphql-inspector/core": "1.27.0",
@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@types/node": "13.11.0",
-    "graphql": "14.6.0",
+    "graphql": "15.0.0",
     "ts-node": "8.8.1",
     "typescript": "3.8.3"
   }
