@@ -18,7 +18,7 @@
     "@types/node": "12.12.34",
     "ava": "3.5.2",
     "execa": "4.0.0",
-    "graphql": "14.6.0",
+    "graphql": "15.0.0",
     "typescript": "3.8.3"
   },
   "ava": {
