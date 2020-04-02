@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@test-graphql-cli/common": "4.0.1-beta.3",
-    "chalk": "3.0.0",
+    "chalk": "4.0.0",
     "commander": "5.0.0",
     "cosmiconfig": "6.0.0",
     "cross-fetch": "3.0.4",
