@@ -2,6 +2,7 @@
 
 ![image](https://user-images.githubusercontent.com/20847995/67651234-85bf1500-f916-11e9-90e5-cb3bd0e6a338.png)
 
+![CI](https://github.com/Urigo/graphql-cli/workflows/CI/badge.svg)
 [![npm version](http://img.shields.io/npm/v/graphql-cli.svg?style=flat)](https://npmjs.org/package/graphql-cli "View this project on npm") [![Discord Chat](https://img.shields.io/discord/625400653321076807)](https://discordapp.com/invite/xud7bH9)
 
 Help us to improve new GraphQL CLI. Check out the new structure and commands below!
