@@ -21,7 +21,7 @@
     "chokidar": "3.3.1",
     "commander": "5.0.0",
     "debounce": "1.2.0",
-    "graphql-config": "3.0.0-rc.1",
+    "graphql-config": "3.0.0-rc.2",
     "is-glob": "4.0.1",
     "is-valid-path": "0.1.1",
     "listr": "0.14.3",
