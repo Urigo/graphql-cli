@@ -22,7 +22,7 @@
     "@graphql-toolkit/prisma-loader": "0.10.3",
     "@test-graphql-cli/common": "4.0.1-beta.3",
     "@types/node-fetch": "2.5.5",
-    "apollo-server": "2.11.0",
+    "apollo-server": "2.12.0",
     "chalk": "4.0.0",
     "commander": "5.0.0",
     "log-symbols": "3.0.0",
