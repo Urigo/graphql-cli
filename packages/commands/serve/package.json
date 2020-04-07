@@ -15,11 +15,11 @@
     "graphql": "15.0.0"
   },
   "dependencies": {
-    "@graphql-toolkit/apollo-engine-loader": "0.10.1",
-    "@graphql-toolkit/code-file-loader": "0.10.1",
-    "@graphql-toolkit/git-loader": "0.10.1",
-    "@graphql-toolkit/github-loader": "0.10.1",
-    "@graphql-toolkit/prisma-loader": "0.10.1",
+    "@graphql-toolkit/apollo-engine-loader": "0.10.3",
+    "@graphql-toolkit/code-file-loader": "0.10.3",
+    "@graphql-toolkit/git-loader": "0.10.3",
+    "@graphql-toolkit/github-loader": "0.10.3",
+    "@graphql-toolkit/prisma-loader": "0.10.3",
     "@test-graphql-cli/common": "4.0.1-beta.3",
     "@types/node-fetch": "2.5.5",
     "apollo-server": "2.11.0",
