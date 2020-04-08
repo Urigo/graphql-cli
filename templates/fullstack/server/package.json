@@ -10,7 +10,7 @@
     "@graphback/runtime-knex": "0.11.4",
     "@graphql-toolkit/file-loading": "0.10.3",
     "@types/cors": "2.8.6",
-    "@types/express": "4.17.4",
+    "@types/express": "4.17.5",
     "@types/node": "13.11.0",
     "apollo-server-express": "2.12.0",
     "cors": "2.8.5",
