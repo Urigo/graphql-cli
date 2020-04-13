@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@types/node": "12.12.35",
-    "ava": "3.6.0",
+    "ava": "3.7.0",
     "execa": "4.0.0",
     "graphql": "15.0.0",
     "typescript": "3.8.3"
