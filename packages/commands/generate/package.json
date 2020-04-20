@@ -29,7 +29,7 @@
     "debounce": "1.2.0",
     "fs-extra": "9.0.0",
     "graphback-cli": "0.12.0",
-    "graphql-migrations": "0.11.4",
+    "graphql-migrations": "0.12.0",
     "inquirer": "7.1.0",
     "knex": "0.21.0",
     "listr": "0.14.3",
