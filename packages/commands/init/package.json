@@ -23,7 +23,7 @@
     "js-yaml": "3.13.1",
     "latest-version": "5.1.0",
     "openapi-to-graphql": "2.0.0",
-    "ora": "4.0.3",
+    "ora": "4.0.4",
     "rimraf": "3.0.2",
     "simple-git": "1.132.0",
     "tmp": "0.1.0",
