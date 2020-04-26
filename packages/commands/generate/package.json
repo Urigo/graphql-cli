@@ -43,7 +43,7 @@
     "@types/listr": "0.14.2",
     "@types/node": "13.13.2",
     "graphql": "15.0.0",
-    "ts-node": "8.9.0",
+    "ts-node": "8.9.1",
     "typescript": "3.8.3"
   }
 }
