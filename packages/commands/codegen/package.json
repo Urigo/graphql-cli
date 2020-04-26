@@ -25,7 +25,7 @@
     "is-glob": "4.0.1",
     "is-valid-path": "0.1.1",
     "listr": "0.14.3",
-    "log-symbols": "3.0.0",
+    "log-symbols": "4.0.0",
     "resolve-from": "5.0.0"
   },
   "devDependencies": {
