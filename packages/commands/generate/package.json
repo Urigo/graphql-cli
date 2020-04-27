@@ -31,7 +31,7 @@
     "graphback-cli": "0.12.0",
     "graphql-migrations": "0.12.0",
     "inquirer": "7.1.0",
-    "knex": "0.21.0",
+    "knex": "0.21.1",
     "listr": "0.14.3",
     "log-symbols": "3.0.0",
     "tslib": "1.11.1"
