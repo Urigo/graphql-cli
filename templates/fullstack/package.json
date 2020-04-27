@@ -28,7 +28,7 @@
     "graphql": "15.0.0",
     "graphql-cli": "4.0.1-beta.3",
     "schemats": "3.0.3",
-    "tslint": "6.1.1",
+    "tslint": "6.1.2",
     "typescript": "3.8.3"
   },
   "author": {
