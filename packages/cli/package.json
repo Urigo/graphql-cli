@@ -23,7 +23,7 @@
     "graphql-config": "3.0.0",
     "inquirer": "7.1.0",
     "latest-version": "5.1.0",
-    "log-symbols": "3.0.0",
+    "log-symbols": "4.0.0",
     "npm-programmatic": "0.0.12",
     "resolve-from": "5.0.0",
     "yarn-programmatic": "0.1.2"
