@@ -9,39 +9,35 @@
  */
 
 export namespace noteFields {
-    export type id = number;
-    export type title = string | null;
-    export type description = string | null;
-    export type created_at = Date | null;
-    export type updated_at = Date | null;
-
+  export type id = number;
+  export type title = string | null;
+  export type description = string | null;
+  export type created_at = Date | null;
+  export type updated_at = Date | null;
 }
 
 export interface note {
-    id: noteFields.id;
-    title: noteFields.title;
-    description: noteFields.description;
-    created_at: noteFields.created_at;
-    updated_at: noteFields.updated_at;
-
+  id: noteFields.id;
+  title: noteFields.title;
+  description: noteFields.description;
+  created_at: noteFields.created_at;
+  updated_at: noteFields.updated_at;
 }
 
 export namespace commentFields {
-    export type id = number;
-    export type title = string | null;
-    export type description = string | null;
-    export type created_at = Date | null;
-    export type updated_at = Date | null;
-    export type noteId = number | null;
-
+  export type id = number;
+  export type title = string | null;
+  export type description = string | null;
+  export type created_at = Date | null;
+  export type updated_at = Date | null;
+  export type noteId = number | null;
 }
 
 export interface comment {
-    id: commentFields.id;
-    title: commentFields.title;
-    description: commentFields.description;
-    created_at: commentFields.created_at;
-    updated_at: commentFields.updated_at;
-    noteId: commentFields.noteId;
-
+  id: commentFields.id;
+  title: commentFields.title;
+  description: commentFields.description;
+  created_at: commentFields.created_at;
+  updated_at: commentFields.updated_at;
+  noteId: commentFields.noteId;
 }

@@ -7,7 +7,7 @@ import OneNote from './components/notes/OneNote';
 const App: React.FC = () => {
   const allNotes = useFindAllNotesQuery();
   allNotes.startPolling(2000);
-  console.log(allNotes.data?.findAllNotes)
+  console.log(allNotes.data?.findAllNotes);
 
   return (
     <div>
@@ -15,13 +15,20 @@ const App: React.FC = () => {
       <ul>
         {
           // TODO fix typings
-          allNotes.data && allNotes.data.findAllNotes.map((note: any) => (
-            <OneNote key={note.id} id={note.id} title={note.title} description={note.description} comments={note.comments}></OneNote>
-          ))
+          allNotes.data &&
+            allNotes.data.findAllNotes.map((note: any) => (
+              <OneNote
+                key={note.id}
+                id={note.id}
+                title={note.title}
+                description={note.description}
+                comments={note.comments}
+              ></OneNote>
+            ))
         }
       </ul>
     </div>
   );
-}
+};
 
 export default App;

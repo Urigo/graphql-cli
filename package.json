@@ -16,18 +16,30 @@
     "release": "node scripts/release.js",
     "release:next": "node scripts/release.js --tag=next",
     "release:canary": "node scripts/release.js --canary",
-    "test": "lerna run test --ignore=\"@test-graphql-cli/*-template-*\"",
-    "build": "lerna run build --ignore=\"@test-graphql-cli/*-template-*\"",
+    "test": "lerna run test --ignore=\"@graphql-cli/*-template-*\"",
+    "build": "lerna run build --ignore=\"@graphql-cli/*-template-*\"",
     "postbuild": "yarn fix-bin",
-    "fix-bin": "node scripts/fix-bin.js"
+    "fix-bin": "node scripts/fix-bin.js",
+    "format": "prettier --write \"**/*.{ts,tsx}\""
   },
   "devDependencies": {
+    "@graphql-tools/load": "^6.0.0",
+    "@types/express": "4.17.6",
+    "@types/fs-extra": "9.0.1",
+    "@types/fullname": "2.1.29",
+    "@types/inquirer": "6.5.0",
+    "@types/js-yaml": "3.12.4",
+    "@types/node": "14.0.5",
+    "@types/rimraf": "3.0.0",
+    "@types/tmp": "0.2.0",
     "graphql": "15.0.0",
     "husky": "4.2.5",
     "lerna": "3.22.0",
     "lint-staged": "10.2.7",
     "prettier": "2.0.5",
-    "rimraf": "3.0.2"
+    "rimraf": "3.0.2",
+    "ts-node": "8.10.1",
+    "typescript": "3.9.3"
   },
   "publishConfig": {
     "access": "public"
@@ -40,7 +52,7 @@
     ]
   },
   "prettier": {
-    "printWidth": 160,
+    "printWidth": 120,
     "singleQuote": true
   },
   "resolutions": {

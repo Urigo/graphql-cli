@@ -1,6 +1,6 @@
 export const models = [
   {
-    name: "Note",
+    name: 'Note',
     pubSub: {
       publishCreate: true,
       publishUpdate: true,
@@ -8,11 +8,11 @@ export const models = [
     },
   },
   {
-    name: "Comment",
+    name: 'Comment',
     pubSub: {
       publishCreate: true,
       publishUpdate: true,
       publishDelete: true,
     },
   },
-]
+];

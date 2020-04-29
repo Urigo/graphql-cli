@@ -1,14 +1,14 @@
 {
   "private": true,
-  "name": "@test-graphql-cli/full-stack-template-server",
-  "version": "4.0.1-beta.3",
+  "name": "@graphql-cli/full-stack-template-server",
+  "version": "4.0.1-beta.6",
   "scripts": {
     "develop": "ts-node-dev src/index.ts",
     "start": "ts-node src/index.ts"
   },
   "dependencies": {
     "@graphback/runtime-knex": "0.12.0",
-    "@graphql-toolkit/file-loading": "0.10.7",
+    "@graphql-tools/load-files": "^6.0.0",
     "@types/cors": "2.8.6",
     "@types/express": "4.17.6",
     "@types/node": "13.13.9",

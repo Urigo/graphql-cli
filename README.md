@@ -3,7 +3,7 @@
 ![image](https://user-images.githubusercontent.com/20847995/67651234-85bf1500-f916-11e9-90e5-cb3bd0e6a338.png)
 
 ![CI](https://github.com/Urigo/graphql-cli/workflows/CI/badge.svg)
-[![npm version](http://img.shields.io/npm/v/graphql-cli.svg?style=flat)](https://npmjs.org/package/graphql-cli "View this project on npm") [![Discord Chat](https://img.shields.io/discord/625400653321076807)](https://discordapp.com/invite/xud7bH9)
+[![npm version](http://img.shields.io/npm/v/graphql-cli.svg?style=flat)](https://npmjs.org/package/graphql-cli "View this project on npm") [![Discord Chat](https://img.shields.io/discord/625400653321076807)](https://the-guild.dev/discord)
 
 Help us to improve new GraphQL CLI. Check out the new structure and commands below!
 Feel free to contact us in Discord channel. We would love to hear your feedback.
@@ -53,7 +53,7 @@ Finally, one of the options with `graphql init` is to access schema using an Ope
 
 ## Plugin System
 
-Each command in GraphQL CLI is a seperate package, so you can have your own plugins or use the ones we maintain. You can have those commands by installing them like `@test-graphql-cli/[COMMAND-NAME]@next`.
+Each command in GraphQL CLI is a seperate package, so you can have your own plugins or use the ones we maintain. You can have those commands by installing them like `@graphql-cli/[COMMAND-NAME]@next`.
 
 To configure a command/plugin, you need to update the `extensions` field in your GraphQL Config file (`.graphqlrc.yml`). See `extensions:` in the example below.
 

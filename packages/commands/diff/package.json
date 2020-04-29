@@ -1,5 +1,5 @@
 {
-  "name": "@test-graphql-cli/diff",
+  "name": "@graphql-cli/diff",
   "description": "Compares schemas and finds breaking or dangerous changes using GraphQL Inspector.",
   "version": "4.0.1-beta.6",
   "license": "MIT",
@@ -7,29 +7,18 @@
   "publishConfig": {
     "access": "public"
   },
+  "keywords": [
+    "graphql-cli",
+    "graphql-cli-plugin"
+  ],
   "scripts": {
     "build": "tsc"
   },
-  "peerDependencies": {
-    "graphql": "15.0.0"
-  },
   "dependencies": {
-    "@graphql-inspector/core": "2.0.1",
-    "@graphql-toolkit/apollo-engine-loader": "0.10.7",
-    "@graphql-toolkit/code-file-loader": "0.10.7",
-    "@graphql-toolkit/core": "0.10.7",
-    "@graphql-toolkit/git-loader": "0.10.7",
-    "@graphql-toolkit/github-loader": "0.10.7",
-    "@graphql-toolkit/prisma-loader": "0.10.7",
-    "@test-graphql-cli/common": "^4.0.1-beta.6",
-    "chalk": "4.0.0",
-    "commander": "5.1.0",
-    "log-symbols": "4.0.0"
-  },
-  "devDependencies": {
-    "@types/node": "13.13.9",
-    "graphql": "15.0.0",
-    "ts-node": "8.10.2",
-    "typescript": "3.9.3"
+    "@graphql-inspector/diff-command": "0.0.0-canary.6f0f272",
+    "@graphql-inspector/loaders": "0.0.0-canary.6f0f272",
+    "@graphql-cli/common": "4.0.1-beta.6",
+    "@graphql-cli/loaders": "4.0.1-beta.6",
+    "tslib": "^2.0.0"
   }
 }

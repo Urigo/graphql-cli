@@ -1,103 +1,109 @@
-import { CliPlugin } from '@test-graphql-cli/common';
+import { defineCommand } from '@graphql-cli/common';
+import { loaders } from '@graphql-cli/loaders';
+import { addMocksToSchema, IMocks } from '@graphql-tools/mock';
+import express from 'express';
+import graphql from 'express-graphql';
 import open from 'open';
-import { CodeFileLoader } from '@graphql-toolkit/code-file-loader';
-import { GitLoader } from '@graphql-toolkit/git-loader';
-import { GithubLoader } from '@graphql-toolkit/github-loader';
-import { ApolloEngineLoader } from '@graphql-toolkit/apollo-engine-loader';
-import { PrismaLoader } from '@graphql-toolkit/prisma-loader';
 import { GraphQLExtensionDeclaration } from 'graphql-config';
-import { ApolloServer, PlaygroundConfig as GraphQLPlaygroundConfig, IMocks } from 'apollo-server';
-import { RenderPageOptions } from '@apollographql/graphql-playground-html';
 
-const ServeExtension: GraphQLExtensionDeclaration = api => {
-  // Schema
-  api.loaders.schema.register(new CodeFileLoader());
-  api.loaders.schema.register(new GitLoader());
-  api.loaders.schema.register(new GithubLoader());
-  api.loaders.schema.register(new ApolloEngineLoader());
-  api.loaders.schema.register(new PrismaLoader());
+const ServeExtension: GraphQLExtensionDeclaration = (api) => {
+  loaders.forEach((loader) => {
+    api.loaders.schema.register(loader);
+  });
 
   return {
     name: 'serve',
   };
 };
 
-export type PlaygroundConfig = GraphQLPlaygroundConfig & {
-  tabs: { [name: string]: RenderPageOptions['tabs'][0] };
-}
-
 export type MockConfig = { [typeName: string]: string };
-export type ServeConfig = { mocks: MockConfig; playground: PlaygroundConfig; } ;
+export type ServeConfig = { mocks: MockConfig; graphiql?: boolean };
 
 export async function loadMocks(mockConfig?: MockConfig) {
-  if(!mockConfig) {
+  if (!mockConfig) {
     return {};
   }
+
   const mocks: IMocks = {};
   const mocksLoad$: Promise<void>[] = [];
+  
   for (const typeName in mockConfig) {
-    const [ moduleName, importName ] = mockConfig[typeName];
-    mocksLoad$.push(
-      import(moduleName).then(
-        mod => mocks[typeName] = mod[importName]
-      )
-    )
+    const [moduleName, importName] = mockConfig[typeName];
+    mocksLoad$.push(import(moduleName).then((mod) => (mocks[typeName] = mod[importName])));
   }
+  
   await Promise.all(mocksLoad$);
+  
   return mocks;
 }
 
-export const plugin: CliPlugin = {
-  init({ program, loadProjectConfig, reportError }) {
-    program
-      .command('serve [port]')
-      .action(async (port: string | number = '4000') => {
-        try {
-
-          const config = await loadProjectConfig({
-            extensions: [ServeExtension]
-          });
-
-          const serveConfig: ServeConfig = await config.extension('serve');
-
-          const [ schema, mocks ] = await Promise.all([
-            config.getSchema(),
-            serveConfig.mocks && loadMocks(serveConfig.mocks)
-          ]);
-
-          let playground: GraphQLPlaygroundConfig = true;
-          if (serveConfig.playground && serveConfig.playground.tabs) {
-            const normalizedPlaygroundConfig: any = {};
-            if (typeof serveConfig.playground === 'object') {
-              Object.assign(normalizedPlaygroundConfig, serveConfig.playground);
-            }
-            const normalizedTabs = [];
-            for (const tabName in serveConfig.playground.tabs) {
-              normalizedTabs.push({
-                name: tabName,
-                ...serveConfig.playground.tabs[tabName]
-              });
-            }
-            normalizedPlaygroundConfig.tabs = normalizedTabs;
-            playground = normalizedPlaygroundConfig;
-          }
-
-          const apolloServer = new ApolloServer({
-            schema,
-            mocks,
-            playground,
-          });
-
-          const serverInfo = await apolloServer.listen(port)
-          
-          const url = `http://localhost:${port}/graphql`;
-          console.info(`Serving the GraphQL API and Playground on ${url}`);
-          console.info(JSON.stringify(serverInfo, null, 2));
-          await open(url);
-
-        } catch (e) {
-          reportError(e);
-        }
-      });
+export default defineCommand<
+  {},
+  {
+    project?: string;
+    port: number;
   }
-};
+>(() => {
+  return {
+    command: 'serve [port]',
+    builder(yargs) {
+      return yargs
+        .positional('port', {
+          describe: 'Port number (default: 4000)',
+          type: 'number',
+          default: 4000,
+        })
+        .options({
+          project: {
+            alias: 'p',
+            type: 'string'
+          },
+        }) as any;
+    },
+    async handler(args) {
+      const graphqlConfig = await import('graphql-config');
+      const config = await graphqlConfig.loadConfig({
+        rootDir: process.cwd(),
+        throwOnEmpty: true,
+        throwOnMissing: true,
+        extensions: [ServeExtension],
+      });
+      const projectNames = Object.keys(config.projects);
+      if (args.project && !projectNames.includes(args.project)) {
+        throw new Error(
+          `You don't have project ${args.project} so you need to specify an available project name.\n` +
+            `Available projects are; ${projectNames.join(',')}.`
+        );
+      }
+      const project = config.getProject(args.project);
+
+      const serveConfig: ServeConfig = await project.extension('serve');
+
+      const [schema, mocks] = await Promise.all([
+        project.getSchema(),
+        serveConfig.mocks && loadMocks(serveConfig.mocks),
+      ]);
+      const hasMocks = Object.keys(mocks || {}).length;
+
+      const server = express();
+
+      server.use(
+        '/graphql',
+        graphql({
+          schema: hasMocks ? addMocksToSchema({ schema, mocks }) : schema,
+          graphiql: serveConfig.graphiql !== false,
+        })
+      );
+
+      await new Promise((resolve) => {
+        server.listen(args.port, resolve);
+      });
+
+      const url = `http://localhost:${args.port}/graphql`;
+
+      console.info(`Serving the GraphQL API on ${url}`);
+
+      await open(url);
+    },
+  };
+});

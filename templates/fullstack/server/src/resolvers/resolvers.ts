@@ -8,86 +8,84 @@
 export default {
   Note: {
     comments: (parent, args, context) => {
-      return context.Comment.batchLoadData("noteId", parent.id, context)
+      return context.Comment.batchLoadData('noteId', parent.id, context);
     },
   },
 
   Comment: {
     note: (parent, args, context) => {
-      return context.Note.findBy({ id: parent.noteId }).then(
-        (results) => results[0]
-      )
+      return context.Note.findBy({ id: parent.noteId }).then((results) => results[0]);
     },
   },
 
   Query: {
     findNotes: (parent, args, context) => {
-      const { fields, ...page } = args
-      return context.Note.findBy(fields, page)
+      const { fields, ...page } = args;
+      return context.Note.findBy(fields, page);
     },
     findAllNotes: (parent, args, context) => {
-      return context.Note.findAll(args)
+      return context.Note.findAll(args);
     },
     findComments: (parent, args, context) => {
-      const { fields, ...page } = args
-      return context.Comment.findBy(fields, page)
+      const { fields, ...page } = args;
+      return context.Comment.findBy(fields, page);
     },
     findAllComments: (parent, args, context) => {
-      return context.Comment.findAll(args)
+      return context.Comment.findAll(args);
     },
   },
 
   Mutation: {
     createNote: (parent, args, context) => {
-      return context.Note.create(args.input, context)
+      return context.Note.create(args.input, context);
     },
     updateNote: (parent, args, context) => {
-      return context.Note.update(args.input, context)
+      return context.Note.update(args.input, context);
     },
     deleteNote: (parent, args, context) => {
-      return context.Note.delete(args.input, context)
+      return context.Note.delete(args.input, context);
     },
     createComment: (parent, args, context) => {
-      return context.Comment.create(args.input, context)
+      return context.Comment.create(args.input, context);
     },
     updateComment: (parent, args, context) => {
-      return context.Comment.update(args.input, context)
+      return context.Comment.update(args.input, context);
     },
     deleteComment: (parent, args, context) => {
-      return context.Comment.delete(args.input, context)
+      return context.Comment.delete(args.input, context);
     },
   },
 
   Subscription: {
     newNote: {
       subscribe: (parent, args, context) => {
-        return context.Note.subscribeToCreate(args, context)
+        return context.Note.subscribeToCreate(args, context);
       },
     },
     updatedNote: {
       subscribe: (parent, args, context) => {
-        return context.Note.subscribeToUpdate(args, context)
+        return context.Note.subscribeToUpdate(args, context);
       },
     },
     deletedNote: {
       subscribe: (parent, args, context) => {
-        return context.Note.subscribeToDelete(args, context)
+        return context.Note.subscribeToDelete(args, context);
       },
     },
     newComment: {
       subscribe: (parent, args, context) => {
-        return context.Comment.subscribeToCreate(args, context)
+        return context.Comment.subscribeToCreate(args, context);
       },
     },
     updatedComment: {
       subscribe: (parent, args, context) => {
-        return context.Comment.subscribeToUpdate(args, context)
+        return context.Comment.subscribeToUpdate(args, context);
       },
     },
     deletedComment: {
       subscribe: (parent, args, context) => {
-        return context.Comment.subscribeToDelete(args, context)
+        return context.Comment.subscribeToDelete(args, context);
       },
     },
   },
-}
+};

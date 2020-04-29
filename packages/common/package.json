@@ -1,5 +1,5 @@
 {
-  "name": "@test-graphql-cli/common",
+  "name": "@graphql-cli/common",
   "version": "4.0.1-beta.6",
   "license": "MIT",
   "main": "dist/index.js",
@@ -10,15 +10,9 @@
     "build": "tsc"
   },
   "dependencies": {
-    "chalk": "4.0.0",
-    "commander": "5.1.0",
-    "graphql-config": "3.0.2",
-    "log-symbols": "4.0.0",
-    "tslib": "2.0.0"
-  },
-  "devDependencies": {
-    "@types/node": "13.13.9",
-    "graphql": "15.0.0",
-    "typescript": "3.9.3"
+    "@graphql-tools/load": "^6.0.0",
+    "graphql-config": "^3.0.2",
+    "tslib": "^2.0.0",
+    "yargs": "15.3.1"
   }
 }

@@ -14,8 +14,8 @@ jobs:
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        node_version: [10, 12, 13]
+        os: [ubuntu-latest, windows-latest]
+        node_version: [10, 14]
     steps:
       - name: Checkout Master
         uses: actions/checkout@v1
@@ -39,7 +39,7 @@ jobs:
       - name: Use Node
         uses: actions/setup-node@v1
         with:
-          node-version: '13.x'
+          node-version: 14
       - name: Install Dependencies using Yarn
         run: yarn install
       - name: Build
