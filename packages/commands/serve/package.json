@@ -8,7 +8,6 @@
     "access": "public"
   },
   "scripts": {
-    "prepack": "node ../../../fix-version.js",
     "build": "tsc"
   },
   "peerDependencies": {

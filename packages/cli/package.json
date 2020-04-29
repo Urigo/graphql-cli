@@ -10,7 +10,6 @@
     "graphql": "dist/index.js"
   },
   "scripts": {
-    "prepack": "node ../../fix-version.js",
     "start": "ts-node src/index.ts",
     "build": "tsc"
   },
