@@ -7,10 +7,10 @@
     "access": "public"
   },
   "bin": {
-    "graphql": "dist/index.js"
+    "graphql": "dist/bin.js"
   },
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "ts-node src/bin.ts",
     "build": "tsc"
   },
   "dependencies": {
