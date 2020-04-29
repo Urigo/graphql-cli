@@ -1,4 +1,6 @@
 {
+  "name": "graphql-cli-monorepo",
+  "version": "4.0.1-beta.4",
   "private": true,
   "author": "dotansimha <dotansimha@gmail.com>",
   "license": "MIT",
@@ -11,11 +13,13 @@
     ]
   },
   "scripts": {
-    "release": "lerna publish --exact --force-publish=\"*\" --ignore=\"@test-graphql-cli/*-template-*\"",
-    "release:canary": "lerna publish --exact --force-publish=\"*\" --preid \"alpha-`git rev-parse --short HEAD`\" --canary --exact --ignore=\"@test-graphql-cli/*-template-*\"",
-    "ci:release:canary": "lerna publish --force-publish=\"*\" --preid \"alpha-`git rev-parse --short HEAD`\" --canary --exact --yes --ignore=\"@test-graphql-cli/*-template-*\"",
-    "test": "lerna run test --ignore=\"@test-graphql-cli/*-template-*\"",
-    "build": "lerna run build --ignore=\"@test-graphql-cli/*-template-*\""
+    "release": "node scripts/release.js",
+    "release:next": "node scripts/release.js --tag=next",
+    "release:canary": "node scripts/release.js --canary",
+    "test": "lerna run test --ignore=\"@graphql-cli/*-template-*\"",
+    "build": "lerna run build --ignore=\"@graphql-cli/*-template-*\"",
+    "postbuild": "yarn fix-bin",
+    "fix-bin": "node scripts/fix-bin.js"
   },
   "devDependencies": {
     "graphql": "15.0.0",

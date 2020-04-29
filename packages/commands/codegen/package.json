@@ -1,5 +1,5 @@
 {
-  "name": "@test-graphql-cli/codegen",
+  "name": "@graphql-cli/codegen",
   "description": "GraphQL Code Generator's GraphQL CLI plugin. GraphQL Code Generator is a tool that generates code from your GraphQL schema and documents for your backend or frontend with flexible support for custom plugins and templates.",
   "version": "4.0.1-beta.3",
   "license": "MIT",
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@graphql-codegen/cli": "1.13.3",
-    "@test-graphql-cli/common": "4.0.1-beta.3",
+    "@graphql-cli/common": "4.0.1-beta.3",
     "chalk": "4.0.0",
     "chokidar": "3.4.0",
     "commander": "5.0.0",
