@@ -1,4 +1,4 @@
-import { CliPlugin } from "@graphql-cli/common";
+import { CliPlugin } from "@test-graphql-cli/common";
 import { generateUsingPlugins, createDBResources } from "graphback-cli"
 
 interface CliFlags {

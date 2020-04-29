@@ -1,4 +1,4 @@
-import { CliPlugin } from '@graphql-cli/common';
+import { CliPlugin } from '@test-graphql-cli/common';
 import { CodegenExtension, CodegenContext, generate, updateContextWithCliFlags, setCommandOptions } from '@graphql-codegen/cli';
 import { Command } from 'commander';
 

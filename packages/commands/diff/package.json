@@ -1,7 +1,7 @@
 {
-  "name": "@graphql-cli/diff",
+  "name": "@test-graphql-cli/diff",
   "description": "Compares schemas and finds breaking or dangerous changes using GraphQL Inspector.",
-  "version": "4.0.1-beta.3",
+  "version": "4.0.1-beta.5",
   "license": "MIT",
   "main": "dist/index.js",
   "publishConfig": {
@@ -21,7 +21,7 @@
     "@graphql-toolkit/git-loader": "0.10.5",
     "@graphql-toolkit/github-loader": "0.10.5",
     "@graphql-toolkit/prisma-loader": "0.10.5",
-    "@graphql-cli/common": "4.0.1-beta.3",
+    "@test-graphql-cli/common": "4.0.1-beta.5",
     "chalk": "4.0.0",
     "commander": "5.0.0",
     "log-symbols": "4.0.0"

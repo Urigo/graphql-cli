@@ -19,7 +19,7 @@ async function release() {
         tag = 'canary';
     }
 
-    const workspaceGlobs = rootPackageJson.workspaces.map(workspace => workspace + '/package.json');
+    const workspaceGlobs = (rootPackageJson.workspaces.packages || rootPackageJson.workspaces).map(workspace => workspace + '/package.json');
 
     const packageJsonPaths = glob(workspaceGlobs).map(packageJsonPath => resolve(process.cwd(), packageJsonPath));
 
@@ -61,8 +61,8 @@ async function release() {
                 publishSpawn.stdout.on('data', (data) => {
                     console.info(data.toString('utf8'));
                 })
-                publishSpawn.stderr.on('message', function(message) {
-                    console.error(message.toString('utf8'));
+                publishSpawn.stderr.on('data', function(data) {
+                    console.error(data.toString('utf8'));
                 })
                 publishSpawn.on("exit", function(code, signal) {
                     if (code !== 0) {
