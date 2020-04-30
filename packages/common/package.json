@@ -1,6 +1,6 @@
 {
   "name": "@test-graphql-cli/common",
-  "version": "4.0.1-beta.5",
+  "version": "4.0.1-beta.6",
   "license": "MIT",
   "main": "dist/index.js",
   "publishConfig": {

@@ -1,7 +1,7 @@
 {
   "name": "@test-graphql-cli/init",
   "description": "Creates a GraphQL project using a template or GraphQL Config file for your existing project.",
-  "version": "4.0.1-beta.5",
+  "version": "4.0.1-beta.6",
   "license": "MIT",
   "main": "dist/index.js",
   "publishConfig": {
@@ -11,7 +11,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@test-graphql-cli/common": "4.0.1-beta.5",
+    "@test-graphql-cli/common": "^4.0.1-beta.6",
     "chalk": "4.0.0",
     "commander": "5.1.0",
     "cosmiconfig": "6.0.0",
