@@ -35,7 +35,7 @@
     "@types/js-yaml": "3.12.3",
     "@types/node": "13.13.4",
     "@types/rimraf": "3.0.0",
-    "@types/tmp": "0.1.0",
+    "@types/tmp": "0.2.0",
     "graphql": "15.0.0",
     "ts-node": "8.9.1",
     "typescript": "3.8.3"
