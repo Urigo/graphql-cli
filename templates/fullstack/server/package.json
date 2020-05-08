@@ -19,7 +19,7 @@
     "graphql-config": "3.0.1",
     "graphql-tag": "2.10.3",
     "knex": "0.21.1",
-    "pg": "8.0.3",
+    "pg": "8.1.0",
     "ts-node": "8.10.1",
     "ts-node-dev": "1.0.0-pre.44",
     "typescript": "3.8.3"
