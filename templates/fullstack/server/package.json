@@ -12,7 +12,7 @@
     "@types/cors": "2.8.6",
     "@types/express": "4.17.6",
     "@types/node": "13.13.5",
-    "apollo-server-express": "2.13.0",
+    "apollo-server-express": "2.13.1",
     "cors": "2.8.5",
     "express": "4.17.1",
     "graphql": "15.0.0",
