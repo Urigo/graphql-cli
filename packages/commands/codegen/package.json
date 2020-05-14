@@ -31,7 +31,7 @@
     "@types/is-glob": "4.0.1",
     "@types/is-valid-path": "0.1.0",
     "@types/listr": "0.14.2",
-    "@types/node": "13.13.5",
+    "@types/node": "13.13.6",
     "@types/resolve-from": "5.0.1",
     "graphql": "15.0.0",
     "ts-node": "8.10.1",

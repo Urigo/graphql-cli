@@ -33,7 +33,7 @@
     "@types/fullname": "2.1.29",
     "@types/inquirer": "6.5.0",
     "@types/js-yaml": "3.12.3",
-    "@types/node": "13.13.5",
+    "@types/node": "13.13.6",
     "@types/rimraf": "3.0.0",
     "@types/tmp": "0.2.0",
     "graphql": "15.0.0",
