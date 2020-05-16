@@ -29,7 +29,7 @@
     "graphql-cli": "4.0.1-beta.6",
     "schemats": "3.0.3",
     "tslint": "6.1.2",
-    "typescript": "3.8.3"
+    "typescript": "3.9.2"
   },
   "author": {
     "name": "Arda TANRIKULU"
