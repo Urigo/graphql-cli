@@ -29,7 +29,7 @@
     "tslib": "1.11.2"
   },
   "devDependencies": {
-    "@types/fs-extra": "8.1.1",
+    "@types/fs-extra": "9.0.0",
     "@types/fullname": "2.1.29",
     "@types/inquirer": "6.5.0",
     "@types/js-yaml": "3.12.4",
