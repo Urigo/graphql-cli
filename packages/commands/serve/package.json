@@ -25,7 +25,7 @@
     "chalk": "4.0.0",
     "commander": "5.1.0",
     "log-symbols": "4.0.0",
-    "open": "7.0.3",
+    "open": "7.0.4",
     "tslib": "1.11.2"
   },
   "devDependencies": {
