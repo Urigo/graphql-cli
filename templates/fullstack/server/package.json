@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@graphback/runtime-knex": "0.12.0",
-    "@graphql-toolkit/file-loading": "0.10.6",
+    "@graphql-toolkit/file-loading": "0.10.7",
     "@types/cors": "2.8.6",
     "@types/express": "4.17.6",
     "@types/node": "13.13.6",
