@@ -14,7 +14,7 @@
     "graphql": "15.0.0"
   },
   "dependencies": {
-    "@graphql-inspector/core": "2.0.0",
+    "@graphql-inspector/core": "2.0.1",
     "@graphql-toolkit/apollo-engine-loader": "0.10.6",
     "@graphql-toolkit/code-file-loader": "0.10.6",
     "@graphql-toolkit/git-loader": "0.10.6",
