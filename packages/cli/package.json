@@ -14,8 +14,8 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@graphql-cli/common": "^4.0.1-beta.6",
-    "@graphql-cli/init": "^4.0.1-beta.6",
+    "@graphql-cli/common": "4.0.1-beta.6",
+    "@graphql-cli/init": "4.0.1-beta.6",
     "chalk": "4.0.0",
     "commander": "5.1.0",
     "globby": "11.0.0",

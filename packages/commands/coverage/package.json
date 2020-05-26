@@ -20,7 +20,7 @@
     "@graphql-toolkit/git-loader": "0.10.6",
     "@graphql-toolkit/github-loader": "0.10.6",
     "@graphql-toolkit/prisma-loader": "0.10.6",
-    "@graphql-cli/common": "^4.0.1-beta.6",
+    "@graphql-cli/common": "4.0.1-beta.6",
     "chalk": "4.0.0",
     "commander": "5.1.0",
     "log-symbols": "4.0.0"
