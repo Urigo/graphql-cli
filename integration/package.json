@@ -12,14 +12,14 @@
   },
   "dependencies": {
     "log-symbols": "4.0.0",
-    "tslib": "1.11.1"
+    "tslib": "2.0.0"
   },
   "devDependencies": {
-    "@types/node": "12.12.37",
-    "ava": "3.8.1",
-    "execa": "4.0.0",
+    "@types/node": "12.12.42",
+    "ava": "3.8.2",
+    "execa": "4.0.2",
     "graphql": "15.0.0",
-    "typescript": "3.8.3"
+    "typescript": "3.9.2"
   },
   "ava": {
     "files": [

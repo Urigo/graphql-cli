@@ -19,25 +19,25 @@
     "fs-extra": "9.0.0",
     "fullname": "4.0.1",
     "inquirer": "7.1.0",
-    "js-yaml": "3.13.1",
+    "js-yaml": "3.14.0",
     "latest-version": "5.1.0",
     "openapi-to-graphql": "2.1.0",
     "ora": "4.0.4",
     "rimraf": "3.0.2",
-    "simple-git": "2.2.0",
+    "simple-git": "2.5.0",
     "tmp": "0.2.1",
-    "tslib": "1.11.1"
+    "tslib": "2.0.0"
   },
   "devDependencies": {
-    "@types/fs-extra": "8.1.0",
+    "@types/fs-extra": "9.0.1",
     "@types/fullname": "2.1.29",
     "@types/inquirer": "6.5.0",
-    "@types/js-yaml": "3.12.3",
-    "@types/node": "13.13.4",
+    "@types/js-yaml": "3.12.4",
+    "@types/node": "13.13.9",
     "@types/rimraf": "3.0.0",
-    "@types/tmp": "0.1.0",
+    "@types/tmp": "0.2.0",
     "graphql": "15.0.0",
-    "ts-node": "8.9.1",
-    "typescript": "3.8.3"
+    "ts-node": "8.10.1",
+    "typescript": "3.9.2"
   }
 }

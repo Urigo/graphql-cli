@@ -64,15 +64,16 @@ schema:
 documents: ./client/src/graphql/**/*.ts
 extensions:
   codegen:
-    ./server/src/generated-types.d.ts:
-      plugins:
-        - typescript
-        - typescript-resolvers
-    ./client/src/generated-types.tsx:
-      plugins:
-        - typescript
-        - typescript-operations
-        - typescript-react-apollo
+    generates:
+      ./server/src/generated-types.d.ts:
+        plugins:
+          - typescript
+          - typescript-resolvers
+      ./client/src/generated-types.tsx:
+        plugins:
+          - typescript
+          - typescript-operations
+          - typescript-react-apollo
       config:
         withHooks: true
   generate:
