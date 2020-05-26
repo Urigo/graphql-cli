@@ -1,5 +1,5 @@
 {
-  "name": "@test-graphql-cli/serve",
+  "name": "@graphql-cli/serve",
   "description": "Serves a faked GraphQL server",
   "version": "4.0.1-beta.6",
   "license": "MIT",
@@ -19,7 +19,7 @@
     "@graphql-toolkit/git-loader": "0.10.6",
     "@graphql-toolkit/github-loader": "0.10.6",
     "@graphql-toolkit/prisma-loader": "0.10.6",
-    "@test-graphql-cli/common": "^4.0.1-beta.6",
+    "@graphql-cli/common": "^4.0.1-beta.6",
     "@types/node-fetch": "2.5.7",
     "apollo-server": "2.12.0",
     "chalk": "4.0.0",

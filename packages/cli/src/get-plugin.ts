@@ -1,5 +1,5 @@
 import { resolve, join } from 'path';
-import { CliPlugin, DetailedError } from '@test-graphql-cli/common';
+import { CliPlugin, DetailedError } from '@graphql-cli/common';
 import resolveFrom from 'resolve-from';
 import latestVersion from 'latest-version';
 import { prompt } from 'inquirer';
@@ -9,8 +9,8 @@ import { existsSync } from 'fs';
 
 export async function getPluginByName(name: string): Promise<CliPlugin> {
   const possibleNames = [
-    `@test-graphql-cli/${name}`,
-    `@test-graphql-cli/${name}-plugin`,
+    `@graphql-cli/${name}`,
+    `@graphql-cli/${name}-plugin`,
     name
   ];
   const possibleModules = possibleNames.concat(
@@ -55,7 +55,7 @@ export async function getPluginByName(name: string): Promise<CliPlugin> {
       try {
         await latestVersion(possiblePackageName);
         let isInstallAsked = false;
-        if (possiblePackageName === '@test-graphql-cli/init') {
+        if (possiblePackageName === '@graphql-cli/init') {
           isInstallAsked = true;
         } else {
           const response = await prompt([

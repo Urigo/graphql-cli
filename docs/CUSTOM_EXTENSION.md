@@ -42,7 +42,7 @@ module.exports = {
 Or, with TypeScript:
 
 ```ts
-import { plugin } from '@test-graphql-cli/common';
+import { plugin } from '@graphql-cli/common';
 
 export const plugin: CliPlugin = {
   init({ cwd, program, loadProjectConfig, reportError }) {
@@ -86,7 +86,7 @@ graphql ./src/index.js do-something
 To easily load GraphQL schema, you can use `loadProjectConfig` to get it from a `graphql-config` file:
 
 ```ts
-import { plugin } from '@test-graphql-cli/common';
+import { plugin } from '@graphql-cli/common';
 
 export const plugin: CliPlugin = {
   async init({ cwd, program, loadProjectConfig, reportError }) {
@@ -111,7 +111,7 @@ const extensionConfig = await config.extension<MyConfig>('my-plugin');
 If you wish to fail the execution of your plugin and report it back to GraphQL CLI host, you should use `reportError`:
 
 ```ts
-import { plugin } from '@test-graphql-cli/common';
+import { plugin } from '@graphql-cli/common';
 
 export const plugin: CliPlugin = {
   async init({ cwd, program, loadProjectConfig, reportError }) {
