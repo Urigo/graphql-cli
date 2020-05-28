@@ -38,6 +38,6 @@
     "@types/tmp": "0.2.0",
     "graphql": "15.0.0",
     "ts-node": "8.10.2",
-    "typescript": "3.9.2"
+    "typescript": "3.9.3"
   }
 }
