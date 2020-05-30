@@ -23,7 +23,7 @@ export function useConfig(options: LoadConfigOptions = {}) {
 }
 
 type PointerOf<T extends (...args: any) => any> = Parameters<T>[0];
-type OptionsOf<T extends (...args: any) => any> = Parameters<T>[1];
+type OptionsOf<T extends (...args: any) => any> = Omit<Parameters<T>[1], 'loaders'>;
 
 export function useLoaders({ loaders }: { loaders: Loader[] }) {
   return {
