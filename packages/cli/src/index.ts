@@ -1,7 +1,7 @@
 import yargs from 'yargs';
 import globby from 'globby';
 import { join } from 'path';
-import { CommandFactory, useConfig } from '@graphql-cli/common';
+import { CommandFactory, useConfig, useLoaders } from '@graphql-cli/common';
 import discover from './discover';
 
 export async function cli(): Promise<void> {
@@ -18,6 +18,7 @@ export async function cli(): Promise<void> {
     program.command(
       cmd({
         useConfig,
+        useLoaders,
       })
     );
   });
