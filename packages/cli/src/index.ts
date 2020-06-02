@@ -27,14 +27,26 @@ export async function cli(): Promise<void> {
 }
 
 async function discoverCommands() {
-  const commandNames = await globby('*', {
-    cwd: join(process.cwd(), 'node_modules/@graphql-cli'),
-    onlyDirectories: true,
-    deep: 1,
-    ignore: ['common', 'loaders'],
-  });
+  const commandNames: string[] = [];
+  const paths = require.resolve.paths('graphql-cli');
 
-  return commandNames;
+  await Promise.all(paths.map(findInDirectory));
+
+  async function findInDirectory(directory: string) {
+    const results = await globby('*', {
+      cwd: join(directory, '@graphql-cli'),
+      onlyDirectories: true,
+      deep: 1,
+      ignore: ['common', 'loaders'],
+    });
+
+    if (results.length) {
+      commandNames.push(...results);
+    }
+  }
+
+  // unique names
+  return commandNames.filter((val, i, list) => list.indexOf(val) === i);
 }
 
 function loadCommand(name: string): CommandFactory {
