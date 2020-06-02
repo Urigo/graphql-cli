@@ -17,7 +17,7 @@ export async function fromScratch({
   templateName: string;
   templateUrl: string;
 }) {
-  if (!name) {
+  if (!context.name) {
     const { projectName: enteredName } = await prompt([
       {
         type: 'input',
