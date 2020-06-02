@@ -177,26 +177,23 @@ async function writeGraphQLConfig(context: Context) {
   const configPath = join(context.path, '.graphqlrc.yml');
   await ensureFile(configPath);
 
+  const keys = ['schema', 'documents', 'extensions'];
+
+  function sortKeys(a: string, b: string) {
+    const ai = keys.indexOf(a);
+    const bi = keys.indexOf(b);
+
+    if (ai === -1 && bi === -1) {
+      return a.localeCompare(b);
+    }
+
+    return ai <= bi ? -1 : 1;
+  }
+
   writeFileSync(
     configPath,
     YAMLStringify(context.graphqlConfig, {
-      sortKeys: (a, b) => {
-        if (a === 'schema') {
-          return -1;
-        } else if (b === 'schema') {
-          return 1;
-        } else if (a === 'documents') {
-          return -1;
-        } else if (b === 'documents') {
-          return 1;
-        } else if (a === 'extensions') {
-          return 1;
-        } else if (b === 'extensions') {
-          return -1;
-        } else {
-          return a.localeCompare(b);
-        }
-      },
+      sortKeys,
     })
   );
 }
