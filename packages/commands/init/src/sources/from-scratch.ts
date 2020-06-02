@@ -68,10 +68,13 @@ export async function fromScratch({
     }
     const cloningSpinner = ora(`Cloning template repository from ${templateUrl}...`).start();
     const git = simpleGit().silent(true);
-    const { name: tmpDir, removeCallback } = tmp.dirSync();
+    const { name: tmpDir, removeCallback } = tmp.dirSync({ unsafeCleanup: true });
+    
     await git.clone(templateUrl, tmpDir);
+    
     rimraf.sync(join(tmpDir, '.git'));
     moveSync(join(tmpDir, subDirPath), context.path);
+    
     removeCallback();
     cloningSpinner.stop();
   }
