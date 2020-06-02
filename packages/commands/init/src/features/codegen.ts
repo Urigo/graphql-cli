@@ -13,6 +13,8 @@ export async function askForCodegen({ context, project }: { context: Context; pr
     ]);
     if (isCodegenAsked) {
       project.addDependency('@graphql-cli/codegen');
+      project.addScript('graphql:codegen', 'graphql codegen');
+
       context.graphqlConfig.extensions.codegen = {};
       let codegenPlugins = new Set<string>();
       if (context.type === ProjectType.FullStack || context.type === ProjectType.BackendOnly) {

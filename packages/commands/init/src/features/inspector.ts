@@ -15,6 +15,9 @@ export async function askForInspector({ context, project }: { context: Context; 
     if (isFrontendInspectorAsked) {
       project.addDependency('@graphql-cli/coverage');
       project.addDependency('@graphql-cli/validate');
+
+      project.addScript('graphql:coverage', 'graphql coverage');
+      project.addScript('graphql:validate', 'graphql validate');
     }
   }
 
@@ -30,8 +33,16 @@ export async function askForInspector({ context, project }: { context: Context; 
 
     if (isBackendInspectorAsked) {
       project.addDependency('@graphql-cli/diff');
-      project.addDependency('@graphql-cli/serve');
       project.addDependency('@graphql-cli/similar');
+
+      project.addScript('graphql:diff', 'graphql diff');
+      project.addScript('graphql:similar', 'graphql similar');
+
+      if (!context.graphqlConfig.extensions.diff) {
+        context.graphqlConfig.extensions.diff = {
+          baseSchema: 'your-base-schema-here',
+        };
+      }
     }
   }
 }

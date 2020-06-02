@@ -73,11 +73,15 @@ export enum BackendType {
 
 export type PackageManifest = ReturnType<typeof managePackageManifest>;
 export function managePackageManifest() {
-  const registry = new Set<string>();
+  const packages = new Set<string>();
+  const scripts = new Map<string, string>();
 
   return {
     addDependency(name: string) {
-      registry.add(name);
+      packages.add(name);
+    },
+    addScript(name: string, script: string) {
+      scripts.set(name, script);
     },
     async writePackage({
       path,
@@ -110,10 +114,20 @@ export function managePackageManifest() {
         }
       }
 
+      for (const [scriptName, scriptValue] of scripts) {
+        if (!packageJson.scripts) {
+          packageJson.scripts = {};
+        }
+
+        if (!packageJson.scripts[scriptName]) {
+          packageJson.scripts[scriptName] = scriptValue;
+        }
+      }
+
       // Add dev dependencies
       packageJson.devDependencies = packageJson.devDependencies || {};
 
-      for await (const npmDependency of registry) {
+      for await (const npmDependency of packages) {
         if (!(npmDependency in packageJson.devDependencies)) {
           packageJson.devDependencies[npmDependency] = await latestVersion(npmDependency);
         }
