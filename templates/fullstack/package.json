@@ -12,7 +12,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@graphql-codegen/add": "1.15.1",
+    "@graphql-codegen/add": "1.15.1-alpha-f43786f2.10",
     "@graphql-codegen/typescript": "1.15.1",
     "@graphql-codegen/typescript-operations": "1.15.1",
     "@graphql-codegen/typescript-react-apollo": "1.15.1",
