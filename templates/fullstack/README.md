@@ -6,52 +6,40 @@ Starter Full Stack template using GraphQL CLI.
 
 This project has been created using GraphQL CLI. Run the project using the following steps:
 
-- Install
+### Install
 
-```sh
-yarn install
-```
+    yarn install
 
-- Start the database
+### Database
+Start the database
 
-```sh
-docker-compose up -d
-```
+    docker-compose up -d
 
-- Generate resources(schema and resolvers) and create database
+Generate resources(schema and resolvers) and create database
 
-```sh
-yarn graphql generate --backend
-yarn graphql generate --db
-```
+    yarn graphql generate --backend
+    yarn graphql generate --db
 
-- Generate typings for Database Schema and Resolvers
+Generate typings for Database Schema and Resolvers
 
-```sh
-yarn schemats generate
-yarn graphql codegen
-```
+    yarn schemats generate
+    yarn graphql codegen
 
-- Start the server
+### Server
+Start the server
 
-```sh
-yarn start:server
-```
+    yarn start:server
 
-- Generate queries, mutations and subscriptions for client-side project
+### Client
 
-```sh
-yarn graphql generate --client
-```
+Generate queries, mutations and subscriptions for client-side project
 
-- Generate React components
+    yarn graphql generate --client
 
-```sh
-yarn graphql codegen
-```
+Generate React components
 
-- Start React App
+    yarn graphql codegen
 
-```sh
-yarn start:client
-```
+Start React App
+
+    yarn start:client

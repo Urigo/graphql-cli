@@ -15,8 +15,8 @@
     "release": "node scripts/release.js",
     "release:next": "node scripts/release.js --tag=next",
     "release:canary": "node scripts/release.js --canary",
-    "test": "lerna run test --ignore=\"@graphql-cli/*-template-*\"",
-    "build": "lerna run build --ignore=\"@graphql-cli/*-template-*\"",
+    "test": "lerna run test",
+    "build": "lerna run build",
     "postbuild": "yarn fix-bin",
     "fix-bin": "node scripts/fix-bin.js",
     "format": "prettier --write \"**/*.{ts,tsx}\""

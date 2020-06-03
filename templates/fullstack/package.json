@@ -1,5 +1,5 @@
 {
-  "name": "@graphql-cli/full-stack-template",
+  "name": "full-stack-template",
   "version": "4.0.1-beta.6",
   "private": true,
   "workspaces": [
@@ -12,24 +12,26 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@graphql-codegen/add": "1.15.0",
-    "@graphql-codegen/typescript": "1.15.0",
-    "@graphql-codegen/typescript-operations": "1.15.0",
-    "@graphql-codegen/typescript-react-apollo": "1.15.0",
-    "@graphql-codegen/typescript-resolvers": "1.15.0",
-    "@graphql-cli/codegen": "4.0.1-beta.6",
-    "@graphql-cli/coverage": "4.0.1-beta.6",
-    "@graphql-cli/diff": "4.0.1-beta.6",
-    "@graphql-cli/generate": "4.0.1-beta.6",
-    "@graphql-cli/init": "4.0.1-beta.6",
-    "@graphql-cli/serve": "4.0.1-beta.6",
-    "@graphql-cli/similar": "4.0.1-beta.6",
-    "@graphql-cli/validate": "4.0.1-beta.6",
+    "@graphql-codegen/add": "1.15.1-alpha-d1f028fd.33",
+    "@graphql-codegen/typescript": "1.15.1-alpha-d1f028fd.33",
+    "@graphql-codegen/typescript-operations": "1.15.1-alpha-d1f028fd.33",
+    "@graphql-codegen/typescript-react-apollo": "1.15.1-alpha-d1f028fd.33",
+    "@graphql-codegen/typescript-resolvers": "1.15.1-alpha-d1f028fd.33",
+    "@graphql-cli/codegen": "1.15.1-alpha-d1f028fd.33",
+    "@graphql-cli/coverage": "0.0.0-canary.0b0fc6b",
+    "@graphql-cli/diff": "0.0.0-canary.0b0fc6b",
+    "@graphql-cli/generate": "4.0.1-alpha-75754ca.0",
+    "@graphql-cli/serve": "4.0.1-alpha-75754ca.0",
+    "@graphql-cli/similar": "0.0.0-canary.0b0fc6b",
+    "@graphql-cli/validate": "0.0.0-canary.0b0fc6b",
     "graphql": "15.0.0",
-    "graphql-cli": "4.0.1-beta.6",
+    "graphql-cli": "4.0.1-alpha-75754ca.0",
     "schemats": "3.0.3",
     "tslint": "6.1.2",
     "typescript": "3.9.3"
+  },
+  "resolutions": {
+    "graphql": "15.0.0"
   },
   "author": {
     "name": "Arda TANRIKULU"
