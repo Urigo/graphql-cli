@@ -10,11 +10,11 @@
     "build": "tsc"
   },
   "peerDependencies": {
-    "graphql-config": "^3.0.2",
-    "yargs": "^15.3.1"
+    "graphql-config": "3.0.2",
+    "yargs": "15.3.1"
   },
   "dependencies": {
-    "@graphql-tools/load": "^6.0.0",
-    "tslib": "^2.0.0"
+    "@graphql-tools/load": "6.0.6",
+    "tslib": "2.0.0"
   }
 }
