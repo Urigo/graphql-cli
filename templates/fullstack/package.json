@@ -21,7 +21,7 @@
     "@graphql-cli/coverage": "0.0.0-canary.0b0fc6b",
     "@graphql-cli/diff": "0.0.0-canary.0b0fc6b",
     "@graphql-cli/generate": "4.0.1-alpha-75754ca.0",
-    "@graphql-cli/serve": "4.0.1-alpha-75754ca.0",
+    "@graphql-cli/serve": "4.0.1-alpha-fc6303e.0",
     "@graphql-cli/similar": "0.0.0-canary.0b0fc6b",
     "@graphql-cli/validate": "0.0.0-canary.0b0fc6b",
     "graphql": "15.0.0",
