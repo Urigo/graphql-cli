@@ -43,8 +43,8 @@ After a series of questions from the command-prompt, the system will use the inp
 You can also get started with GraphQL CLI by creating your own GraphQL Config file using an editor of your choice. Starting with a filename `.graphqlrc.yml`, for instance, we could add:
 
 ```yml
-schema: server/src/schema/**/*.graphql
-documents: client/src/documents/**/*.graphql
+schema: "server/src/schema/**/*.graphql"
+documents: "client/src/documents/**/*.graphql"
 ```
 
 This is now a valid YAML-syntax GraphQL Config file. Using `init` from the GraphQL CLI will generate a project based on the instructions in your YAML.
@@ -82,7 +82,7 @@ extensions:
         user: admin
         port: 55432
       database: pg
-...
+# ...
     graphqlCRUD:
       create: true
       update: true
@@ -94,35 +94,28 @@ extensions:
 Some of the available Plugins are:
 
 - [`init`](https://github.com/Urigo/graphql-cli/tree/focs/packages/commands/init) - Creates a GraphQL project using a template or GraphQL Config file for your existing project.
-- [`codegen`](https://github.com/Urigo/graphql-cli/tree/master/packages/commands/codegen) - GraphQL Code Generator's GraphQL CLI plugin. GraphQL Code Generator is a tool that generates code from your GraphQL schema and documents for your backend or frontend with flexible support for custom plugins and templates. [Learn More](https://graphql-code-generator.com)
+- [`codegen`](https://github.com/dotansimha/graphql-code-generator/tree/master/packages/graphql-cli-codegen-plugin) - GraphQL Code Generator's GraphQL CLI plugin. GraphQL Code Generator is a tool that generates code from your GraphQL schema and documents for your backend or frontend with flexible support for custom plugins and templates. [Learn More](https://graphql-code-generator.com)
 - [`generate`](https://github.com/Urigo/graphql-cli/tree/master/packages/commands/generate) - Generate DB, schema, document and resolvers for your GraphQL project by using [GraphBack](https://graphback.dev).
-- [`coverage`](https://github.com/Urigo/graphql-cli/tree/master/packages/commands/coverage) - Schema coverage based on documents. Find out how many times types and fields are used in your application using [GraphQL Inspector](https://graphql-inspector.com/docs/essentials/coverage).
-- [`diff`](https://github.com/Urigo/graphql-cli/tree/master/packages/commands/diff) - Compares schemas and finds breaking or dangerous changes using [GraphQL Inspector](https://graphql-inspector.com/docs/essentials/diff).
+- [`coverage`](https://github.com/kamilkisiela/graphql-inspector/tree/master/packages/graphql-cli/common) - Schema coverage based on documents. Find out how many times types and fields are used in your application using [GraphQL Inspector](https://graphql-inspector.com/docs/essentials/coverage).
+- [`diff`](https://github.com/kamilkisiela/graphql-inspector/tree/master/packages/graphql-cli/diff) - Compares schemas and finds breaking or dangerous changes using [GraphQL Inspector](https://graphql-inspector.com/docs/essentials/diff).
     - You can also compare your current schema against a base schema using URL, Git link and local file. You can give this pointer in the command line after `graphql diff` or in GraphQL Config file:
 
 ```yml
-...
+# ...
 extensions:
-...
   diff:
     baseSchema: git:origin/master:schema.graphql
-...
-...
 ```
 
-- [`similar`](https://github.com/Urigo/graphql-cli/tree/master/packages/commands/similar) - Get a list of similar types in order to find duplicates using [GraphQL Inspector](https://graphql-inspector.com/docs/essentials/similar).
-- [`validate`](https://github.com/Urigo/graphql-cli/tree/master/packages/commands/validate) - Validates documents against a schema and looks for deprecated usage using [GraphQL Inspector](https://graphql-inspector.com/docs/essentials/validate).
+- [`similar`]((https://github.com/kamilkisiela/graphql-inspector/tree/master/packages/graphql-cli/similar)) - Get a list of similar types in order to find duplicates using [GraphQL Inspector](https://graphql-inspector.com/docs/essentials/similar).
+- [`validate`]((https://github.com/kamilkisiela/graphql-inspector/tree/master/packages/graphql-cli/validate)) - Validates documents against a schema and looks for deprecated usage using [GraphQL Inspector](https://graphql-inspector.com/docs/essentials/validate).
 - [`serve`](https://github.com/Urigo/graphql-cli/tree/master/packages/commands/serve) - Serves a faked GraphQL server, you can define your own mocks for each types and scalars inside GraphQL Config like below:
 
 ```yml
-...
 extensions:
-...
   serve:
     mocks:
       DateTime: graphql-scalars#DateTimeMock #Imports DateTimeMock function from graphql-scalars for mocking DateTimeMock
-...
-...
 ```
 
 More plugins are definitely welcome! Please check the existing ones to see how to use GraphQL Config and GraphQL CLI API.
@@ -135,6 +128,6 @@ Please read through the [contributing guidelines](./CONTRIBUTING.md)
 
 GraphQL CLI supports custom plugins, [you can find a tutorial and example here](./docs/CUSTOM_EXTENSION.md)
 
-## Help & Community [![Discord Chat](https://img.shields.io/discord/625400653321076807)](https://discord.gg/xud7bH9)
+## Help & Community [![Discord Chat](https://img.shields.io/discord/625400653321076807)](https://the-guild.dev/discord)
 
-Join our [Discord chat](https://discord.gg/xud7bH9) if you run into issues or have questions. We're excited to welcome you to the community!
+Join our [Discord chat](https://the-guild.dev/discord) if you run into issues or have questions. We're excited to welcome you to the community!

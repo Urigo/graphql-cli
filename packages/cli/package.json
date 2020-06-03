@@ -1,5 +1,7 @@
 {
   "name": "graphql-cli",
+  "description": "Command line tool for common GraphQL development workflows",
+  "keywords": ["graphql", "graphql-cli", "cli"],
   "version": "4.0.1-beta.6",
   "license": "MIT",
   "main": "dist/index.js",

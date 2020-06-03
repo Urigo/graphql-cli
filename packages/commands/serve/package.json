@@ -20,8 +20,6 @@
   "dependencies": {
     "@graphql-cli/common": "4.0.1-beta.6",
     "@graphql-cli/loaders": "4.0.1-beta.6",
-    "@graphql-inspector/loaders": "0.0.0-canary.6f0f272",
-    "@graphql-inspector/serve-command": "0.0.0-canary.6f0f272",
     "@graphql-tools/mock": "^6.0.0",
     "express": "4.17.1",
     "express-graphql": "0.9.0",
