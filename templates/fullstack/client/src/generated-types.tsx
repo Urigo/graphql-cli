@@ -13,64 +13,14 @@ export type Scalars = {
   Float: number;
 };
 
-export type Query = {
-   __typename?: 'Query';
-  findAllNotes: Array<Maybe<Note>>;
-  findNotes: Array<Maybe<Note>>;
-  findAllComments: Array<Maybe<Comment>>;
-  findComments: Array<Maybe<Comment>>;
-};
-
-
-export type QueryFindAllNotesArgs = {
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryFindNotesArgs = {
-  fields?: Maybe<NoteInput>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryFindAllCommentsArgs = {
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryFindCommentsArgs = {
-  fields?: Maybe<CommentInput>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-/**  @model  */
-export type Note = {
-   __typename?: 'Note';
-  id: Scalars['ID'];
-  title: Scalars['String'];
-  description?: Maybe<Scalars['String']>;
-  /** @oneToMany field: 'note', key: 'noteId' */
-  comments: Array<Maybe<Comment>>;
-};
-
 /**  @model  */
 export type Comment = {
-   __typename?: 'Comment';
+  __typename?: 'Comment';
   id: Scalars['ID'];
   text?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   /** @manyToOne field: 'comments', key: 'noteId' */
   note?: Maybe<Note>;
-};
-
-export type NoteInput = {
-  id?: Maybe<Scalars['ID']>;
-  title?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
 };
 
 export type CommentInput = {
@@ -81,7 +31,7 @@ export type CommentInput = {
 };
 
 export type Mutation = {
-   __typename?: 'Mutation';
+  __typename?: 'Mutation';
   createNote: Note;
   updateNote: Note;
   deleteNote: Note;
@@ -120,8 +70,58 @@ export type MutationDeleteCommentArgs = {
   input?: Maybe<CommentInput>;
 };
 
+/**  @model  */
+export type Note = {
+  __typename?: 'Note';
+  id: Scalars['ID'];
+  title: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  /** @oneToMany field: 'note', key: 'noteId' */
+  comments: Array<Maybe<Comment>>;
+};
+
+export type NoteInput = {
+  id?: Maybe<Scalars['ID']>;
+  title?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+};
+
+export type Query = {
+  __typename?: 'Query';
+  findAllNotes: Array<Maybe<Note>>;
+  findNotes: Array<Maybe<Note>>;
+  findAllComments: Array<Maybe<Comment>>;
+  findComments: Array<Maybe<Comment>>;
+};
+
+
+export type QueryFindAllNotesArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryFindNotesArgs = {
+  fields?: Maybe<NoteInput>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryFindAllCommentsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryFindCommentsArgs = {
+  fields?: Maybe<CommentInput>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
 export type Subscription = {
-   __typename?: 'Subscription';
+  __typename?: 'Subscription';
   newNote: Note;
   updatedNote: Note;
   deletedNote: Note;
@@ -632,7 +632,7 @@ export const FindAllCommentsDocument = gql`
  * __useFindAllCommentsQuery__
  *
  * To run a query within a React component, call `useFindAllCommentsQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindAllCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useFindAllCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -666,7 +666,7 @@ export const FindAllNotesDocument = gql`
  * __useFindAllNotesQuery__
  *
  * To run a query within a React component, call `useFindAllNotesQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindAllNotesQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useFindAllNotesQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -700,7 +700,7 @@ export const FindCommentsDocument = gql`
  * __useFindCommentsQuery__
  *
  * To run a query within a React component, call `useFindCommentsQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useFindCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -735,7 +735,7 @@ export const FindNotesDocument = gql`
  * __useFindNotesQuery__
  *
  * To run a query within a React component, call `useFindNotesQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindNotesQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useFindNotesQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -770,7 +770,7 @@ export const DeletedCommentDocument = gql`
  * __useDeletedCommentSubscription__
  *
  * To run a query within a React component, call `useDeletedCommentSubscription` and pass it any options that fit your needs.
- * When your component renders, `useDeletedCommentSubscription` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useDeletedCommentSubscription` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -798,7 +798,7 @@ export const DeletedNoteDocument = gql`
  * __useDeletedNoteSubscription__
  *
  * To run a query within a React component, call `useDeletedNoteSubscription` and pass it any options that fit your needs.
- * When your component renders, `useDeletedNoteSubscription` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useDeletedNoteSubscription` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -826,7 +826,7 @@ export const NewCommentDocument = gql`
  * __useNewCommentSubscription__
  *
  * To run a query within a React component, call `useNewCommentSubscription` and pass it any options that fit your needs.
- * When your component renders, `useNewCommentSubscription` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useNewCommentSubscription` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -854,7 +854,7 @@ export const NewNoteDocument = gql`
  * __useNewNoteSubscription__
  *
  * To run a query within a React component, call `useNewNoteSubscription` and pass it any options that fit your needs.
- * When your component renders, `useNewNoteSubscription` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useNewNoteSubscription` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -882,7 +882,7 @@ export const UpdatedCommentDocument = gql`
  * __useUpdatedCommentSubscription__
  *
  * To run a query within a React component, call `useUpdatedCommentSubscription` and pass it any options that fit your needs.
- * When your component renders, `useUpdatedCommentSubscription` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useUpdatedCommentSubscription` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -910,7 +910,7 @@ export const UpdatedNoteDocument = gql`
  * __useUpdatedNoteSubscription__
  *
  * To run a query within a React component, call `useUpdatedNoteSubscription` and pass it any options that fit your needs.
- * When your component renders, `useUpdatedNoteSubscription` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useUpdatedNoteSubscription` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;

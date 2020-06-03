@@ -20,6 +20,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": false
   },
-  "files": ["src/bin.ts", "src/types.d.ts"],
+  "include": ["src"],
   "exclude": ["node_modules"]
 }

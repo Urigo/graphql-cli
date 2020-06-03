@@ -1,5 +1,16 @@
 {
   "name": "graphql-cli",
+  "description": "Command line tool for common GraphQL development workflows",
+  "keywords": ["graphql", "graphql-cli", "cli"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Urigo/graphql-cli"
+  },
+  "author": {
+    "name": "Uri Goldshtein",
+    "email": "uri.goldshtein@gmail.com",
+    "url": "https://github.com/Urigo"
+  },
   "version": "4.0.1-beta.6",
   "license": "MIT",
   "main": "dist/index.js",
@@ -14,24 +25,11 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@test-graphql-cli/common": "^4.0.1-beta.6",
-    "@test-graphql-cli/init": "^4.0.1-beta.6",
-    "chalk": "4.0.0",
-    "commander": "5.1.0",
+    "@graphql-cli/common": "4.0.1-beta.6",
+    "@graphql-cli/init": "4.0.1-beta.6",
+    "open": "7.0.4",
     "globby": "11.0.1",
-    "graphql-config": "3.0.2",
-    "inquirer": "7.1.0",
-    "latest-version": "5.1.0",
-    "log-symbols": "4.0.0",
-    "npm-programmatic": "0.0.12",
-    "resolve-from": "5.0.0",
-    "yarn-programmatic": "0.1.2"
-  },
-  "devDependencies": {
-    "@types/inquirer": "6.5.0",
-    "@types/node": "13.13.9",
-    "graphql": "15.0.0",
-    "ts-node": "8.10.2",
-    "typescript": "3.9.3"
+    "graphql-config": "^3.0.2",
+    "yargs": "^15.3.1"
   }
 }

@@ -1,0 +1,25 @@
+{
+  "name": "@graphql-cli/loaders",
+  "description": "Internal usage",
+  "version": "4.0.1-beta.6",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "peerDependencies": {
+    "graphql": "^14.0.0 || ^15.0.0"
+  },
+  "dependencies": {
+    "@graphql-tools/apollo-engine-loader": "^6.0.0",
+    "@graphql-tools/code-file-loader": "^6.0.0",
+    "@graphql-tools/git-loader": "^6.0.0",
+    "@graphql-tools/github-loader": "^6.0.0",
+    "@graphql-tools/prisma-loader": "^6.0.0",
+    "@graphql-tools/url-loader": "^6.0.0",
+    "@graphql-tools/utils": "^6.0.0"
+  }
+}

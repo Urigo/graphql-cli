@@ -2,13 +2,13 @@
 
 `graphql-cli` allow you to write your own plugin/extenion, and intergrate external tools and configuration, and run it from a single CLI.
 
-The current implementation of `graphql-cli` is using [Commander](https://github.com/tj/commander.js#common-option-types-boolean-and-value) to manage it's CLI commands, and it exposes a ready-to-use `Commander` instance that you can extend and add logic to it.
+The current implementation of `graphql-cli` is using [Yargs](https://yargs.js.org/) to manage it's CLI commands.
 
 Plugins and extension are treated as NodeJS module by the `graphql-cli`, so it means you can use JavaScript/TypeScript/Any other super-set of JavaScript to write your extension. It means that you plugin will be loaded by it's name under `node_modules` - for example `graphql-cli my-custom-plugin ...`.
 
 `graphql-cli` also supports `graphql-config`, so it can help you easily load your GraphQL schema, operations and configuration from a unified config file.
 
-> If you are wrapping an existing tool that has it's own CLI already, consider to expose a programtic API so it will be easier to consume.
+> If you are wrapping an existing tool that has it's own CLI already, consider to expose a programatic API so it will be easier to consume.
 
 ### TL;DR
 
@@ -18,52 +18,32 @@ Also, inside this repo, under `packages/commands` you can find a set of plugins 
 
 ### Getting Started
 
-Start by creating a simple JavaScript/TypeScript project, according to your preference, and have your `index` file exporting a variable called `plugin`, structed as object, with `init` method.
-
-The `init` method will get trigged by the CLI host, and will pass the following to your method:
-
-- `cwd` - The current directory.
-- `program` - A `commander` instance you can use to register your CLI commands.
-- `loadProjectConfig` - A method you can use to load a GraphQL schema or documents, based on `graphql-config`.
-- `reportError` - Helper method that allow you to report errors back to the GraphQL CLI, and effect the exit code of the CLI host. It's useful if you are dealing with async code in your extension.
-
-It should be similar to this if you are using plain JavaScript:
-
-```js
-module.exports = {
-  plugin: {
-    init: ({ cwd, program, loadProjectConfig, reportError }) => {
-      // Your plugin code here, you can use "program" to register sub-commands.
-    }
-  }
-};
-```
-
-Or, with TypeScript:
+Start by creating a simple JavaScript/TypeScript project, according to your preference. Install `@graphql-cli/common` package and use `defineCommand` utility in your entry point (usually `index` file):
 
 ```ts
-import { plugin } from '@test-graphql-cli/common';
+import { defineCommand } from '@graphql-cli/common';
 
-export const plugin: CliPlugin = {
-  init({ cwd, program, loadProjectConfig, reportError }) {
-    // Your plugin code here
-  }
-};
+export default defineCommand((api) => {
+  return {};
+});
 ```
 
-## Registering CLI sub-commands
-
-To register your CLI commands, use the `program` instance:
+To register your CLI command, give it a name first. Use the `command` property:
 
 ```ts
-program.command('my-plugin').action(async (cmd: string) => {
-  // do something
+export default defineCommand((api) => {
+  return {
+    command: 'my-plugin',
+    async handler() {
+      // code here
+    },
+  };
 });
 ```
 
 Now, your plugin will be avaiable to use with the following command: `graphql my-plugin`.
 
-You can also add custom validations, flags, default values and much more with Commander. [You can read the documentation here](https://github.com/tj/commander.js#common-option-types-boolean-and-value).
+You can also add custom validations, flags, default values and much more with Yargs. [You can read the documentation here](https://yargs.js.org/docs/#api-commandcmd-desc-module).
 
 ## Testing your plugin locally
 
@@ -83,20 +63,33 @@ graphql ./src/index.js do-something
 
 ## Loading GraphQL Schema
 
-To easily load GraphQL schema, you can use `loadProjectConfig` to get it from a `graphql-config` file:
+To easily load GraphQL schema, you can use `graphql-config`:
 
 ```ts
-import { plugin } from '@test-graphql-cli/common';
+import { defineCommand } from '@graphql-cli/common';
 
-export const plugin: CliPlugin = {
-  async init({ cwd, program, loadProjectConfig, reportError }) {
-    const config = await loadProjectConfig();
-    const schema = await config.getSchema();
-  }
-};
+export default defineCommand((api) => {
+  return {
+    command: 'my-plugin',
+    builder(build) {
+      return build.options({
+        project: {
+          type: 'string',
+          describe: 'Name of your project',
+        },
+      });
+    },
+    async handler(args) {
+      // use graphql-config and find configuration
+      const config = await api.useConfig();
+      // pick project
+      const project = args.project ? config.getProject(args.project) : config.getDefault();
+      // get schema
+      const schema = await config.getSchema();
+    },
+  };
+});
 ```
-
-> You can also extend the `loadProjectConfig` behavior by specifying custom loaders and extensions.
 
 If you are using `graphql-config` to define your configuration, and you wish to load your extenion config from it, do:
 
@@ -108,23 +101,19 @@ const extensionConfig = await config.extension<MyConfig>('my-plugin');
 
 ## Error Handling
 
-If you wish to fail the execution of your plugin and report it back to GraphQL CLI host, you should use `reportError`:
+If you wish to fail the execution of your plugin and report it back to GraphQL CLI host, simply throw an error:
 
 ```ts
-import { plugin } from '@test-graphql-cli/common';
+import { defineCommand } from '@graphql-cli/common';
 
-export const plugin: CliPlugin = {
-  async init({ cwd, program, loadProjectConfig, reportError }) {
-    try {
-      // do something risky
-      // or, throw:
-
+export default defineCommand(() => {
+  return {
+    command: 'check-if-missing',
+    handler() {
       if (somethingIsMissing) {
-        return reportError(new Error(`Ooops, something is missing`));
+        throw new Error(`Ooops, something is missing`);
       }
-    } catch (e) {
-      reportError(e);
-    }
-  }
-};
+    },
+  };
+});
 ```

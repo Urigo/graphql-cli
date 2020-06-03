@@ -1,89 +1,56 @@
-import { Command } from 'commander';
-import { getPluginByName } from './get-plugin';
-import chalk from 'chalk';
+import yargs from 'yargs';
 import globby from 'globby';
 import { join } from 'path';
-import logSymbols from 'log-symbols';
-import { LoadConfigOptions } from '@test-graphql-cli/common';
+import { CommandFactory, useConfig, useLoaders } from '@graphql-cli/common';
+import discover from './discover';
 
-const reportError = (e: Error | string) => {
-  console.error(logSymbols.error, e instanceof Error ? e.message || e : e);
-  process.exit(1);
-};
+export async function cli(): Promise<void> {
+  const program = yargs
+    .scriptName('graphql')
+    .detectLocale(false)
+    .epilog('Visit https://github.com/Urigo/graphql-cli for more information')
+    .version();
 
-export async function cli(argv = process.argv): Promise<void> {
-  try {
-    const rootCommand = argv[2];
+  const commandPackageNames = await discoverCommands();
+  const commandFactories = await Promise.all(commandPackageNames.map(loadCommand));
 
-    if (!rootCommand || rootCommand === '') {
-      const foundPlugins = await globby([`node_modules/@test-graphql-cli/**`, `!node_modules/@test-graphql-cli/common`], { cwd: process.cwd(), onlyDirectories: true, deep: 1 });
-      const availableCommands = await Promise.all(
-        foundPlugins.map(
-          pluginPath => import(join(process.cwd(), pluginPath + '/' + 'package.json')).then(m => m.default || m).then(packageJson => `  - ${chalk.cyan(packageJson.name.replace('@test-graphql-cli/', ''))}: ${packageJson.description}\n`)
-        )
-      );
+  [discover, ...commandFactories].forEach((cmd) => {
+    program.command(
+      cmd({
+        useConfig,
+        useLoaders,
+      })
+    );
+  });
 
-      throw new Error(
-        `\n` +
-        `GraphQL CLI Usage:\n` +
-        `${chalk.cyan(`graphql`)} requires a command to run successfully.\n` +
-        `Check out https://github.com/Urigo/graphql-cli for all available commands and how to use them.\n\n` +
-        (
-          availableCommands.length ? 
-          `Detected available commands: \n\n` +
-          availableCommands.join('\n') : ''
-        )
-      );
-    }
+  program.demandCommand().recommendCommands().help().showHelpOnFail(false).argv;
+}
 
-    const plugin = await getPluginByName(rootCommand);
-    const program = new Command();
+async function discoverCommands() {
+  const commandNames: string[] = [];
+  const paths = require.resolve.paths('graphql-cli');
 
-    program.option('-p, --project <projectName>');
+  await Promise.all(paths.map(findInDirectory));
 
-    let projectName = 'default';
-
-    const loadGraphQLConfig = async (loadConfigOptions: LoadConfigOptions = {}) => {
-      const graphqlConfig = await import('graphql-config');
-      return graphqlConfig.loadConfig({
-        rootDir: process.cwd(),
-        throwOnEmpty: true,
-        throwOnMissing: true,
-        ...loadConfigOptions
-      });
-    }
-
-    const loadProjectConfig = async (loadConfigOptions: LoadConfigOptions = {}) => {
-      const loadedGraphQLConfig = await loadGraphQLConfig(loadConfigOptions);
-      const projectNames = Object.keys(loadedGraphQLConfig.projects);
-      if (projectName && !projectNames.includes(projectName)) {
-        throw new Error(
-          `You don't have project ${projectName} so you need to specify an available project name.\n` +
-          `Available projects are; ${projectNames.join(',')}.`
-        );
-      }
-      return loadedGraphQLConfig.getProject(projectName);
-    };
-
-    await plugin.init({
-      cwd: process.cwd(),
-      program,
-      reportError,
-      loadGraphQLConfig,
-      loadProjectConfig,
+  async function findInDirectory(directory: string) {
+    const results = await globby('*', {
+      cwd: join(directory, '@graphql-cli'),
+      onlyDirectories: true,
+      deep: 1,
+      ignore: ['common', 'loaders'],
     });
 
-    // Remove the root object before running, to allow developers to write
-    // their own sub-commands.
-    // argv.splice(2, 1);
-
-    program.parse(argv);
-
-    if (program.project) {
-      projectName = program.project;
+    if (results.length) {
+      commandNames.push(...results);
     }
-
-  } catch (e) {
-    reportError(e);
   }
+
+  // unique names
+  return commandNames.filter((val, i, list) => list.indexOf(val) === i);
+}
+
+function loadCommand(name: string): CommandFactory {
+  const mod = require(`@graphql-cli/${name}`);
+
+  return mod.default || mod;
 }
