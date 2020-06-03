@@ -20,12 +20,12 @@
     "build": "tsc"
   },
   "peerDependencies": {
-    "graphql": "^14.0.0 || ^15.0.0"
+    "graphql": "15.0.0"
   },
   "dependencies": {
     "@graphql-cli/common": "4.0.1-beta.6",
     "graphback-cli": "0.12.0",
     "graphql-migrations": "0.12.0",
-    "tslib": "^2.0.0"
+    "tslib": "2.0.0"
   }
 }
