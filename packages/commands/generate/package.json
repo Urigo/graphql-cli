@@ -4,6 +4,11 @@
   "version": "4.0.1-beta.6",
   "license": "MIT",
   "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Urigo/graphql-cli",
+    "directory": "packages/commands/generate"
+  },
   "publishConfig": {
     "access": "public"
   },
