@@ -1,7 +1,11 @@
 {
   "name": "graphql-cli",
   "description": "Command line tool for common GraphQL development workflows",
-  "keywords": ["graphql", "graphql-cli", "cli"],
+  "keywords": [
+    "graphql",
+    "graphql-cli",
+    "cli"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Urigo/graphql-cli"
@@ -11,7 +15,7 @@
     "email": "uri.goldshtein@gmail.com",
     "url": "https://github.com/Urigo"
   },
-  "version": "4.0.1-beta.6",
+  "version": "4.0.0",
   "license": "MIT",
   "main": "dist/index.js",
   "publishConfig": {
@@ -25,8 +29,8 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@graphql-cli/common": "4.0.1-beta.6",
-    "@graphql-cli/init": "4.0.1-beta.6",
+    "@graphql-cli/common": "4.0.0",
+    "@graphql-cli/init": "4.0.0",
     "open": "7.0.4",
     "globby": "11.0.1",
     "graphql-config": "3.0.2",

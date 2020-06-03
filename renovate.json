@@ -1,10 +1,10 @@
 {
   "extends": [
-    "config:base",
-    ":pinVersions"
+    "config:base"
   ],
   "automerge": true,
   "major": {
     "automerge": false
-  }
+  },
+  "rangeStrategy": "replace"
 }

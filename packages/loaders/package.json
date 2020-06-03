@@ -1,7 +1,7 @@
 {
   "name": "@graphql-cli/loaders",
   "description": "Internal usage",
-  "version": "4.0.1-beta.6",
+  "version": "4.0.0",
   "license": "MIT",
   "main": "dist/index.js",
   "publishConfig": {
