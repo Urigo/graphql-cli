@@ -1,7 +1,7 @@
 {
   "name": "@graphql-cli/generate",
   "description": "Generate DB, schema, document and resolvers for your GraphQL project by using GraphBack.",
-  "version": "4.0.1-beta.6",
+  "version": "4.0.0",
   "license": "MIT",
   "main": "dist/index.js",
   "repository": {
@@ -23,7 +23,7 @@
     "graphql": "15.0.0"
   },
   "dependencies": {
-    "@graphql-cli/common": "4.0.1-beta.6",
+    "@graphql-cli/common": "4.0.0",
     "graphback-cli": "0.12.0",
     "graphql-migrations": "0.12.0",
     "tslib": "2.0.0"
