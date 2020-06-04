@@ -16,11 +16,11 @@ npm uninstall graphql-cli
 ```
 
 ## Update your configuration file
-If you are working from an existing project, the GraphQL Config file that is used by GraphQL CLI is now called `.graphqlrc.yml` (by default) instead of `.graphqlconfig`. [Other options exist](https://graphql-config.com/docs/usage) for naming the config files supported by GraphQL CLI, but this guide will assume you're using YAML syntax.
+If you are working from an existing project, the GraphQL Config file that is used by GraphQL CLI is now called `.graphqlrc.yml` (by default) instead of `.graphqlconfig`. [Other options exist](https://graphql-config.com/usage) for naming the config files supported by GraphQL CLI, but this guide will assume you're using YAML syntax.
 
 To migrate, you will first need to update your GraphQL Configuration file to match GraphQL Config's updated syntax and structure.
 
-You can [check here](https://graphql-config.com/docs/usage) for more information about the new structure.
+You can [check here](https://graphql-config.com/usage) for more information about the new structure.
 
 ###Specifying schema(s):
 
