@@ -52,11 +52,11 @@ After that, you can specify the output path of the local schema file:
 ```yaml
 schema: http://localhost:4000/graphql
 extensions:
-    codegen:
-        generates:
-            ./schema.graphql:
-                plugins:
-                    - - schema-ast
+  codegen:
+    generates:
+      ./schema.graphql:
+        plugins:
+          - schema-ast
 ```
 
 By running `graphql codegen`, the `schema.graphql` file is generated in the root path of your project.
@@ -67,9 +67,11 @@ If you want to download the schema as a `json` introspection file, you will need
 ```yaml
 schema: http://localhost:4000/graphql
 extensions:
-    codegen:
-        ./schema.json:
-            - introspection
+  codegen:
+    generates:
+      ./schema.json:
+        plugins:
+          - introspection
 ```
 
 ### `create` is no longer available: it is replaced by the `init` command.
@@ -144,9 +146,11 @@ projects:
   database:
     schema: prisma/prisma.yml
     extensions:
-        codegen:
-            src/generated/prisma-client/prisma.graphql:
-                - schema-ast
+      codegen:
+        generates:
+          ./src/generated/prisma-client/prisma.graphql:
+            plugins:
+              - schema-ast
 ```
 
 You can directly point to your `prisma.yml` file instead of the URL endpoint.
