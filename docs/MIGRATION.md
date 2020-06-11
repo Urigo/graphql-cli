@@ -53,8 +53,10 @@ After that, you can specify the output path of the local schema file:
 schema: http://localhost:4000/graphql
 extensions:
     codegen:
-        ./schema.graphql:
-            - schema-ast
+        generates:
+            ./schema.graphql:
+                plugins:
+                    - - schema-ast
 ```
 
 By running `graphql codegen`, the `schema.graphql` file is generated in the root path of your project.
