@@ -15,7 +15,7 @@
     "apollo-server-express": "2.14.3",
     "cors": "2.8.5",
     "express": "4.17.1",
-    "graphql": "15.1.0",
+    "graphql": "15.2.0",
     "graphql-config": "3.0.2",
     "graphql-tag": "2.10.3",
     "knex": "0.21.1",
