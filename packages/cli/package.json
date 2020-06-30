@@ -33,7 +33,7 @@
     "@graphql-cli/init": "4.0.0",
     "open": "7.0.4",
     "globby": "11.0.1",
-    "graphql-config": "3.0.2",
+    "graphql-config": "3.0.3",
     "yargs": "15.3.1"
   }
 }
