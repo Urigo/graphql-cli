@@ -24,14 +24,14 @@
     "@graphql-cli/serve": "4.0.0",
     "@graphql-cli/similar": "2.1.0",
     "@graphql-cli/validate": "2.1.0",
-    "graphql": "15.2.0",
+    "graphql": "15.3.0",
     "graphql-cli": "4.0.0",
     "schemats": "3.0.3",
     "tslint": "6.1.2",
     "typescript": "3.9.6"
   },
   "resolutions": {
-    "graphql": "15.2.0"
+    "graphql": "15.3.0"
   },
   "author": {
     "name": "Arda TANRIKULU"
