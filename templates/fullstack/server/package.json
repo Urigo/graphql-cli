@@ -17,7 +17,7 @@
     "express": "4.17.1",
     "graphql": "15.3.0",
     "graphql-config": "3.0.3",
-    "graphql-tag": "2.10.3",
+    "graphql-tag": "2.10.4",
     "knex": "0.21.1",
     "pg": "8.2.2",
     "ts-node": "8.10.2",
