@@ -11,7 +11,7 @@
   },
   "peerDependencies": {
     "graphql-config": "3.0.3",
-    "yargs": "15.4.0"
+    "yargs": "15.4.1"
   },
   "dependencies": {
     "@graphql-tools/load": "6.0.12",
