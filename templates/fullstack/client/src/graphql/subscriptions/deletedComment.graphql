@@ -1,5 +1,0 @@
-subscription deletedComment {
-  deletedComment {
-      ...CommentFields
-  }
-} 

@@ -1,5 +1,0 @@
-mutation deleteComment($input: CommentInput!) {
-  deleteComment(input: $input) {
-      ...CommentFields
-  }
-}

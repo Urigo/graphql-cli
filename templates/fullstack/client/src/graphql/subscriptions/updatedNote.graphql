@@ -1,5 +1,0 @@
-subscription updatedNote {
-  updatedNote {
-      ...NoteFields
-  }
-} 

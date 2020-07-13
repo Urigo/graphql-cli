@@ -1,5 +1,0 @@
-query findComments($fields: CommentInput!, $limit: Int, $offset: Int) {
-    findComments(fields: $fields, limit: $limit, offset: $offset) {
-      ...CommentExpandedFields
-    }
-  }

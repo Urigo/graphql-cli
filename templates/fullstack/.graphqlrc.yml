@@ -34,8 +34,8 @@ extensions:
     crud:
       create: true
       update: true
-      findAll: true
       find: true
+      findOne: true
       delete: true
       subCreate: true
       subUpdate: true
@@ -43,15 +43,9 @@ extensions:
     ## Codegen plugins
     plugins:
         graphback-schema:
-          format: 'graphql'
-          outputPath: ./server/src/schema
+          outputPath: ./server/src/schema/schema.graphql
         graphback-client:
-          format: 'graphql'
-          outputPath: ./client/src/graphql
-        graphback-resolvers:
-          format: ts
-          outputPath: ./server/src/resolvers
-  ## Knex DB Migration config
+          outputFile: ./client/src/graphql/graphback.graphql
   dbmigrations:
     ## See knex.js for db specific config format
     client: pg

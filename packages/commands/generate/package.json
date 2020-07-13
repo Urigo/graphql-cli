@@ -24,8 +24,8 @@
   },
   "dependencies": {
     "@graphql-cli/common": "4.0.0",
-    "graphback-cli": "0.12.1",
     "graphql-migrations": "0.14.1",
+    "graphback-cli": "0.14.1",
     "tslib": "2.0.0"
   }
 }

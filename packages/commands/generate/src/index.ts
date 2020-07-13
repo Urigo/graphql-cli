@@ -1,8 +1,7 @@
 import { defineCommand } from '@graphql-cli/common';
-import { generateUsingPlugins, createDBResources } from 'graphback-cli';
+import { generateUsingPlugins } from 'graphback-cli';
 
 interface CliFlags {
-  db: boolean;
   backend: boolean;
   silent: boolean;
   watch: boolean;
@@ -11,11 +10,8 @@ interface CliFlags {
 export default defineCommand<{}, CliFlags>(() => {
   return {
     command: 'generate',
-    builder(builder) {
+    builder(builder: any) {
       return builder.options({
-        db: {
-          type: 'boolean',
-        },
         backend: {
           type: 'boolean',
         },
@@ -29,14 +25,8 @@ export default defineCommand<{}, CliFlags>(() => {
         },
       });
     },
-    async handler(args) {
-      if (args.backend) {
-        await generateUsingPlugins(args);
-      } else if (args.db) {
-        await createDBResources({});
-      } else {
-        await generateUsingPlugins(args);
-      }
+    async handler(args: any) {
+      return generateUsingPlugins(args);
     },
   };
 });
