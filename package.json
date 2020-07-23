@@ -17,6 +17,7 @@
     "release:canary": "node scripts/release.js --canary",
     "test": "lerna run test",
     "build": "lerna run build",
+    "now-build": "(cd website && yarn && yarn build && mv build ../public)",
     "postbuild": "yarn fix-bin",
     "fix-bin": "node scripts/fix-bin.js",
     "format": "prettier --write \"**/*.{ts,tsx}\""
