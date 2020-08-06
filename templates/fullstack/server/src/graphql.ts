@@ -1,26 +1,37 @@
 import { join } from 'path';
 import { loadFiles } from '@graphql-tools/load-files';
-import { ApolloServer, PubSub } from 'apollo-server-express';
-import { buildSchema } from 'graphql';
-import { createKnexPGCRUDRuntimeServices } from '@graphback/runtime-knex';
-import { createDB } from './db';
-import { models } from './resolvers/models';
-import resolvers from './resolvers/resolvers';
+import { ApolloServer } from 'apollo-server-express';
+import { buildGraphbackAPI } from 'graphback';
+import { createKnexDbProvider } from '@graphback/runtime-knex';
+import { migrateDB, removeNonSafeOperationsFilter } from 'graphql-migrations';
+import { createDB, getConfig } from './db';
+import { SchemaCRUDPlugin } from '@graphback/codegen-schema';
 
 /**
  * Creates Apollo server
  */
 export const createApolloServer = async () => {
   const db = await createDB();
-  const pubSub = new PubSub();
+  const dbConfig = await getConfig();
 
-  const typeDefs = (await loadFiles(join(__dirname, '/schema/'))).join('\n');
-  const schema = buildSchema(typeDefs);
-  const context = createKnexPGCRUDRuntimeServices(models, schema, db, pubSub);
+  const schema = (await loadFiles(join(__dirname, '../../model/'))).join('\n');
+  const { resolvers, contextCreator, typeDefs} = buildGraphbackAPI(schema, {
+    dataProviderCreator: createKnexDbProvider(db),
+    plugins: [new SchemaCRUDPlugin({
+      outputPath: "./src/schema/schema.graphql"
+    })]
+  });
+
+  migrateDB(dbConfig, typeDefs, {
+    operationFilter: removeNonSafeOperationsFilter
+  }).then(() => {
+    console.log("Migrated database");
+  });
+
   const apolloServer = new ApolloServer({
-    typeDefs: typeDefs,
+    typeDefs,
     resolvers,
-    context,
+    context: contextCreator,
     playground: true,
   });
 

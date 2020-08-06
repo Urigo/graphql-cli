@@ -1,5 +1,0 @@
-mutation createNote($input: NoteInput!) {
-  createNote(input: $input) {
-      ...NoteFields
-  }
-}

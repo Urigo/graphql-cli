@@ -56,5 +56,8 @@
   },
   "resolutions": {
     "graphql": "15.3.0"
+  },
+  "dependencies": {
+    "@types/yargs": "15.0.5"
   }
 }

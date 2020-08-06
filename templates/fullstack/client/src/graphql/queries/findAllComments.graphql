@@ -1,5 +1,0 @@
-query findAllComments($limit: Int, $offset: Int) {
-    findAllComments(limit: $limit, offset: $offset) {
-      ...CommentExpandedFields
-    }
-  }

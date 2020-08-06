@@ -7,7 +7,10 @@
     "start": "ts-node src/index.ts"
   },
   "dependencies": {
+    "graphback": "0.15.1",
     "@graphback/runtime-knex": "0.15.1",
+    "@graphback/codegen-schema": "0.15.1",
+    "graphql-migrations": "0.15.1",
     "@graphql-tools/load-files": "6.0.16",
     "@types/cors": "2.8.7",
     "@types/express": "4.17.7",

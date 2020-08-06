@@ -1,0 +1,147 @@
+fragment NoteFields on Note {
+   id
+   title
+   description
+
+} 
+
+fragment NoteExpandedFields on Note {
+   id
+   title
+   description
+   comments {
+      id
+      text
+      description
+   }
+} 
+
+fragment CommentFields on Comment {
+   id
+   text
+   description
+
+} 
+
+fragment CommentExpandedFields on Comment {
+   id
+   text
+   description
+   note {
+      id
+      title
+      description
+   }
+} 
+
+query findNotes($filter: NoteFilter, $page: PageRequest, $orderBy: OrderByInput) {
+    findNotes(filter: $filter, page: $page, orderBy: $orderBy) {
+      items {
+        ...NoteExpandedFields
+      }
+      offset
+      limit
+      count
+    }
+  }
+
+query getNote($id: ID!) {
+    getNote(id: $id) {
+      ...NoteExpandedFields
+    }
+  }
+
+query findComments($filter: CommentFilter, $page: PageRequest, $orderBy: OrderByInput) {
+    findComments(filter: $filter, page: $page, orderBy: $orderBy) {
+      items {
+        ...CommentExpandedFields
+      }
+      offset
+      limit
+      count
+    }
+  }
+
+query getComment($id: ID!) {
+    getComment(id: $id) {
+      ...CommentExpandedFields
+    }
+  }
+
+mutation createNote($input: CreateNoteInput!) {
+  createNote(input: $input) {
+      ...NoteFields
+  }
+}
+
+
+mutation updateNote($input: MutateNoteInput!) {
+  updateNote(input: $input) {
+      ...NoteFields
+  }
+}
+
+
+mutation deleteNote($input: MutateNoteInput!) {
+  deleteNote(input: $input) {
+      ...NoteFields
+  }
+}
+
+
+mutation createComment($input: CreateCommentInput!) {
+  createComment(input: $input) {
+      ...CommentFields
+  }
+}
+
+
+mutation updateComment($input: MutateCommentInput!) {
+  updateComment(input: $input) {
+      ...CommentFields
+  }
+}
+
+
+mutation deleteComment($input: MutateCommentInput!) {
+  deleteComment(input: $input) {
+      ...CommentFields
+  }
+}
+
+
+subscription newNote($filter: NoteSubscriptionFilter) {
+  newNote(filter: $filter) {
+      ...NoteFields
+  }
+} 
+
+subscription updatedNote($filter: NoteSubscriptionFilter) {
+  updatedNote(filter: $filter) {
+      ...NoteFields
+  }
+} 
+
+subscription deletedNote($filter: NoteSubscriptionFilter) {
+  deletedNote(filter: $filter) {
+      ...NoteFields
+  }
+} 
+
+subscription newComment($filter: CommentSubscriptionFilter) {
+  newComment(filter: $filter) {
+      ...CommentFields
+  }
+} 
+
+subscription updatedComment($filter: CommentSubscriptionFilter) {
+  updatedComment(filter: $filter) {
+      ...CommentFields
+  }
+} 
+
+subscription deletedComment($filter: CommentSubscriptionFilter) {
+  deletedComment(filter: $filter) {
+      ...CommentFields
+  }
+} 

@@ -1,5 +1,0 @@
-mutation deleteNote($input: NoteInput!) {
-  deleteNote(input: $input) {
-      ...NoteFields
-  }
-}

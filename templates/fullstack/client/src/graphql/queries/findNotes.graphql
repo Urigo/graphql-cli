@@ -1,5 +1,0 @@
-query findNotes($fields: NoteInput!, $limit: Int, $offset: Int) {
-    findNotes(fields: $fields, limit: $limit, offset: $offset) {
-      ...NoteExpandedFields
-    }
-  }

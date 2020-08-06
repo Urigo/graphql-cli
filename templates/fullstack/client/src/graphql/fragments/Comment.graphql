@@ -1,6 +1,0 @@
-fragment CommentFields on Comment {
-   id
-   text
-   description
-
-} 
