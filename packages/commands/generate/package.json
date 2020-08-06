@@ -25,6 +25,6 @@
   "dependencies": {
     "@graphql-cli/common": "4.0.0",
     "graphback-cli": "0.15.1",
-    "tslib": "2.0.0"
+    "tslib": "2.0.1"
   }
 }
