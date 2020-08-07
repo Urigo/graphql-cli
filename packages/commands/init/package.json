@@ -31,7 +31,7 @@
     "js-yaml": "3.14.0",
     "latest-version": "5.1.0",
     "openapi-to-graphql": "2.2.4",
-    "ora": "4.0.5",
+    "ora": "4.1.1",
     "rimraf": "3.0.2",
     "simple-git": "2.17.0",
     "string-env-interpolation": "1.0.1",
