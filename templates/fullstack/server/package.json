@@ -24,7 +24,7 @@
     "knex": "0.21.4",
     "pg": "8.3.0",
     "ts-node": "8.10.2",
-    "ts-node-dev": "1.0.0-pre.56",
+    "ts-node-dev": "1.0.0-pre.57",
     "typescript": "3.9.7"
   }
 }
