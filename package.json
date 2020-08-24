@@ -34,7 +34,7 @@
     "graphql": "15.3.0",
     "husky": "4.2.5",
     "lerna": "3.22.1",
-    "lint-staged": "10.2.9",
+    "lint-staged": "10.2.11",
     "prettier": "2.1.0",
     "rimraf": "3.0.2",
     "ts-node": "8.10.2",
