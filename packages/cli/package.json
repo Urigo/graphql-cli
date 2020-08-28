@@ -31,7 +31,7 @@
   "dependencies": {
     "@graphql-cli/common": "4.0.0",
     "@graphql-cli/init": "4.0.0",
-    "open": "7.2.0",
+    "open": "7.2.1",
     "globby": "11.0.1",
     "graphql-config": "3.0.3",
     "yargs": "15.4.1"
