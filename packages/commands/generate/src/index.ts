@@ -1,32 +1,12 @@
 import { defineCommand } from '@graphql-cli/common';
-import { generateUsingPlugins } from 'graphback-cli';
+import { command, builder as builderConfig, handler } from 'graphback-cli';
 
-interface CliFlags {
-  backend: boolean;
-  silent: boolean;
-  watch: boolean;
-}
-
-export default defineCommand<{}, CliFlags>(() => {
+export default defineCommand(() => {
   return {
-    command: 'generate',
+    command,
     builder(builder: any) {
-      return builder.options({
-        backend: {
-          type: 'boolean',
-        },
-        silent: {
-          type: 'boolean',
-        },
-        watch: {
-          alias: 'w',
-          type: 'boolean',
-          describe: 'Watch for changes and execute generation automatically',
-        },
-      });
+      return builder.options(builderConfig);
     },
-    async handler(args: any) {
-      return generateUsingPlugins(args);
-    },
+    handler,
   };
 });
