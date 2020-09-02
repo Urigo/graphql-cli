@@ -81,16 +81,16 @@ export default defineCommand<
       await writeGraphQLConfig(context);
 
       await project.writePackage({
-        path: context.type,
+        path: context.path,
         name: projectName,
         initializationType,
       });
 
       const successMessages = [
         `🚀  GraphQL CLI project successfully initialized:`,
-        context.type,
+        context.name,
         'Next Steps:',
-        `- Change directory to the project folder - ${chalk.cyan(`cd ${context.type}`)}`,
+        `- Change directory to the project folder - ${chalk.cyan(`cd ${context.path}`)}`,
         `- Run ${chalk.cyan(`yarn install`)} to install dependencies`,
       ];
 
