@@ -1,0 +1,15 @@
+schema: schema/schema.graphql
+extensions:
+  codegen:
+    generates:
+      ./src/generated-types.ts:
+        config:
+          mappers:
+            Comment: './generated-db-types#comment'
+            Note: './generated-db-types#note'
+          useIndexSignature: true
+          skipDocumentsValidation: true
+        plugins:
+          - add: '/* tslint:disable */'
+          - typescript
+          - typescript-resolvers
