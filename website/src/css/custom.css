@@ -1,0 +1,24 @@
+:root {
+  --ifm-color-primary: #8c0082;
+  --ifm-color-primary-dark: #8c0082;
+  --ifm-color-primary-darker: #8c0082;
+  --ifm-color-primary-darkest: #8c0082;
+  --ifm-color-primary-light: #8c0082;
+  --ifm-color-primary-lighter: #8c0082;
+  --ifm-color-primary-lightest: #8c0082;
+
+  --ifm-color-secondary: #bfc7d5;
+  --ifm-footer-link-hover-color: #fff;
+}
+
+a {
+  transition: all 0.2s ease 0s;
+}
+
+button {
+  --ifm-color-content: #fff;
+}
+
+td > code {
+  white-space: nowrap;
+}
