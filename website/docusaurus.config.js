@@ -18,7 +18,7 @@ module.exports = {
         alt: 'GraphQL CLI Logo',
         src: 'img/logo.png',
       },
-      links: [
+      items: [
         {
           to: '/introduction',
           activeBasePath: '',
