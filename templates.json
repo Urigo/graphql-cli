@@ -1,0 +1,7 @@
+{
+    "Full Stack Template with React Hooks, Apollo, NodeJS and PostgreSQL": {
+        "repository": "https://github.com/Urigo/graphql-cli.git",
+        "path": "templates/fullstack",
+        "projectType": "Full Stack"
+    }
+}

@@ -1,0 +1,17 @@
+""" @model """
+type Note {
+  id: ID!
+  title: String!
+  description: String
+  """
+  @oneToMany(field: 'note')
+  """
+  comments: [Comment]!
+}
+
+""" @model """
+type Comment {
+  id: ID!
+  text: String
+  description: String
+}

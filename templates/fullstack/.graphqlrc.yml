@@ -1,0 +1,57 @@
+schema: ./server/src/schema/**/*.graphql
+documents: ./client/src/graphql/**/*.graphql
+extensions:
+  codegen:
+    generates:
+      ./client/src/generated-types.tsx:
+        config:
+          withComponent: false
+          withHOC: false
+          withHooks: true
+          skipDocumentsValidation: true
+        plugins:
+          - add: '/* tslint:disable */'
+          - typescript
+          - typescript-operations
+          - typescript-react-apollo
+      ./server/src/generated-types.ts:
+        config:
+          contextType: '@graphback/runtime#GraphbackRuntimeContext'
+          mappers:
+            Comment: './generated-db-types#comment'
+            Note: './generated-db-types#note'
+          useIndexSignature: true
+          skipDocumentsValidation: true
+        plugins:
+          - add: '/* tslint:disable */'
+          - typescript
+          - typescript-resolvers
+  # Graphback configuration
+  graphback:
+    ##  Input schema
+    model: ./model
+    ## Global configuration for CRUD generator
+    crud:
+      create: true
+      update: true
+      find: true
+      findOne: true
+      delete: true
+      subCreate: true
+      subUpdate: true
+      subDelete: true
+    ## Codegen plugins
+    plugins:
+        graphback-schema:
+          outputPath: ./server/src/schema/schema.graphql
+        graphback-client:
+          outputFile: ./client/src/graphql/graphback.graphql
+  dbmigrations:
+    ## See knex.js for db specific config format
+    client: pg
+    connection:
+      user: postgresql
+      password: postgres
+      database: users
+      host: localhost
+      port: 55432

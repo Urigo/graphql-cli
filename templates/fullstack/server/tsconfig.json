@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "declarationDir": "./types",
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "resolveJsonModule": true,
+    "noImplicitAny": false,
+    "preserveConstEnums": true,
+    "strict": false,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "target": "esnext",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "importHelpers": true,
+    "alwaysStrict": false,
+    "sourceMap": true,
+    "declaration": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitThis": false
+  },
+}
