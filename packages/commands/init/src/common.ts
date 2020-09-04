@@ -38,7 +38,7 @@ export async function askForEnum<T, Enum extends StandardEnum<T>>(options: {
 export interface Context {
   name: string;
   path: string;
-  type: ProjectType;
+  type?: ProjectType;
   graphqlConfig: any;
 }
 

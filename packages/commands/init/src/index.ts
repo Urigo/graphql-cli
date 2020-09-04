@@ -39,17 +39,16 @@ export default defineCommand<
     },
     async handler(args) {
       let { projectName, templateName, templateUrl } = args;
-
+      const initializationType = await askForInitializationType();
+      
       const context: Context = {
         name: projectName,
         path: process.cwd(),
-        type: await askForProject(),
         graphqlConfig: {
           extensions: {},
         },
       };
 
-      const initializationType = await askForInitializationType(context.type!);
       const project = managePackageManifest();
 
       project.addDependency('graphql-cli');
@@ -67,6 +66,10 @@ export default defineCommand<
         });
       }
 
+      if (initializationType !== InitializationType.FromScratch) {
+        context.type = await askForProject();
+      }
+
       loadGraphQLConfig(context);
 
       if (initializationType === InitializationType.ExistingOpenAPI) {
@@ -78,13 +81,13 @@ export default defineCommand<
       await askForCodegen({ context, project });
       await askForInspector({ context, project });
 
-      await writeGraphQLConfig(context);
-
-      await project.writePackage({
+      await Promise.all([
+        writeGraphQLConfig(context),
+        project.writePackage({
         path: context.path,
         name: projectName,
         initializationType,
-      });
+      })]);
 
       const successMessages = [
         `🚀  GraphQL CLI project successfully initialized:`,
@@ -115,12 +118,12 @@ function askForProject() {
   });
 }
 
-function askForInitializationType(projectType: ProjectType) {
+function askForInitializationType() {
   return askForEnum({
     enum: InitializationType,
     message: 'Select the best option for you',
     defaultValue: InitializationType.FromScratch,
-    ignoreList: projectType === ProjectType.FrontendOnly ? [InitializationType.ExistingOpenAPI] : [],
+    ignoreList: [],
   });
 }
 
