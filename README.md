@@ -109,14 +109,8 @@ extensions:
 
 - [`similar`]((https://github.com/kamilkisiela/graphql-inspector/tree/master/packages/graphql-cli/similar)) - Get a list of similar types in order to find duplicates using [GraphQL Inspector](https://graphql-inspector.com/docs/essentials/similar).
 - [`validate`]((https://github.com/kamilkisiela/graphql-inspector/tree/master/packages/graphql-cli/validate)) - Validates documents against a schema and looks for deprecated usage using [GraphQL Inspector](https://graphql-inspector.com/docs/essentials/validate).
-- [`serve`](https://github.com/Urigo/graphql-cli/tree/master/packages/commands/serve) - Serves a faked GraphQL server, you can define your own mocks for each types and scalars inside GraphQL Config like below:
+- [`serve`](https://github.com/Urigo/graphql-cli/tree/master/packages/commands/serve) - Serves a GraphQL server, using an in memory database and a defined GraphQL schema. Please read through [serve documentation](./website/docs/command-serve.md) to learn more about this command.
 
-```yml
-extensions:
-  serve:
-    mocks:
-      DateTime: graphql-scalars#DateTimeMock #Imports DateTimeMock function from graphql-scalars for mocking DateTimeMock
-```
 
 More plugins are definitely welcome! Please check the existing ones to see how to use GraphQL Config and GraphQL CLI API.
 

@@ -15,7 +15,9 @@ export async function askForCodegen({ context, project }: { context: Context; pr
       project.addDependency('@graphql-cli/codegen');
       project.addScript('graphql:codegen', 'graphql codegen');
 
-      context.graphqlConfig.extensions.codegen = {};
+      context.graphqlConfig.extensions.codegen = {
+        generates: {},
+      };
       let codegenPlugins = new Set<string>();
       if (context.type === ProjectType.FullStack || context.type === ProjectType.BackendOnly) {
         const backendType = await askForEnum({

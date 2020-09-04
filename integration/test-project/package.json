@@ -1,0 +1,31 @@
+{
+  "private": true,
+  "name": "test-project",
+  "version": "4.0.0",
+  "dependencies": {
+    "@graphql-tools/load-files": "6.1.0",
+    "@types/node": "13.13.15",
+    "graphql": "15.3.0",
+    "graphql-config": "3.0.3",
+    "graphql-tag": "2.11.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/add": "1.17.7",
+    "@graphql-codegen/typescript": "1.17.9",
+    "@graphql-codegen/typescript-operations": "1.17.8",
+    "@graphql-codegen/typescript-react-apollo": "1.17.7",
+    "@graphql-codegen/typescript-resolvers": "1.17.9",
+    "@graphql-cli/codegen": "1.17.8",
+    "@graphql-cli/coverage": "2.1.0",
+    "@graphql-cli/diff": "2.1.0",
+    "@graphql-cli/generate": "4.0.0",
+    "@graphql-cli/serve": "4.0.0",
+    "@graphql-cli/similar": "2.1.0",
+    "@graphql-cli/validate": "2.1.0",
+    "graphql": "15.3.0",
+    "graphql-cli": "4.0.0",
+    "tslint": "6.1.3",
+    "typescript": "3.9.7"
+  },
+  "license": "MIT"
+}

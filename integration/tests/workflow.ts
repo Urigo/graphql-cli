@@ -4,7 +4,7 @@ import { resolve } from 'path';
 import { execSync } from 'child_process';
 
 ava('Test cli workflow', (t: ExecutionContext) => {
-  const basePath = resolve(`${__dirname}/../../templates/fullstack`);
+  const basePath = resolve(`${__dirname}/../test-project`);
   process.chdir(basePath);
   // Workaround for github actions symlinking issue
   const graphQLCmd = 'node ../../packages/cli/dist/index.js';
