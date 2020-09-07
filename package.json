@@ -31,7 +31,7 @@
     "@types/rimraf": "3.0.0",
     "@types/tmp": "0.2.0",
     "graphql": "15.3.0",
-    "husky": "4.2.5",
+    "husky": "4.3.0",
     "lerna": "3.22.1",
     "lint-staged": "10.3.0",
     "prettier": "2.1.1",
