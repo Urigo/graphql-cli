@@ -23,7 +23,7 @@
     "@graphql-cli/common": "4.0.0",
     "chalk": "4.1.0",
     "cosmiconfig": "6.0.0",
-    "create-graphback": "0.16.1",
+    "create-graphback": "0.16.2",
     "cross-fetch": "3.0.5",
     "fs-extra": "9.0.1",
     "fullname": "4.0.1",
