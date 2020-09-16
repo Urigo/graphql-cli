@@ -8,6 +8,7 @@
     "packages": [
       "packages/*",
       "packages/commands/*",
+      "website",
       "integration"
     ]
   },
@@ -17,7 +18,6 @@
     "release:canary": "node scripts/release.js --canary",
     "test": "lerna run test",
     "build": "lerna run build",
-    "now-build": "(cd website && yarn && yarn build && mv build ../public)",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "deploy:website": "cd website && yarn deploy"
   },
