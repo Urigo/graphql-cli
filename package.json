@@ -18,7 +18,8 @@
     "test": "lerna run test",
     "build": "lerna run build",
     "now-build": "(cd website && yarn && yarn build && mv build ../public)",
-    "format": "prettier --write \"**/*.{ts,tsx}\""
+    "format": "prettier --write \"**/*.{ts,tsx}\"",
+    "deploy:website": "cd website && yarn deploy"
   },
   "devDependencies": {
     "@graphql-tools/load": "6.2.2",
