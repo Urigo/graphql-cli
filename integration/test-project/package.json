@@ -10,10 +10,10 @@
     "graphql-tag": "2.11.0"
   },
   "devDependencies": {
-    "@graphql-codegen/add": "1.17.7",
+    "@graphql-codegen/add": "2.0.1",
     "@graphql-codegen/typescript": "1.17.10",
     "@graphql-codegen/typescript-operations": "1.17.8",
-    "@graphql-codegen/typescript-react-apollo": "1.17.7",
+    "@graphql-codegen/typescript-react-apollo": "2.0.7",
     "@graphql-codegen/typescript-resolvers": "1.17.10",
     "@graphql-cli/codegen": "1.17.9",
     "@graphql-cli/coverage": "2.1.0",
