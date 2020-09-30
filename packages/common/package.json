@@ -14,7 +14,7 @@
     "yargs": "16.0.3"
   },
   "dependencies": {
-    "@graphql-tools/load": "6.2.3",
+    "@graphql-tools/load": "6.2.4",
     "tslib": "2.0.1"
   }
 }

@@ -22,7 +22,7 @@
     "deploy:website": "cd website && yarn deploy"
   },
   "devDependencies": {
-    "@graphql-tools/load": "6.2.3",
+    "@graphql-tools/load": "6.2.4",
     "@types/express": "4.17.8",
     "@types/fs-extra": "9.0.1",
     "@types/fullname": "2.1.29",
