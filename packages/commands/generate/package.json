@@ -1,6 +1,6 @@
 {
   "name": "@graphql-cli/generate",
-  "description": "Generate DB, schema, document and resolvers for your GraphQL project by using GraphBack.",
+  "description": "Generate schema and client-side documents for your GraphQL project by using Graphback.",
   "version": "4.0.0",
   "license": "MIT",
   "main": "dist/index.js",
