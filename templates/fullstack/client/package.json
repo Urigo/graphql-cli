@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "@types/jest": "26.0.14",
-    "@types/node": "13.13.21",
+    "@types/node": "13.13.22",
     "@types/react": "16.9.51",
     "@types/react-dom": "16.9.8",
     "react-scripts": "3.4.3",
