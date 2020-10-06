@@ -37,6 +37,6 @@
     "simple-git": "2.20.1",
     "string-env-interpolation": "1.0.1",
     "tmp": "0.2.1",
-    "tslib": "2.0.1"
+    "tslib": "2.0.2"
   }
 }
