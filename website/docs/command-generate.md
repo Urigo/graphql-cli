@@ -4,7 +4,7 @@ title: generate
 sidebar_label: generate
 ---
 
-Generate DB, schema, document and resolvers for your GraphQL project by using [GraphBack](https://graphback.dev).
+Generate schema and client documents for your GraphQL project by using [Graphback](https://graphback.dev).
 
 ### Installation
 
