@@ -59,7 +59,7 @@ jobs:
 
   publish:
     # publish to npm only when doing the release
-    if: ${{ github.event_name == 'release' }}
+    if: ${{ github.event_name != 'release' }}
     name: Publish Release
     runs-on: ubuntu-latest
     steps:
