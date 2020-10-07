@@ -20,7 +20,7 @@
     "@graphql-cli/codegen": "1.17.10",
     "@graphql-cli/coverage": "2.1.0",
     "@graphql-cli/diff": "2.1.0",
-    "@graphql-cli/generate": "4.1.0-beta.1",
+    "@graphql-cli/generate": "4.1.0",
     "@graphql-cli/serve": "4.1.0",
     "@graphql-cli/similar": "2.1.0",
     "@graphql-cli/validate": "2.1.0",
