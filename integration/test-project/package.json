@@ -15,7 +15,7 @@
     "@graphql-codegen/typescript-operations": "1.17.8",
     "@graphql-codegen/typescript-react-apollo": "2.0.7",
     "@graphql-codegen/typescript-resolvers": "1.17.10",
-    "@graphql-cli/codegen": "1.17.11",
+    "@graphql-cli/codegen": "1.17.12",
     "@graphql-cli/coverage": "2.1.0",
     "@graphql-cli/diff": "2.1.0",
     "@graphql-cli/generate": "4.1.0",
