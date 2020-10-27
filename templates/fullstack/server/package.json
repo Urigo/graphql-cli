@@ -21,7 +21,7 @@
     "graphql": "15.4.0",
     "graphql-config": "3.0.3",
     "graphql-tag": "2.11.0",
-    "knex": "0.21.7",
+    "knex": "0.21.8",
     "pg": "8.4.2",
     "ts-node": "9.0.0",
     "ts-node-dev": "1.0.0",
