@@ -20,7 +20,7 @@ jobs:
         node_version: [10, 14]
     steps:
       - name: Checkout Master
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Use Node ${{matrix.node_version}}
         uses: actions/setup-node@master
         with:
@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Master
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Use Node
         uses: actions/setup-node@v1
         with:
@@ -64,7 +64,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Master
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Use Node
         uses: actions/setup-node@v1
         with:
