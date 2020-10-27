@@ -76,20 +76,15 @@ extensions:
           - typescript-react-apollo
       config:
         withHooks: true
-  generate:
-    db:
-      dbConfig:
-        user: admin
-        port: 55432
-      database: pg
-# ...
-    graphqlCRUD:
-      create: true
-      update: true
-      findAll: true
+  graphback:
+    model: './model/*.graphql'
+    plugins:
+      graphback-schema:
+        outputPath: './src/schema/schema.graphql'
+      ...
 ```
-
- [For a detailed example check out a template file here.](https://github.com/ardatan/graphql-cli-template/blob/924c6dc880a06abe468c10bea369e249dcb2aa4c/.graphqlrc.yml#L5)
+  
+ [For a detailed example check out a template file here.](https://github.com/Urigo/graphql-cli/blob/master/templates/fullstack/.graphqlrc.yml)
 
 Some of the available Plugins are:
 
@@ -110,7 +105,6 @@ extensions:
 - [`similar`]((https://github.com/kamilkisiela/graphql-inspector/tree/master/packages/graphql-cli/similar)) - Get a list of similar types in order to find duplicates using [GraphQL Inspector](https://graphql-inspector.com/docs/essentials/similar).
 - [`validate`]((https://github.com/kamilkisiela/graphql-inspector/tree/master/packages/graphql-cli/validate)) - Validates documents against a schema and looks for deprecated usage using [GraphQL Inspector](https://graphql-inspector.com/docs/essentials/validate).
 - [`serve`](https://github.com/Urigo/graphql-cli/tree/master/packages/commands/serve) - Serves a GraphQL server, using an in memory database and a defined GraphQL schema. Please read through [serve documentation](./website/docs/command-serve.md) to learn more about this command.
-
 
 More plugins are definitely welcome! Please check the existing ones to see how to use GraphQL Config and GraphQL CLI API.
 

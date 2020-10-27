@@ -16,7 +16,7 @@ extensions:
           - typescript-react-apollo
       ./server/src/generated-types.ts:
         config:
-          contextType: '@graphback/runtime#GraphbackRuntimeContext'
+          contextType: '@graphback/core#GraphbackContext'
           mappers:
             Comment: './generated-db-types#comment'
             Note: './generated-db-types#note'
@@ -46,12 +46,3 @@ extensions:
           outputPath: ./server/src/schema/schema.graphql
         graphback-client:
           outputFile: ./client/src/graphql/graphback.graphql
-  dbmigrations:
-    ## See knex.js for db specific config format
-    client: pg
-    connection:
-      user: postgresql
-      password: postgres
-      database: users
-      host: localhost
-      port: 55432
