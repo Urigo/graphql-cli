@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "ava": "3.13.0",
-    "execa": "4.0.3"
+    "execa": "4.1.0"
   },
   "ava": {
     "files": [
