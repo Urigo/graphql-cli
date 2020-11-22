@@ -3,7 +3,7 @@
   "name": "test-project",
   "version": "4.1.0",
   "dependencies": {
-    "@graphql-tools/load-files": "6.2.4",
+    "@graphql-tools/load-files": "6.2.5",
     "@types/node": "13.13.32",
     "graphql": "15.4.0",
     "graphql-config": "3.2.0",
