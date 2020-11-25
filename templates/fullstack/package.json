@@ -13,9 +13,9 @@
   "license": "MIT",
   "devDependencies": {
     "@graphql-codegen/add": "2.0.1",
-    "@graphql-codegen/typescript": "1.17.11",
-    "@graphql-codegen/typescript-operations": "1.17.10",
-    "@graphql-codegen/typescript-react-apollo": "2.1.1",
+    "@graphql-codegen/typescript": "1.18.0",
+    "@graphql-codegen/typescript-operations": "1.17.11",
+    "@graphql-codegen/typescript-react-apollo": "2.2.0",
     "@graphql-codegen/typescript-resolvers": "1.17.11",
     "@graphql-cli/codegen": "1.17.14",
     "@graphql-cli/coverage": "2.1.0",
