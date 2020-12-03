@@ -19,7 +19,7 @@
     "@graphql-tools/git-loader": "6.2.5",
     "@graphql-tools/github-loader": "6.2.5",
     "@graphql-tools/prisma-loader": "6.2.7",
-    "@graphql-tools/url-loader": "6.4.0",
-    "@graphql-tools/utils": "7.1.3"
+    "@graphql-tools/url-loader": "6.5.0",
+    "@graphql-tools/utils": "7.1.4"
   }
 }
