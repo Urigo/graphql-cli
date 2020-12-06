@@ -35,7 +35,7 @@ schema: ./src/schema/**/*.graphql #You can have URL endpoint, Git URL and local 
 ### `get-schema` is no longer available
 In previous versions, you were able to download the schema to the given path in `schemaPath` from the URL given inside `endpoint`. In the new version, `schema` refers to the endpoint of the schema.
 
-If you use Prisma or any other tool that provides your schema under URL endpoint, you must to specify it using the following syntax in your configuration YAML:
+If you use Prisma or any other tool that provides your schema under URL endpoint, you must specify it using the following syntax in your configuration YAML:
 
 ```yaml
 schema: http://localhost:4000/graphql #This is the schema path
