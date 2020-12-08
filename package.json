@@ -28,7 +28,7 @@
     "@types/fullname": "2.1.29",
     "@types/inquirer": "7.3.1",
     "@types/js-yaml": "3.12.5",
-    "@types/node": "14.14.9",
+    "@types/node": "14.14.11",
     "@types/rimraf": "3.0.0",
     "@types/tmp": "0.2.0",
     "graphql": "15.4.0",
