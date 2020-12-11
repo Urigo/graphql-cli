@@ -34,7 +34,7 @@
     "openapi-to-graphql": "2.2.5",
     "ora": "5.1.0",
     "rimraf": "3.0.2",
-    "simple-git": "2.26.0",
+    "simple-git": "2.27.0",
     "string-env-interpolation": "1.0.1",
     "tmp": "0.2.1",
     "tslib": "2.0.3"
