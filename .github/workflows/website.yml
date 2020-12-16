@@ -26,7 +26,7 @@ jobs:
           git checkout master
           git reset --hard
       - name: Use Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: '14.x'
       - name: Install Dependencies using Yarn
