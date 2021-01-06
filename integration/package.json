@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "log-symbols": "4.0.0",
-    "tslib": "2.0.3"
+    "tslib": "2.1.0"
   },
   "devDependencies": {
     "ava": "3.15.0",
