@@ -25,6 +25,6 @@
   "dependencies": {
     "@graphql-cli/common": "4.1.0",
     "graphql-serve": "1.1.0",
-    "tslib": "2.0.3"
+    "tslib": "2.1.0"
   }
 }
