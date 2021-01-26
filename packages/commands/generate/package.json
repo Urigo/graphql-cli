@@ -20,7 +20,7 @@
     "build": "tsc"
   },
   "peerDependencies": {
-    "graphql": "15.4.0"
+    "graphql": "15.5.0"
   },
   "dependencies": {
     "@graphql-cli/common": "4.1.0",

@@ -11,7 +11,7 @@
     "build": "tsc"
   },
   "peerDependencies": {
-    "graphql": "15.4.0"
+    "graphql": "15.5.0"
   },
   "dependencies": {
     "@graphql-tools/apollo-engine-loader": "6.2.5",
