@@ -11,10 +11,10 @@
   },
   "devDependencies": {
     "@graphql-codegen/add": "2.0.2",
-    "@graphql-codegen/typescript": "1.20.2",
+    "@graphql-codegen/typescript": "1.21.0",
     "@graphql-codegen/typescript-operations": "1.17.14",
     "@graphql-codegen/typescript-react-apollo": "2.2.1",
-    "@graphql-codegen/typescript-resolvers": "1.18.1",
+    "@graphql-codegen/typescript-resolvers": "1.18.2",
     "@graphql-cli/codegen": "1.17.18",
     "@graphql-cli/coverage": "2.1.0",
     "@graphql-cli/diff": "2.1.0",
