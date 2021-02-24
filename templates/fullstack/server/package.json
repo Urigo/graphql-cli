@@ -9,7 +9,7 @@
   "dependencies": {
     "graphback": "1.1.1",
     "@graphback/runtime-knex": "1.1.1",
-    "@graphback/codegen-schema": "1.1.1",
+    "@graphback/codegen-schema": "1.1.2",
     "graphql-migrations": "1.1.1",
     "@graphql-tools/load-files": "6.2.5",
     "@types/cors": "2.8.10",
