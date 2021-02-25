@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "graphback": "1.1.2",
-    "@graphback/runtime-knex": "1.1.1",
+    "@graphback/runtime-knex": "1.1.2",
     "@graphback/codegen-schema": "1.1.2",
     "graphql-migrations": "1.1.2",
     "@graphql-tools/load-files": "6.2.5",
