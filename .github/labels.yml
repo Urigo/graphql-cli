@@ -1,0 +1,21 @@
+- color: ee0701
+  description: ""
+  name: bug
+- color: 0366d6
+  description: Pull requests that update a dependency file
+  name: dependencies
+- color: 84b6eb
+  description: ""
+  name: enhancement
+- color: 128A0C
+  description: ""
+  name: help wanted
+- color: cc317c
+  description: ""
+  name: question
+- color: 7046a8
+  description: This issue or pull request is published
+  name: released
+- color: 434FB5
+  description: This issue or pull request is waiting to be released
+  name: waiting for release
