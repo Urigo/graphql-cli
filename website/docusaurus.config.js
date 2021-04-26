@@ -91,11 +91,6 @@ module.exports = {
         },
       ],
     },
-    // algolia: {
-    //   apiKey: '',
-    //   indexName: 'graphql-cli',
-    //   algoliaOptions: {},
-    // },
     prism: {
       theme: require('prism-react-renderer/themes/dracula'),
     },
