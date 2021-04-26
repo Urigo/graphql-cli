@@ -13,7 +13,7 @@ object-assign
   http://jedwatson.github.io/classnames
 */
 
-/*! algoliasearch-lite.umd.js | 4.9.0 | © Algolia, inc. | https://github.com/algolia/algoliasearch-client-javascript */
+/*! algoliasearch-lite.umd.js | 4.9.1 | © Algolia, inc. | https://github.com/algolia/algoliasearch-client-javascript */
 
 /** @license React v0.20.2
  * scheduler.production.min.js
