@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[16],{122:function(n,t,e){"use strict";e.r(t);var o=e(0),c=e.n(o),i=e(37);t.default=function(){return c.a.createElement(i.Redirect,{to:"/introduction"})}}}]);
