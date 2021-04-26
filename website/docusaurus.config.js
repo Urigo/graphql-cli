@@ -10,6 +10,9 @@ module.exports = {
   projectName: 'graphql-cli',
 
   themeConfig: {
+    colorMode: {
+      disableSwitch: true,
+    },
     sidebarCollapsible: false,
     image: 'img/logo.png',
     navbar: {
@@ -98,12 +101,7 @@ module.exports = {
     },
   },
   scripts: [
-    '/js/light-mode-by-default.js',
-    {
-      src: 'https://the-guild.dev/static/banner.js',
-      async: true,
-      defer: true,
-    },
+    '/js/light-mode-by-default.js'
   ],
   presets: [
     [
@@ -121,7 +119,7 @@ module.exports = {
           customCss: require.resolve('./src/css/custom.css'),
         },
         sitemap: {
-          cacheTime: 600 * 1001, // 600 sec - cache purge period
+          // cacheTime: 600 * 1001, // 600 sec - cache purge period
           changefreq: 'weekly',
           priority: 0.5,
         },
