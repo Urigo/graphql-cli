@@ -58,6 +58,6 @@
     "graphql": "15.5.0"
   },
   "dependencies": {
-    "@types/yargs": "15.0.13"
+    "@types/yargs": "16.0.2"
   }
 }
