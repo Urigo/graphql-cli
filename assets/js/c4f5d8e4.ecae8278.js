@@ -1,0 +1,1 @@
+(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[195],{8598:function(e,t,n){"use strict";n.r(t);var u=n(7378),c=n(9635);t.default=function(){return u.createElement(c.l_,{to:"/introduction"})}}}]);
