@@ -14,8 +14,7 @@
     "clsx": "^1.1.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "styled-components": "5.1.0",
-    "the-guild-components": "1.1.0"
+    "@theguild/components": "1.4.3"
   },
   "browserslist": {
     "production": [

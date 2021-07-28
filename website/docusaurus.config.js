@@ -34,63 +34,6 @@ module.exports = {
         },
       ],
     },
-    footer: {
-      style: 'dark',
-      copyright: `Copyright © ${new Date().getFullYear()} The Guild. All rights reserved.`,
-      links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Introduction',
-              to: 'introduction',
-            },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Discord',
-              href: 'https://discord.gg/xud7bH9',
-            },
-            {
-              label: 'Other projects',
-              href: 'https://github.com/the-guild-org/Stack',
-            },
-            {
-              label: 'Mailing List',
-              href: 'https://upscri.be/19qjhi',
-            },
-            {
-              label: 'Community Meetings',
-              href: 'https://github.com/the-guild-org/community-meetings',
-            },
-          ],
-        },
-        {
-          title: 'Social',
-          items: [
-            {
-              label: 'Blog',
-              href: 'https://the-guild.dev/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/urigo/graphql-cli',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/TheGuildDev',
-            },
-            {
-              label: 'LinkedIn',
-              href: 'https://www.linkedin.com/company/the-guild-software'
-            }
-          ],
-        },
-      ],
-    },
     prism: {
       theme: require('prism-react-renderer/themes/dracula'),
     },
