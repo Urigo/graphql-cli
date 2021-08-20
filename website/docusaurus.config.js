@@ -13,7 +13,6 @@ module.exports = {
     colorMode: {
       disableSwitch: true,
     },
-    sidebarCollapsible: false,
     image: 'img/logo.png',
     navbar: {
       title: 'GraphQL CLI',
@@ -85,8 +84,8 @@ module.exports = {
             },
             {
               label: 'LinkedIn',
-              href: 'https://www.linkedin.com/company/the-guild-software'
-            }
+              href: 'https://www.linkedin.com/company/the-guild-software',
+            },
           ],
         },
       ],
@@ -95,9 +94,7 @@ module.exports = {
       theme: require('prism-react-renderer/themes/dracula'),
     },
   },
-  scripts: [
-    '/js/light-mode-by-default.js'
-  ],
+  scripts: ['/js/light-mode-by-default.js'],
   presets: [
     [
       require.resolve('@docusaurus/preset-classic'),
@@ -107,8 +104,7 @@ module.exports = {
           routeBasePath: '/',
           include: ['**/*.md', '**/*.mdx'],
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl:
-            'https://github.com/urigo/graphql-cli/edit/master/website/',
+          editUrl: 'https://github.com/urigo/graphql-cli/edit/master/website/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

@@ -14,12 +14,12 @@
     "graphql": "15.5.0"
   },
   "dependencies": {
-    "@graphql-tools/apollo-engine-loader": "6.2.5",
-    "@graphql-tools/code-file-loader": "6.3.1",
-    "@graphql-tools/git-loader": "6.2.6",
-    "@graphql-tools/github-loader": "6.2.5",
-    "@graphql-tools/prisma-loader": "6.2.7",
-    "@graphql-tools/url-loader": "6.8.1",
-    "@graphql-tools/utils": "7.5.1"
+    "@graphql-tools/apollo-engine-loader": "^7.0.4",
+    "@graphql-tools/code-file-loader": "^7.0.4",
+    "@graphql-tools/git-loader": "^7.0.4",
+    "@graphql-tools/github-loader": "^7.0.4",
+    "@graphql-tools/prisma-loader": "^7.0.5",
+    "@graphql-tools/url-loader": "^7.0.10",
+    "@graphql-tools/utils": "^8.1.1"
   }
 }

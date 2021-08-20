@@ -29,11 +29,11 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@graphql-cli/common": "4.1.0",
-    "@graphql-cli/init": "4.1.0",
-    "globby": "11.0.2",
-    "graphql-config": "3.2.0",
-    "open": "7.4.2",
-    "yargs": "16.2.0"
+    "@graphql-cli/common": "^4.1.0",
+    "@graphql-cli/init": "^4.1.0",
+    "globby": "^11.0.2",
+    "graphql-config": "^3.2.0",
+    "open": "^7.4.2",
+    "yargs": "^16.2.0"
   }
 }
