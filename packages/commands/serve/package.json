@@ -1,7 +1,7 @@
 {
   "name": "@graphql-cli/serve",
   "description": "Serves a GraphQL server using an in memory MongoDB",
-  "version": "4.1.0",
+  "version": "5.0.0",
   "license": "MIT",
   "main": "dist/index.js",
   "publishConfig": {
@@ -23,8 +23,8 @@
     "graphql": "15.5.0"
   },
   "dependencies": {
-    "@graphql-cli/common": "4.1.0",
-    "graphql-serve": "1.1.2",
-    "tslib": "2.1.0"
+    "@graphql-cli/common": "^5.0.0",
+    "graphql-serve": "^1.1.2",
+    "tslib": "~2.1.0"
   }
 }

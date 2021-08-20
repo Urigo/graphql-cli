@@ -15,7 +15,7 @@
     "email": "uri.goldshtein@gmail.com",
     "url": "https://github.com/Urigo"
   },
-  "version": "4.1.0",
+  "version": "5.0.0",
   "license": "MIT",
   "main": "dist/index.js",
   "publishConfig": {
@@ -29,8 +29,8 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@graphql-cli/common": "^4.1.0",
-    "@graphql-cli/init": "^4.1.0",
+    "@graphql-cli/common": "^5.0.0",
+    "@graphql-cli/init": "^5.0.0",
     "globby": "^11.0.2",
     "graphql-config": "^3.2.0",
     "open": "^7.4.2",
