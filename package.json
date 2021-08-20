@@ -24,7 +24,7 @@
   "devDependencies": {
     "@graphql-tools/load": "6.2.7",
     "@types/express": "4.17.11",
-    "@types/fs-extra": "9.0.8",
+    "@types/fs-extra": "9.0.12",
     "@types/fullname": "2.1.29",
     "@types/inquirer": "7.3.1",
     "@types/js-yaml": "3.12.6",
