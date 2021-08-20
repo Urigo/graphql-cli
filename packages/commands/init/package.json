@@ -24,7 +24,7 @@
     "chalk": "4.1.0",
     "cosmiconfig": "7.0.0",
     "create-graphback": "1.1.2",
-    "cross-fetch": "3.0.6",
+    "cross-fetch": "3.1.4",
     "fs-extra": "9.1.0",
     "fullname": "4.0.1",
     "graphql": "15.5.0",
