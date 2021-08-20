@@ -35,6 +35,7 @@ jobs:
   publish-canary:
     name: Publish Canary
     runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'release' }}
     steps:
       - name: Checkout Master
         uses: actions/checkout@v2
@@ -59,7 +60,7 @@ jobs:
 
   publish:
     # publish to npm only when doing the release
-    if: ${{ github.event_name != 'release' }}
+    if: ${{ github.event_name == 'release' }}
     name: Publish Release
     runs-on: ubuntu-latest
     steps:
