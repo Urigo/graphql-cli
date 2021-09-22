@@ -2001,7 +2001,17 @@
     unixify "1.0.0"
     valid-url "1.0.9"
 
-"@graphql-tools/load@6.2.8", "@graphql-tools/load@^6.0.0":
+"@graphql-tools/load@7.3.2":
+  version "7.3.2"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/load/-/load-7.3.2.tgz#0edd9c0b464111968bfca148457a4c97e23fc030"
+  integrity sha512-tB03MGOlgKkoP6YyzIl/saTYshuLWxQy2JebhYL6gy3XsWmSE7ae1WAL3p+G0pyfw66HaMu905omyulu1VkfXw==
+  dependencies:
+    "@graphql-tools/schema" "8.2.0"
+    "@graphql-tools/utils" "^8.2.3"
+    p-limit "3.1.0"
+    tslib "~2.3.0"
+
+"@graphql-tools/load@^6.0.0":
   version "6.2.8"
   resolved "https://registry.yarnpkg.com/@graphql-tools/load/-/load-6.2.8.tgz#16900fb6e75e1d075cad8f7ea439b334feb0b96a"
   integrity sha512-JpbyXOXd8fJXdBh2ta0Q4w8ia6uK5FHzrTNmcvYBvflFuWly2LDTk2abbSl81zKkzswQMEd2UIYghXELRg8eTA==
@@ -2061,6 +2071,14 @@
     "@graphql-tools/utils" "8.0.2"
     tslib "~2.3.0"
 
+"@graphql-tools/merge@^8.1.0":
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-8.1.2.tgz#50f5763927c51de764d09c5bfd20261671976e24"
+  integrity sha512-kFLd4kKNJXYXnKIhM8q9zgGAtbLmsy3WmGdDxYq3YHBJUogucAxnivQYyRIseUq37KGmSAIWu3pBQ23TKGsGOw==
+  dependencies:
+    "@graphql-tools/utils" "^8.2.2"
+    tslib "~2.3.0"
+
 "@graphql-tools/prisma-loader@^7.0.5":
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/@graphql-tools/prisma-loader/-/prisma-loader-7.0.5.tgz#de4d039f447ee4fa8c7c6ffd0d92411d4ac56a79"
@@ -2094,6 +2112,16 @@
   dependencies:
     "@graphql-tools/merge" "8.0.1"
     "@graphql-tools/utils" "8.1.1"
+    tslib "~2.3.0"
+    value-or-promise "1.0.10"
+
+"@graphql-tools/schema@8.2.0":
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/schema/-/schema-8.2.0.tgz#ae75cbb2df6cee9ed6d89fce56be467ab23758dc"
+  integrity sha512-ufmI5mJQa8NJczzfkh0pUttKvspqDcT5LLakA3jUmOrrE4d4NVj6onZlazdTzF5sAepSNqanFnwhrxZpCAJMKg==
+  dependencies:
+    "@graphql-tools/merge" "^8.1.0"
+    "@graphql-tools/utils" "^8.2.0"
     tslib "~2.3.0"
     value-or-promise "1.0.10"
 
@@ -2198,6 +2226,13 @@
     "@ardatan/aggregate-error" "0.0.6"
     camel-case "4.1.2"
     tslib "~2.2.0"
+
+"@graphql-tools/utils@^8.2.0", "@graphql-tools/utils@^8.2.2", "@graphql-tools/utils@^8.2.3":
+  version "8.2.3"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.2.3.tgz#9d7b9e7e116d11d26c2687f4d9cfb2b54568838b"
+  integrity sha512-RR+aiusf2gIfnPmrDIH1uA45QuPiHB54RD+BmWyMcl88tWAjeJtqZeWPqUTq/1EXrNeocJAJQqogHV4Fbbzx3A==
+  dependencies:
+    tslib "~2.3.0"
 
 "@graphql-tools/wrap@^7.0.4":
   version "7.0.8"
