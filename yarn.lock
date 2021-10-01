@@ -3332,16 +3332,16 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@theguild/components@1.4.8":
-  version "1.4.8"
-  resolved "https://registry.yarnpkg.com/@theguild/components/-/components-1.4.8.tgz#7492db919af4e94e72b06364a632031e40d58409"
-  integrity sha512-X0bY//fBpxtsAxL0u5/OQsdTOpvv5J6WldX/+npgkgAh6vIm/cGMD0433/0LVB9BhqjY4+6NbfqufutsawI47A==
+"@theguild/components@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@theguild/components/-/components-1.5.0.tgz#334f1ffa99574b8af7a98c51cff16fe89579c60e"
+  integrity sha512-/0iJwNMDsBk4C/ZWOUcbWcuZHFT4R11Cb/mzOR64D1vJjxZgyvT/lu9n76BAnoB6O2pHgw1R2RBpAEGn38Ltaw==
   dependencies:
     "@emotion/react" "^11.4.0"
     "@emotion/styled" "^11.3.0"
     algoliasearch "^4.9.1"
     core-js "^3.14.0"
-    focus-trap-react "^8.5.0"
+    focus-trap-react "8.7.1"
     polished "^4.1.3"
     react-instantsearch-dom "^6.11.0"
     react-paginate "^7.1.3"
@@ -7449,7 +7449,7 @@ flux@^4.0.1:
     fbemitter "^3.0.0"
     fbjs "^3.0.0"
 
-focus-trap-react@^8.5.0:
+focus-trap-react@8.7.1:
   version "8.7.1"
   resolved "https://registry.yarnpkg.com/focus-trap-react/-/focus-trap-react-8.7.1.tgz#a9e4dc866db5e6794bdb751cad9ddc8989598ec5"
   integrity sha512-1bCCtdZXSzYVrMEcvHfHq+706OSM5r3iZsBFXy9zbnf3+5dyCFiEVWix7Sf6jUaOgshjpyDvZHiBhSlcsO9k3A==
@@ -14561,12 +14561,12 @@ text-table@0.2.0, text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-the-guild-components@1.4.8:
-  version "1.4.8"
-  resolved "https://registry.yarnpkg.com/the-guild-components/-/the-guild-components-1.4.8.tgz#a717a8a28b7868b68b9b8c4a5fe4203f9260c87a"
-  integrity sha512-stHGBai2gWIGDMWoqL2uo2t3VovAxAzvnhOo2egWZIvXP4fMg7k3qOu4AlgSni35hqswpNqUMZ+3twkSIlZxtQ==
+the-guild-components@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/the-guild-components/-/the-guild-components-1.5.0.tgz#aa644d7b3202f4cbabbfc0128ce70651e6c80b09"
+  integrity sha512-pF+z1TR2XdNprm3g5AWPARf+hbN29j24n9PX3SXEUK9CMqxVndHHNj0Lr61O5aWsiSzqZG7+5jiCJwMc476oZA==
   dependencies:
-    "@theguild/components" "1.4.8"
+    "@theguild/components" "1.5.0"
 
 thenify-all@^1.0.0:
   version "1.6.0"
