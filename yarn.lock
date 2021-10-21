@@ -3332,10 +3332,10 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@theguild/components@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@theguild/components/-/components-1.5.0.tgz#334f1ffa99574b8af7a98c51cff16fe89579c60e"
-  integrity sha512-/0iJwNMDsBk4C/ZWOUcbWcuZHFT4R11Cb/mzOR64D1vJjxZgyvT/lu9n76BAnoB6O2pHgw1R2RBpAEGn38Ltaw==
+"@theguild/components@1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@theguild/components/-/components-1.6.0.tgz#bdb72c19fbfcbf33278cba83e6eb4275d05cac40"
+  integrity sha512-zojsCR37DQfikDT8N2GQ+HHdUMwG2WUCE6DhMgM36NEvZPyzZ84nFVKcDvQkrEtq2Pt7494lWuS3wOg/Yqeewg==
   dependencies:
     "@emotion/react" "^11.4.0"
     "@emotion/styled" "^11.3.0"
@@ -14561,12 +14561,12 @@ text-table@0.2.0, text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-the-guild-components@1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/the-guild-components/-/the-guild-components-1.5.0.tgz#aa644d7b3202f4cbabbfc0128ce70651e6c80b09"
-  integrity sha512-pF+z1TR2XdNprm3g5AWPARf+hbN29j24n9PX3SXEUK9CMqxVndHHNj0Lr61O5aWsiSzqZG7+5jiCJwMc476oZA==
+the-guild-components@1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/the-guild-components/-/the-guild-components-1.5.1.tgz#73a4db7d01fd5a53640716aad243ddc7b18a51a0"
+  integrity sha512-03gKBNP3XOADE+chizWeqCWXiky6BM/xaEeUDvMjr9nAznVC8Cvza5JcmpmS550Tqm8LYJeRgtrTvV8IoGUizQ==
   dependencies:
-    "@theguild/components" "1.5.0"
+    "@theguild/components" "1.6.0"
 
 thenify-all@^1.0.0:
   version "1.6.0"
