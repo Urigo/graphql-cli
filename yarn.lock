@@ -3332,10 +3332,10 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@theguild/components@1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@theguild/components/-/components-1.6.0.tgz#bdb72c19fbfcbf33278cba83e6eb4275d05cac40"
-  integrity sha512-zojsCR37DQfikDT8N2GQ+HHdUMwG2WUCE6DhMgM36NEvZPyzZ84nFVKcDvQkrEtq2Pt7494lWuS3wOg/Yqeewg==
+"@theguild/components@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@theguild/components/-/components-1.7.1.tgz#516eabd536356d7d62a3120fad45db6edb4cebf4"
+  integrity sha512-Mqql/xDvNJjGyA/XyVImUFtCRA3MFjzCgGOcXqY/BOjTk+21ZI/BmuT8s3Z+Wj4RzRBoTIOG9fBbREcS6JZGxg==
   dependencies:
     "@emotion/react" "^11.4.0"
     "@emotion/styled" "^11.3.0"
@@ -3344,7 +3344,7 @@
     focus-trap-react "8.7.1"
     polished "^4.1.3"
     react-instantsearch-dom "^6.11.0"
-    react-paginate "^7.1.3"
+    react-paginate "7.1.3"
     react-player "^2.9.0"
     tailwindcss "^2.1.4"
     twin.macro "^2.4.2"
@@ -12642,7 +12642,7 @@ react-loadable@^5.5.0:
   dependencies:
     prop-types "^15.5.0"
 
-react-paginate@^7.1.3:
+react-paginate@7.1.3:
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/react-paginate/-/react-paginate-7.1.3.tgz#51a2ccb13febc7f96d28405bdf6e029510227206"
   integrity sha512-cHTXXE90Z3DlKSJiIQFzAcWoIFs9mq6r1/+rQF099NPvdJpbR8f6E/ES32tlUw4qe1R6qWLOrPZYhvAy4UgHLA==
@@ -14566,12 +14566,12 @@ text-table@0.2.0, text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-the-guild-components@1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/the-guild-components/-/the-guild-components-1.5.1.tgz#73a4db7d01fd5a53640716aad243ddc7b18a51a0"
-  integrity sha512-03gKBNP3XOADE+chizWeqCWXiky6BM/xaEeUDvMjr9nAznVC8Cvza5JcmpmS550Tqm8LYJeRgtrTvV8IoGUizQ==
+the-guild-components@1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/the-guild-components/-/the-guild-components-1.5.3.tgz#1adcf6241bff0ec9ea00407b4db03818554a405a"
+  integrity sha512-+XFFWgZpgXOtBg0/ViowkCqirlhaW89flSnuuPweWRkUUsmsqGQllubOEvINOF/tHBdht6GDrSsbnIepVPuy6w==
   dependencies:
-    "@theguild/components" "1.6.0"
+    "@theguild/components" "1.7.1"
 
 thenify-all@^1.0.0:
   version "1.6.0"
