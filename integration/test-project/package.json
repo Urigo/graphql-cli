@@ -7,7 +7,7 @@
     "@types/node": "13.13.45",
     "graphql": "15.7.2",
     "graphql-config": "3.4.1",
-    "graphql-tag": "2.12.5"
+    "graphql-tag": "2.12.6"
   },
   "devDependencies": {
     "@graphql-codegen/add": "2.0.2",
