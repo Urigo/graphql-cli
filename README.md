@@ -88,7 +88,7 @@ extensions:
 
 Some of the available Plugins are:
 
-- [`init`](https://github.com/Urigo/graphql-cli/tree/focs/packages/commands/init) - Creates a GraphQL project using a template or GraphQL Config file for your existing project.
+- [`init`](website/docs/command-init.md) - Creates a GraphQL project using a template or GraphQL Config file for your existing project.
 - [`codegen`](https://github.com/dotansimha/graphql-code-generator/tree/master/packages/graphql-cli-codegen-plugin) - GraphQL Code Generator's GraphQL CLI plugin. GraphQL Code Generator is a tool that generates code from your GraphQL schema and documents for your backend or frontend with flexible support for custom plugins and templates. [Learn More](https://graphql-code-generator.com)
 - [`generate`](https://github.com/Urigo/graphql-cli/tree/master/packages/commands/generate) - Generate schema and client-side documents for your GraphQL project by using [Graphback](https://graphback.dev).
 - [`coverage`](https://github.com/kamilkisiela/graphql-inspector/tree/master/packages/graphql-cli/coverage) - Schema coverage based on documents. Find out how many times types and fields are used in your application using [GraphQL Inspector](https://graphql-inspector.com/docs/essentials/coverage).
