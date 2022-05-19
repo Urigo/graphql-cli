@@ -1,0 +1,224 @@
+[
+  {
+    "objectID": "cli-codegen",
+    "headings": [],
+    "toc": [],
+    "content": "-",
+    "url": "https://www.graphql-cli.com/codegen",
+    "domain": "https://www.graphql-cli.com/",
+    "hierarchy": ["CLI", "codegen"],
+    "source": "CLI",
+    "title": "codegen",
+    "type": "Documentation"
+  },
+  {
+    "objectID": "cli-coverage",
+    "headings": [],
+    "toc": [],
+    "content": "-",
+    "url": "https://www.graphql-cli.com/coverage",
+    "domain": "https://www.graphql-cli.com/",
+    "hierarchy": ["CLI", "coverage"],
+    "source": "CLI",
+    "title": "coverage",
+    "type": "Documentation"
+  },
+  {
+    "objectID": "cli-custom-commands",
+    "headings": [
+      "Writing your own commands",
+      "Testing your plugin locally",
+      "Loading GraphQL Schema",
+      "Error Handling"
+    ],
+    "toc": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [],
+                "title": "Getting Started",
+                "anchor": "getting-started"
+              }
+            ],
+            "title": "TL;DR",
+            "anchor": "tldr"
+          }
+        ],
+        "title": "Writing your own commands",
+        "anchor": "writing-your-own-commands"
+      },
+      {
+        "children": [],
+        "title": "Testing your plugin locally",
+        "anchor": "testing-your-plugin-locally"
+      },
+      {
+        "children": [],
+        "title": "Loading GraphQL Schema",
+        "anchor": "loading-graphql-schema"
+      },
+      {
+        "children": [],
+        "title": "Error Handling",
+        "anchor": "error-handling"
+      }
+    ],
+    "content": "-",
+    "url": "https://www.graphql-cli.com/custom-commands",
+    "domain": "https://www.graphql-cli.com/",
+    "hierarchy": ["CLI", "Custom commands"],
+    "source": "CLI",
+    "title": "Custom commands",
+    "type": "Documentation"
+  },
+  {
+    "objectID": "cli-diff",
+    "headings": [],
+    "toc": [],
+    "content": "-",
+    "url": "https://www.graphql-cli.com/diff",
+    "domain": "https://www.graphql-cli.com/",
+    "hierarchy": ["CLI", "diff"],
+    "source": "CLI",
+    "title": "diff",
+    "type": "Documentation"
+  },
+  {
+    "objectID": "cli-discover",
+    "headings": [],
+    "toc": [],
+    "content": "-",
+    "url": "https://www.graphql-cli.com/discover",
+    "domain": "https://www.graphql-cli.com/",
+    "hierarchy": ["CLI", "discover"],
+    "source": "CLI",
+    "title": "discover",
+    "type": "Documentation"
+  },
+  {
+    "objectID": "cli-generate",
+    "headings": [],
+    "toc": [],
+    "content": "-",
+    "url": "https://www.graphql-cli.com/generate",
+    "domain": "https://www.graphql-cli.com/",
+    "hierarchy": ["CLI", "generate"],
+    "source": "CLI",
+    "title": "generate",
+    "type": "Documentation"
+  },
+  {
+    "objectID": "cli-init",
+    "headings": [],
+    "toc": [],
+    "content": "-",
+    "url": "https://www.graphql-cli.com/init",
+    "domain": "https://www.graphql-cli.com/",
+    "hierarchy": ["CLI", "init"],
+    "source": "CLI",
+    "title": "init",
+    "type": "Documentation"
+  },
+  {
+    "objectID": "cli-introduction",
+    "headings": [],
+    "toc": [],
+    "content": "-",
+    "url": "https://www.graphql-cli.com/introduction",
+    "domain": "https://www.graphql-cli.com/",
+    "hierarchy": ["CLI", "Introduction"],
+    "source": "CLI",
+    "title": "Introduction",
+    "type": "Documentation"
+  },
+  {
+    "objectID": "cli-introspect",
+    "headings": [],
+    "toc": [],
+    "content": "-",
+    "url": "https://www.graphql-cli.com/introspect",
+    "domain": "https://www.graphql-cli.com/",
+    "hierarchy": ["CLI", "introspect"],
+    "source": "CLI",
+    "title": "introspect",
+    "type": "Documentation"
+  },
+  {
+    "objectID": "cli-migration",
+    "headings": ["Migration from GraphQL CLI 3.x or older"],
+    "toc": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [],
+                "title": "Update your configuration file",
+                "anchor": "update-your-configuration-file"
+              },
+              {
+                "children": [],
+                "title": "Comparison of old commands",
+                "anchor": "comparison-of-old-commands"
+              },
+              {
+                "children": [],
+                "title": "Special Notes for Prisma users",
+                "anchor": "special-notes-for-prisma-users"
+              }
+            ],
+            "title": "Install the new version",
+            "anchor": "install-the-new-version"
+          }
+        ],
+        "title": "Migration from GraphQL CLI 3.x or older",
+        "anchor": "migration-from-graphql-cli-3x-or-older"
+      }
+    ],
+    "content": "-",
+    "url": "https://www.graphql-cli.com/migration",
+    "domain": "https://www.graphql-cli.com/",
+    "hierarchy": ["CLI", "Migration"],
+    "source": "CLI",
+    "title": "Migration",
+    "type": "Documentation"
+  },
+  {
+    "objectID": "cli-serve",
+    "headings": [],
+    "toc": [],
+    "content": "-",
+    "url": "https://www.graphql-cli.com/serve",
+    "domain": "https://www.graphql-cli.com/",
+    "hierarchy": ["CLI", "serve"],
+    "source": "CLI",
+    "title": "serve",
+    "type": "Documentation"
+  },
+  {
+    "objectID": "cli-similar",
+    "headings": [],
+    "toc": [],
+    "content": "-",
+    "url": "https://www.graphql-cli.com/similar",
+    "domain": "https://www.graphql-cli.com/",
+    "hierarchy": ["CLI", "similar"],
+    "source": "CLI",
+    "title": "similar",
+    "type": "Documentation"
+  },
+  {
+    "objectID": "cli-validate",
+    "headings": [],
+    "toc": [],
+    "content": "-",
+    "url": "https://www.graphql-cli.com/validate",
+    "domain": "https://www.graphql-cli.com/",
+    "hierarchy": ["CLI", "validate"],
+    "source": "CLI",
+    "title": "validate",
+    "type": "Documentation"
+  }
+]

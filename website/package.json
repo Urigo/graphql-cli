@@ -6,10 +6,12 @@
     "start": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy"
+    "deploy": "docusaurus deploy",
+    "algolia-sync": "ts-node scripts/algolia-ci.ts"
   },
   "dependencies": {
     "@docusaurus/core": "^2.0.0-beta.0",
+    "@guild-docs/algolia": "0.0.6-alpha-1bcf597.0",
     "@docusaurus/preset-classic": "^2.0.0-beta.0",
     "clsx": "^1.1.1",
     "react": "^17.0.0",

@@ -95,6 +95,13 @@ module.exports = {
     },
   },
   scripts: ['/js/light-mode-by-default.js'],
+  customFields: {
+    algolia: {
+      appId: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+      searchApiKey: process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
+      indexName: process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME,
+    },
+  },
   presets: [
     [
       require.resolve('@docusaurus/preset-classic'),
