@@ -35,3 +35,6 @@ jobs:
         run: yarn deploy:website
         env:
           GIT_USER: ${{github.actor}}
+          NEXT_PUBLIC_ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY: a5522203ca95675199cc21edf09e6d75
+          NEXT_PUBLIC_ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}

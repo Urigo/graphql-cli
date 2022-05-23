@@ -1,0 +1,60 @@
+name: Algolia Integrity
+on:
+  pull_request:
+    paths:
+      - 'website/**'
+jobs:
+  algolia-records-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Use Node 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
+      - name: Install Dependencies
+        run: yarn --ignore-engines
+        working-directory: ./website
+
+      - name: Build Packages
+        run: yarn build
+        working-directory: ./website
+
+      - name: Algolia generate
+        run: yarn algolia-sync
+        working-directory: ./website
+        env:
+          ALGOLIA_DRY_RUN: true
+          SITE_URL: https://www.graphql-cli.com/
+
+      - name: Yarn build at root
+        run: yarn
+
+      - name: Prettier
+        run: yarn prettier -w website/algolia-lockfile.json
+
+      - name: Compare
+        run: git diff origin/${{ github.base_ref }}.. -- website/algolia-lockfile.json
+
+      - name: Diff to file
+        if: always()
+        id: diff_result
+        run: |
+          OUTPUT=$(git diff origin/${{ github.base_ref }}.. -- website/algolia-lockfile.json)
+          OUTPUT="${OUTPUT//'%'/'%25'}"
+          OUTPUT="${OUTPUT//$'\n'/'%0A'}"
+          OUTPUT="${OUTPUT//$'\r'/'%0D'}"
+          echo "::set-output name=result::$OUTPUT"
+
+      - name: Publish a message
+        if: always() && contains(steps.diff_result.outputs.result, 'diff')
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: |
+            ```diff
+            ${{ steps.diff_result.outputs.result }}
+            ```
