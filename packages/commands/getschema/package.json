@@ -1,0 +1,29 @@
+{
+  "name": "@graphql-cli/getschema",
+  "description": "Get schema from url",
+  "version": "4.0.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Urigo/graphql-cli",
+    "directory": "packages/commands/getschema"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "graphql-cli",
+    "graphql-cli-plugin"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "peerDependencies": {
+    "graphql": "15.3.0"
+  },
+  "dependencies": {
+    "@graphql-cli/common": "4.0.0",
+    "tslib": "2.0.1"
+  }
+}
