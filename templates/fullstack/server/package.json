@@ -14,7 +14,7 @@
     "@graphql-tools/load-files": "6.5.2",
     "@types/cors": "2.8.12",
     "@types/express": "4.17.13",
-    "@types/node": "13.13.45",
+    "@types/node": "16.11.60",
     "apollo-server-express": "2.25.3",
     "cors": "2.8.5",
     "express": "4.17.1",

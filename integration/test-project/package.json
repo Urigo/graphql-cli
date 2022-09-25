@@ -4,7 +4,7 @@
   "version": "4.1.0",
   "dependencies": {
     "@graphql-tools/load-files": "6.5.2",
-    "@types/node": "13.13.45",
+    "@types/node": "16.11.60",
     "graphql": "15.7.2",
     "graphql-config": "3.4.1",
     "graphql-tag": "2.12.6"
