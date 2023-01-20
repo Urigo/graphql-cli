@@ -67,7 +67,7 @@ graphql codegen
 | option | alias | description | default |
 | --- | --- | --- | --- |
 | `--config` | `-c` | Path to GraphQL codegen YAML config file | `codegen.yml` or GraphQL configuration file in cwd |
-| `--watch` | `-w` | Watch for changes and execute generation automatically. You can also specify a glob expreession for custom watch list. |   |
+| `--watch` | `-w` | Watch for changes and execute generation automatically. You can also specify a glob expression for custom watch list. |   |
 | `--require` | `-r` | Loads specific require.extensions before running the codegen and reading the configuration | `[]` |
 | `--overwrite` | `-o` | Overwrites existing files | `true` |
 | `--silent` | `-s` | Suppresses printing errors | `false` |
