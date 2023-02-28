@@ -28,7 +28,7 @@ To migrate, you will first need to update your GraphQL Configuration file to mat
 
 You can [check here](https://graphql-config.com/usage) for more information about the new structure.
 
-####Specifying schema(s):
+#### Specifying schema(s):
 
 ```yml
 schema: ./src/schema/**/*.graphql #You can have URL endpoint, Git URL and local files using globs here.
