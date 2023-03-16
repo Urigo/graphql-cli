@@ -6,7 +6,7 @@
     "@graphql-tools/load-files": "6.5.2",
     "@types/node": "13.13.45",
     "graphql": "15.7.2",
-    "graphql-config": "3.4.1",
+    "graphql-config": "4.5.0",
     "graphql-tag": "2.12.6"
   },
   "devDependencies": {

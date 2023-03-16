@@ -10,7 +10,7 @@
     "build": "tsc"
   },
   "peerDependencies": {
-    "graphql-config": "3.4.1",
+    "graphql-config": "4.5.0",
     "yargs": "16.2.0"
   },
   "dependencies": {

@@ -19,7 +19,7 @@
     "cors": "2.8.5",
     "express": "4.17.1",
     "graphql": "15.7.2",
-    "graphql-config": "3.4.1",
+    "graphql-config": "4.5.0",
     "graphql-tag": "2.12.6",
     "knex": "0.95.14",
     "pg": "8.7.1",
