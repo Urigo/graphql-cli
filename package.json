@@ -33,7 +33,7 @@
     "@types/tmp": "0.2.2",
     "graphql": "15.7.2",
     "husky": "4.3.8",
-    "lerna": "3.22.1",
+    "lerna": "8.1.8",
     "lint-staged": "10.5.4",
     "prettier": "2.4.1",
     "rimraf": "3.0.2",
