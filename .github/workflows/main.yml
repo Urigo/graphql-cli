@@ -20,7 +20,7 @@ jobs:
         node_version: [12, 14, 16]
     steps:
       - name: Checkout Master
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Use Node ${{matrix.node_version}}
         uses: actions/setup-node@master
         with:
@@ -38,7 +38,7 @@ jobs:
     if: ${{ github.event_name != 'release' }}
     steps:
       - name: Checkout Master
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Use Node
         uses: actions/setup-node@v2
         with:
@@ -65,7 +65,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Master
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Use Node
         uses: actions/setup-node@v2
         with:
