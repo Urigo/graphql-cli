@@ -17,7 +17,7 @@
     "@types/node": "13.13.45",
     "apollo-server-express": "2.25.3",
     "cors": "2.8.5",
-    "express": "4.17.1",
+    "express": "4.20.0",
     "graphql": "15.7.2",
     "graphql-config": "3.4.1",
     "graphql-tag": "2.12.6",
